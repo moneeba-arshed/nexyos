@@ -32,7 +32,9 @@
   cursor: pointer;
   transition: all 0.3s ease;
 }
-
+.navButton:focus{
+  outline: none;
+}
 .navButton:hover {
   background-color: #e9ecef;
 }
