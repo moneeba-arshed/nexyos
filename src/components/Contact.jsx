@@ -108,17 +108,17 @@ const Contact = () => {
   };
 
   return (
-    <section className="contact py-80">
+    <section className="contact py-20">
       <div className="container mx-auto px-4">
         <div className="grid grid-cols-12 gap-5">
           {/* Left Column (8/12) */}
           <div className="col-span-8 ">
-            <div className="contact-box shadow-lg rounded-xl  px-9 py-14 bg-white">
+            <div className="contact-box border border-gray-100 rounded-xl  px-9 py-14 bg-white">
               <form onSubmit={handleSubmit}>
                 <div className="grid md:grid-cols-12 grid-cols-2 gap-4 ">
                   {/* Row 1 */}
                   <div className="md:col-span-4 col-span-6">
-                    <label htmlFor="email" className="form-label text-start block mb-2">*Your Email</label>
+                    <label htmlFor="email" className="form-label text-start font-extrabold block mb-2">*Your Email</label>
                     <input
                       type="email"
                       className="common-input w-full px-7 py-3 border border-gray-300 rounded-md"
@@ -130,7 +130,7 @@ const Contact = () => {
                     />
                   </div>
                   <div className="md:col-span-4   col-span-6">
-                    <label htmlFor="company" className="form-label text-start block mb-2">*Company</label>
+                    <label htmlFor="company" className="form-label text-start block font-extrabold mb-2">*Company</label>
                     <input
                       type="text"
                       className="common-input w-full px-7 py-3 border border-gray-300 rounded-md"
@@ -142,7 +142,7 @@ const Contact = () => {
                     />
                   </div>
                   <div className="md:col-span-4   col-span-6">
-                    <label htmlFor="product" className="form-label text-start block mb-2">*Product Interested In</label>
+                    <label htmlFor="product" className="form-label text-start font-extrabold block mb-2">*Product Interested In</label>
                     <select
                       id="product"
                       className="common-input w-full px-7 py-3 border border-gray-300 rounded-md"
@@ -156,7 +156,7 @@ const Contact = () => {
                     </select>
                   </div>
                   <div className="md:col-span-4   col-span-6">
-                    <label htmlFor="country" className="form-label text-start block mb-2">*Country</label>
+                    <label htmlFor="country" className="form-label text-start block font-extrabold mb-2">*Country</label>
                     <input
                       type="text"
                       className="common-input w-full px-7 py-3 border border-gray-300 rounded-md"
@@ -170,7 +170,7 @@ const Contact = () => {
 
                   {/* Row 2 */}
                   <div className="md:col-span-4   col-span-6">
-                    <label htmlFor="website" className="form-label text-start block mb-2">*Your Website</label>
+                    <label htmlFor="website" className="form-label text-start font-extrabold block mb-2">*Your Website</label>
                     <input
                       type="text"
                       className="common-input w-full px-7 py-3 border border-gray-300 rounded-md"
@@ -182,7 +182,7 @@ const Contact = () => {
                     />
                   </div>
                   <div className="md:col-span-4   col-span-6">
-                    <label htmlFor="message" className="form-label text-start block mb-2">*Message</label>
+                    <label htmlFor="message" className="form-label text-start block font-extrabold mb-2">*Message</label>
                     <textarea
                       className="common-input w-full px-7 content-center border border-gray-300 rounded-md resize-none"
                       id="message"
@@ -193,7 +193,7 @@ const Contact = () => {
                     />
                   </div>
                   <div className="md:col-span-4   col-span-6">
-                    <label htmlFor="phone" className="form-label text-start block mb-2">*Your Phone</label>
+                    <label htmlFor="phone" className="form-label text-start font-extrabold block mb-2">*Your Phone</label>
                     <div className="flex gap-2">
                       <select
                         className="common-input  px-2 py-3 border border-gray-300 rounded-md"
@@ -216,7 +216,7 @@ const Contact = () => {
                     </div>
                   </div>
                   <div className="md:col-span-4   col-span-6">
-                    <label htmlFor="business_type" className="form-label text-start block mb-2">*Business Type</label>
+                    <label htmlFor="business_type" className="form-label text-start font-extrabold block mb-2">*Business Type</label>
                     <select
                       id="business_type"
                       className="common-input w-full px-7 py-3 border border-gray-300 rounded-md"
@@ -233,7 +233,7 @@ const Contact = () => {
                   {/* Row 3 */}
                   <div className="md:col-span-4   col-span-6 flex items-end">
                     <div className="flex flex-col w-full">
-                      <label className="form-label text-start block mb-2">*Verification Code</label>
+                      <label className="form-label text-start font-extrabold block mb-2">*Verification Code</label>
                       <div className="flex gap-2">
                         <div className="text-gray-500 font-bold text-xl">8 7 H K</div>
                         <input
@@ -271,10 +271,10 @@ const Contact = () => {
                 <span className="w-10 h-10 justify-items-center content-center rounded-full border border-gray-300 text-xl" style={{ color: "#3c8a9b" }}>
                   <FiPhoneCall />
                 </span>
-                <Link to="tel:+918008008841" className="text-md text-gray-800 hover:text-orange-500">
+                <Link to="tel:+918008008841" className="text-md content-center text-gray-800 hover:text-orange-500">
                   +918008008841
                 </Link>
-                <Link to="tel:8008008841" className="text-md text-gray-800 hover:text-orange-500">
+                <Link to="tel:8008008841" className="text-md content-center text-gray-800 hover:text-orange-500">
                   , 8008008841
                 </Link>
               </div>
@@ -282,7 +282,7 @@ const Contact = () => {
                 <span className="w-10 h-10 justify-items-center content-center rounded-full border border-gray-300 text-xl" style={{ color: "#3c8a9b" }}>
                   <PiEnvelopeFill />
                 </span>
-                <Link to="mailto:info@nexyos.com" className="text-md text-gray-800 hover:text-orange-500">
+                <Link to="mailto:info@nexyos.com" className="text-md content-center text-gray-800 hover:text-orange-500">
                   info@nexyos.com
                 </Link>
               </div>
@@ -290,7 +290,7 @@ const Contact = () => {
                 <span className="w-10 h-10 px-4 justify-items-center content-center rounded-full border border-gray-300 text-xl" style={{ color: "#3c8a9b" }}>
                   <FaLocationDot />
                 </span>
-                <span className="text-md text-gray-800">
+                <span className="text-md content-center text-gray-800 text-start">
                   <strong>Address(Qatar): </strong> 4TH Floor, office num 4, Building number 20 Muntazah, zone 24, Doha Qatar
                 </span>
               </div>
@@ -298,7 +298,7 @@ const Contact = () => {
                 <span className="w-10 h-10 px-4 justify-items-center content-center rounded-full border border-gray-300 text-xl" style={{ color: "#3c8a9b" }}>
                   <FaLocationDot />
                 </span>
-                <span className="text-md text-gray-800">
+                <span className="text-md content-center text-gray-800 text-start">
                   <strong>Address(India):</strong> Near, police station road,
                   Koyilandy, Kerala 673305, India
                 </span>
@@ -312,7 +312,7 @@ const Contact = () => {
                 >
                   <HiClock />
                 </span>
-                <span className="text-md text-gray-900 ">
+                <span className="text-md content-center text-gray-900 ">
                   <strong>Hours:</strong>
                   10:00 - 18:00, Mon - Sat
                 </span>
