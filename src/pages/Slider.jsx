@@ -112,7 +112,7 @@ const Slider = () => {
 
   return (
     <section className="trending-productss ">
-      <div className="container container-lg">
+      <div className="container lg:container">
         <div className="border border-gray-100 rounded-16">
           <div className="navigations">
             <button onClick={prevSlide} className='navButton'>
