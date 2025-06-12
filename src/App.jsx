@@ -11,7 +11,9 @@ import ColorInit from "./helper/ColorInit";
 import Preloader from "./helper/Preloader";
 import Slider from "./pages/Slider";
 import Footer from "./components/Footer";
-
+import SuccessStories from "./components/SuccessStories";
+import ContactPage from "./pages/ContactPage";
+import DemoPage from "./components/DemoPage";
 function App() {
   return (
     <BrowserRouter>
@@ -20,16 +22,23 @@ function App() {
       {/* ColorInit */}
       <ColorInit color={true} />
       {/* ScrollToTop */}
-      <ScrollToTop smooth color="#FA6400" />
+      <ScrollToTop
+        smooth
+        color="#FA6400"
+        className="p-0 justify-center items-center flex"
+      />
       <ToastContainer />
       {/* Preloader */}
       <Preloader />
       <HeaderTwo />
       <Routes>
         <Route path="/" element={<Home />} />
-           <Route exact path="/slider" element={<Slider/>} />
+        <Route exact path="/slider" element={<Slider />} />
+        <Route exact path="/success" element={<SuccessStories />} />
+        <Route exact path="/contact" element={<ContactPage />} />
+        <Route exact path="/demo" element={<DemoPage />} />
       </Routes>
-      <Footer/>
+      <Footer />
       <BottomFooter />
     </BrowserRouter>
   );

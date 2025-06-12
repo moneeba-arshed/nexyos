@@ -1,7 +1,7 @@
 import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
 import App from './App.jsx'
-import './index.css'
+// import './index.css'
 import "bootstrap/dist/js/bootstrap.bundle.min";
 import 'select2/dist/js/select2.min.js';
 import { ToastContainer } from 'react-toastify';
@@ -92,6 +92,8 @@ import '../src/style/css/jquery-ui.css';
 import '../src/style/css/main.css';
 import '../src/style/css/select2.min.css';
 import '../src/style/css/slick.css';
+import './App.css';
+import './index.css'
 createRoot(document.getElementById('root')).render(
   <StrictMode>
     <App />

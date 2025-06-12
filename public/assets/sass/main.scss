@@ -1,7 +1,22 @@
 // abstract
-@import "abstracts/index";
+@import "abstracts/css-index";
+@import "abstracts/functions";
+@import "abstracts/mixins";
+@import "abstracts/variable";
 // Component
 // utilities
+@import "utilities/bg";
+@import "utilities/border";
+@import "utilities/classes";
+@import "utilities/colors";
+@import "utilities/font-size";
+@import "utilities/gap";
+@import "utilities/gutter";
+@import "utilities/hover";
+@import "utilities/line-clamp";
+@import "utilities/margin";
+@import "utilities/padding";
+@import "utilities/radius";
 @import "utilities/index";
 // Module
 // All partials
