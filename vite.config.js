@@ -7,5 +7,11 @@ export default defineConfig({
     react(),
     tailwindcss()
   ],
-  
+   server: {
+    hmr: {
+      protocol: 'ws',
+      host: 'localhost',
+      port: 5173
+    }
+  } 
 })
