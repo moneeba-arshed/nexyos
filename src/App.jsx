@@ -9,6 +9,8 @@ import { ToastContainer } from "react-toastify";
 import PhosphorIconInit from "./helper/PhosphorIconInit";
 import ColorInit from "./helper/ColorInit";
 import Preloader from "./helper/Preloader";
+import Slider from "./pages/Slider";
+import Footer from "./components/Footer";
 
 function App() {
   return (
@@ -25,7 +27,9 @@ function App() {
       <HeaderTwo />
       <Routes>
         <Route path="/" element={<Home />} />
+           <Route exact path="/slider" element={<Slider/>} />
       </Routes>
+      <Footer/>
       <BottomFooter />
     </BrowserRouter>
   );
