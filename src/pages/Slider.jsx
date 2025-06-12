@@ -112,8 +112,8 @@ const Slider = () => {
 
   return (
     <section className="trending-productss ">
-      <div className="container lg:container">
-        <div className="border border-gray-100 rounded-16">
+      <div className="container container-lg">
+        <div className="border border-gray-100 p-24 rounded-16">
           <div className="navigations">
             <button onClick={prevSlide} className='navButton'>
               <FaChevronLeft />
@@ -122,7 +122,7 @@ const Slider = () => {
               <FaChevronRight />
             </button>
           </div>
-          <div className="text-center pb-20">
+          <div className="text-center pb-40">
             <h2 className='title'>Solutions</h2>
             <p className='subtitle'>
               Nexyos provides a range of solutions to empower a more
@@ -130,12 +130,12 @@ const Slider = () => {
             </p>
           </div>
 
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">
+          <div className="row">
             <div
-              className={`lg:col-span-7 md:col-span-12 ${isMobile ? "order-2 mt-4" : ""}`}
+              className={`col-lg-7 col-md-12 ${isMobile ? "order-2 mt-4" : ""}`}
             >
               <div
-                className={`flex gap-2 flex-wrap justify-content-center ${
+                className={`d-flex gap-5 flex-wrap justify-content-center ${
                   fadeEffect ? Styles.fadeOut : Styles.fadeIn
                 }`}
               >
@@ -159,15 +159,15 @@ const Slider = () => {
                 ))}
               </div>
             </div>
-            <div className={`lg:col-span-5 md:col-span-12 ${isMobile ? "order-1" : ""}`}>
+            <div className={`col-lg-5 col-md-12 ${isMobile ? "order-1" : ""}`}>
               <div>
                 <div
-                  className={`grid grid-cols-1 lg:grid-cols-12 gap-6 ${
+                  className={`row ${
                     fadeEffect ? Styles.fadeOut : Styles.fadeIn
                   }`}
                 >
                   <div
-                    className={`${isMobile ? "col-span-12" : "lg:col-span-7 md:col-span-6"}`}
+                    className={`${isMobile ? "col-12" : "col-lg-7 col-md-6"}`}
                   >
                     <img
                       src={selectedItem.image}
@@ -178,13 +178,13 @@ const Slider = () => {
                   <div
                     className={`${
                       isMobile
-                        ? "col-span-12 mt-3"
-                        : "lg:col-span-5 md:col-span-6 d-flex align-items-end"
+                        ? "col-12 mt-3"
+                        : "col-lg-5 col-md-6 d-flex align-items-end"
                     }`}
                   >
                     <div className='cards'>
-                      <h4 className="text-start wrap-break-word">{selectedItem.title}</h4>
-                      <p className='text-start detailDescription'>
+                      <h4>{selectedItem.title}</h4>
+                      <p className='detailDescription'>
                         {selectedItem.description}
                       </p>
                     </div>

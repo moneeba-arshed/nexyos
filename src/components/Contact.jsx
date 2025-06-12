@@ -5,7 +5,13 @@ import { FiPhoneCall } from "react-icons/fi";
 import { PiEnvelopeFill } from "react-icons/pi";
 import { FaLocationDot } from "react-icons/fa6";
 import { HiClock } from "react-icons/hi2";
+
 const Contact = () => {
+  const captchaStyle = {
+    backgroundColor: "#fff",
+    fontWeight: "bold",
+    fontSize: "18px",
+  };
   const [errors, setErrors] = React.useState({});
   const [formData, setFormData] = React.useState({
     email: "",
@@ -59,69 +65,71 @@ const Contact = () => {
     });
   };
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
+const handleSubmit = async (e) => {
+  e.preventDefault();
 
-    const errors = validateForm();
-    if (Object.keys(errors).length > 0) {
-      console.log("Form validation errors", errors);
+  const errors = validateForm();
+  if (Object.keys(errors).length > 0) {
+    console.log("Form validation errors", errors);
+    return;
+  }
+
+  try {
+    const response = await fetch("https://portal.nexyos.com/save_contact_form", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(formData),
+    });
+
+    if (!response.ok) {
+      const errorData = await response.json().catch(() => ({}));
+      console.error("Error submitting form", {
+        status: response.status,
+        statusText: response.statusText,
+        error: errorData,
+      });
       return;
     }
 
-    try {
-      const response = await fetch("https://portal.nexyos.com/save_contact_form", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(formData),
-      });
+    const result = await response.json();
+    toast.success(result.message);
+    setFormData({
+      email: "",
+      company: "",
+      product: "",
+      country: "",
+      website: "",
+      message: "",
+      phone: "",
+      business_type: "",
+      verification_code: "",
+    });
 
-      if (!response.ok) {
-        const errorData = await response.json().catch(() => ({}));
-        console.error("Error submitting form", {
-          status: response.status,
-          statusText: response.statusText,
-          error: errorData,
-        });
-        return;
-      }
+  } catch (error) {
+    toast.error("An unexpected error occurred. Please try again later.");
+    console.error("Unexpected error while submitting the form", error);
+  }
+};
 
-      const result = await response.json();
-      toast.success(result.message);
-      setFormData({
-        email: "",
-        company: "",
-        product: "",
-        country: "",
-        website: "",
-        message: "",
-        phone: "",
-        business_type: "",
-        verification_code: "",
-      });
-
-    } catch (error) {
-      toast.error("An unexpected error occurred. Please try again later.");
-      console.error("Unexpected error while submitting the form", error);
-    }
-  };
 
   return (
-    <section className="contact py-20">
-      <div className="container mx-auto px-4">
-        <div className="grid grid-cols-12 gap-5">
-          {/* Left Column (8/12) */}
-          <div className="col-span-8 ">
-            <div className="contact-box border border-gray-100 rounded-xl  px-9 py-14 bg-white">
+    <section className="contact py-80">
+      <div className="container container-lg">
+        <div className="row gy-5">
+          <div className="col-lg-8">
+            <div className="contact-box border border-gray-100 rounded-16 px-24 py-40">
               <form onSubmit={handleSubmit}>
-                <div className="grid md:grid-cols-12 grid-cols-2 gap-4 ">
+                <div className="row gy-4">
                   {/* Row 1 */}
-                  <div className="md:col-span-4 col-span-6">
-                    <label htmlFor="email" className="form-label text-start font-extrabold block mb-2">*Your Email</label>
+                  <div className="col-md-4 col-sm-6">
+                    <label htmlFor="email" className="form-label">
+                      *Your Email
+                    </label>
                     <input
                       type="email"
-                      className="common-input w-full px-7 py-3 border border-gray-300 rounded-md"
+                      className="common-input px-16"
                       id="email"
                       name="email"
                       placeholder="Your Email"
@@ -129,11 +137,13 @@ const Contact = () => {
                       onChange={handleChange}
                     />
                   </div>
-                  <div className="md:col-span-4   col-span-6">
-                    <label htmlFor="company" className="form-label text-start block font-extrabold mb-2">*Company</label>
+                  <div className="col-md-4 col-sm-6">
+                    <label htmlFor="company" className="form-label">
+                      *Company
+                    </label>
                     <input
                       type="text"
-                      className="common-input w-full px-7 py-3 border border-gray-300 rounded-md"
+                      className="common-input px-16"
                       id="company"
                       name="company"
                       placeholder="Company"
@@ -141,11 +151,13 @@ const Contact = () => {
                       onChange={handleChange}
                     />
                   </div>
-                  <div className="md:col-span-4   col-span-6">
-                    <label htmlFor="product" className="form-label text-start font-extrabold block mb-2">*Product Interested In</label>
+                  <div className="col-md-4 col-sm-6">
+                    <label htmlFor="product" className="form-label">
+                      *What Product are You Interested in?
+                    </label>
                     <select
                       id="product"
-                      className="common-input w-full px-7 py-3 border border-gray-300 rounded-md"
+                      className="common-input px-16"
                       name="product"
                       value={formData.product}
                       onChange={handleChange}
@@ -155,11 +167,13 @@ const Contact = () => {
                       <option value="Product B">Product B</option>
                     </select>
                   </div>
-                  <div className="md:col-span-4   col-span-6">
-                    <label htmlFor="country" className="form-label text-start block font-extrabold mb-2">*Country</label>
+                  <div className="col-md-4 col-sm-6">
+                    <label htmlFor="country" className="form-label">
+                      *Country
+                    </label>
                     <input
                       type="text"
-                      className="common-input w-full px-7 py-3 border border-gray-300 rounded-md"
+                      className="common-input px-16"
                       id="country"
                       name="country"
                       placeholder="Country"
@@ -167,13 +181,14 @@ const Contact = () => {
                       onChange={handleChange}
                     />
                   </div>
-
                   {/* Row 2 */}
-                  <div className="md:col-span-4   col-span-6">
-                    <label htmlFor="website" className="form-label text-start font-extrabold block mb-2">*Your Website</label>
+                  <div className="col-md-4 col-sm-6">
+                    <label htmlFor="website" className="form-label">
+                      *Your Website
+                    </label>
                     <input
                       type="text"
-                      className="common-input w-full px-7 py-3 border border-gray-300 rounded-md"
+                      className="common-input px-16"
                       id="website"
                       name="website"
                       placeholder="Your Website"
@@ -181,33 +196,40 @@ const Contact = () => {
                       onChange={handleChange}
                     />
                   </div>
-                  <div className="md:col-span-4   col-span-6">
-                    <label htmlFor="message" className="form-label text-start block font-extrabold mb-2">*Message</label>
-                    <textarea
-                      className="common-input w-full px-7 content-center border border-gray-300 rounded-md resize-none"
+                  <div className="col-md-4 col-sm-6">
+                    <label htmlFor="message" className="form-label">
+                      *Message
+                    </label>
+                    <input
+                      type="text"
+                      className="common-input px-16"
                       id="message"
+                      placeholder="Message"
                       name="message"
-                      placeholder="Your Message"
                       value={formData.message}
                       onChange={handleChange}
                     />
                   </div>
-                  <div className="md:col-span-4   col-span-6">
-                    <label htmlFor="phone" className="form-label text-start font-extrabold block mb-2">*Your Phone</label>
-                    <div className="flex gap-2">
+                  <div className="col-md-4 col-sm-6">
+                    <label htmlFor="phone" className="form-label">
+                      *Your Phone
+                    </label>
+                    <div className="d-flex gap-2">
                       <select
-                        className="common-input  px-2 py-3 border border-gray-300 rounded-md"
+                        className="common-input px-16"
+                        style={{ width: "30%" }}
                         name="countryCode"
                         value={formData.countryCode}
                         onChange={handleChange}
-                     style={{width:'30%'}} >
+                      >
                         <option>+92</option>
                         <option>+91</option>
                         <option>+1</option>
                       </select>
                       <input
                         type="number"
-                        className="common-input w-3/4 px-7 py-3 border border-gray-300 rounded-md"
+                        className="common-input px-16"
+                        style={{ width: "70%" }}
                         placeholder="Phone Number"
                         value={formData.phone}
                         onChange={handleChange}
@@ -215,11 +237,13 @@ const Contact = () => {
                       />
                     </div>
                   </div>
-                  <div className="md:col-span-4   col-span-6">
-                    <label htmlFor="business_type" className="form-label text-start font-extrabold block mb-2">*Business Type</label>
+                  <div className="col-md-4 col-sm-6">
+                    <label htmlFor="business_type" className="form-label">
+                      *Business Type
+                    </label>
                     <select
                       id="business_type"
-                      className="common-input w-full px-7 py-3 border border-gray-300 rounded-md"
+                      className="common-input px-16"
                       name="business_type"
                       value={formData.business_type}
                       onChange={handleChange}
@@ -229,16 +253,17 @@ const Contact = () => {
                       <option value="Wholesale">Wholesale</option>
                     </select>
                   </div>
-
                   {/* Row 3 */}
-                  <div className="md:col-span-4   col-span-6 flex items-end">
-                    <div className="flex flex-col w-full">
-                      <label className="form-label text-start font-extrabold block mb-2">*Verification Code</label>
-                      <div className="flex gap-2">
-                        <div className="text-gray-500 font-bold text-xl">8 7 H K</div>
+                  <div className="col-md-4 col-sm-6 d-flex align-items-end">
+                    <div>
+                      <label className="form-label d-block">
+                        *Verification Code
+                      </label>
+                      <div className="d-flex gap-2">
+                        <div style={captchaStyle}>8 7 H K</div>
                         <input
                           type="text"
-                          className="common-input w-full px-7 py-3 border border-gray-300 rounded-md"
+                          className="common-input px-16"
                           placeholder="Enter Code"
                           name="verification_code"
                           value={formData.verification_code}
@@ -249,70 +274,104 @@ const Contact = () => {
                   </div>
 
                   {/* Button */}
-                 <div className="col-span-12 text-center pt-6 flex justify-center items-center">
-  <button
-    type="submit"
-    className="btn btn-main py-3 px-8 rounded-md bg-[#00667c] hover:bg-[#3C8A9B] cursor-pointer text-white"
-  >
-    Let’s Talk
-  </button>
-</div>
-
+                  <div
+                    className="col-12 text-center"
+                    style={{
+                      paddingTop: "20px",
+                    }}
+                  >
+                    <button
+                      type="submit"
+                      className="btn btn-main py-18 px-32 rounded-8"
+                    >
+                      Let’s Talk
+                    </button>
+                  </div>
                 </div>
               </form>
             </div>
           </div>
 
-          {/* Right Column (4/12) */}
-          <div className="md:col-span-4">
-            <div className="contact-box border border-gray-100 rounded-xl px-5 py-5">
-              <h6 className="text-xl font-semibold mb-12 text-start">Get In Touch</h6>
-              <div className="flex gap-4 mb-4">
-                <span className="w-10 h-10 justify-items-center content-center rounded-full border border-gray-300 text-xl" style={{ color: "#3c8a9b" }}>
-                  <FiPhoneCall />
+          <div className="col-lg-4">
+            <div className="contact-box border border-gray-100 rounded-16 px-24 py-40">
+              <h6 className="mb-48">Get In Touch</h6>
+              <div className="flex-align gap-16 mb-16">
+                <span
+                  className="w-40 h-40 flex-center rounded-circle border border-gray-100 text-2xl flex-shrink-0"
+                  style={{
+                    color: "#3c8a9b",
+                  }}
+                >
+                   <FiPhoneCall />
                 </span>
-                <Link to="tel:+918008008841" className="text-md content-center text-gray-800 hover:text-orange-500">
+                <Link
+                  to="/tel:+918008008841"
+                  className="text-md text-gray-900 hover-text-main-600"
+                >
                   +918008008841
                 </Link>
-                <Link to="tel:8008008841" className="text-md content-center text-gray-800 hover:text-orange-500">
+                <Link
+                  to="/tel:8008008841"
+                  className="text-md text-gray-900 hover-text-main-600"
+                >
                   , 8008008841
                 </Link>
               </div>
-              <div className="flex gap-4 mb-4">
-                <span className="w-10 h-10 justify-items-center content-center rounded-full border border-gray-300 text-xl" style={{ color: "#3c8a9b" }}>
-                  <PiEnvelopeFill />
+              <div className="flex-align gap-16 mb-16">
+                <span
+                  className="w-40 h-40 flex-center rounded-circle border border-gray-100 text-2xl flex-shrink-0"
+                  style={{
+                    color: "#3c8a9b",
+                  }}
+                >
+                   <PiEnvelopeFill />
                 </span>
-                <Link to="mailto:info@nexyos.com" className="text-md content-center text-gray-800 hover:text-orange-500">
+                <Link
+                  to="mailto:info@nexyos.com"
+                  className="text-md text-gray-900 hover-text-main-600"
+                >
                   info@nexyos.com
                 </Link>
               </div>
-              <div className="flex gap-4 mb-4">
-                <span className="w-10 h-10 px-4 justify-items-center content-center rounded-full border border-gray-300 text-xl" style={{ color: "#3c8a9b" }}>
-                  <FaLocationDot />
+              <div className="flex-align gap-16 mb-0">
+                <span
+                  className="w-40 h-40 flex-center rounded-circle border border-gray-100 text-2xl flex-shrink-0"
+                  style={{
+                    color: "#3c8a9b",
+                  }}
+                >
+                   <FaLocationDot />
                 </span>
-                <span className="text-md content-center text-gray-800 text-start">
-                  <strong>Address(Qatar): </strong> 4TH Floor, office num 4, Building number 20 Muntazah, zone 24, Doha Qatar
+                <span className="text-md text-gray-900 text-start">
+                  <strong>Address(Qatar): </strong>
+                  4TH Floor, office num 4 Building number 20 Muntazah ,zone 24,
+                  Doha Qatar
                 </span>
               </div>
-               <div className="flex gap-4 mb-4">
-                <span className="w-10 h-10 px-4 justify-items-center content-center rounded-full border border-gray-300 text-xl" style={{ color: "#3c8a9b" }}>
+              <div className="flex-align gap-16 mb-0">
+                <span
+                  className="w-40 h-40 flex-center rounded-circle border border-gray-100  text-2xl flex-shrink-0"
+                  style={{
+                    color: "#3c8a9b",
+                  }}
+                >
                   <FaLocationDot />
                 </span>
-                <span className="text-md content-center text-gray-800 text-start">
+                <span className="text-md text-gray-900 text-start">
                   <strong>Address(India):</strong> Near, police station road,
                   Koyilandy, Kerala 673305, India
                 </span>
               </div>
-                   <div className="flex gap-4 mb-4">
+              <div className="flex-align gap-16 mb-0">
                 <span
-                  className="w-10 h-10 justify-items-center content-center rounded-full border border-gray-300   text-2xl"
+                  className="w-40 h-40 flex-center rounded-circle border border-gray-100  text-2xl flex-shrink-0"
                   style={{
                     color: "#3c8a9b",
                   }}
                 >
                   <HiClock />
                 </span>
-                <span className="text-md content-center text-gray-900 ">
+                <span className="text-md text-gray-900 ">
                   <strong>Hours:</strong>
                   10:00 - 18:00, Mon - Sat
                 </span>
