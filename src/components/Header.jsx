@@ -2,17 +2,11 @@ import React, { useEffect, useState } from "react";
 import query from "jquery";
 import { Link, NavLink } from "react-router-dom";
 import Category from "./Category";
-import "../style/pagecss.css";
 import SearchBar from "./Searchbar";
 import "select2";
-import { IoClose } from "react-icons/io5";
-import { FaRegPlayCircle } from "react-icons/fa";
-import { MdKeyboardArrowDown } from "react-icons/md";
-import { HiMiniBars3 } from "react-icons/hi2";
-
-const HeaderTwo = () => {
+import '../index.css'
+const Header = () => {
   const [scroll, setScroll] = useState(false);
-  const [subCategories, setSubCategories] = useState([]);
 
   useEffect(() => {
     window.onscroll = () => {
@@ -23,14 +17,14 @@ const HeaderTwo = () => {
       }
       return () => (window.onscroll = null);
     };
-    setTimeout(() => {
+        setTimeout(() => {
       const selectElement = query(".js-example-basic-single");
       if (selectElement.length) {
         selectElement.select2();
       }
     }, 100);
     return () => {
-      const selectElement = query(".js-example-basic-single");
+       const selectElement = query(".js-example-basic-single");
       if (selectElement.data("select2")) {
         selectElement.select2("destroy");
       }
@@ -83,12 +77,14 @@ const HeaderTwo = () => {
       setLoading(true);
       let res = await fetch(`https://portal.nexyos.com/api/product/categories`);
       let response = await res.json();
-      setProductDetail(response.data);
+      console.log("api", response);
+      setProductDetail(response);
       setLoading(false);
     } catch (error) {
       console.log(error);
       setLoading(false);
     }
+    console.log("api data",productDetail);
   };
 
   useEffect(() => {
@@ -143,13 +139,13 @@ const HeaderTwo = () => {
             handleMenuToggle();
             setActiveIndex(null);
           }}
-          type="button p-0"
+          type="button"
           className="close-button"
         >
-          <IoClose />{" "}
+          <i className="ph ph-x" />{" "}
         </button>
-        <div className="mobile-menu__inner ">
-          <Link to="/" className="mobile-menu__logo flex">
+        <div className="mobile-menu__inner">
+          <Link to="/" className="mobile-menu__logo">
             <img src="assets/images/logo/logo.png" alt="Logo" />
           </Link>
           <div className="mobile-menu__menu">
@@ -174,27 +170,39 @@ const HeaderTwo = () => {
               >
                 <Link to="#" className="nav-menu__link">
                   Products
-                  <MdKeyboardArrowDown className="arrow-down text-xl" />
                 </Link>
-                {/* Category Dropdown and Subcategories */}
-                  <div className="category-dropdown">
-                    <Category setSubCategories={setSubCategories} /> {/* Pass the function to Category component */}
-
-                    {/* Dynamically Render Subcategories */}
-                    {subCategories.length > 0 && (
-                      <div className="subcategories-list">
-                        <ul>
-                          {subCategories.map((subCategory) => (
-                            <li key={subCategory.id}>
-                              <Link to={`/sub_categories/${subCategory.id}`}>
-                                {subCategory.category}
-                              </Link>
-                            </li>
-                          ))}
-                        </ul>
-                      </div>
-                    )}
-                  </div>
+                <ul
+                  className={`on-hover-dropdown common-dropdown nav-submenu scroll-sm ${
+                    activeIndex === 1 ? "open" : ""
+                  }`}
+                >
+                  {loading ? (
+                    <div className="loader">Loading...</div>
+                  ) : productDetail && productDetail.length > 0 ? (
+                    productDetail.map((item) => (
+                      <li
+                        key={item.id}
+                        className="common-dropdown__item nav-submenu__item"
+                      >
+                        <Link
+                          onClick={() => setActiveIndex(null)}
+                          to={`/parent-product-details/${item.id}}`}
+                          className="common-dropdown__link nav-submenu__link hover-bg-neutral-100"
+                        >
+                        {item.category}
+                          {/* {item.categories && item.categories.length > 0 && (
+                            <span className="text-xs text-gray-500 ml-2">
+                              ({item.categories.length})
+                            </span>
+                          )} */}
+                        </Link>
+                      </li>
+                    ))
+                  ) : (
+                  <li className="common-dropdown__item nav-submenu__item">
+                    <span>No categories available</span>
+                  </li>)}
+                </ul>
               </li>
               <li
                 onClick={() => handleMenuClick(2)}
@@ -204,7 +212,6 @@ const HeaderTwo = () => {
               >
                 <Link to="#" className="nav-menu__link">
                   Solutions
-                  <MdKeyboardArrowDown className="arrow-down text-xl" />
                 </Link>
                 <ul
                   className={`on-hover-dropdown common-dropdown nav-submenu scroll-sm ${
@@ -301,7 +308,6 @@ const HeaderTwo = () => {
               >
                 <Link to="#" className="nav-menu__link">
                   Company
-                  <MdKeyboardArrowDown className="arrow-down text-xl" />
                 </Link>
                 <ul
                   className={`on-hover-dropdown common-dropdown nav-submenu scroll-sm ${
@@ -364,7 +370,6 @@ const HeaderTwo = () => {
               >
                 <Link to="#" className="nav-menu__link">
                   Partner
-                  <MdKeyboardArrowDown className="arrow-down text-xl" />
                 </Link>
                 <ul
                   className={`on-hover-dropdown common-dropdown nav-submenu scroll-sm ${
@@ -420,7 +425,8 @@ const HeaderTwo = () => {
                   className="nav-menu__link d-flex align-items-center gap-2"
                 >
                   <span className="icon">
-                    <FaRegPlayCircle /> {/* Play Icon using Phosphor Icons */}
+                    <i className="ph ph-play-circle" />{" "}
+                    {/* Play Icon using Phosphor Icons */}
                   </span>
                   Online Demo
                 </Link>
@@ -436,13 +442,13 @@ const HeaderTwo = () => {
       {/* ======================= Middle Header Two End ========================= */}
       {/* ==================== Header Two Start Here ==================== */}
       <header
-        className={`header bg-white border-b border-gray-100 py-4  ${
+        className={`header bg-white border-bottom border-gray-100 py-4  ${
           scroll && "fixed-header"
         }`}
       >
         <div className="container">
-          <nav className="header-inner flex justify-center gap-8">
-            <div className="ps-4 logo lg:hidden flex justify-center items-center">
+          <nav className="header-inner d-flex justify-content-between gap-8">
+            <div className="ps-4 logo d-lg-none">
               <Link to="/" className="link">
                 <img src="/assets/images/logo/logo-two.png" alt="Logo" />
               </Link>
@@ -450,9 +456,9 @@ const HeaderTwo = () => {
             <div className="w-100 ">
               {/* Menu Start  */}
 
-              <div className="header-menu lg:block hidden">
-                <div className="grid grid-cols-12 gap-4">
-                  <div className="col-span-2">
+              <div className="header-menu d-lg-block d-none">
+                <div className="row d-flex justify-content-between">
+                  <div className="col-2">
                     <div className="logo">
                       <Link to="/" className="link">
                         <img
@@ -462,8 +468,8 @@ const HeaderTwo = () => {
                       </Link>
                     </div>
                   </div>
-                  <div className="col-span-10 content-center">
-                    <ul className="nav-menu flex-align justify-content-start ">
+                  <div className="col-10">
+                    <ul className="nav-menu flex-align justify-content-start">
                       <li className="on-hover-item nav-menu__item activePage">
                         <Link to="/" className="nav-menu__link">
                           Home
@@ -475,7 +481,6 @@ const HeaderTwo = () => {
                       <li className="on-hover-item nav-menu__item has-megamenu has-submenu">
                         <Link to="#" className="nav-menu__link">
                           Solutions
-                          <MdKeyboardArrowDown className="arrow-down text-xl" />
                         </Link>
                         <div className="on-hover-dropdown common-dropdown nav-megamenu">
                           <div className="grid grid-cols-3 gap-6 p-6">
@@ -553,6 +558,59 @@ const HeaderTwo = () => {
                                 </NavLink>
                               </li>
                             </ul>
+
+                            {/* Column 3 */}
+                            {/* <ul className="space-y-2">
+                              <li>
+                                <NavLink
+                                  to="/solutions/smart-building"
+                                  className="common-dropdown__link"
+                                >
+                                  Smart Building
+                                </NavLink>
+                              </li>
+                              <li>
+                                <NavLink
+                                  to="/solutions/energy-efficiency"
+                                  className="common-dropdown__link"
+                                >
+                                  Energy Efficiency
+                                </NavLink>
+                              </li>
+                              <li>
+                                <NavLink
+                                  to="/solutions/smart-city"
+                                  className="common-dropdown__link"
+                                >
+                                  Smart City
+                                </NavLink>
+                              </li>
+                              <li>
+                                <NavLink
+                                  to="/solutions/waste-management"
+                                  className="common-dropdown__link"
+                                >
+                                  Waste Management
+                                </NavLink>
+                              </li>
+                            </ul> */}
+                            {/* Column 4 */}
+                            {/* <ul className="space-y-2">
+                              <li>
+                                <NavLink
+                                  to="#"
+                                  className="common-dropdown__link"
+                                >
+                                  <div className="col-span-3 flex justify-end mt-4">
+                                    <img
+                                      src="https://www.milesight.com/static/pc/en/nav/roadmap.jpg?t=1742785802216"
+                                      alt="2025 H1 IoT Roadmap"
+                                      className="w-100 rounded-md shadow-md"
+                                    />
+                                  </div>
+                                </NavLink>
+                              </li>
+                            </ul> */}
                           </div>
                         </div>
                       </li>
@@ -564,7 +622,6 @@ const HeaderTwo = () => {
                       <li className="on-hover-item nav-menu__item has-megamenu has-submenu">
                         <Link to="#" className="nav-menu__link">
                           Company
-                          <MdKeyboardArrowDown className="arrow-down text-xl" />
                         </Link>
                         <div className="on-hover-dropdown common-dropdown nav-megamenu">
                           <div className="grid grid-cols-2 gap-6 p-6">
@@ -627,7 +684,6 @@ const HeaderTwo = () => {
                       <li className="on-hover-item nav-menu__item has-megamenu has-submenu">
                         <Link to="#" className="nav-menu__link">
                           Partner
-                          <MdKeyboardArrowDown className="arrow-down text-xl" />
                         </Link>
                         <div className="on-hover-dropdown common-dropdown nav-megamenu">
                           <div className="grid grid-cols-2 gap-6 p-6">
@@ -671,10 +727,41 @@ const HeaderTwo = () => {
                                 </li>
                               </ul>
                             </div>
+
+                            {/* Column 2 - Developer Zone */}
+                            {/* <div>
+                              <h6 className="fs-6 pt-3">Developer Zone</h6>
+                              <ul className="">
+                                <li>
+                                  <NavLink
+                                    to="#"
+                                    className="common-dropdown__link"
+                                  >
+                                    Developer Resource Hub
+                                  </NavLink>
+                                </li>
+                                <li>
+                                  <NavLink
+                                    to="#"
+                                    className="common-dropdown__link"
+                                  >
+                                    Open Source
+                                  </NavLink>
+                                </li>
+                                <li>
+                                  <NavLink
+                                    to="#"
+                                    className="common-dropdown__link"
+                                  >
+                                    Join the Community
+                                  </NavLink>
+                                </li>
+                              </ul>
+                            </div> */}
                           </div>
                         </div>
                       </li>
-                      <li className="nav-menu__item px-4">
+                      <li className="nav-menu__item">
                         <SearchBar />
                       </li>
                       <li className="nav-menu__item">
@@ -688,7 +775,7 @@ const HeaderTwo = () => {
                           className="nav-menu__link d-flex align-items-center gap-2"
                         >
                           <span className="icon">
-                            <FaRegPlayCircle />{" "}
+                            <i className="ph ph-play-circle" />{" "}
                             {/* Play Icon using Phosphor Icons */}
                           </span>
                           Online Demo
@@ -698,14 +785,14 @@ const HeaderTwo = () => {
                   </div>
                 </div>
               </div>
-              <div className="flex justify-end items-center h-100">
+              <div className="d-flex justify-content-end align-items-center h-100">
                 <button
                   onClick={handleMenuToggle}
                   type="button"
                   className="toggle-mobileMenu d-lg-none ms-3n text-gray-800 text-4xl d-flex"
                 >
                   {" "}
-                  <HiMiniBars3 />{" "}
+                  <i className="ph ph-list" />{" "}
                 </button>
               </div>
             </div>
@@ -717,4 +804,4 @@ const HeaderTwo = () => {
   );
 };
 
-export default HeaderTwo;
+export default Header;

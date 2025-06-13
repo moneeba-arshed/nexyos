@@ -1,3 +1,5 @@
+@use "../abstracts/variable" as *;  // Imports the variables
+
 /* Border Radius */
 @each $property, $value in $spaces {
     .rounded-#{$property} {

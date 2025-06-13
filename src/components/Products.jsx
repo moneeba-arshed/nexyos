@@ -9,19 +9,19 @@ const Products = () => {
   const [selectedIndex, setSelectedIndex] = useState(0);
   const [loading, setLoading] = useState(true);
 
-  const fetchProductDetails = async () => {
-    try {
-      setLoading(true);
-      let res = await fetch(`https://api.nexyos.com/get_all_products_cat_wise`);
-      let response = await res.json();
-      setProductDetail(response.data);
-      setSelectedCategory(response.data[0].categories);
-      setLoading(false);
-    } catch (error) {
-      console.log(error);
-      setLoading(false);
-    }
-  };
+const fetchProductDetails = async () => {
+  try {
+    setLoading(true);
+    let res = await fetch(`https://portal.nexyos.com/api/product/categories`);
+    let response = await res.json();
+    setProductDetail(response);
+    setLoading(false);
+  } catch (error) {
+    console.log(error);
+    setLoading(false);
+  }
+};
+
 
   const handleClick = (item, index) => {
     setSelectedCategory(item.categories);
@@ -91,7 +91,7 @@ const Products = () => {
                         aria-selected="false"
                         onClick={() => handleClick(item, index)}
                       >
-                        {item.parent_category_name}
+                        {item.category}
                       </button>
                     </li>
                   ))

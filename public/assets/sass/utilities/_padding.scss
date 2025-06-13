@@ -1,3 +1,5 @@
+@use "../abstracts/variable" as *;  // Imports the variables
+
 /* ================================= Padding Css Start =========================== */
 @each $property, $value in $spaces {
   .p-#{$property} {

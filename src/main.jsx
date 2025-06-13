@@ -92,7 +92,7 @@ import '../src/style/css/jquery-ui.css';
 import '../src/style/css/main.css';
 import '../src/style/css/select2.min.css';
 import '../src/style/css/slick.css';
-import './App.css';
+import './App.scss';
 import './index.css'
 createRoot(document.getElementById('root')).render(
   <StrictMode>
