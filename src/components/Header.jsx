@@ -89,40 +89,32 @@ const Header = () => {
   const [productDetail, setProductDetail] = useState([]);
   const [loading, setLoading] = useState(true);
 
-  const fetchCategories = async () => {
+  useEffect(() => {
+  const fetchAllData = async () => {
     try {
-      const res = await fetch(
-        "https://portal.nexyos.com/api/product/categories"
+      const res = await fetch("https://portal.nexyos.com/api/product/categories");
+      const categoriesData = await res.json();
+      setCategories(categoriesData);
+
+      const subCategoriesObj = {};
+      // Parallel fetching of all subcategories
+      await Promise.all(
+        categoriesData.map(async (category) => {
+          const resSub = await fetch(`https://portal.nexyos.com/api/product/sub_categories/${category.id}`);
+          const subData = await resSub.json();
+          subCategoriesObj[category.id] = subData;
+        })
       );
-      const data = await res.json();
-      console.log("main", data);
-      setCategories(data);
+      setSubCategoriesMap(subCategoriesObj);
     } catch (err) {
-      console.error("Error fetching categories:", err);
+      console.error("Error fetching categories or subcategories:", err);
+    } finally {
+      setLoading(false);
     }
   };
 
-const fetchSubCategories = async (categoryId) => {
-  try {
-    if (subCategoriesMap[categoryId]) return; // If subcategories already fetched, no need to fetch again
-    const res = await fetch(
-      `https://portal.nexyos.com/api/product/sub_categories/${categoryId}`
-    );
-    const data = await res.json();
-    console.log(`Fetched subcategories for category ${categoryId}:`, data); // Log to see the subcategories data
-    setSubCategoriesMap((prev) => ({
-      ...prev,
-      [categoryId]: data, // Store subcategories for the given category ID
-    }));
-  } catch (err) {
-    console.error("Error fetching subcategories:", err);
-  }
-};
-
-
-  useEffect(() => {
-    fetchCategories().finally(() => setLoading(false));
-  }, []);
+  fetchAllData();
+}, []);
 
 const handleMouseEnter = (categoryId) => {
   console.log("Hovered over category ID:", categoryId); // Check if hover is triggered
@@ -211,22 +203,33 @@ const handleMouseEnter = (categoryId) => {
                        <li className="on-hover-item nav-menu__item has-megamenu has-submenu">
                          <div>
                           
-            <Dropdown title="Product">
-                <Dropdown.Item>Database</Dropdown.Item>
-                <Dropdown.Menu title="DSA">
-                    <Dropdown.Item disabled>C++</Dropdown.Item>
-                    <Dropdown.Item>Java</Dropdown.Item>
-                </Dropdown.Menu>
-                <Dropdown.Item >Blockchain Technology</Dropdown.Item>
-                <Dropdown.Menu title="Web Technology">
-                    <Dropdown.Menu title="React" disabled>
-                        <Dropdown.Item >Material UI</Dropdown.Item>
-                        <Dropdown.Item>React Suite</Dropdown.Item>
-                    </Dropdown.Menu>
-                    <Dropdown.Item>HTML</Dropdown.Item>
-                </Dropdown.Menu>
+        <Dropdown title="Product">
+    {loading ? (
+      <Dropdown.Item disabled>Loading...</Dropdown.Item>
+    ) : (
+      categories.map((category) => (
+        <React.Fragment key={category.id}>
+          {/* <Dropdown.Item
+            onClick={() => fetchSubCategories(category.id)}
+            onMouseEnter={() => handleMouseEnter(category.id)} // Trigger hover event
+          >
+            {category.category}
+          </Dropdown.Item> */}
 
-            </Dropdown>
+          {/* Check if subcategories are available */}
+          {subCategoriesMap[category.id] && subCategoriesMap[category.id].length > 0 && (
+            <Dropdown.Menu title={`Subcategories for ${category. category}`}>
+              {subCategoriesMap[category.id].map((subCategory) => (
+                <Dropdown.Item key={subCategory.id}>
+                  {subCategory.sub_category}
+                </Dropdown.Item>
+              ))}
+            </Dropdown.Menu>
+          )}
+        </React.Fragment>
+      ))
+    )}
+  </Dropdown>
         </div>
                       </li>
                       <li className="on-hover-item nav-menu__item has-megamenu has-submenu">
