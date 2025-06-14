@@ -35,13 +35,13 @@ function App() {
       <Header/>
       <Routes>
         <Route path="/" element={<Home />} />
-        {/* <Route exact path="/slider" element={<Slider />} />
+        <Route exact path="/slider" element={<Slider />} />
         <Route exact path="/success" element={<SuccessStories />} />
         <Route exact path="/contact" element={<ContactPage />} />
-        <Route exact path="/demo" element={<DemoPage />} /> */}
+        <Route exact path="/demo" element={<DemoPage />} />
       </Routes>
-      {/* <Footer />
-      <BottomFooter /> */}
+      <Footer />
+      <BottomFooter />
     </BrowserRouter>
   );
 }

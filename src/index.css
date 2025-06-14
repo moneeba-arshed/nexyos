@@ -87,39 +87,14 @@ button:focus-visible {
 }
 
                                        /* header */
-                                       /* Modify the submenu to show on hover */
+.has-submenus-submenu {
+  position: relative;
+  overflow: visible; /* Allow child elements to overflow */
+}
 .submenus-submenu {
   display: none;
-  left: 100%;
-  top: 0;
-  z-index: 1020;
-  min-width: 250px;
-  border: 1px solid #ddd;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  background-color: #fff;
-  transition: transform 0.3s ease-out;
 }
 
 .has-submenus-submenu:hover .submenus-submenu {
   display: block;
-  transform: translateX(px); /* This will move it to the right */
 }
-
-.submenus-submenu-left {
-  right: 100%;
-  left: auto;
-}
-
-.submenus-submenu__list {
-  padding-left: 15px;
-}
-
-.submenus-submenu__title {
-  font-weight: 600;
-  font-size: 16px;
-}
-
-.submenus-submenu__list li {
-  padding: 8px 0;
-}
-

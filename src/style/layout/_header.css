@@ -185,7 +185,7 @@
   overflow: unset;
 }
 
-.submenus-submenu {
+/* .submenus-submenu {
   position: absolute;
   z-index: 99999999999;
   background: hsl(var(--white));
@@ -228,7 +228,7 @@
       }
     }
   }
-}
+} */
 
 @media (min-width: 991px) {
   .has-submenus-submenu {
@@ -238,10 +238,10 @@
         color: var(--gray-900) !important;
         font-weight: 600;
       }
-      .submenus-submenu {
+      /* .submenus-submenu {
         visibility: visible;
         opacity: 1;
-      }
+      } */
     }
   }
 }

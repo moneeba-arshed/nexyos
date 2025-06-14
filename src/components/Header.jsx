@@ -475,7 +475,7 @@ const Header = () => {
                           Home
                         </Link>
                       </li>
-                      <li className="on-hover-item nav-menu__item has-submenu">
+                      <li className="on-hover-item nav-menu__item has-submenu has-megamenu">
                         <Category />
                       </li>
                       <li className="on-hover-item nav-menu__item has-megamenu has-submenu">
