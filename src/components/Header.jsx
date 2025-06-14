@@ -218,7 +218,7 @@ const handleMouseEnter = (categoryId) => {
 
           {/* Check if subcategories are available */}
           {subCategoriesMap[category.id] && subCategoriesMap[category.id].length > 0 && (
-            <Dropdown.Menu title={`${category. category}`}>
+            <Dropdown.Menu title={`Subcategories for ${category. category}`}>
               {subCategoriesMap[category.id].map((subCategory) => (
                 <Dropdown.Item key={subCategory.id}>
                   {subCategory.sub_category}
