@@ -1,35 +1,35 @@
 import React, { useEffect, useState } from "react";
-import query from "jquery";
+import $ from "jquery";
+window.jQuery = $;
 import { Link, NavLink } from "react-router-dom";
-import Category from "./Category";
+// import Category from "./Category";
 import SearchBar from "./Searchbar";
-import "select2";
-import '../index.css'
+
 const Header = () => {
   const [scroll, setScroll] = useState(false);
+useEffect(() => {
+  window.onscroll = () => {
+    if (window.pageYOffset < 150) {
+      setScroll(false);
+    } else if (window.pageYOffset > 150) {
+      setScroll(true);
+    }
+    return () => (window.onscroll = null);
+  };
 
-  useEffect(() => {
-    window.onscroll = () => {
-      if (window.pageYOffset < 150) {
-        setScroll(false);
-      } else if (window.pageYOffset > 150) {
-        setScroll(true);
-      }
-      return () => (window.onscroll = null);
-    };
-        setTimeout(() => {
-      const selectElement = query(".js-example-basic-single");
-      if (selectElement.length) {
-        selectElement.select2();
-      }
-    }, 100);
-    return () => {
-       const selectElement = query(".js-example-basic-single");
-      if (selectElement.data("select2")) {
-        selectElement.select2("destroy");
-      }
-    };
-  }, []);
+  // Using document.querySelector instead of query
+  const selectElement = document.querySelector(".js-example-basic-single");
+  if (selectElement) {
+    $(selectElement).select2();
+  }
+
+  return () => {
+    if (selectElement && selectElement.select2) {
+      $(selectElement).select2("destroy");
+    }
+  };
+}, []);
+
 
   // Set the default language
   const [selectedLanguage, setSelectedLanguage] = useState("EngLish");
@@ -75,16 +75,14 @@ const Header = () => {
   const fetchProductDetails = async () => {
     try {
       setLoading(true);
-      let res = await fetch(`https://portal.nexyos.com/api/product/categories`);
+      let res = await fetch(`https://api.nexyos.com/get_all_products_cat_wise`);
       let response = await res.json();
-      console.log("api", response);
-      setProductDetail(response);
+      setProductDetail(response.data);
       setLoading(false);
     } catch (error) {
       console.log(error);
       setLoading(false);
     }
-    console.log("api data",productDetail);
   };
 
   useEffect(() => {
@@ -186,10 +184,10 @@ const Header = () => {
                       >
                         <Link
                           onClick={() => setActiveIndex(null)}
-                          to={`/parent-product-details/${item.id}}`}
+                          to={`/parent-product-details/${item.id}/${item.parent_category_name}`}
                           className="common-dropdown__link nav-submenu__link hover-bg-neutral-100"
                         >
-                        {item.category}
+                          {item.parent_category_name}
                           {/* {item.categories && item.categories.length > 0 && (
                             <span className="text-xs text-gray-500 ml-2">
                               ({item.categories.length})
@@ -198,10 +196,7 @@ const Header = () => {
                         </Link>
                       </li>
                     ))
-                  ) : (
-                  <li className="common-dropdown__item nav-submenu__item">
-                    <span>No categories available</span>
-                  </li>)}
+                  ) : null}
                 </ul>
               </li>
               <li
@@ -475,8 +470,9 @@ const Header = () => {
                           Home
                         </Link>
                       </li>
-                      <li className="on-hover-item nav-menu__item has-submenu has-megamenu">
-                        <Category />
+                      <li className="on-hover-item nav-menu__item has-submenu">
+                        {/* <Category /> */}
+                        product
                       </li>
                       <li className="on-hover-item nav-menu__item has-megamenu has-submenu">
                         <Link to="#" className="nav-menu__link">
