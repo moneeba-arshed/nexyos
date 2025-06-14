@@ -1,40 +1,57 @@
 import React, { useEffect, useState } from "react";
-import $ from "jquery";
-window.jQuery = $;
+import query from "jquery";
 import { Link, NavLink } from "react-router-dom";
-// import Category from "./Category";
 import SearchBar from "./Searchbar";
-
+import "select2";
+import "../index.css";
+import { RxCaretDown, RxCaretRight } from "react-icons/rx";
+import Dropdown from 'rsuite/Dropdown';
+import 'rsuite/dist/rsuite.min.css';
 const Header = () => {
   const [scroll, setScroll] = useState(false);
-useEffect(() => {
-  window.onscroll = () => {
-    if (window.pageYOffset < 150) {
-      setScroll(false);
-    } else if (window.pageYOffset > 150) {
-      setScroll(true);
-    }
-    return () => (window.onscroll = null);
+  const [categories, setCategories] = useState([]);
+  const [subCategoriesMap, setSubCategoriesMap] = useState({});
+  const [hoveredCategory, setHoveredCategory] = useState(null);
+  const [isOpen, setIsOpen] = useState(false);
+  const [isAlignOpen, setIsAlignOpen] = useState(false);
+
+  const toggleDropdown = () => {
+    setIsOpen(!isOpen);
   };
 
-  // Using document.querySelector instead of query
-  const selectElement = document.querySelector(".js-example-basic-single");
-  if (selectElement) {
-    $(selectElement).select2();
-  }
-
-  return () => {
-    if (selectElement && selectElement.select2) {
-      $(selectElement).select2("destroy");
-    }
+  const toggleAlignMenu = () => {
+    setIsAlignOpen(!isAlignOpen);
   };
-}, []);
-
+  useEffect(() => {
+    window.onscroll = () => {
+      if (window.pageYOffset < 150) {
+        setScroll(false);
+      } else if (window.pageYOffset > 150) {
+        setScroll(true);
+      }
+      return () => (window.onscroll = null);
+    };
+    setTimeout(() => {
+      const selectElement = query(".js-example-basic-single");
+      if (selectElement.length) {
+        selectElement.select2();
+      }
+    }, 100);
+    return () => {
+      const selectElement = query(".js-example-basic-single");
+      if (selectElement.data("select2")) {
+        selectElement.select2("destroy");
+      }
+    };
+  }, []);
 
   // Set the default language
   const [selectedLanguage, setSelectedLanguage] = useState("EngLish");
   const handleLanguageChange = (language) => {
     setSelectedLanguage(language);
+  };
+  const handleCategoryLeave = () => {
+    setHoveredCategory(null);
   };
 
   // Set the default currency
@@ -72,22 +89,46 @@ useEffect(() => {
   const [productDetail, setProductDetail] = useState([]);
   const [loading, setLoading] = useState(true);
 
-  const fetchProductDetails = async () => {
+  const fetchCategories = async () => {
     try {
-      setLoading(true);
-      let res = await fetch(`https://api.nexyos.com/get_all_products_cat_wise`);
-      let response = await res.json();
-      setProductDetail(response.data);
-      setLoading(false);
-    } catch (error) {
-      console.log(error);
-      setLoading(false);
+      const res = await fetch(
+        "https://portal.nexyos.com/api/product/categories"
+      );
+      const data = await res.json();
+      console.log("main", data);
+      setCategories(data);
+    } catch (err) {
+      console.error("Error fetching categories:", err);
     }
   };
 
+const fetchSubCategories = async (categoryId) => {
+  try {
+    if (subCategoriesMap[categoryId]) return; // If subcategories already fetched, no need to fetch again
+    const res = await fetch(
+      `https://portal.nexyos.com/api/product/sub_categories/${categoryId}`
+    );
+    const data = await res.json();
+    console.log(`Fetched subcategories for category ${categoryId}:`, data); // Log to see the subcategories data
+    setSubCategoriesMap((prev) => ({
+      ...prev,
+      [categoryId]: data, // Store subcategories for the given category ID
+    }));
+  } catch (err) {
+    console.error("Error fetching subcategories:", err);
+  }
+};
+
+
   useEffect(() => {
-    fetchProductDetails();
+    fetchCategories().finally(() => setLoading(false));
   }, []);
+
+const handleMouseEnter = (categoryId) => {
+  console.log("Hovered over category ID:", categoryId); // Check if hover is triggered
+  setHoveredCategory(categoryId);
+  fetchSubCategories(categoryId); // Fetch subcategories for the hovered category
+};
 
   return (
     <>
@@ -127,310 +168,7 @@ useEffect(() => {
       </form>
       {/* ==================== Search Box End Here ==================== */}
       {/* ==================== Mobile Menu Start Here  ==================== done */}
-      <div
-        className={`mobile-menu scroll-sm d-lg-none d-block ${
-          menuActive && "active"
-        }`}
-      >
-        <button
-          onClick={() => {
-            handleMenuToggle();
-            setActiveIndex(null);
-          }}
-          type="button"
-          className="close-button"
-        >
-          <i className="ph ph-x" />{" "}
-        </button>
-        <div className="mobile-menu__inner">
-          <Link to="/" className="mobile-menu__logo">
-            <img src="assets/images/logo/logo.png" alt="Logo" />
-          </Link>
-          <div className="mobile-menu__menu">
-            {/* Nav Menu Start */}
-            <ul className="nav-menu flex-align nav-menu--mobile">
-              <li
-                onClick={() => handleMenuClick(0)}
-                className={`on-hover-item nav-menu__item ${
-                  activeIndex === 0 ? "d-block" : ""
-                }`}
-              >
-                <Link to="/" className="nav-menu__link">
-                  Home
-                </Link>
-              </li>
 
-              <li
-                onClick={() => handleMenuClick(1)}
-                className={`on-hover-item nav-menu__item has-submenu ${
-                  activeIndex === 1 ? "d-block" : ""
-                }`}
-              >
-                <Link to="#" className="nav-menu__link">
-                  Products
-                </Link>
-                <ul
-                  className={`on-hover-dropdown common-dropdown nav-submenu scroll-sm ${
-                    activeIndex === 1 ? "open" : ""
-                  }`}
-                >
-                  {loading ? (
-                    <div className="loader">Loading...</div>
-                  ) : productDetail && productDetail.length > 0 ? (
-                    productDetail.map((item) => (
-                      <li
-                        key={item.id}
-                        className="common-dropdown__item nav-submenu__item"
-                      >
-                        <Link
-                          onClick={() => setActiveIndex(null)}
-                          to={`/parent-product-details/${item.id}/${item.parent_category_name}`}
-                          className="common-dropdown__link nav-submenu__link hover-bg-neutral-100"
-                        >
-                          {item.parent_category_name}
-                          {/* {item.categories && item.categories.length > 0 && (
-                            <span className="text-xs text-gray-500 ml-2">
-                              ({item.categories.length})
-                            </span>
-                          )} */}
-                        </Link>
-                      </li>
-                    ))
-                  ) : null}
-                </ul>
-              </li>
-              <li
-                onClick={() => handleMenuClick(2)}
-                className={`on-hover-item nav-menu__item has-submenu ${
-                  activeIndex === 2 ? "d-block" : ""
-                }`}
-              >
-                <Link to="#" className="nav-menu__link">
-                  Solutions
-                </Link>
-                <ul
-                  className={`on-hover-dropdown common-dropdown nav-submenu scroll-sm ${
-                    activeIndex === 2 ? "open" : ""
-                  }`}
-                >
-                  <li className="common-dropdown__item nav-submenu__item">
-                    <Link
-                      onClick={() => setActiveIndex(null)}
-                      to="/solutions/video-surveillance"
-                      className="common-dropdown__link nav-submenu__link hover-bg-neutral-100"
-                    >
-                      Video Surveillance
-                    </Link>
-                  </li>
-                  <li className="common-dropdown__item nav-submenu__item">
-                    <Link
-                      onClick={() => setActiveIndex(null)}
-                      to="/TrafficSolution"
-                      className="common-dropdown__link nav-submenu__link hover-bg-neutral-100"
-                    >
-                      Intelligent Traffic Solution
-                    </Link>
-                  </li>
-
-                  <li className="common-dropdown__item nav-submenu__item">
-                    <Link
-                      onClick={() => setActiveIndex(null)}
-                      to="/SmartRoom"
-                      className="common-dropdown__link nav-submenu__link hover-bg-neutral-100"
-                    >
-                      Smart Restroom
-                    </Link>
-                  </li>
-                  <li className="common-dropdown__item nav-submenu__item">
-                    <Link
-                      onClick={() => setActiveIndex(null)}
-                      to="/AirQuality"
-                      className="common-dropdown__link nav-submenu__link hover-bg-neutral-100"
-                    >
-                      Indoor Air Quality
-                    </Link>
-                  </li>
-
-                  <li className="common-dropdown__item nav-submenu__item">
-                    <Link
-                      onClick={() => setActiveIndex(null)}
-                      to="/SmartSpace"
-                      className="common-dropdown__link nav-submenu__link hover-bg-neutral-100"
-                    >
-                      Smart Space
-                    </Link>
-                  </li>
-                  <li className="common-dropdown__item nav-submenu__item">
-                    <Link
-                      onClick={() => setActiveIndex(null)}
-                      to="/PeopleCounting"
-                      className="common-dropdown__link nav-submenu__link hover-bg-neutral-100"
-                    >
-                      People Counting
-                    </Link>
-                  </li>
-
-                  <li className="common-dropdown__item nav-submenu__item">
-                    <Link
-                      onClick={() => setActiveIndex(null)}
-                      to="/SmartHVAC"
-                      className="common-dropdown__link nav-submenu__link hover-bg-neutral-100"
-                    >
-                      Smart HVAC Management
-                    </Link>
-                  </li>
-                  <li className="common-dropdown__item nav-submenu__item">
-                    <Link
-                      onClick={() => setActiveIndex(null)}
-                      to="/SmartSpaceOccupancy"
-                      className="common-dropdown__link nav-submenu__link hover-bg-neutral-100"
-                    >
-                      Space Occupancy
-                    </Link>
-                  </li>
-                </ul>
-              </li>
-              <li className="nav-menu__item">
-                <Link to="/success" className="nav-menu__link">
-                  Success Stories
-                </Link>
-              </li>
-              <li
-                onClick={() => handleMenuClick(3)}
-                className={`on-hover-item nav-menu__item has-submenu ${
-                  activeIndex === 3 ? "d-block" : ""
-                }`}
-              >
-                <Link to="#" className="nav-menu__link">
-                  Company
-                </Link>
-                <ul
-                  className={`on-hover-dropdown common-dropdown nav-submenu scroll-sm ${
-                    activeIndex === 3 ? "open" : ""
-                  }`}
-                >
-                  <li className="common-dropdown__item nav-submenu__item">
-                    <Link
-                      onClick={() => setActiveIndex(null)}
-                      to="/About"
-                      className="common-dropdown__link nav-submenu__link hover-bg-neutral-100"
-                    >
-                      About Us
-                    </Link>
-                  </li>
-                  <li className="common-dropdown__item nav-submenu__item">
-                    <Link
-                      onClick={() => setActiveIndex(null)}
-                      to="/Brand"
-                      className="common-dropdown__link nav-submenu__link hover-bg-neutral-100"
-                    >
-                      Our Brand
-                    </Link>
-                  </li>
-                  <li className="common-dropdown__item nav-submenu__item">
-                    <Link
-                      onClick={() => setActiveIndex(null)}
-                      to="/Events"
-                      className="common-dropdown__link nav-submenu__link hover-bg-neutral-100"
-                    >
-                      Events
-                    </Link>
-                  </li>
-
-                  <li className="common-dropdown__item nav-submenu__item">
-                    <Link
-                      onClick={() => setActiveIndex(null)}
-                      to="/Blog"
-                      className="common-dropdown__link nav-submenu__link hover-bg-neutral-100"
-                    >
-                      Blog
-                    </Link>
-                  </li>
-                  <li className="common-dropdown__item nav-submenu__item">
-                    <Link
-                      onClick={() => setActiveIndex(null)}
-                      to="/News"
-                      className="common-dropdown__link nav-submenu__link hover-bg-neutral-100"
-                    >
-                      News
-                    </Link>
-                  </li>
-                </ul>
-              </li>
-              <li
-                onClick={() => handleMenuClick(4)}
-                className={`on-hover-item nav-menu__item has-submenu ${
-                  activeIndex === 4 ? "d-block" : ""
-                }`}
-              >
-                <Link to="#" className="nav-menu__link">
-                  Partner
-                </Link>
-                <ul
-                  className={`on-hover-dropdown common-dropdown nav-submenu scroll-sm ${
-                    activeIndex === 4 ? "open" : ""
-                  }`}
-                >
-                  <li className="common-dropdown__item nav-submenu__item">
-                    <Link
-                      onClick={() => setActiveIndex(null)}
-                      to="/channel"
-                      className="common-dropdown__link nav-submenu__link hover-bg-neutral-100"
-                    >
-                      Find a Channel Partner
-                    </Link>
-                  </li>
-                  <li className="common-dropdown__item nav-submenu__item">
-                    <Link
-                      onClick={() => setActiveIndex(null)}
-                      to="/PartnerProgram"
-                      className="common-dropdown__link nav-submenu__link hover-bg-neutral-100"
-                    >
-                      Channel Partner Program
-                    </Link>
-                  </li>
-                  <li className="common-dropdown__item nav-submenu__item">
-                    <Link
-                      onClick={() => setActiveIndex(null)}
-                      to="/ProjectRegistration"
-                      className="common-dropdown__link nav-submenu__link hover-bg-neutral-100"
-                    >
-                      Project Registration
-                    </Link>
-                  </li>
-                  <li className="common-dropdown__item nav-submenu__item">
-                    <Link
-                      onClick={() => setActiveIndex(null)}
-                      to="/Iot"
-                      className="common-dropdown__link nav-submenu__link hover-bg-neutral-100"
-                    >
-                      IoT Collaboration Start Guide
-                    </Link>
-                  </li>
-                </ul>
-              </li>
-              <li className="nav-menu__item">
-                <Link to="/contact" className="nav-menu__link">
-                  Contact Us
-                </Link>
-              </li>
-              <li className="nav-menu__item">
-                <Link
-                  to="/demo"
-                  className="nav-menu__link d-flex align-items-center gap-2"
-                >
-                  <span className="icon">
-                    <i className="ph ph-play-circle" />{" "}
-                    {/* Play Icon using Phosphor Icons */}
-                  </span>
-                  Online Demo
-                </Link>
-              </li>
-            </ul>
-            {/* Nav Menu End */}
-          </div>
-        </div>
-      </div>
       {/* ==================== Mobile Menu End Here ==================== */}
       {/* ======================= Middle Header Two Start ========================= */}
 
@@ -470,9 +208,26 @@ useEffect(() => {
                           Home
                         </Link>
                       </li>
-                      <li className="on-hover-item nav-menu__item has-submenu">
-                        {/* <Category /> */}
-                        product
+                       <li className="on-hover-item nav-menu__item has-megamenu has-submenu">
+                         <div>
+                          
+            <Dropdown title="Product">
+                <Dropdown.Item>Database</Dropdown.Item>
+                <Dropdown.Menu title="DSA">
+                    <Dropdown.Item disabled>C++</Dropdown.Item>
+                    <Dropdown.Item>Java</Dropdown.Item>
+                </Dropdown.Menu>
+                <Dropdown.Item >Blockchain Technology</Dropdown.Item>
+                <Dropdown.Menu title="Web Technology">
+                    <Dropdown.Menu title="React" disabled>
+                        <Dropdown.Item >Material UI</Dropdown.Item>
+                        <Dropdown.Item>React Suite</Dropdown.Item>
+                    </Dropdown.Menu>
+                    <Dropdown.Item>HTML</Dropdown.Item>
+                </Dropdown.Menu>
+
+            </Dropdown>
+        </div>
                       </li>
                       <li className="on-hover-item nav-menu__item has-megamenu has-submenu">
                         <Link to="#" className="nav-menu__link">
@@ -724,36 +479,6 @@ useEffect(() => {
                               </ul>
                             </div>
 
-                            {/* Column 2 - Developer Zone */}
-                            {/* <div>
-                              <h6 className="fs-6 pt-3">Developer Zone</h6>
-                              <ul className="">
-                                <li>
-                                  <NavLink
-                                    to="#"
-                                    className="common-dropdown__link"
-                                  >
-                                    Developer Resource Hub
-                                  </NavLink>
-                                </li>
-                                <li>
-                                  <NavLink
-                                    to="#"
-                                    className="common-dropdown__link"
-                                  >
-                                    Open Source
-                                  </NavLink>
-                                </li>
-                                <li>
-                                  <NavLink
-                                    to="#"
-                                    className="common-dropdown__link"
-                                  >
-                                    Join the Community
-                                  </NavLink>
-                                </li>
-                              </ul>
-                            </div> */}
                           </div>
                         </div>
                       </li>
