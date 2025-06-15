@@ -20,6 +20,12 @@ import ChannelPage from "./components/Channel/FindChannel/ChannelPage";
 import PartnerProgram from "./components/Channel/FindChannel/ChannelPartner";
 import ProjectRegistration from "./components/Channel/FindChannel/ProjectRegistration";
 import Iot from "./components/Channel/FindChannel/Iot";
+import About from "./components/Company/About";
+import Brand from "./components/Company/Brand";
+import Events from "./components/Company/Events";
+import BlogPage from "./components/Blog/BlogPage";
+import BlogDetailPage from "./components/Blog/BlogDetailPage";
+import NewsPage from "./components/Company/News";
 function App() {
   return (
     <BrowserRouter>
@@ -52,6 +58,12 @@ function App() {
           element={<ProjectRegistration />}
         />
         <Route exact path="/Iot" element={<Iot />} />
+                <Route exact path="/About" element={<About />} />
+        <Route exact path="/Brand" element={<Brand />} />
+        <Route exact path="/Events" element={<Events />} />
+        <Route path="/Blog" element={<BlogPage />} />
+        <Route path="/blog/:id" element={<BlogDetailPage />} />
+        <Route path="/News" element={<NewsPage />} />
         <Route exact path="/demo" element={<DemoPage />} />
       </Routes>
       <Footer />
