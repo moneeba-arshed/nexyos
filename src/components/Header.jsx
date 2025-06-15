@@ -203,7 +203,7 @@ const handleMouseEnter = (categoryId) => {
                        <li className="on-hover-item nav-menu__item has-megamenu has-submenu">
                          <div>
                           
-        <Dropdown title="Product">
+       <Dropdown title="Product" style={{background: "white", "--hover-color": "green"}}>
     {loading ? (
       <Dropdown.Item disabled>Loading...</Dropdown.Item>
     ) : (
@@ -218,7 +218,7 @@ const handleMouseEnter = (categoryId) => {
 
           {/* Check if subcategories are available */}
           {subCategoriesMap[category.id] && subCategoriesMap[category.id].length > 0 && (
-            <Dropdown.Menu title={`Subcategories for ${category. category}`}>
+            <Dropdown.Menu title={`${category. category}`}>
               {subCategoriesMap[category.id].map((subCategory) => (
                 <Dropdown.Item key={subCategory.id}>
                   {subCategory.sub_category}

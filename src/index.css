@@ -87,17 +87,9 @@ button:focus-visible {
 }
 
                                        /* header */
-.sub-dropdown-content {
-  position: absolute;
-  left: 100%; /* This ensures the sub-dropdown opens to the right */
-  top: 0;
-  background-color: #f9f9f9;
-  width: 200px; /* Adjust width as needed */
-  box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
-  display: none;
-  z-index: 1;
+.rs-dropdown-toggle, .rs-dropdown-toggle.rs-btn {
+  background-color: white;
 }
-
-.nav-submenu__item:hover .sub-dropdown-content {
-  display: block;
+.rs-btn:hover {
+  background-color: white;
 }
