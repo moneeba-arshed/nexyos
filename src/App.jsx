@@ -16,6 +16,10 @@ import ContactPage from "./pages/ContactPage";
 import DemoPage from "./components/DemoPage";
 import Header from "./components/Header";
 import Header1 from "./components/Header1";
+import ChannelPage from "./components/Channel/FindChannel/ChannelPage";
+import PartnerProgram from "./components/Channel/FindChannel/ChannelPartner";
+import ProjectRegistration from "./components/Channel/FindChannel/ProjectRegistration";
+import Iot from "./components/Channel/FindChannel/Iot";
 function App() {
   return (
     <BrowserRouter>
@@ -35,11 +39,19 @@ function App() {
       <Header/>
       {/* <Header1/> */}
       <Routes>
-        <h1>hello </h1>
+     
         <Route path="/" element={<Home />} />
         <Route exact path="/slider" element={<Slider />} />
         <Route exact path="/success" element={<SuccessStories />} />
         <Route exact path="/contact" element={<ContactPage />} />
+        <Route exact path="/channel" element={<ChannelPage />} />
+        <Route exact path="/PartnerProgram" element={<PartnerProgram />} />
+        <Route
+          exact
+          path="/ProjectRegistration"
+          element={<ProjectRegistration />}
+        />
+        <Route exact path="/Iot" element={<Iot />} />
         <Route exact path="/demo" element={<DemoPage />} />
       </Routes>
       <Footer />
