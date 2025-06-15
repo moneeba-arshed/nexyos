@@ -35,6 +35,7 @@ function App() {
       <Header/>
       {/* <Header1/> */}
       <Routes>
+        <h1>hello try</h1>
         <Route path="/" element={<Home />} />
         <Route exact path="/slider" element={<Slider />} />
         <Route exact path="/success" element={<SuccessStories />} />
