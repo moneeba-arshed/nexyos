@@ -1,161 +1,123 @@
-import React, { useEffect, useState } from "react";
-import TrendingProducts from "./TrendingProducts ";
-import { Link } from 'react-router-dom';
-import { FaArrowRight } from "react-icons/fa6";
+import { useEffect, useState } from 'react';
 
 const Products = () => {
-  const [productDetail, setProductDetail] = useState([]);
-  const [selectedCategory, setSelectedCategory] = useState([]);
-  const [selectedIndex, setSelectedIndex] = useState(0);
+  const [categories, setCategories] = useState([]);
   const [loading, setLoading] = useState(true);
 
-const fetchProductDetails = async () => {
-  try {
-    setLoading(true);
-    let res = await fetch(`https://portal.nexyos.com/api/product/categories`);
-    let response = await res.json();
-    setProductDetail(response);
-    setLoading(false);
-  } catch (error) {
-    console.log(error);
-    setLoading(false);
-  }
-};
-
-
-  const handleClick = (item, index) => {
-    setSelectedCategory(item.categories);
-    setSelectedIndex(index);
-  };
-
   useEffect(() => {
-    fetchProductDetails();
+    const fetchCategories = async () => {
+      try {
+        const res = await fetch('https://portal.nexyos.com/api/product/categories');
+        const data = await res.json();
+        if (Array.isArray(data)) {
+          setCategories(data);
+        } else if (Array.isArray(data.data)) {
+          setCategories(data.data);
+        } else {
+          setCategories([]);
+        }
+      } catch (error) {
+        console.error('Error fetching data:', error);
+        setCategories([]);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchCategories();
   }, []);
 
   return (
-    <section className="trending-productss pt-80">
-      <div>
-        <style>
-          {`
-          .category-hero {
-            transition: all 0.3s ease;
-            margin-bottom: 32px;
-            padding: 24px;
-            border-radius: 16px;
-            position: relative;
-            overflow: hidden;
-          }
-          .series-tag {
-            font-size: 72px;
-            font-weight: bold;
-            opacity: 0.1;
-            position: absolute;
-            right: 20px;
-            top: 50%;
-            transform: translateY(-50%);
-            pointer-events: none;
-          }
-          .green-series { background-color: #f0f9eb; }
-          .red-series { background-color: #fef6f6; }
-          .blue-series { background-color: #f0f5ff; }
-        `}
-        </style>
-      </div>
-      <div className="container container-lg">
-        <div className="border border-gray-100 p-24 rounded-16">
-          <div className="section-heading mb-24">
-            <div className="flex-between flex-wrap gap-8">
-              <h5 className="mb-0">Products</h5>
-              <ul
-                className="nav common-tab style-two nav-pills"
-                id="pills-tab"
-                role="tablist"
-              >
-                {loading ? (
-                  <div>
-                    <h6>Loading...</h6>
-                  </div>
-                ) : (
-                  productDetail.map((item, index) => (
-                    <li className="nav-item" role="presentation" key={index}>
-                      <button
-                        className={`nav-link ${
-                          selectedIndex === index ? "active" : ""
-                        }`}
-                        id="pills-mobile-tab"
-                        data-bs-toggle="pill"
-                        data-bs-target="#pills-mobile"
-                        type="button"
-                        role="tab"
-                        aria-controls="pills-mobile"
-                        aria-selected="false"
-                        onClick={() => handleClick(item, index)}
-                      >
-                        {item.category}
-                      </button>
-                    </li>
-                  ))
-                )}
-              </ul>
-            </div>
-          </div>
+    <div className="wrapper">
+      <h1 className="title">Product Categories</h1>
 
-          {!loading && selectedCategory.length > 0 && (
+      {loading ? (
+        <p className="loading">Loading...</p>
+      ) : categories.length === 0 ? (
+        <p className="loading">No categories found.</p>
+      ) : (
+        <div className="custom-grid">
+          {categories.map((item, index) => (
             <div
-              className="category-hero mb-32 p-32 rounded-16"
-              style={{
-                backgroundColor:
-                  selectedIndex === 0
-                    ? "#f0f9eb"
-                    : selectedIndex === 1
-                    ? "#fef6f6"
-                    : "#f0f5ff",
-                position: "relative",
-                overflow: "hidden",
-              }}
+              key={item.id}
+              className="card"
+              onClick={() => window.open(`/category/${item.id}`, '_blank')}
             >
-              <div className="row align-items-center">
-                <div className="col-md-8">
-                  <h2
-                    className="mb-16"
-                    style={{
-                      fontSize: "30px",
-                    }}
-                  >
-                    {selectedCategory[0]?.series_title ||
-                      productDetail[selectedIndex]?.parent_category_name}
-                  </h2>
-
-                  {selectedIndex === productDetail.length - 1 && (
-                    <button className="btn btn-primary">Contact Us</button>
-                  )}
-                </div>
-              </div>
-            </div>
-          )}
-
-          <div className="tab-content" id="pills-tabContent">
-            <div
-              className="tab-pane fade show active"
-              id="pills-all"
-              role="tabpanel"
-              aria-labelledby="pills-all-tab"
-              tabIndex={0}
-            >
-              <TrendingProducts
-                selectedCategory={selectedCategory}
-                loading={loading}
+              <img
+                src="https://via.placeholder.com/80"
+                alt={item.category}
+                className="card-img"
               />
+              <h2 className="card-title">{item.category}</h2>
             </div>
-          </div>
-          <div className="text-center mt-4">
-          <Link to="/products" className=" flex btn-outline-primary">
-            View All Products <FaArrowRight className="mx-4"/>
-          </Link>
-      </div>
+          ))}
         </div>
-        </div>
-    </section>
+      )}
+
+      {/* Styling */}
+      <style>{`
+        .wrapper {
+          background-color: white;
+          min-height: 100vh;
+          padding: 40px 20px;
+        }
+
+        .title {
+          font-size: 28px;
+          text-align: center;
+          margin-bottom: 30px;
+          font-weight: bold;
+        }
+
+        .loading {
+          text-align: center;
+          color: gray;
+        }
+
+        .custom-grid {
+          display: flex;
+          flex-wrap: wrap;
+          justify-content: center;
+          max-width: 800px;
+          margin: 0 auto;
+        }
+
+        .card {
+          width: 220px;
+          height: 160px;
+          margin: 10px;
+          background-color: #ffffff;
+          border: 2px solid #01667D; /* Solid blue border */
+          text-align: center;
+          padding: 20px 10px;
+          cursor: pointer;
+          transition: 0.3s ease;
+        }
+
+        .card:hover {
+          background-color: #f0f9ff;
+        }
+
+        .card-img {
+          width: 60px;
+          height: 60px;
+          margin-bottom: 10px;
+        }
+
+        .card-title {
+          font-size: 16px;
+          font-weight: 600;
+          color: #111827;
+        }
+
+        /* Responsive behavior */
+        @media (max-width: 768px) {
+          .card {
+            width: 100%;
+          }
+        }
+      `}</style>
+    </div>
   );
 };
 

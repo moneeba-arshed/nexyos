@@ -18,6 +18,7 @@
 }
 .trending-productss {
   position: relative;
+  z-index: 90;
 }
 .navButton {
   background-color: #f8f9fa;

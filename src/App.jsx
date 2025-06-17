@@ -1,6 +1,6 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import "./App.scss";
-import './index.css';
+import './index.css'
 import Home from "./pages/Home";
 import BottomFooter from "./components/BottomFooter";
 import RouteScrollToTop from "./helper/RouteScrollToTop";
@@ -15,8 +15,18 @@ import SuccessStories from "./components/SuccessStories";
 import ContactPage from "./pages/ContactPage";
 import DemoPage from "./components/DemoPage";
 import Header from "./components/Header";
-import 'mdb-react-ui-kit/dist/css/mdb.min.css';
-import "@fortawesome/fontawesome-free/css/all.min.css";
+import Header1 from "./components/Header1";
+import ChannelPage from "./components/Channel/FindChannel/ChannelPage";
+import PartnerProgram from "./components/Channel/FindChannel/ChannelPartner";
+import ProjectRegistration from "./components/Channel/FindChannel/ProjectRegistration";
+import Iot from "./components/Channel/FindChannel/Iot";
+import About from "./components/Company/About";
+import Brand from "./components/Company/Brand";
+import Events from "./components/Company/Events";
+import BlogPage from "./components/Blog/BlogPage";
+import BlogDetailPage from "./components/Blog/BlogDetailPage";
+import NewsPage from "./components/Company/News";
+import Testing from "./components/Testing";
 function App() {
   return (
     <BrowserRouter>
@@ -34,11 +44,27 @@ function App() {
       {/* Preloader */}
       <Preloader />
       <Header/>
+      {/* <Header1/> */}
       <Routes>
+     {/* <Route path="/" element={<Testing />} /> */}
         <Route path="/" element={<Home />} />
         <Route exact path="/slider" element={<Slider />} />
         <Route exact path="/success" element={<SuccessStories />} />
         <Route exact path="/contact" element={<ContactPage />} />
+        <Route exact path="/channel" element={<ChannelPage />} />
+        <Route exact path="/PartnerProgram" element={<PartnerProgram />} />
+        <Route
+          exact
+          path="/ProjectRegistration"
+          element={<ProjectRegistration />}
+        />
+        <Route exact path="/Iot" element={<Iot />} />
+                <Route exact path="/About" element={<About />} />
+        <Route exact path="/Brand" element={<Brand />} />
+        <Route exact path="/Events" element={<Events />} />
+        <Route path="/Blog" element={<BlogPage />} />
+        <Route path="/blog/:id" element={<BlogDetailPage />} />
+        <Route path="/News" element={<NewsPage />} />
         <Route exact path="/demo" element={<DemoPage />} />
       </Routes>
       <Footer />
