@@ -5,8 +5,9 @@ import SearchBar from "./Searchbar";
 import "select2";
 import "../index.css";
 import { RxCaretDown, RxCaretRight } from "react-icons/rx";
-import Dropdown from 'rsuite/Dropdown';
-import 'rsuite/dist/rsuite.min.css';
+import Dropdown from "rsuite/Dropdown";
+import "rsuite/dist/rsuite.min.css";
+import Mega from "./Mega";
 const Header = () => {
   const [scroll, setScroll] = useState(false);
   const [categories, setCategories] = useState([]);
@@ -14,6 +15,8 @@ const Header = () => {
   const [hoveredCategory, setHoveredCategory] = useState(null);
   const [isOpen, setIsOpen] = useState(false);
   const [isAlignOpen, setIsAlignOpen] = useState(false);
+const [activeSubIndex, setActiveSubIndex] = useState(null); // for subcategory
+
 
   const toggleDropdown = () => {
     setIsOpen(!isOpen);
@@ -64,7 +67,7 @@ const Header = () => {
   const [menuActive, setMenuActive] = useState(false);
   const [activeIndex, setActiveIndex] = useState(null);
   const handleMenuClick = (index) => {
-    setActiveIndex(activeIndex === index ? null : index);
+   setActiveIndex((prevIndex) => (prevIndex === index ? null : index));
   };
   const handleMenuToggle = () => {
     setMenuActive(!menuActive);
@@ -90,36 +93,39 @@ const Header = () => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-  const fetchAllData = async () => {
-    try {
-      const res = await fetch("https://portal.nexyos.com/api/product/categories");
-      const categoriesData = await res.json();
-      setCategories(categoriesData);
+    const fetchAllData = async () => {
+      try {
+        const res = await fetch(
+          "https://portal.nexyos.com/api/product/categories"
+        );
+        const categoriesData = await res.json();
+        setCategories(categoriesData);
 
-      const subCategoriesObj = {};
-      // Parallel fetching of all subcategories
-      await Promise.all(
-        categoriesData.map(async (category) => {
-          const resSub = await fetch(`https://portal.nexyos.com/api/product/sub_categories/${category.id}`);
-          const subData = await resSub.json();
-          subCategoriesObj[category.id] = subData;
-        })
-      );
-      setSubCategoriesMap(subCategoriesObj);
-    } catch (err) {
-      console.error("Error fetching categories or subcategories:", err);
-    } finally {
-      setLoading(false);
-    }
-  };
+        const subCategoriesObj = {};
+        // Parallel fetching of all subcategories
+        await Promise.all(
+          categoriesData.map(async (category) => {
+            const resSub = await fetch(
+              `https://portal.nexyos.com/api/product/sub_categories/${category.id}`
+            );
+            const subData = await resSub.json();
+            subCategoriesObj[category.id] = subData;
+          })
+        );
+        setSubCategoriesMap(subCategoriesObj);
+      } catch (err) {
+        console.error("Error fetching categories or subcategories:", err);
+      } finally {
+        setLoading(false);
+      }
+    };
 
-  fetchAllData();
-}, []);
+    fetchAllData();
+  }, []);
 
-const handleMouseEnter = (categoryId) => {
-  console.log("Hovered over category ID:", categoryId); // Check if hover is triggered
-  setHoveredCategory(categoryId);
-  fetchSubCategories(categoryId); // Fetch subcategories for the hovered category
+const handleSubCategoryToggle = (e, subCategoryId) => {
+  e.stopPropagation(); // prevent event bubbling
+  setActiveSubIndex(activeSubIndex === subCategoryId ? null : subCategoryId);
 };
 
   return (
@@ -160,7 +166,331 @@ const handleMouseEnter = (categoryId) => {
       </form>
       {/* ==================== Search Box End Here ==================== */}
       {/* ==================== Mobile Menu Start Here  ==================== done */}
+      <div
+        className={`mobile-menu scroll-sm d-lg-none d-block ${
+          menuActive && "active"
+        }`}
+      >
+        <button
+          onClick={() => {
+            handleMenuToggle();
+            setActiveIndex(null);
+          }}
+          type="button"
+          className="close-button"
+        >
+          <i className="ph ph-x" />{" "}
+        </button>
+        <div className="mobile-menu__inner">
+          <Link to="/" className="mobile-menu__logo">
+            <img src="assets/images/logo/logo.png" alt="Logo" />
+          </Link>
+          <div className="mobile-menu__menu">
+            {/* Nav Menu Start */}
+            <ul className="nav-menu flex-align nav-menu--mobile">
+              <li
+                onClick={() => handleMenuClick(0)}
+                className={`on-hover-item nav-menu__item ${
+                  activeIndex === 0 ? "d-block" : ""
+                }`}
+              >
+                <Link to="/" className="nav-menu__link">
+                  Home
+                </Link>
+              </li>
 
+            <li
+  onClick={() => handleMenuClick(1)}
+  className={`on-hover-item nav-menu__item has-submenu ${
+    activeIndex === 1 ? "d-block" : ""
+  }`}
+>
+  <Link to="#" className="nav-menu__link">
+    Products
+    <RxCaretDown />
+  </Link>
+  <ul
+    className={`on-hover-dropdown common-dropdown nav-submenu scroll-sm ${
+      activeIndex === 1 ? "open" : ""
+    }`}
+  >
+    {loading ? (
+      <div className="loader">Loading...</div>
+    ) : categories && categories.length > 0 ? (
+      categories.map((item) => (
+        <li
+          key={item.id}
+          
+          className="common-dropdown__item nav-submenu__item"
+        >
+          <div className="category_list nav-menu--mobile nav-submenu__link"   onClick={() => setActiveIndex(null)}>  {item.category} {/* Display the main category name */}
+            <RxCaretDown onClick={(e) => handleSubCategoryToggle(e, item.id)} /></div>
+          
+
+         <ul className={`on-hover-dropdown common-dropdown nav-submenu scroll-sm ${activeSubIndex === item.id ? "open" : ""}`}>
+
+            {/* Make sure subCategoriesMap[item.id] is valid */}
+            {subCategoriesMap[item.id] && subCategoriesMap[item.id].length > 0 ? (
+              subCategoriesMap[item.id].map((subCategory) => (
+                <li
+                  key={subCategory.id}
+                  className="common-dropdown__item nav-submenu__item"
+                >
+                  <Link
+                    to="#"
+                    className="common-dropdown__link nav-submenu__link hover-bg-neutral-100"
+                  >
+                    {subCategory.sub_category} {/* Display subcategory name */}
+                  </Link>
+                </li>
+              ))
+            ) : (
+              <li className="common-dropdown__item nav-submenu__item">
+                No subcategories available
+              </li>
+            )}
+          </ul>
+        </li>
+      ))
+    ) : null}
+  </ul>
+</li>
+
+              <li
+                onClick={() => handleMenuClick(2)}
+                className={`on-hover-item nav-menu__item has-submenu ${
+                  activeIndex === 2 ? "d-block" : ""
+                }`}
+              >
+                <Link to="#" className="nav-menu__link">
+                  Solutions
+                  <RxCaretDown />
+                </Link>
+                <ul
+                  className={`on-hover-dropdown common-dropdown nav-submenu scroll-sm ${
+                    activeIndex === 2 ? "open" : ""
+                  }`}
+                >
+                  <li className="common-dropdown__item nav-submenu__item">
+                    <Link
+                      onClick={() => setActiveIndex(null)}
+                      to="/solutions/video-surveillance"
+                      className="common-dropdown__link nav-submenu__link hover-bg-neutral-100"
+                    >
+                      Video Surveillance
+                    </Link>
+                  </li>
+                  <li className="common-dropdown__item nav-submenu__item">
+                    <Link
+                      onClick={() => setActiveIndex(null)}
+                      to="/TrafficSolution"
+                      className="common-dropdown__link nav-submenu__link hover-bg-neutral-100"
+                    >
+                      Intelligent Traffic Solution
+                    </Link>
+                  </li>
+
+                  <li className="common-dropdown__item nav-submenu__item">
+                    <Link
+                      onClick={() => setActiveIndex(null)}
+                      to="/SmartRoom"
+                      className="common-dropdown__link nav-submenu__link hover-bg-neutral-100"
+                    >
+                      Smart Restroom
+                    </Link>
+                  </li>
+                  <li className="common-dropdown__item nav-submenu__item">
+                    <Link
+                      onClick={() => setActiveIndex(null)}
+                      to="/AirQuality"
+                      className="common-dropdown__link nav-submenu__link hover-bg-neutral-100"
+                    >
+                      Indoor Air Quality
+                    </Link>
+                  </li>
+
+                  <li className="common-dropdown__item nav-submenu__item">
+                    <Link
+                      onClick={() => setActiveIndex(null)}
+                      to="/SmartSpace"
+                      className="common-dropdown__link nav-submenu__link hover-bg-neutral-100"
+                    >
+                      Smart Space
+                    </Link>
+                  </li>
+                  <li className="common-dropdown__item nav-submenu__item">
+                    <Link
+                      onClick={() => setActiveIndex(null)}
+                      to="/PeopleCounting"
+                      className="common-dropdown__link nav-submenu__link hover-bg-neutral-100"
+                    >
+                      People Counting
+                    </Link>
+                  </li>
+
+                  <li className="common-dropdown__item nav-submenu__item">
+                    <Link
+                      onClick={() => setActiveIndex(null)}
+                      to="/SmartHVAC"
+                      className="common-dropdown__link nav-submenu__link hover-bg-neutral-100"
+                    >
+                      Smart HVAC Management
+                    </Link>
+                  </li>
+                  <li className="common-dropdown__item nav-submenu__item">
+                    <Link
+                      onClick={() => setActiveIndex(null)}
+                      to="/SmartSpaceOccupancy"
+                      className="common-dropdown__link nav-submenu__link hover-bg-neutral-100"
+                    >
+                      Space Occupancy
+                    </Link>
+                  </li>
+                </ul>
+              </li>
+              <li className="nav-menu__item">
+                <Link to="/success" className="nav-menu__link">
+                  Success Stories
+                </Link>
+              </li>
+              <li
+                onClick={() => handleMenuClick(3)}
+                className={`on-hover-item nav-menu__item has-submenu ${
+                  activeIndex === 3 ? "d-block" : ""
+                }`}
+              >
+                <Link to="#" className="nav-menu__link">
+                  Company
+                  <RxCaretDown />
+                </Link>
+                <ul
+                  className={`on-hover-dropdown common-dropdown nav-submenu scroll-sm ${
+                    activeIndex === 3 ? "open" : ""
+                  }`}
+                >
+                  <li className="common-dropdown__item nav-submenu__item">
+                    <Link
+                      onClick={() => setActiveIndex(null)}
+                      to="/About"
+                      className="common-dropdown__link nav-submenu__link hover-bg-neutral-100"
+                    >
+                      About Us
+                    </Link>
+                  </li>
+                  <li className="common-dropdown__item nav-submenu__item">
+                    <Link
+                      onClick={() => setActiveIndex(null)}
+                      to="/Brand"
+                      className="common-dropdown__link nav-submenu__link hover-bg-neutral-100"
+                    >
+                      Our Brand
+                    </Link>
+                  </li>
+                  <li className="common-dropdown__item nav-submenu__item">
+                    <Link
+                      onClick={() => setActiveIndex(null)}
+                      to="/Events"
+                      className="common-dropdown__link nav-submenu__link hover-bg-neutral-100"
+                    >
+                      Events
+                    </Link>
+                  </li>
+
+                  <li className="common-dropdown__item nav-submenu__item">
+                    <Link
+                      onClick={() => setActiveIndex(null)}
+                      to="/Blog"
+                      className="common-dropdown__link nav-submenu__link hover-bg-neutral-100"
+                    >
+                      Blog
+                    </Link>
+                  </li>
+                  <li className="common-dropdown__item nav-submenu__item">
+                    <Link
+                      onClick={() => setActiveIndex(null)}
+                      to="/News"
+                      className="common-dropdown__link nav-submenu__link hover-bg-neutral-100"
+                    >
+                      News
+                    </Link>
+                  </li>
+                </ul>
+              </li>
+              <li
+                onClick={() => handleMenuClick(4)}
+                className={`on-hover-item nav-menu__item has-submenu ${
+                  activeIndex === 4 ? "d-block" : ""
+                }`}
+              >
+                <Link to="#" className="nav-menu__link">
+                  Partner
+                  <RxCaretDown />
+                </Link>
+                <ul
+                  className={`on-hover-dropdown common-dropdown nav-submenu scroll-sm ${
+                    activeIndex === 4 ? "open" : ""
+                  }`}
+                >
+                  <li className="common-dropdown__item nav-submenu__item">
+                    <Link
+                      onClick={() => setActiveIndex(null)}
+                      to="/channel"
+                      className="common-dropdown__link nav-submenu__link hover-bg-neutral-100"
+                    >
+                      Find a Channel Partner
+                    </Link>
+                  </li>
+                  <li className="common-dropdown__item nav-submenu__item">
+                    <Link
+                      onClick={() => setActiveIndex(null)}
+                      to="/PartnerProgram"
+                      className="common-dropdown__link nav-submenu__link hover-bg-neutral-100"
+                    >
+                      Channel Partner Program
+                    </Link>
+                  </li>
+                  <li className="common-dropdown__item nav-submenu__item">
+                    <Link
+                      onClick={() => setActiveIndex(null)}
+                      to="/ProjectRegistration"
+                      className="common-dropdown__link nav-submenu__link hover-bg-neutral-100"
+                    >
+                      Project Registration
+                    </Link>
+                  </li>
+                  <li className="common-dropdown__item nav-submenu__item">
+                    <Link
+                      onClick={() => setActiveIndex(null)}
+                      to="/Iot"
+                      className="common-dropdown__link nav-submenu__link hover-bg-neutral-100"
+                    >
+                      IoT Collaboration Start Guide
+                    </Link>
+                  </li>
+                </ul>
+              </li>
+              <li className="nav-menu__item">
+                <Link to="/contact" className="nav-menu__link">
+                  Contact Us
+                </Link>
+              </li>
+              <li className="nav-menu__item">
+                <Link
+                  to="/demo"
+                  className="nav-menu__link_demo  d-flex align-items-center gap-2"
+                >
+                  <span className="icon">
+                    <i className="ph ph-play-circle" />{" "}
+                    {/* Play Icon using Phosphor Icons */}
+                  </span>
+                  Online Demo
+                </Link>
+              </li>
+            </ul>
+            {/* Nav Menu End */}
+          </div>
+        </div>
+      </div>
       {/* ==================== Mobile Menu End Here ==================== */}
       {/* ======================= Middle Header Two Start ========================= */}
 
@@ -200,37 +530,8 @@ const handleMouseEnter = (categoryId) => {
                           Home
                         </Link>
                       </li>
-                       <li className="on-hover-item nav-menu__item has-megamenu has-submenu">
-                         <div>
-                          
-       <Dropdown title="Product" style={{background: "white", "--hover-color": "green"}}>
-    {loading ? (
-      <Dropdown.Item disabled>Loading...</Dropdown.Item>
-    ) : (
-      categories.map((category) => (
-        <React.Fragment key={category.id}>
-          {/* <Dropdown.Item
-            onClick={() => fetchSubCategories(category.id)}
-            onMouseEnter={() => handleMouseEnter(category.id)} // Trigger hover event
-          >
-            {category.category}
-          </Dropdown.Item> */}
-
-          {/* Check if subcategories are available */}
-          {subCategoriesMap[category.id] && subCategoriesMap[category.id].length > 0 && (
-            <Dropdown.Menu title={`${category. category}`}>
-              {subCategoriesMap[category.id].map((subCategory) => (
-                <Dropdown.Item key={subCategory.id}>
-                  {subCategory.sub_category}
-                </Dropdown.Item>
-              ))}
-            </Dropdown.Menu>
-          )}
-        </React.Fragment>
-      ))
-    )}
-  </Dropdown>
-        </div>
+                      <li className="on-hover-item nav-menu__item has-megamenu has-submenu">
+                       <Mega/>
                       </li>
                       <li className="on-hover-item nav-menu__item has-megamenu has-submenu">
                         <Link to="#" className="nav-menu__link">
@@ -481,7 +782,6 @@ const handleMouseEnter = (categoryId) => {
                                 </li>
                               </ul>
                             </div>
-
                           </div>
                         </div>
                       </li>

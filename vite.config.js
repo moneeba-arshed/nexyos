@@ -8,10 +8,11 @@ export default defineConfig({
     tailwindcss()
   ],
    server: {
+        host: '0.0.0.0',
     hmr: {
       protocol: 'ws',
       host: 'localhost',
       port: 5173
     }
-  } 
+  } ,
 })
