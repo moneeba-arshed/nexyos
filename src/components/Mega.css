@@ -69,7 +69,7 @@ color:#00667c;
 	visibility: hidden;
 	overflow: hidden;
 	padding: 5px 0px;
-	background: #00667c;
+	background: white;
 	border-radius: 0 0 3px 3px;
 	-webkit-transition: all .3s ease .15s;
 	-moz-transition: all .3s ease .15s;
@@ -122,13 +122,13 @@ color:#00667c;
 
 .categories{
 	padding: 0px 2%;
-	/* background-color: #e8e5e5; */
+	background-color: #e8e5e5;
 	border: 5px solid #999999;
 }
 .subcategory{
 	padding: 0px 2%;
 }
 .subcategory li.active a{
-  background-color: white; /* Active background color */
+  background-color: #e8e5e5; /* Active background color */
   color:#1CA3F5; /* Text color when active */
 }
