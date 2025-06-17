@@ -26,6 +26,7 @@ import Events from "./components/Company/Events";
 import BlogPage from "./components/Blog/BlogPage";
 import BlogDetailPage from "./components/Blog/BlogDetailPage";
 import NewsPage from "./components/Company/News";
+import Testing from "./components/Testing";
 function App() {
   return (
     <BrowserRouter>
@@ -45,7 +46,7 @@ function App() {
       <Header/>
       {/* <Header1/> */}
       <Routes>
-     
+     {/* <Route path="/" element={<Testing />} /> */}
         <Route path="/" element={<Home />} />
         <Route exact path="/slider" element={<Slider />} />
         <Route exact path="/success" element={<SuccessStories />} />
