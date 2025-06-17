@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState } from "react";
 
 const Products = () => {
   const [categories, setCategories] = useState([]);
@@ -7,7 +7,9 @@ const Products = () => {
   useEffect(() => {
     const fetchCategories = async () => {
       try {
-        const res = await fetch('https://portal.nexyos.com/api/product/categories');
+        const res = await fetch(
+          "https://portal.nexyos.com/api/product/categories"
+        );
         const data = await res.json();
         if (Array.isArray(data)) {
           setCategories(data);
@@ -17,7 +19,7 @@ const Products = () => {
           setCategories([]);
         }
       } catch (error) {
-        console.error('Error fetching data:', error);
+        console.error("Error fetching data:", error);
         setCategories([]);
       } finally {
         setLoading(false);
@@ -41,7 +43,7 @@ const Products = () => {
             <div
               key={item.id}
               className="card"
-              onClick={() => window.open(`/category/${item.id}`, '_blank')}
+              onClick={() => window.open(`/category/${item.id}`, "_blank")}
             >
               <img
                 src="https://via.placeholder.com/80"
@@ -56,67 +58,74 @@ const Products = () => {
 
       {/* Styling */}
       <style>{`
-        .wrapper {
-          background-color: white;
-          min-height: 100vh;
-          padding: 40px 20px;
-        }
+  .wrapper {
+    background-color: white;
+    min-height: 100vh;
+    padding: 40px 20px;
+  }
 
-        .title {
-          font-size: 28px;
-          text-align: center;
-          margin-bottom: 30px;
-          font-weight: bold;
-        }
+  .title {
+    font-size: 28px;
+    text-align: center;
+    margin-bottom: 30px;
+    font-weight: bold;
+  }
 
-        .loading {
-          text-align: center;
-          color: gray;
-        }
+  .loading {
+    text-align: center;
+    color: gray;
+  }
 
-        .custom-grid {
-          display: flex;
-          flex-wrap: wrap;
-          justify-content: center;
-          max-width: 800px;
-          margin: 0 auto;
-        }
+  .custom-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    max-width: 800px;
+    margin: 0 auto;
+  }
 
-        .card {
-          width: 220px;
-          height: 160px;
-          margin: 10px;
-          background-color: #ffffff;
-          border: 2px solid #01667D; /* Solid blue border */
-          text-align: center;
-          padding: 20px 10px;
-          cursor: pointer;
-          transition: 0.3s ease;
-        }
+  .card {
+    width: 220px;
+    height: 160px;
+    margin: 10px;
+    background-color: #ffffff;
+    border: 2px solid #01667D;
+    text-align: center;
+    padding: 20px 10px;
+    cursor: pointer;
+    transition: 0.3s ease;
+  }
 
-        .card:hover {
-          background-color: #f0f9ff;
-        }
+  .card:hover {
+    background-color: #f0f9ff;
+  }
 
-        .card-img {
-          width: 60px;
-          height: 60px;
-          margin-bottom: 10px;
-        }
+  .card-img {
+    width: 60px;
+    height: 60px;
+    margin-bottom: 10px;
+  }
 
-        .card-title {
-          font-size: 16px;
-          font-weight: 600;
-          color: #111827;
-        }
+  .card-title {
+    font-size: 16px;
+    font-weight: 600;
+    color: #111827;
+  }
 
-        /* Responsive behavior */
-        @media (max-width: 768px) {
-          .card {
-            width: 100%;
-          }
-        }
-      `}</style>
+  /* Responsive behavior: 1 card per row */
+  @media (max-width: 768px) {
+    .custom-grid {
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .card {
+      width: 100%;
+      max-width: 90%;
+    }
+  }
+`}</style>
+
     </div>
   );
 };
