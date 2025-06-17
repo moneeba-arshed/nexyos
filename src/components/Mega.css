@@ -45,11 +45,11 @@
 	-ms-transition: all .3s ease;
 	transition: all .3s ease;
 }
-.title{
+.title-Product{
 	font-size: 14px;
 	font-weight: 500;
 }
-.title:active{
+.title-Product:active{
 color:#00667c;
 }
 .nav > li:first-child > a {
@@ -62,17 +62,15 @@ color:#00667c;
 .nav > li > div {
 	position: absolute;
 	display: block;
-  width: 1367%;
+    width: 1364%;
     top: 70px;
     left: -319px;
-
 	opacity: 0;
 	visibility: hidden;
 	overflow: hidden;
-
-	background: #ffffff;
+	padding: 5px 0px;
+	background: #00667c;
 	border-radius: 0 0 3px 3px;
-
 	-webkit-transition: all .3s ease .15s;
 	-moz-transition: all .3s ease .15s;
 	-o-transition: all .3s ease .15s;
@@ -124,12 +122,13 @@ color:#00667c;
 
 .categories{
 	padding: 0px 2%;
-	background-color: #e8e5e5;
+	/* background-color: #e8e5e5; */
+	border: 5px solid #999999;
 }
 .subcategory{
 	padding: 0px 2%;
 }
 .subcategory li.active a{
-  background-color: #e8e5e5; /* Active background color */
+  background-color: white; /* Active background color */
   color:#1CA3F5; /* Text color when active */
 }

@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from "react-router-dom";
-import './Mega.css'
+import './Mega.css';
 
-const Mega = () => { 
+const Mega = () => {
   const [loading, setLoading] = useState(true);
   const [categories, setCategories] = useState([]);
   const [subCategoriesMap, setSubCategoriesMap] = useState({});
@@ -59,7 +59,7 @@ const Mega = () => {
       <div id="menu-wrapper">
         <ul className="nav">
           <li>
-            <Link className='title' to="#">Product</Link>
+            <Link className='title-Product' to="#">Product</Link>
             <div>
               <div className="nav-column categories">
                 <ul>
@@ -67,8 +67,8 @@ const Mega = () => {
                     <div className="loader">Loading...</div>
                   ) : categories && categories.length > 0 ? (
                     categories.map((item) => (
-                      <li 
-                        key={item.id} 
+                      <li
+                        key={item.id}
                         onMouseEnter={() => handleCategoryHover(item.id)} // Set the active category on hover
                       >
                         <Link to="#"> {item.category} </Link>
@@ -78,15 +78,15 @@ const Mega = () => {
                 </ul>
               </div>
 
-              <div 
-                className="nav-column subcategory"
+              <div
+                className={`nav-column subcategory ${activeCategory ? 'active' : ''}`}
                 onMouseLeave={handleMouseLeave} // Reset active subcategory on mouse leave
               >
                 <ul>
                   {activeCategory && subCategoriesMap[activeCategory] ? (
                     subCategoriesMap[activeCategory].map((sub) => (
-                      <li 
-                        key={sub.id} 
+                      <li
+                        key={sub.id}
                         className={sub.id === activeSubCategory ? 'active' : ''} // Apply active class to the first subcategory item
                         onMouseEnter={() => handleSubCategoryHover(sub.id)} // Set the active subcategory on hover
                       >
@@ -101,12 +101,7 @@ const Mega = () => {
 
               {/* You can keep your static sections here for Home1 */}
               <div className="nav-column-sub-sub-category">
-                <h3>Sub Ctegories of sub categories</h3>
-                {/* <ul>
-                  <li><Link to="#">Driving shoes</Link></li>
-                  <li><Link to="#">Espadrilles</Link></li>
-                  <li><Link to="#">Loafers</Link></li>
-                </ul> */}
+                <h3>Sub Categories of sub categories</h3>
               </div>
             </div>
           </li>
