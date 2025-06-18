@@ -59,7 +59,7 @@ const Mega = () => {
       <div id="menu-wrapper">
         <ul className="nav">
           <li>
-            <Link className='title-Product' to="#">Product</Link>
+            <Link className='title-Product' to="/products">Product</Link>
             <div>
               <div className="nav-column categories">
                 <ul>

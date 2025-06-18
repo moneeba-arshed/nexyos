@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState  } from "react";
 import query from "jquery";
 import { Link, NavLink } from "react-router-dom";
 import SearchBar from "./Searchbar";
@@ -206,7 +206,7 @@ const handleSubCategoryToggle = (e, subCategoryId) => {
   }`}
 >
   <Link to="#" className="nav-menu__link">
-    Products
+    Product
     <RxCaretDown />
   </Link>
   <ul
@@ -531,7 +531,9 @@ const handleSubCategoryToggle = (e, subCategoryId) => {
                         </Link>
                       </li>
                       <li className="on-hover-item nav-menu__item has-megamenu has-submenu">
+                      <Link to="/products" className="nav-menu__link">
                        <Mega/>
+                      </Link>
                       </li>
                       <li className="on-hover-item nav-menu__item has-megamenu has-submenu">
                         <Link to="#" className="nav-menu__link">
