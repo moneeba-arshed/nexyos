@@ -27,6 +27,7 @@ import BlogPage from "./components/Blog/BlogPage";
 import BlogDetailPage from "./components/Blog/BlogDetailPage";
 import NewsPage from "./components/Company/News";
 import Testing from "./components/Testing";
+import CategoryPage from "./components/CategoryPage";
 function App() {
   return (
     <BrowserRouter>
@@ -46,8 +47,8 @@ function App() {
       <Header/>
       {/* <Header1/> */}
       <Routes>
-     {/* <Route path="/" element={<Testing />} /> */}
-        <Route path="/" element={<Home />} />
+     <Route path="/" element={<Home />} />
+          <Route path="/category/:id" element={<CategoryPage />} />
         <Route exact path="/slider" element={<Slider />} />
         <Route exact path="/success" element={<SuccessStories />} />
         <Route exact path="/contact" element={<ContactPage />} />

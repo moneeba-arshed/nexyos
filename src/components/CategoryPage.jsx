@@ -1,40 +1,45 @@
+import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
 
-const Products = () => {
-  const [categories, setCategories] = useState([]);
+const CategoryPage = () => {
+  const { id } = useParams();
+  const [subcategories, setSubcategories] = useState([]);
   const [loading, setLoading] = useState(true);
-  const navigate = useNavigate();
 
   useEffect(() => {
-    const fetchCategories = async () => {
+    const fetchSubCategories = async () => {
       try {
-        const res = await fetch("https://portal.nexyos.com/api/product/categories");
+        const res = await fetch(`https://portal.nexyos.com/api/product/sub_categories/${id}`);
         const data = await res.json();
-        setCategories(Array.isArray(data) ? data : data.data || []);
+        setSubcategories(Array.isArray(data) ? data : data.data || []);
       } catch (error) {
         console.error("Error:", error);
+        setSubcategories([]);
       } finally {
         setLoading(false);
       }
     };
 
-    fetchCategories();
-  }, []);
+    fetchSubCategories();
+  }, [id]);
 
   return (
     <div className="wrapper">
-      <h1 className="title">Product Categories</h1>
+      <h1 className="title">Subcategories</h1>
       {loading ? (
         <p className="loading">Loading...</p>
-      ) : categories.length === 0 ? (
-        <p className="loading">No categories found.</p>
+      ) : subcategories.length === 0 ? (
+        <p className="loading">No subcategories found.</p>
       ) : (
         <div className="custom-grid">
-          {categories.map((item) => (
-            <div key={item.id} className="card" onClick={() => navigate(`/category/${item.id}`)}>
-              <img src="https://via.placeholder.com/80" alt={item.category} className="card-img" />
-              <h2 className="card-title">{item.category}</h2>
+          {subcategories.map((item) => (
+            <div key={item.id} className="card">
+              <img
+                src="https://via.placeholder.com/80"
+                alt={item.sub_category}
+                className="card-img"
+              />
+              <h2 className="card-title">{item.sub_category}</h2>
             </div>
           ))}
         </div>
@@ -46,7 +51,7 @@ const Products = () => {
         .loading { text-align: center; color: gray; }
         .custom-grid { display: flex; flex-wrap: wrap; justify-content: center; max-width: 800px; margin: 0 auto; }
         .card { width: 220px; height: 160px; margin: 10px; background-color: #ffffff; border: 2px solid #01667D;
-          text-align: center; padding: 20px 10px; transition: 0.3s ease; cursor: pointer; }
+          text-align: center; padding: 20px 10px; transition: 0.3s ease; }
         .card:hover { background-color: #f0f9ff; }
         .card-img { width: 60px; height: 60px; margin-bottom: 10px; }
         .card-title { font-size: 16px; font-weight: 600; color: #111827; }
@@ -59,4 +64,4 @@ const Products = () => {
   );
 };
 
-export default Products;
+export default CategoryPage;
