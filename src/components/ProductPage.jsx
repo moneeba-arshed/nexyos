@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
+
 
 const ProductPage = () => {
   const products = Array.from({ length: 34 }, (_, i) => ({
@@ -399,16 +401,19 @@ const ProductPage = () => {
           </div>
         </div>
 
-        <div className="product-grid">
-          {products.map((product) => (
-            <div key={product.id} className="card">
-              <img src={product.image} alt={product.title} />
-              <h4>{product.title}</h4>
-              <p>{product.resolution} AcuSense Camera</p>
-              <button>Explore</button>
-            </div>
-          ))}
-        </div>
+    <div className="product-grid">
+  {products.map((product) => (
+    <Link to={`/products/${product.id}`} key={product.id} className="card-link">
+      <div className="card">
+        <img src={product.image} alt={product.title} />
+        <h4>{product.title}</h4>
+        <p>{product.resolution} AcuSense Camera</p>
+        <button>Explore</button>
+      </div>
+    </Link>
+  ))}
+</div>
+
       </div>
 
       <style>{`

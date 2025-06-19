@@ -29,6 +29,7 @@ import NewsPage from "./components/Company/News";
 import Testing from "./components/Testing";
 import CategoryPage from "./components/CategoryPage";
 import ProductPage from "./components/ProductPage";
+import ProductDetail from "./components/ProductDetail";
 function App() {
   return (
     <BrowserRouter>
@@ -49,6 +50,8 @@ function App() {
       {/* <Header1/> */}
       <Routes>
      <Route path="/" element={<Home />} />
+     <Route path="/products/:id" element={<ProductDetail />} />
+
      <Route path="/products" element={<ProductPage/>}/>
           <Route path="/category/:id" element={<CategoryPage />} />
         <Route exact path="/slider" element={<Slider />} />
