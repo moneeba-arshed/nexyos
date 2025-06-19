@@ -205,7 +205,7 @@ const handleSubCategoryToggle = (e, subCategoryId) => {
     activeIndex === 1 ? "d-block" : ""
   }`}
 >
-  <Link to="#" className="nav-menu__link">
+  <Link to="/products" className="nav-menu__link">
     Product
     <RxCaretDown />
   </Link>
