@@ -30,6 +30,7 @@ import Testing from "./components/Testing";
 import CategoryPage from "./components/CategoryPage";
 import ProductPage from "./components/ProductPage";
 import ProductDetail from "./components/ProductDetail";
+import Productcall from "./components/Productcall";
 function App() {
   return (
     <BrowserRouter>
@@ -53,7 +54,7 @@ function App() {
      <Route path="/products/:id" element={<ProductDetail />} />
 
      <Route path="/products" element={<ProductPage/>}/>
-          <Route path="/category/:id" element={<CategoryPage />} />
+          <Route path="/category/:id" element={<Productcall />} />
         <Route exact path="/slider" element={<Slider />} />
         <Route exact path="/success" element={<SuccessStories />} />
         <Route exact path="/contact" element={<ContactPage />} />

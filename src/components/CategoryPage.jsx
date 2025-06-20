@@ -1,6 +1,8 @@
 import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
-import PTZGROUPCAMERA from "../assets/images/nexyos/PTZGROUPCAMERA.png"
+import PTZGROUPCAMERA from "../assets/images/nexyos/PTZGROUPCAMERA.png";
+
+import BannerProduct from "./BannerProduct";
 
 const CategoryPage = () => {
   const { id } = useParams();
@@ -10,7 +12,9 @@ const CategoryPage = () => {
   useEffect(() => {
     const fetchSubCategories = async () => {
       try {
-        const res = await fetch(`https://portal.nexyos.com/api/product/sub_categories/${id}`);
+        const res = await fetch(
+          `https://portal.nexyos.com/api/product/sub_categories/${id}`
+        );
         const data = await res.json();
         setSubcategories(Array.isArray(data) ? data : data.data || []);
       } catch (error) {
@@ -25,6 +29,8 @@ const CategoryPage = () => {
   }, [id]);
 
   return (
+    <>
+
     <div className="wrapper">
       <h1 className="title">Subcategories</h1>
 
@@ -32,9 +38,10 @@ const CategoryPage = () => {
         {/* Left fixed card */}
         <div className="left-panel">
           <div className="left-card">
-       
             <h2 className="left-title">Main Category</h2>
-            <p className="left-desc">You can add more details or image here if needed.</p>
+            <p className="left-desc">
+              You can add more details or image here if needed.
+            </p>
           </div>
         </div>
 
@@ -49,7 +56,7 @@ const CategoryPage = () => {
               {subcategories.map((item) => (
                 <div key={item.id} className="card">
                   <img
-                    src={ PTZGROUPCAMERA}
+                    src={PTZGROUPCAMERA}
                     alt={item.sub_category}
                     className="card-img"
                   />
@@ -182,6 +189,7 @@ const CategoryPage = () => {
         }
       `}</style>
     </div>
+    </>
   );
 };
 
