@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
+import miniCAmeraGroup from "../assets/images/nexyos/miniCAmeraGroup.png"
 
 
 const ProductPage = () => {
@@ -7,7 +8,7 @@ const ProductPage = () => {
     id: i + 1,
     title: `Product ${i + 1}`,
     resolution: `${2 + (i % 4) * 2} MP`,
-    image: "https://via.placeholder.com/120x120.png?text=Camera",
+    image: miniCAmeraGroup,
   }));
 
   const [openSections, setOpenSections] = useState({
@@ -494,11 +495,13 @@ const ProductPage = () => {
         }
 
         .card img {
-          width: 100px;
-          height: 100px;
-          object-fit: contain;
-          margin-bottom: 10px;
-        }
+  width: 100%;
+  height: 160px; /* Adjust height as needed */
+  object-fit: cover; /* Or "contain" if you want full image without crop */
+  border-radius: 6px;
+  margin-bottom: 10px;
+}
+
 
         .card h4 {
           margin: 8px 0;

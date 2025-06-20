@@ -1,5 +1,6 @@
 import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
+import PTZGROUPCAMERA from "../assets/images/nexyos/PTZGROUPCAMERA.png"
 
 const CategoryPage = () => {
   const { id } = useParams();
@@ -31,7 +32,7 @@ const CategoryPage = () => {
         {/* Left fixed card */}
         <div className="left-panel">
           <div className="left-card">
-            <img src="https://via.placeholder.com/80" alt="Main" className="left-img" />
+       
             <h2 className="left-title">Main Category</h2>
             <p className="left-desc">You can add more details or image here if needed.</p>
           </div>
@@ -48,7 +49,7 @@ const CategoryPage = () => {
               {subcategories.map((item) => (
                 <div key={item.id} className="card">
                   <img
-                    src="https://via.placeholder.com/80"
+                    src={ PTZGROUPCAMERA}
                     alt={item.sub_category}
                     className="card-img"
                   />
@@ -124,39 +125,39 @@ const CategoryPage = () => {
           color: gray;
         }
 
-     .grid {
+.grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 30px; /* More space between cards */
-  padding: 10px;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 0; /* Remove gap between cards */
+  padding: 0; /* Remove padding */
   box-sizing: border-box;
+  justify-items: center;
+ 
 }
 
 .card {
+  width: 100%;
   background-color: #ffffff;
   border: 2px solid #01667D;
   text-align: center;
-  padding: 20px 10px;
+  padding: 10px;
   transition: 0.3s ease;
+  cursor: pointer;
   box-sizing: border-box;
-  border-radius: 8px;
-  height: 180px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
+   margin:10px;
 }
-
 
         .card:hover {
           background-color: #f0f9ff;
         }
 
         .card-img {
-          width: 60px;
-          height: 60px;
-          margin-bottom: 10px;
-        }
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+  margin-bottom: 10px;
+}
+
 
         .card-title {
           font-size: 16px;

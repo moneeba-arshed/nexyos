@@ -1,6 +1,9 @@
 import React, { useRef, useState } from "react";
 import { useParams } from "react-router-dom";
 import { FaDownload } from "react-icons/fa";
+import CCTVSurveillanceCameras from "../assets/images/nexyos/CCTVSurveillanceCameras.jpg";
+import miniCAmeraGroup from "../assets/images/nexyos/miniCAmeraGroup.png";
+import PTZGROUPCAMERA from "../assets/images/nexyos/PTZGROUPCAMERA.png"
 
 
 const ProductDetail = () => {
@@ -55,12 +58,17 @@ React.useEffect(() => {
   return () => window.removeEventListener("scroll", handleScroll);
 }, []);
 
-  const product = {
-    id,
-    title: `4 MP Smart Hybrid Light with ColorVu Motorized Varifocal Bullet Camera`,
-    model: `DS-2CD2647G3T-LIZSY`,
-    resolution: `2688 × 1520`,
-    image: "https://via.placeholder.com/600x400.png?text=Camera+Image",
+const product = {
+    title: "4 MP Smart Hybrid Light with ColorVu Motorized Varifocal Bullet Camera",
+    model: "DS-2CD2647G3T-LIZSY",
+    resolution: "2688 × 1520",
+    images: [
+     
+      miniCAmeraGroup,
+      PTZGROUPCAMERA,
+      miniCAmeraGroup,
+       CCTVSurveillanceCameras,
+    ],
     description:
       "Hikvision's 4 MP Smart Hybrid Light Bullet Camera combines cutting-edge ColorVu technology with advanced AI to deliver vivid, accurate surveillance in all lighting conditions.",
     features: [
@@ -71,10 +79,25 @@ React.useEffect(() => {
       "Motorized varifocal lens for easy installation and monitoring",
       "Anti-corrosion design, NEMA 4X equivalent",
       "Smart Hybrid Light: IR and White light with 3 modes",
-      "Water and dust resistant (IP67) and vandal resistant (IK10)"
-    ]
+      "Water and dust resistant (IP67) and vandal resistant (IK10)",
+    ],
   };
 
+  const [mainImage, setMainImage] = useState(product.images[0]);
+const [currentIndex, setCurrentIndex] = useState(0);
+
+const handleNext = () => {
+  const nextIndex = (currentIndex + 1) % product.images.length;
+  setMainImage(product.images[nextIndex]);
+  setCurrentIndex(nextIndex);
+};
+
+const handlePrev = () => {
+  const prevIndex =
+    (currentIndex - 1 + product.images.length) % product.images.length;
+  setMainImage(product.images[prevIndex]);
+  setCurrentIndex(prevIndex);
+};
   const sections = [
     "Camera", "Lens", "DORI", "Illuminator", "Video", "Audio",
     "Network", "Image", "Interface", "Event",
@@ -113,20 +136,53 @@ React.useEffect(() => {
     <div className="product-detail-container mt-5">
       <div className="breadcrumb">Home / Network Cameras / Pro Series / {product.model}</div>
       <div className="top-section">
-        <div className="image-section">
-          <img src={product.image} alt={product.title} />
-        </div>
-        <div className="info-section mt-5">
-          <h1>{product.title}</h1>
-          <h3>Model: {product.model}</h3>
-          <p className="description">{product.description}</p>
-          <ul className="features">
-            {product.features.map((f, index) => (
-              <li key={index}>{f}</li>
-            ))}
-          </ul>
-        </div>
-      </div>
+    
+  {/* Image Section */}
+<div className="image-section">
+  <div className="carousel-wrapper">
+    <button className="nav-btn left" onClick={handlePrev}>&lt;</button>
+    <img src={mainImage} alt="Main" className="main-image" />
+    <button className="nav-btn right" onClick={handleNext}>&gt;</button>
+  </div>
+  <div className="thumbnail-row">
+    {product.images.slice(0, 4).map((img, index) => (
+      <img
+        key={index}
+        src={img}
+        alt={`Thumbnail ${index}`}
+        className={`thumbnail ${mainImage === img ? "active" : ""}`}
+        onClick={() => {
+          setMainImage(img);
+          setCurrentIndex(index);
+        }}
+      />
+    ))}
+  </div>
+</div>
+
+
+<div className="info-section mt-5">
+  <h1>{product.title}</h1>
+  <h3>Model: {product.model}</h3>
+  <p className="description">{product.description}</p>
+  <ul className="features">
+    {product.features.map((f, index) => (
+      <li key={index}>{f}</li>
+    ))}
+  </ul>
+
+  {/* Action Buttons */}
+<div className="action-buttons-row">
+  <button className="half-btn primary-btn"> <a href="/downloads/datasheet.pdf" download className="primaryy-btn" >
+     
+      <span>Data Sheet</span>
+    </a></button>
+  <button className="half-btn secondary-btn">Sales Inquiry</button>
+</div>
+
+
+</div>
+   </div>
         <div>
       {/* Sticky Tabs */}
 <div ref={tabRef} className="tab-row">
@@ -285,275 +341,380 @@ React.useEffect(() => {
   </div>
   <hr />
 </div>
-
-      </div>
+</div>
+   
 
 
  <style>{`
-.tab-row {
-  position: sticky;
-  top: 0;
-  background-color: #fff;
-  z-index: 10;
+.action-buttons-row {
   display: flex;
-  justify-content: center;
-  gap: 40px;
-  padding: 15px 10px;
-  border-bottom: 1px solid #ddd;
-}
-r-bottom: 1px solid #ddd;
+  gap: 10px;
+  margin-top: 40px;
 }
 
-.tab-row.fixed {
-  position: fixed;
+.half-btn {
+  flex: 1; /* Takes 50% width with gap adjustment */
+  padding: 14px;
+  font-size: 16px;
+  border-radius: 4px;
+  border: none;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.primary-btn {
+  background-color: #01667D;
+  color: white;
+}
+  .primaryy-btn {
+
+  color: white;
+}
+
+.primary-btn:hover {
+  background-color: #014c5a;
+}
+
+.secondary-btn {
+  background-color: #f1f1f1;
+  color: #333;
+  border: 1px solid #ccc;
+}
+
+.secondary-btn:hover {
+  background-color: #e0e0e0;
+}
+
+.product-detail-container {
+  padding: 20px;
+  font-family: Arial, sans-serif;
+}
+
+.breadcrumb {
+  font-size: 14px;
+  color: #888;
+  margin-bottom: 15px;
+}
+
+.top-section {
+  display: flex;
+  gap: 30px;
+  flex-wrap: wrap;
+}
+
+/* Image Carousel */
+.image-section {
+  flex: 1 1 45%;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.carousel-wrapper {
+  position: relative;
+  width: 100%;
+  height: 400px;
+}
+
+.main-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 8px;
+  border: 1px solid #ddd;
+}
+
+.nav-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(1, 102, 125, 0.8);
+  color: white;
+  border: none;
+  padding: 8px 12px;
+  cursor: pointer;
+  font-size: 18px;
+  z-index: 10;
+  border-radius: 4px;
+}
+
+.nav-btn.left {
+  left: 10px;
+}
+
+.nav-btn.right {
+  right: 10px;
+}
+
+.thumbnail-row {
+  display: flex;
+  gap: 10px;
+  margin-top: 10px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.thumbnail {
+  width: 80px;
+  height: 60px;
+  object-fit: cover;
+  cursor: pointer;
+  border: 2px solid transparent;
+  border-radius: 4px;
+  transition: border 0.3s ease;
+}
+
+.thumbnail.active,
+.thumbnail:hover {
+  border-color: #01667D;
+}
+
+/* Info Section */
+.info-section {
+  flex: 1 1 45%;
+  margin-bottom: 100px;
+   text-align: left;
+  
+}
+
+.info-section h1 {
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+
+.info-section h3 {
+  font-size: 18px;
+  margin-bottom: 10px;
+  color: #01667D;
+}
+
+.description {
+  font-size: 15px;
+  color: #333;
+  margin-bottom: 15px;
+}
+
+.features {
+  list-style: disc;
+  padding-left: 20px;
+  color: #333;
+  font-size: 14px;
+}
+
+/* Sticky Tabs */
+.tab-row {
+  display: flex;
+  gap: 10px;
+  border-top: 1px solid #ddd;
+  border-bottom: 1px solid #ddd;
+  padding: 10px 0;
+  margin: 30px 0;
+  justify-content: center;
+  background-color: #fff;
+  position: sticky;
   top: 0;
-  left: 0;
-  right: 0;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+  z-index: 100;
 }
 
 .tab-btn {
-  background: none;
-  border: none;
-  font-size: 16px;
-  color: #01667D;
+  padding: 10px 20px;
+  border: 1px solid #ccc;
+  background: #f9f9f9;
+  color: #333;
+  font-weight: bold;
   cursor: pointer;
-  padding: 10px 15px;
-  font-weight: 600;
-  position: relative;
+  border-radius: 4px;
+  transition: all 0.2s;
 }
 
-.tab-btn.active {
-  border-bottom: 3px solid #01667D;
-}
-
+.tab-btn.active,
 .tab-btn:hover {
-  color: #014B60;
+  background: #01667D;
+  color: white;
 }
-  .product-detail-container {
-    padding: 20px;
-    font-family: Arial, sans-serif;
-  }
 
-  .breadcrumb {
-    font-size: 14px;
-    color: #888;
-    margin-bottom: 15px;
-  }
+/* Specifications */
+.columns {
+  display: flex;
+  gap: 20px;
+  align-items: flex-start;
+  margin-top: 40px;
+  margin-bottom: 40px;
+}
 
-  .top-section {
-    display: flex;
-    gap: 40px;
-    flex-wrap: wrap;
-  }
+.menu-column {
+  width: 250px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  background-color: #f9f9f9;
+  padding: 10px;
+}
 
-  .image-section {
-    flex: 1 1 45%;
-  }
+.menu-btn {
+  display: block;
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 6px;
+  text-align: left;
+  border: 1px solid #ddd;
+  background: #fff;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background 0.2s;
+}
 
-  .image-section img {
-    width: 100%;
-    border-radius: 8px;
-  }
+.menu-btn:hover {
+  background-color: #e6f5f9;
+}
 
-  .info-section {
-    flex: 1 1 45%;
-    margin-bottom: 100px;
-  }
+.menu-btn.active {
+  background-color: #01667D;
+  color: white;
+}
 
-  .info-section h1 {
-    font-size: 24px;
-    margin-bottom: 10px;
-  }
+.detail-column {
+  flex: 1;
+  max-width: calc(100% - 270px);
+  height: 695px;
+  overflow-y: auto;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  padding: 20px;
+  background-color: #fff;
+}
 
-  .info-section h3 {
-    font-size: 18px;
-    margin-bottom: 10px;
-    color: #01667D;
-  }
+.spec-section {
+  margin-bottom: 30px;
+  text-align: left;
+}
 
-  .description {
-    font-size: 15px;
-    color: #333;
-    margin-bottom: 15px;
-  }
+.spec-section h3 {
+  color: #01667D;
+  margin-bottom: 10px;
+  text-align: left;
+}
 
-  .features {
-    list-style: disc;
-    padding-left: 20px;
-    color: #333;
-    font-size: 14px;
-  }
+.spec-section ul {
+  padding-left: 20px;
+  list-style-type: disc;
+  color: #333;
+}
 
+.spec-section li {
+  margin-bottom: 6px;
+}
+
+.spec-section hr {
+  margin-top: 15px;
+  border: none;
+  height: 1px;
+  background-color: #ddd;
+}
+
+/* Resources */
+.resource-buttons {
+  margin-top: 10px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 15px;
+  margin-bottom: 60px;
+}
+
+.download-btn {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: #f1f8fb;
+  color: #01667D;
+  font-size: 14px;
+  padding: 16px 12px;
+  width: 120px;
+  height: 100px;
+  text-align: center;
+  text-decoration: none;
+  border-radius: 0px;
+  border: 1px solid #d1e7ee;
+  transition: all 0.3s ease;
+}
+
+.download-btn:hover {
+  background-color: #e6f4f9;
+  box-shadow: 0 0 8px rgba(0, 102, 125, 0.2);
+}
+
+.download-btn .icon {
+  font-size: 24px;
+  margin-bottom: 6px;
+}
+
+/* Accessories */
+.accessory-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  margin-top: 40px;
+  justify-content: center;
+}
+
+.accessory-card {
+  display: flex;
+  align-items: center;
+  width: calc(33.333% - 20px);
+  background: #f9f9f9;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  padding: 10px;
+  gap: 10px;
+  min-width: 250px;
+}
+
+.accessory-card img {
+  width: 70px;
+  height: 70px;
+  object-fit: cover;
+  border-radius: 4px;
+}
+
+/* Responsive Design */
+@media screen and (max-width: 992px) {
+  .accessory-card {
+    width: calc(50% - 20px);
+  }
+}
+
+@media screen and (max-width: 600px) {
   .columns {
-    display: flex;
-    gap: 20px;
-    align-items: flex-start;
-    margin-top: 40px;
-    margin-bottom:40px
+    flex-direction: column;
   }
 
-  .menu-column {
-    width: 250px;
-    border: 1px solid #ccc;
-    border-radius: 6px;
-    background-color: #f9f9f9;
-    padding: 10px;
-  }
-
-  .menu-btn {
-    display: block;
+  .menu-column,
+  .detail-column {
     width: 100%;
-    padding: 10px;
-    margin-bottom: 6px;
-    text-align: left;
-    border: 1px solid #ddd;
-    background: #fff;
-    border-radius: 4px;
-    cursor: pointer;
-    transition: background 0.2s;
-  }
-
-  .menu-btn:hover {
-    background-color: #e6f5f9;
-  }
-
-  .menu-btn.active {
-    background-color: #01667D;
-    color: white;
+    max-width: none;
+    height: auto;
   }
 
   .detail-column {
-    flex: 1;
-    max-width: calc(100% - 270px);
-    height: 695px;
-    overflow-y: auto;
-    border: 1px solid #ccc;
-    border-radius: 6px;
-    padding: 20px;
-    background-color: #fff;
-  }
-
-  .spec-section {
-    margin-bottom: 30px;
-    text-align: left;
-  }
-
-  .spec-section h3 {
-    color: #01667D;
-    margin-bottom: 10px;
-    text-align: left;
-  }
-
-  .spec-section ul {
-    padding-left: 20px;
-    list-style-type: disc;
-    color: #333;
-  }
-
-  .spec-section li {
-    margin-bottom: 6px;
-  }
-
-  .spec-section hr {
-    margin-top: 15px;
-    border: none;
-    height: 1px;
-    background-color: #ddd;
-  }
-
-  /* Resources Section */
-  .resource-buttons {
-    margin-top: 10px;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 15px;
-    margin-bottom: 60px;
-  }
-
-  .download-btn {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    background-color: #f1f8fb;
-    color: #01667D;
-    font-size: 14px;
-    padding: 16px 12px;
-    width: 120px;
-    height: 100px;
-    text-align: center;
-    text-decoration: none;
-    border-radius: 0px;
-    border: 1px solid #d1e7ee;
-    transition: all 0.3s ease;
-  }
-
-  .download-btn:hover {
-    background-color: #e6f4f9;
-    box-shadow: 0 0 8px rgba(0, 102, 125, 0.2);
-  }
-
-  .download-btn .icon {
-    font-size: 24px;
-    margin-bottom: 6px;
-  }
-
-  /* Accessories Section */
-  .accessory-grid {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 20px;
-    margin-top: 40px;
-    justify-content: center;
+    max-height: none;
   }
 
   .accessory-card {
-    display: flex;
-    align-items: center;
-    width: calc(33.333% - 20px);
-    background: #f9f9f9;
-    border: 1px solid #ccc;
-    border-radius: 6px;
-    padding: 10px;
-    gap: 10px;
-    min-width: 250px;
+    width: 100%;
   }
 
-  .accessory-card img {
-    width: 70px;
-    height: 70px;
-    object-fit: cover;
-    border-radius: 4px;
+  .nav-btn {
+    padding: 6px 10px;
+    font-size: 16px;
   }
 
-  @media screen and (max-width: 992px) {
-    .accessory-card {
-      width: calc(50% - 20px);
-    }
+  .thumbnail {
+    width: 60px;
+    height: 45px;
   }
+}
 
-  @media screen and (max-width: 600px) {
-    .columns {
-      flex-direction: column;
-    }
-
-    .menu-column,
-    .detail-column {
-      width: 100%;
-      max-width: none;
-      height: auto;
-    }
-
-    .detail-column {
-      max-height: none;
-    }
-
-    .accessory-card {
-      width: 100%;
-    }
-  }
 `}</style>
 
     </div>
