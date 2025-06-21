@@ -1,5 +1,6 @@
 import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
+import { ChevronRight } from "lucide-react";
 import PTZGROUPCAMERA from "../assets/images/nexyos/PTZGROUPCAMERA.png";
 
 import BannerProduct from "./BannerProduct";
@@ -60,7 +61,10 @@ const CategoryPage = () => {
                     alt={item.sub_category}
                     className="card-img"
                   />
-                  <h2 className="card-title">{item.sub_category}</h2>
+                  <h2 className="card-title">{item.sub_category}
+                     
+  <ChevronRight className="arrow-icon" />
+</h2>
                 </div>
               ))}
             </div>
@@ -165,12 +169,22 @@ const CategoryPage = () => {
   margin-bottom: 10px;
 }
 
-
         .card-title {
-          font-size: 16px;
-          font-weight: 600;
-          color: #111827;
-        }
+  font-size: 16px;
+  font-weight: 600;
+  color: #111827;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+}
+
+.arrow-icon {
+  width: 18px;
+  height: 18px;
+  color: #01667D;
+  flex-shrink: 0;
+}
 
         @media (max-width: 1024px) {
           .layout {

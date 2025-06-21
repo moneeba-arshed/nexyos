@@ -14,7 +14,7 @@ const BannerProduct = () => {
         backgroundRepeat: "no-repeat",
         backgroundSize: "cover",
         width: "100%",
-        height: "100vh",
+        height: "80vh",
         display: "flex",
         alignItems: "center",
       }}
@@ -25,9 +25,7 @@ const BannerProduct = () => {
             Subcategories
           </h2>
           <p className="mt-4">
-            View numerous success stories from a range of industries that show
-            how Nexyos solutions have helped our customers overcome challenges
-            and achieve their goals.
+            Explore various solution categories where Nexyos has empowered clients across industries—helping them tackle complex challenges and drive meaningful results.
           </p>
         </div>
       </div>

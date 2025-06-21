@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import miniCAmeraGroup from "../assets/images/nexyos/miniCAmeraGroup.png"
+import { ChevronRight } from "lucide-react"; // ⬅️ Import the arrow icon
+import miniCAmeraGroup from "../assets/images/nexyos/miniCAmeraGroup.png";
 
 const Products = () => {
   const [categories, setCategories] = useState([]);
@@ -35,40 +36,84 @@ const Products = () => {
           {categories.map((item) => (
             <div key={item.id} className="card" onClick={() => navigate(`/category/${item.id}`)}>
               <img src={miniCAmeraGroup} alt={item.category} className="card-img" />
-              <h2 className="card-title">{item.category}</h2>
+              <h2 className="card-title">
+  {item.category}
+  <ChevronRight className="arrow-icon" />
+</h2>
+
             </div>
           ))}
         </div>
       )}
 
       <style>{`
-        .wrapper { background-color: white; min-height: 100vh; padding: 40px 20px; }
-        .title { font-size: 28px; text-align: center; margin-bottom: 30px; font-weight: bold; }
-        .loading { text-align: center; color: gray; }
-        .custom-grid { display: flex; flex-wrap: wrap; justify-content: center; max-width: 800px; margin: 0 auto; }
-       .card {
-  width: 220px;
-  margin: 10px;
-  background-color: #ffffff;
-  border: 2px solid #01667D;
-  text-align: center;
-  padding: 10px;
-  transition: 0.3s ease;
-  cursor: pointer;
+        .wrapper {
+          background-color: white;
+          min-height: 100vh;
+          padding: 40px 20px;
+        }
+        .title {
+          font-size: 28px;
+          text-align: center;
+          margin-bottom: 30px;
+          font-weight: bold;
+        }
+        .loading {
+          text-align: center;
+          color: gray;
+        }
+        .custom-grid {
+          display: flex;
+          flex-wrap: wrap;
+          justify-content: center;
+          max-width: 800px;
+          margin: 0 auto;
+        }
+        .card {
+          width: 220px;
+          margin: 10px;
+          background-color: #ffffff;
+          border: 2px solid #01667D;
+          text-align: center;
+          padding: 10px;
+          transition: 0.3s ease;
+          cursor: pointer;
+        }
+        .card:hover {
+          background-color: #f0f9ff;
+        }
+        .card-img {
+          width: 100%;
+          object-fit: cover;
+          height: 120px;
+          margin-bottom: 10px;
+        }
+        .card-title {
+  font-size: 16px;
+  font-weight: 600;
+  color: #111827;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
 }
 
-        .card:hover { background-color: #f0f9ff; }
-       .card-img {
-  width: 100%;
-object-fit: cover;
-height: 120px;
-  margin-bottom: 10px;
+.arrow-icon {
+  width: 18px;
+  height: 18px;
+  color: #01667D;
+  flex-shrink: 0;
 }
 
-        .card-title { font-size: 16px; font-weight: 600; color: #111827; }
         @media (max-width: 768px) {
-          .custom-grid { flex-direction: column; align-items: center; }
-          .card { width: 100%; max-width: 90%; }
+          .custom-grid {
+            flex-direction: column;
+            align-items: center;
+          }
+          .card {
+            width: 100%;
+            max-width: 90%;
+          }
         }
       `}</style>
     </div>
