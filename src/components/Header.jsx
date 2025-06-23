@@ -9,6 +9,7 @@ import Dropdown from "rsuite/Dropdown";
 import "rsuite/dist/rsuite.min.css";
 import Mega from "./Mega";
 const Header = () => {
+  
   const [scroll, setScroll] = useState(false);
   const [categories, setCategories] = useState([]);
   const [subCategoriesMap, setSubCategoriesMap] = useState({});

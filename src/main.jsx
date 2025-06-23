@@ -1,11 +1,20 @@
-import { StrictMode } from 'react'
-import { createRoot } from 'react-dom/client'
-import App from './App.jsx'
-// import './index.css'
+import { StrictMode } from 'react';
+import { createRoot } from 'react-dom/client';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import App from './App.jsx';
+import Login from './pages/Login.jsx';
+import Signup from './pages/Signup.jsx';
+import ProtectedRoute from './components/ProtectedRoute.jsx';
+import { ToastContainer } from 'react-toastify';
+
+// CSS Imports (your existing list)
 import "bootstrap/dist/js/bootstrap.bundle.min";
 import 'select2/dist/js/select2.min.js';
-import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import './App.scss';
+import './index.css';
+
+// Your existing long CSS imports (keeping them as-is)
 import '../src/style/Home/_flash-sales.css';
 import '../src/style/Home/_newsletter.css';
 import '../src/style/Home/_offer.css';
@@ -78,8 +87,6 @@ import '../src/style/detailpage.css';
 import '../src/style/Hot.css';
 import '../src/style/page.css';
 import '../src/style/pagecss.css';
-import '../src/style/ParentSubCategories.module.css';
-import '../src/style/PartnerProgram.module.css';
 import '../src/style/ProductsPage.css';
 import '../src/style/ProjectRegistration.module.css';
 import '../src/style/SearchBar.module.css';
@@ -92,10 +99,23 @@ import '../src/style/css/jquery-ui.css';
 import '../src/style/css/main.css';
 import '../src/style/css/select2.min.css';
 import '../src/style/css/slick.css';
-import './App.scss';
-import './index.css'
+
 createRoot(document.getElementById('root')).render(
   <StrictMode>
-    <App />
-  </StrictMode>,
-)
+    <BrowserRouter>
+      <Routes>
+        <Route path="/login" element={<Login />} />
+        <Route path="/signup" element={<Signup />} />
+        <Route
+          path="/*"
+          element={
+            <ProtectedRoute>
+              <App />
+            </ProtectedRoute>
+          }
+        />
+      </Routes>
+      <ToastContainer />
+    </BrowserRouter>
+  </StrictMode>
+);
