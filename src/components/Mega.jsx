@@ -36,7 +36,7 @@ const Mega = () => {
     fetchAllData();
   }, []);
 
-  // Set the first subcategory item as active on category hover
+  // Set active category and default subcategory on hover
   const handleCategoryHover = (categoryId) => {
     setActiveCategory(categoryId);
     setActiveSubCategory(subCategoriesMap[categoryId] ? subCategoriesMap[categoryId][0].id : null); // Set first subcategory as active
