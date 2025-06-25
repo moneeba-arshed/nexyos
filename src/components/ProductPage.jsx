@@ -1,15 +1,18 @@
-import React, { useState } from "react";
+import  { useState } from "react";
 import { Link } from "react-router-dom";
+import { useEffect } from "react";
 import miniCAmeraGroup from "../assets/images/nexyos/miniCAmeraGroup.png"
 
 
 const ProductPage = () => {
+
   const products = Array.from({ length: 34 }, (_, i) => ({
     id: i + 1,
     title: `Product ${i + 1}`,
     resolution: `${2 + (i % 4) * 2} MP`,
     image: miniCAmeraGroup,
   }));
+const [showMobileFilter, setShowMobileFilter] = useState(false);
 
   const [openSections, setOpenSections] = useState({
     subseries: true,
@@ -31,12 +34,40 @@ const ProductPage = () => {
   const toggleSection = (section) => {
     setOpenSections((prev) => ({ ...prev, [section]: !prev[section] }));
   };
+  useEffect(() => {
+  const handleResize = () => {
+    if (window.innerWidth >= 768) {
+      setShowMobileFilter(false); // auto-close on medium+
+    }
+  };
+
+  window.addEventListener("resize", handleResize);
+  return () => window.removeEventListener("resize", handleResize);
+}, []);
 
   return (
     <div className="container">
       <h1 className="title">Product Categories</h1>
+ <button
+  className="filter-toggle"
+  onClick={() => setShowMobileFilter((prev) => !prev)}
+>
+  {showMobileFilter ? "✖ Close Filters" : "☰ Filter"}
+</button>
+
       <div className="main">
-        <div className="filter">
+
+
+<div className={`filter ${showMobileFilter ? "show" : ""}`}>
+{showMobileFilter && (
+  <button
+    className="filter-close-btn"
+    onClick={() => setShowMobileFilter(false)}
+  >
+    ✖
+  </button>
+)}
+
           <div className="filter-group">
             <h3 onClick={() => toggleSection("subseries")}>
               {openSections.subseries ? "−" : "+"} Subseries
@@ -417,127 +448,189 @@ const ProductPage = () => {
 
       </div>
 
-      <style>{`
-        * {
-          box-sizing: border-box;
-        }
+ <style>{`
+  * {
+    box-sizing: border-box;
+  }
 
-        .title {
-          font-size: 28px;
-          text-align: center;
-          margin-bottom: 30px;
-          font-weight: bold;
-        }
+  .title {
+    font-size: 28px;
+    text-align: center;
+    margin-bottom: 30px;
+    font-weight: bold;
+  }
 
-        .container {
-          font-family: Arial, sans-serif;
-          padding: 20px;
-        }
+  .container {
+    font-family: Arial, sans-serif;
+    padding: 20px;
+  }
 
-        .main {
-          display: flex;
-          justify-content: space-between;
-          gap: 20px;
-        }
+  .main {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+  }
 
-        .filter {
-          width: 250px;
-          background-color: #f8f9fa;
-          border: 1px solid #ccc;
-          border-radius: 8px;
-          padding: 15px;
-        }
+  .filter {
+    width: 250px;
+    background-color: #f8f9fa;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    padding: 15px;
+  }
 
-        .filter-group {
-          margin-bottom: 20px;
-          text-align: left;
-        }
+  .filter-group {
+    margin-bottom: 20px;
+    text-align: left;
+  }
 
-        .filter-group h3 {
-          margin: 0;
-          font-size: 16px;
-          cursor: pointer;
-          color: #333;
-          user-select: none;
-        }
+  .filter-group h3 {
+    margin: 0;
+    font-size: 16px;
+    cursor: pointer;
+    color: #333;
+    user-select: none;
+  }
 
-        .filter-options {
-          margin-top: 10px;
-          padding-left: 10px;
-          text-align: left;
-        }
+  .filter-options {
+    margin-top: 10px;
+    padding-left: 10px;
+    text-align: left;
+  }
 
-        .filter-options label {
-          display: block;
-          font-size: 14px;
-          margin-bottom: 6px;
-          color: #333;
-        }
+  .filter-options label {
+    display: block;
+    font-size: 14px;
+    margin-bottom: 6px;
+    color: #333;
+  }
 
-        .product-grid {
-          flex: 1;
-          display: grid;
-          grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-          gap: 20px;
-        }
+  .product-grid {
+    flex: 1;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 20px;
+  }
 
-        .card {
-          border: 1px solid #ddd;
-          border-radius: 8px;
-          padding: 16px;
-          text-align: center;
-          background-color: #fff;
-          transition: box-shadow 0.2s ease;
-        }
+  .card {
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 16px;
+    text-align: center;
+    background-color: #fff;
+    transition: box-shadow 0.2s ease;
+  }
 
-        .card:hover {
-          box-shadow: 0 0 10px rgba(0,0,0,0.15);
-        }
+  .card:hover {
+    box-shadow: 0 0 10px rgba(0,0,0,0.15);
+  }
 
-        .card img {
-  width: 100%;
-  height: 160px; /* Adjust height as needed */
-  object-fit: cover; /* Or "contain" if you want full image without crop */
-  border-radius: 6px;
-  margin-bottom: 10px;
-}
+  .card img {
+    width: 100%;
+    height: 160px;
+    object-fit: cover;
+    border-radius: 6px;
+    margin-bottom: 10px;
+  }
 
+  .card h4 {
+    margin: 8px 0;
+    font-size: 16px;
+    color: #222;
+  }
 
-        .card h4 {
-          margin: 8px 0;
-          font-size: 16px;
-          color: #222;
-        }
+  .card p {
+    font-size: 14px;
+    color: #555;
+  }
 
-        .card p {
-          font-size: 14px;
-          color: #555;
-        }
+  .card button {
+    margin-top: 10px;
+    padding: 6px 10px;
+    background-color: #01667D;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
 
-        .card button {
-          margin-top: 10px;
-          padding: 6px 10px;
-          background-color: #01667D;
-          color: white;
-          border: none;
-          border-radius: 4px;
-          cursor: pointer;
-        }
+  .card button:hover {
+    background-color: #2E535C;
+  }
 
-        .card button:hover {
-          background-color: #2E535C;
-          
-        }
+  .filter-toggle {
+    display: none;
+    margin-bottom: 10px;
+    padding: 8px 12px;
+    background-color: #01667D;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    font-size: 16px;
+    cursor: pointer;
+  }
 
-        @media screen and (max-width: 768px) {
-          .main {
-            flex-direction: column-reverse;
-          }
-          .filter {
-            width: 100%;
-          }
-        }
-      `}</style>
+  @media screen and (max-width: 1024px) {
+    .filter-toggle {
+      display: block;
+    }
+
+    .filter {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 280px;
+      height: 100%;
+      background-color: #f8f9fa;
+      border-right: 1px solid #ccc;
+      border-radius: 0;
+      padding: 20px;
+      transform: translateX(-100%);
+      transition: transform 0.3s ease-in-out;
+      z-index: 1000;
+      overflow-y: auto;
+    }
+
+    .filter.show {
+      transform: translateX(0);
+    }
+
+    .filter-close-btn {
+      position: absolute;
+      top: 10px;
+      right: 15px;
+      font-size: 24px;
+      background: transparent;
+      border: none;
+      color: #333;
+      cursor: pointer;
+    }
+
+    .main {
+      flex-direction: column-reverse;
+    }
+  }
+
+  @media screen and (min-width: 1025px) {
+    .filter {
+      position: relative;
+      transform: none !important;
+      width: 250px;
+      height: auto;
+    }
+
+    .filter-toggle {
+      display: none;
+    }
+  }
+
+  @media screen and (max-width: 768px) {
+    .filter {
+      width: 100%;
+    }
+  }
+`}</style>
+
     </div>
   );
 };

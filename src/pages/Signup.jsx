@@ -1,6 +1,10 @@
 import { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
-import Loginn from "../assets/images/nexyos/Loginn.jpg"
+import Loginn from "../assets/images/nexyos/Loginn.jpg";
+
+// ✅ MUI Components
+import Snackbar from '@mui/material/Snackbar';
+import Alert from '@mui/material/Alert';
 
 const Signup = () => {
   const [user, setUser] = useState({
@@ -14,19 +18,39 @@ const Signup = () => {
     verificationCode: "",
     partnerPortal: "",
     subscribe: false,
-    agree: false
+    agree: false,
   });
+
+  const [snack, setSnack] = useState({ open: false, message: "", severity: "info" });
   const navigate = useNavigate();
+
+  const handleClose = () => {
+    setSnack({ ...snack, open: false });
+  };
 
   const handleSubmit = (e) => {
     e.preventDefault();
+
     if (!user.agree) {
-      alert("You must agree to the Privacy Policy.");
+      setSnack({
+        open: true,
+        message: "You must agree to the Privacy Policy.",
+        severity: "error",
+      });
       return;
     }
+
     localStorage.setItem("user", JSON.stringify(user));
-    alert("Account created successfully!");
-    navigate("/login");
+
+    setSnack({
+      open: true,
+      message: "Account created successfully!",
+      severity: "success",
+    });
+
+    setTimeout(() => {
+      navigate("/login");
+    }, 1500); // wait before navigation
   };
 
   return (
@@ -60,11 +84,11 @@ const Signup = () => {
           <input type="password" placeholder="Password" value={user.password} onChange={(e) => setUser({ ...user, password: e.target.value })} required />
 
           <div className="radio-group">
-            <label>
+            <label className="labell">
               <input type="radio" name="partnerPortal" value="yes" onChange={(e) => setUser({ ...user, partnerPortal: e.target.value })} required />
               Yes, register with Nexyos-Partner Pro
             </label>
-            <br/>
+
             <label>
               <input type="radio" name="partnerPortal" value="no" onChange={(e) => setUser({ ...user, partnerPortal: e.target.value })} required />
               No, just register as official user
@@ -93,6 +117,18 @@ const Signup = () => {
         <img src={Loginn} alt="Signup Visual" />
       </div>
 
+      {/* ✅ Snackbar Alert */}
+      <Snackbar
+        open={snack.open}
+        autoHideDuration={3000}
+        onClose={handleClose}
+        anchorOrigin={{ vertical: "top", horizontal: "right" }}
+      >
+        <Alert onClose={handleClose} severity={snack.severity} variant="filled" sx={{ width: "100%" }}>
+          {snack.message}
+        </Alert>
+      </Snackbar>
+
       <style>{`
         .full-page {
           display: flex;
@@ -105,13 +141,13 @@ const Signup = () => {
           padding: 100px;
           background-color: #f9f9f9;
           overflow-y: auto;
-          scrollbar-width: none; /* Firefox */
-  -ms-overflow-style: none; /* IE 10+ */
-}
+          scrollbar-width: none;
+          -ms-overflow-style: none;
+        }
 
-.left-panel::-webkit-scrollbar {
-  display: none; /* Chrome, Safari, Opera */
-}
+        .left-panel::-webkit-scrollbar {
+          display: none;
+        }
 
         .right-panel {
           flex: 1.5;
@@ -124,7 +160,7 @@ const Signup = () => {
         .right-panel img {
           width: 100%;
           height: auto;
-          max-width: 800px;
+          max-width: 100%;
         }
 
         .title {
@@ -138,6 +174,10 @@ const Signup = () => {
           display: flex;
           flex-direction: column;
           gap: 12px;
+        }
+
+        .labell {
+          text-align: left;
         }
 
         input, select {
@@ -167,11 +207,24 @@ const Signup = () => {
           background-color: #01667D;
         }
 
+        .radio-group {
+          display: flex;
+          flex-direction: column;
+          align-items: flex-start;
+          gap: 10px;
+        }
+
+        .radio-option {
+          display: flex;
+          align-items: center;
+          gap: 8px;
+        }
+
         .radio-group label,
         .checkbox-label {
           font-size: 14px;
           margin: 5px 0;
-          text-align:left;
+          text-align: left;
         }
 
         .redirect-text {

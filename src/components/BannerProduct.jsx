@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import "./BannerProduct.css"; // Make sure to import the CSS
 
 const BannerProduct = () => {
   const bannerImage =
@@ -9,14 +10,7 @@ const BannerProduct = () => {
     <div
       className="BannerPSCS"
       style={{
-        backgroundImage: ` url(${bannerImage})`,
-        backgroundPosition: "center",
-        backgroundRepeat: "no-repeat",
-        backgroundSize: "cover",
-        width: "100%",
-        height: "80vh",
-        display: "flex",
-        alignItems: "center",
+        backgroundImage: `url(${bannerImage})`,
       }}
     >
       <div className="container">
@@ -25,7 +19,9 @@ const BannerProduct = () => {
             Subcategories
           </h2>
           <p className="mt-4">
-            Explore various solution categories where Nexyos has empowered clients across industries—helping them tackle complex challenges and drive meaningful results.
+            Explore various solution categories where Nexyos has empowered
+            clients across industries—helping them tackle complex challenges and
+            drive meaningful results.
           </p>
         </div>
       </div>

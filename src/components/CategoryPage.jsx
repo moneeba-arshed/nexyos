@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import { ChevronRight } from "lucide-react";
 import PTZGROUPCAMERA from "../assets/images/nexyos/PTZGROUPCAMERA.png";
 
-import BannerProduct from "./BannerProduct";
+
 
 const CategoryPage = () => {
   const { id } = useParams();
@@ -31,49 +31,49 @@ const CategoryPage = () => {
 
   return (
     <>
+      <div className="wrapper">
+        <h1 className="title">Subcategories</h1>
 
-    <div className="wrapper">
-      <h1 className="title">Subcategories</h1>
+        <div className="layout">
+          {/* Left fixed card */}
+          <div className="left-panel">
+            <div className="left-card">
+              <h2 className="left-title">Main Category</h2>
+              <p className="left-desc">
+                You can add more details or image here if needed.
+              </p>
+            </div>
+          </div>
 
-      <div className="layout">
-        {/* Left fixed card */}
-        <div className="left-panel">
-          <div className="left-card">
-            <h2 className="left-title">Main Category</h2>
-            <p className="left-desc">
-              You can add more details or image here if needed.
-            </p>
+          {/* Right side subcategories */}
+          <div className="right-panel">
+            {loading ? (
+              <p className="loading">Loading...</p>
+            ) : subcategories.length === 0 ? (
+              <p className="loading">No subcategories found.</p>
+            ) : (
+              <div className="grid">
+                {subcategories.map((item) => (
+                  <div key={item.id} className="card">
+                    <img
+                      src={PTZGROUPCAMERA}
+                      alt={item.sub_category}
+                      className="card-img"
+                    />
+                    <h2 className="card-title">
+                      {item.sub_category}
+
+                      <ChevronRight className="arrow-icon" />
+                    </h2>
+                  </div>
+                ))}
+              </div>
+            )}
           </div>
         </div>
 
-        {/* Right side subcategories */}
-        <div className="right-panel">
-          {loading ? (
-            <p className="loading">Loading...</p>
-          ) : subcategories.length === 0 ? (
-            <p className="loading">No subcategories found.</p>
-          ) : (
-            <div className="grid">
-              {subcategories.map((item) => (
-                <div key={item.id} className="card">
-                  <img
-                    src={PTZGROUPCAMERA}
-                    alt={item.sub_category}
-                    className="card-img"
-                  />
-                  <h2 className="card-title">{item.sub_category}
-                     
-  <ChevronRight className="arrow-icon" />
-</h2>
-                </div>
-              ))}
-            </div>
-          )}
-        </div>
-      </div>
-
-      {/* Styles */}
-      <style>{`
+        {/* Styles */}
+        <style>{`
         .wrapper {
           background-color: white;
           min-height: 100vh;
@@ -97,16 +97,17 @@ const CategoryPage = () => {
           width: 260px;
         }
 
-        .left-card {
-          background-color: #f1f5f9;
-          border: 2px solid #01667D;
-          text-align: center;
-          padding: 30px 10px;
-          min-height: 600px;
-          display: flex;
-          flex-direction: column;
-          justify-content: center;
-        }
+ .left-card {
+  background-color: #f1f5f9;
+  border: 2px solid #01667D;
+  text-align: center;
+  padding: 30px 10px;
+  min-height: 600px; /* This stays for large screens */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
 
         .left-img {
           width: 80px;
@@ -136,16 +137,16 @@ const CategoryPage = () => {
           color: gray;
         }
 
+
 .grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-  gap: 0; /* Remove gap between cards */
-  padding: 0; /* Remove padding */
+  gap: 20px; /* ✅ Add spacing between cards */
+  padding: 10px;
   box-sizing: border-box;
-  justify-items: center;
- 
 }
 
+ 
 .card {
   width: 100%;
   background-color: #ffffff;
@@ -155,7 +156,6 @@ const CategoryPage = () => {
   transition: 0.3s ease;
   cursor: pointer;
   box-sizing: border-box;
-   margin:10px;
 }
 
         .card:hover {
@@ -187,22 +187,29 @@ const CategoryPage = () => {
 }
 
         @media (max-width: 1024px) {
-          .layout {
-            flex-direction: column;
-          }
+  .layout {
+    flex-direction: column;
+  }
 
-          .left-panel {
-            width: 100%;
-            margin-bottom: 20px;
-          }
+  .left-panel {
+    width: 100%;
+    margin-bottom: 20px;
+  }
 
-          .grid {
-            grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-            justify-items: center;
-          }
-        }
+  .left-card {
+  min-height: auto;
+  padding: 20px 10px;
+}
+
+
+  .grid {
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    justify-items: center;
+  }
+}
+
       `}</style>
-    </div>
+      </div>
     </>
   );
 };
