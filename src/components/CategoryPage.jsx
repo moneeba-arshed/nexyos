@@ -3,8 +3,6 @@ import { useEffect, useState } from "react";
 import { ChevronRight } from "lucide-react";
 import PTZGROUPCAMERA from "../assets/images/nexyos/PTZGROUPCAMERA.png";
 
-
-
 const CategoryPage = () => {
   const { id } = useParams();
   const [subcategories, setSubcategories] = useState([]);
@@ -176,7 +174,7 @@ const CategoryPage = () => {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 6px;
+  gap: 6;
 }
 
 .arrow-icon {
