@@ -95,3 +95,7 @@ button:focus-visible {
 }
 
                   /* header */
+.third-level li{
+  justify-items: center;
+  text-align: center;
+}

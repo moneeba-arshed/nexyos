@@ -17,6 +17,7 @@
     "animate.css": "^4.1.1",
     "axios": "^1.10.0",
     "bootstrap": "^5.3.6",
+    "framer-motion": "^12.19.1",
     "gsap": "^3.13.0",
     "jquery": "^3.7.1",
     "lucide-react": "^0.522.0",
@@ -33,7 +34,6 @@
     "react-toastify": "^11.0.5",
     "rsuite": "^5.82.0",
     "select2": "^4.0.13",
-    "slick-carousel": "^1.8.1",
     "swiper": "^11.2.8",
     "swiper-react": "^1.0.0"
   },

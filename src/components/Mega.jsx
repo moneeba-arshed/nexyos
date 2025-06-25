@@ -8,7 +8,8 @@ const Mega = () => {
   const [subCategoriesMap, setSubCategoriesMap] = useState({});
   const [activeCategory, setActiveCategory] = useState(null); // Track the hovered category
   const [activeSubCategory, setActiveSubCategory] = useState(null); // Track the active subcategory
-
+const [thirdLevelMap, setThirdLevelMap] = useState({});
+ 
   useEffect(() => {
     const fetchAllData = async () => {
       try {
@@ -36,16 +37,40 @@ const Mega = () => {
     fetchAllData();
   }, []);
 
+ // Handle hover on subcategory items to set the active subcategory
+const handleSubCategoryHover = async (subCategoryId) => {
+  setActiveSubCategory(subCategoryId);
+
+  // Avoid refetching if already fetched
+  if (thirdLevelMap[activeCategory]?.[subCategoryId]) return;
+
+  try {
+    const res = await fetch(
+      `https://portal.nexyos.com/api/product/third_level_cat/${activeCategory}/${subCategoryId}`
+    );
+    const data = await res.json();
+console.log("sub-sub-data",data)
+    setThirdLevelMap((prev) => ({
+      ...prev,
+      [activeCategory]: {
+        ...(prev[activeCategory] || {}),
+        [subCategoryId]: data,
+      },
+    }));
+  } catch (error) {
+    console.error("Error fetching third-level subcategories:", error);
+  }
+};
+
+
   // Set active category and default subcategory on hover
   const handleCategoryHover = (categoryId) => {
     setActiveCategory(categoryId);
     setActiveSubCategory(subCategoriesMap[categoryId] ? subCategoriesMap[categoryId][0].id : null); // Set first subcategory as active
   };
 
-  // Handle hover on subcategory items to set the active subcategory
-  const handleSubCategoryHover = (subCategoryId) => {
-    setActiveSubCategory(subCategoryId);
-  };
+ 
+
 
   // Handle mouse leave to reset the active subcategory to the first one
   const handleMouseLeave = () => {
@@ -90,6 +115,7 @@ const Mega = () => {
                         className={sub.id === activeSubCategory ? 'active' : ''} // Apply active class to the first subcategory item
                         onMouseEnter={() => handleSubCategoryHover(sub.id)} // Set the active subcategory on hover
                       >
+                      <img src={sub.image}  alt=''/>
                         <Link to="#">{sub.sub_category}</Link>
                       </li>
                     ))
@@ -101,8 +127,27 @@ const Mega = () => {
 
               {/* You can keep your static sections here for Home1 */}
               <div className="nav-column-sub-sub-category">
-                <h3>Sub Categories of sub categories</h3>
-              </div>
+  <ul className='third-level'>
+    {activeCategory &&
+    activeSubCategory &&
+    thirdLevelMap[activeCategory]?.[activeSubCategory] &&
+    thirdLevelMap[activeCategory][activeSubCategory].length > 0 ? (
+      thirdLevelMap[activeCategory][activeSubCategory].map((item) => (
+          <li key={item.id}  >
+      <img
+        src={`https://portal.nexyos.com/${item.image}`}
+        alt={item.third_level}
+        style={{ width: "50px", marginRight: "8px" }}
+      />
+      {item.third_level}
+    </li>
+      ))
+    ) : (
+      <li>No sub-sub-categories</li>
+    )}
+  </ul>
+</div>
+
             </div>
           </li>
         </ul>
