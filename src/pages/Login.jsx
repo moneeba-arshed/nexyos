@@ -1,10 +1,16 @@
 import { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
-import Loginn from "../assets/images/nexyos/Loginn.jpg"
+import Loginn from "../assets/images/nexyos/Loginn.jpg";
+
+// ✅ MUI Components
+import Alert from '@mui/material/Alert';
+import Snackbar from '@mui/material/Snackbar';
 
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [snack, setSnack] = useState({ open: false, message: "", severity: "info" });
+
   const navigate = useNavigate();
 
   const handleLogin = (e) => {
@@ -12,17 +18,26 @@ const Login = () => {
     const storedUser = JSON.parse(localStorage.getItem("user"));
 
     if (storedUser && storedUser.email === email && storedUser.password === password) {
-      localStorage.setItem("loggedIn", "true");
-      navigate("/");
+      setSnack({ open: true, message: "Login successful! Redirecting...", severity: "success" });
+
+      setTimeout(() => {
+        localStorage.setItem("loggedIn", "true");
+        navigate("/");
+      }, 1500); // ✅ wait for message before redirecting
     } else {
-      alert("Incorrect email or password");
+      setSnack({ open: true, message: "Incorrect email or password", severity: "error" });
     }
+  };
+
+  const handleClose = () => {
+    setSnack({ ...snack, open: false });
   };
 
   return (
     <div className="full-page">
       <div className="left-panel">
         <h2 className="title">Welcome</h2>
+
         <form onSubmit={handleLogin} className="login-form">
           <input
             type="email"
@@ -40,8 +55,8 @@ const Login = () => {
           />
           <button type="submit">Sign In</button>
         </form>
-        <div className="bottom-text">
 
+        <div className="bottom-text">
           <p>
             New to Nexyos? <Link to="/signup">Create Account</Link>
           </p>
@@ -51,6 +66,18 @@ const Login = () => {
       <div className="right-panel">
         <img src={Loginn} alt="Login Visual" />
       </div>
+
+      {/* ✅ Snackbar Alert */}
+      <Snackbar
+        open={snack.open}
+        autoHideDuration={3000}
+        onClose={handleClose}
+        anchorOrigin={{ vertical: "top", horizontal: "right" }}
+      >
+        <Alert onClose={handleClose} severity={snack.severity} variant="filled" sx={{ width: '100%' }}>
+          {snack.message}
+        </Alert>
+      </Snackbar>
 
       <style>{`
         .full-page {
@@ -77,7 +104,7 @@ const Login = () => {
         .right-panel img {
           width: 100%;
           height: auto;
-          max-width: 800px;
+          max-width: 100%;
         }
 
         .title {
@@ -117,7 +144,7 @@ const Login = () => {
         }
 
         button:hover {
-          background-color: #01667D;
+          background-color: #014e61;
         }
 
         .bottom-text {
@@ -125,7 +152,6 @@ const Login = () => {
           font-size: 14px;
         }
 
-       
         .bottom-text a {
           color: #007bff;
           text-decoration: none;
