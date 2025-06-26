@@ -1,85 +1,120 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { GoArrowDown, GoArrowUp } from "react-icons/go";
+import { motion, AnimatePresence } from "framer-motion";
+import CCTVSurveillanceCameras from '../assets/images/nexyos/CCTVSurveillanceCameras.jpg'
+import ProGROUPCAMERA from '../assets/images/nexyos/ProGROUPCAMERA.png'
+import PTZGROUPCAMERA from '../assets/images/nexyos/PTZGROUPCAMERA.png'
+import panaromic from '../assets/images/nexyos/panaromic.png'
+import CCTVSurveillanceCamerasBg from '../assets/images/nexyos/CCTVSurveillanceCamerasBg.jpg'
+const coffeeItems = [
+  {
+    image: CCTVSurveillanceCameras,
+    title: 'CCTVSurveillanceCameras',
+    para: `There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable.`,
+  },
+  {
+    image: ProGROUPCAMERA,
+    title: 'ProGROUPCAMERA',
+      para: `There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable.`,
+  },
+  {
+    image: PTZGROUPCAMERA,
+    title: 'PTZGROUPCAMERA',
+      para: `There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable.`,
+  },
+  {
+    image: CCTVSurveillanceCamerasBg,
+    title: 'CCTVSurveillanceCamerasBg',
+      para: `There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable.`,
+  },
+  {
+    image: panaromic,
+    title: 'panaromic',
+      para: `There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable.`,
+  },
+];
 
 const SliderTest = () => {
-  
-const coffeeImages = [
-  'https://static.vecteezy.com/system/resources/thumbnails/025/282/026/small/stock-of-mix-a-cup-coffee-latte-more-motive-top-view-foodgraphy-generative-ai-photo.jpg',
-  'https://static.vecteezy.com/system/resources/thumbnails/023/513/862/small_2x/hot-coffee-cup-with-coffee-beans-wallpaper-coffee-photo.jpg',
-  'https://corkframes.com/cdn/shop/articles/Corkframes_Coffee_Guide_520x500_422ebe38-4cfa-42b5-a266-b9bfecabaf30.jpg?v=1734598727',
-  'https://www.shutterstock.com/shutterstock/photos/2500190129/display_1500/stock-photo-coffee-mug-and-grinded-coffee-beans-concept-photography-isolated-on-white-background-2500190129.jpg',
-  'https://www.uclahealth.org/sites/default/files/styles/landscape_16x9_030000_1200x675/public/images/c8/green-cup-and-mushrooms.jpg?f=5dc6346c&itok=XDaPx2MN',
-];
+  const [index, setIndex] = useState(0);
+
+  const handleNext = () => {
+    setIndex(prev => (prev + 1) % coffeeItems.length);
+  };
+
+  const handlePrev = () => {
+    setIndex(prev => (prev - 1 + coffeeItems.length) % coffeeItems.length);
+  };
+
   return (
-    <div className="relative d-flex items-center justify-content-center min-h-screen">
-      {/* Image Column */}
-      <div className="w-full col-5 ">
-        <img
-          src="https://t4.ftcdn.net/jpg/01/16/61/93/360_F_116619399_YA611bKNOW35ffK0OiyuaOcjAgXgKBui.jpg"
-          alt="Placeholder"
-          className="w-full h-auto rounded-0"
-        />
+    <div className="relative flex items-center min-h-screen">
+      {/* Background/Main Image */}
+      <div className="w-1/2 h-screen">
+        <AnimatePresence mode="wait">
+          <motion.img
+            key={coffeeItems[index].image}
+            src={coffeeItems[index].image}
+            initial={{ opacity: 0, y: -50 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: 50 }}
+            transition={{ duration: 0.6 }}
+            className="w-full object-cover rounded-none
+"
+            style={{height:'100vh',borderRadius:'0px'}}/>
+        </AnimatePresence>
       </div>
- {/* Vertical Circles in the Center */}
-      <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 flex flex-col gap-4 z-10">
-        {coffeeImages.map((img, index) => (
+
+      {/* Vertical Circles in Center */}
+      <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 flex flex-col gap-4 z-10 justify-center items-center">
+        {coffeeItems.map((item, i) => (
           <div
-            key={index}
-            className={` rounded-full overflow-hidden border-4 ${
-              index === 0 ? 'border-white' : 'border-transparent'
+            key={i}
+            className={`rounded-full overflow-hidden border-4 transition-all duration-300 ${
+              i === index ? 'border-[#014E61] scale-110' : 'opacity-40'
             }`}
-            style={{width:'60%'}}
+            style={{ width: '64px', height: '64px' }}
           >
-            <img src={img} alt={`coffee-${index}`} className="object-cover rounded-full w-68 h-28"/>
+            <img src={item.image} alt={`coffee-${i}`} className="w-full h-60 object-cover " />
           </div>
         ))}
       </div>
+
       {/* Text Column */}
-      <div className="w-full col-5 p-4">
-        
-    <div className="d-flex align-items-center">
-      <div className="position-relative" style={{ width: '64px', height: '64px' }}>
-        {/* Diagonal Line */}
-        <div
-          style={{
-            position: 'absolute',
-            top: '50%',
-            left: '50%',
-            width: '100%',
-            borderTop: '2px solid #c69c6d',
-            transform: 'translate(-50%, -50%) rotate(45deg)',
-          }}
-        ></div>
+      <div className="w-1/2 h-screen flex justify-start px-72">
+        <div className="flex justify-start flex-col">
+          {/* Dial */}
+          <div className="relative w-90 h-90 ">
+            <div className="absolute top-1/2 left-1/2 w-60 border-t-2 border-[#014E61] transform -translate-x-1/2 -translate-y-1/2 rotate-45"></div>
+            <div className="absolute w-full top-1/4 left-1/2 transform -translate-x-1/2 text-sm flex justify-end">0{index + 1}</div>
+            <div className="absolute w-full bottom-1/4 left-1/2 transform -translate-x-1/2 text-sm flex justify-start">05</div>
+          </div>
 
-        {/* Top Number */}
-        <div
-          style={{
-            position: 'absolute',
-            top: '25%',
-            left: '50%',
-            transform: 'translate(-50%, -50%)',
-            fontSize: '0.875rem', // equivalent to text-sm
-            color: 'black',
-          }}
-        >
-          02
-        </div>
+          <div className="flex justify-start flex-col space-y-6" style={{ height: '300px' }}>
+  {/* Title + Para animation block */}
+  <AnimatePresence mode="wait">
+    <motion.div
+      key={coffeeItems[index].title}
+      initial={{ opacity: 0, y: 40 }}
+      animate={{ opacity: 1, y: 0 }}
+      exit={{ opacity: 0, y: -40 }}
+      transition={{ duration: 0.6 }}
+    >
+      <h2 className="text-4xl font-bold text-start">
+        {coffeeItems[index].title}
+      </h2>
+      <p className="text-base text-start mt-4">
+        {coffeeItems[index].para}
+      </p>
+    </motion.div>
+  </AnimatePresence>
+</div>
 
-        {/* Bottom Number */}
-        <div
-          style={{
-            position: 'absolute',
-            bottom: '25%',
-            left: '50%',
-            transform: 'translate(-50%, 50%)',
-            fontSize: '0.875rem',
-            color: 'black',
-          }}
-        >
-          05
         </div>
       </div>
-    </div>
-    <h2 className='justify-contents-start text-start '>Latte</h2>
+
+      {/* Arrow Controls */}
+      <div className="absolute right-8 top-1/2 -translate-y-1/2 flex flex-col gap-4 z-20">
+        <button onClick={handlePrev}><GoArrowUp size={32} color="black" /></button>
+        <button onClick={handleNext}><GoArrowDown size={32} color="black" /></button>
       </div>
     </div>
   );
