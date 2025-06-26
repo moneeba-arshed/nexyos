@@ -118,4 +118,25 @@ button:focus-visible {
   background-color: #000;
   opacity: 1;
 }
-
+.object-cover{
+  height: 100vh;
+}
+.vertical-image{
+  transform: translate(-50%, -50%);
+flex-direction: column;
+}
+.slider-arrow{
+    transform: translate(0%, 70%);
+}
+@media screen and (max-width: 480px){
+.object-cover{
+  height: max-content;
+}
+.vertical-image{
+  transform: translate(-50%, -119%);
+flex-direction: row;
+}
+.slider-arrow{
+    transform: translate(29%, -6%);
+}
+}

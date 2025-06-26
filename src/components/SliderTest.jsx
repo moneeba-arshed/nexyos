@@ -46,9 +46,9 @@ const SliderTest = () => {
   };
 
   return (
-    <div className="relative flex items-center min-h-screen">
+    <div className="relative flex items-center min-h-screen flex-col md:flex-row">
       {/* Background/Main Image */}
-      <div className="w-1/2 h-screen">
+      <div className="md:w-1/2 w-full h-[50vh] md:h-screen">
         <AnimatePresence mode="wait">
           <motion.img
             key={coffeeItems[index].image}
@@ -59,12 +59,13 @@ const SliderTest = () => {
             transition={{ duration: 0.6 }}
             className="w-full object-cover rounded-none
 "
-            style={{height:'100vh',borderRadius:'0px'}}/>
+            style={{borderRadius:'0px'}}/>
         </AnimatePresence>
       </div>
 
       {/* Vertical Circles in Center */}
-      <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 flex flex-col gap-4 z-10 justify-center items-center">
+      <div className="absolute left-1/2 top-1/2
+flex gap-4 z-10 justify-center items-center vertical-image">
         {coffeeItems.map((item, i) => (
           <div
             key={i}
@@ -79,7 +80,7 @@ const SliderTest = () => {
       </div>
 
       {/* Text Column */}
-      <div className="w-1/2 h-screen flex justify-start px-72">
+      <div className="md:w-1/2 w-full h-[50vh] md:h-screen flex justify-start px-72 ">
         <div className="flex justify-start flex-col">
           {/* Dial */}
           <div className="relative w-90 h-90 ">
@@ -112,7 +113,7 @@ const SliderTest = () => {
       </div>
 
       {/* Arrow Controls */}
-      <div className="absolute right-8 top-1/2 -translate-y-1/2 flex flex-col gap-4 z-20">
+      <div className="absolute right-8 top-1/2 flex flex-col gap-4 z-20 slider-arrow">
         <button onClick={handlePrev}><GoArrowUp size={32} color="black" /></button>
         <button onClick={handleNext}><GoArrowDown size={32} color="black" /></button>
       </div>
