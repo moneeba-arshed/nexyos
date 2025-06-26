@@ -95,3 +95,27 @@ button:focus-visible {
 }
 
                   /* header */
+.third-level li{
+  justify-items: center;
+  text-align: center;
+}
+.third-level{
+  justify-content: left;
+  justify-items: left;
+}
+
+.swiper-pagination-bullet {
+  width: 16px;
+  height: 16px;
+  border-radius: 9999px;
+  background-color: #d3b89f;
+  margin: 0.5rem 0;
+  opacity: 0.5;
+  transition: all 0.3s ease;
+}
+
+.swiper-pagination-bullet-active {
+  background-color: #000;
+  opacity: 1;
+}
+
