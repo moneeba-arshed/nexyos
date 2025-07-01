@@ -33,13 +33,8 @@ const Products = () => {
         <p className="loading">No categories found.</p>
       ) : (
         <div className="custom-grid">
-          {categories.map((item, index) => (
-            <div
-              key={item.id}
-              className="card fade-in"
-              style={{ animationDelay: `${index * 0.1}s` }}
-              onClick={() => navigate(`/category/${item.id}`)}
-            >
+          {categories.map((item) => (
+            <div key={item.id} className="card" onClick={() => navigate(`/category/${item.id}`)}>
               <img src={miniCAmeraGroup} alt={item.category} className="card-img" />
               <h2 className="card-title">{item.category}
                  <ChevronRight className="arrow-icon" /></h2>

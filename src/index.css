@@ -118,4 +118,124 @@ button:focus-visible {
   background-color: #000;
   opacity: 1;
 }
+.object-cover{
+  height: 100vh;
+}
+.vertical-image{
+  transform: translate(-50%, -50%);
+flex-direction: column;
+}
+.slider-arrow{
+    transform: translate(0%, 70%);
+}
+@media screen and (max-width: 480px){
+.object-cover{
+  height: max-content;
+}
+.vertical-image{
+  transform: translate(-50%, -119%);
+flex-direction: row;
+}
+.slider-arrow{
+    transform: translate(29%, -6%);
+}
+}
+                      /* Slider Product */
+ .slideC {
+  position: relative;
+  perspective: 1000px;
+  transform-style: preserve-3d;
+  width: 362px;
+  height: 272px;
+  margin: 0 auto;
+}
 
+.slide {
+  width: 362px;
+  height: 272px;
+  transition: transform 500ms ease 0s, opacity 500ms ease 0s,
+    visibility 500ms ease 0s;
+  position: absolute;
+  top: 0;
+  border-radius: 12px;
+}
+
+/* 3D reflection effect */
+.reflection {
+  position: absolute;
+  width: 100%;
+  height: 60px;
+  bottom: -60px;
+  border-radius: 12px;
+  transition: transform 500ms ease 0s, opacity 500ms ease 0s,
+    visibility 500ms ease 0s;
+}
+
+.slide {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.sliderContent {
+  display: flex;
+  flex-direction: column;
+  color: white;
+  padding: 30px;
+  align-items: flex-start;
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+}
+
+.sliderContent h2 {
+  margin: 16px 0;
+}
+.sliderContent p {
+  margin: 0;
+  margin-bottom: 16px;
+}
+
+/* normal css  */
+
+body {
+  width: 100vw;
+  min-height: 100vh;
+  overflow: hidden;
+  background: #111;
+}
+
+.center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  width: 100%;
+  height: 100vh;
+}
+
+.btns {
+  padding-top: 100px;
+  justify-content: center;
+  display: flex;
+}
+
+.btns .btn-slider {
+  font-size: 36px;
+  cursor: pointer;
+}
+
+.btns .btn-slider:last-child {
+  margin-left: 40px;
+}
+.sliderContent {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: all 0.5s ease;
+}
+
+.sliderContent.active {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* normal css  */
