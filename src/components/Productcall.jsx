@@ -1,16 +1,17 @@
 import React from "react";
-import BannerProduct from "./BannerProduct";
-import CategoryPage from "./CategoryPage";
-import Breadcrumb from "./Breadcrumb";
-import Slider from "./Slider";
-import data from './data'
+import { useParams } from "react-router-dom";
+import BannerPSCS from "./BannerSuccess";
+import Productcategory from "./productcategory";
+import Contact from "./Contact";
+
 const Productcall = () => {
+  const { id } = useParams();
+
   return (
     <div>
-      {/* <BannerProduct/> */}
-      <Slider data={data} activeSlide={2}/>
-     <Breadcrumb/>
-      <CategoryPage />
+      <BannerPSCS />
+      <Productcategory productId={id} />
+      <Contact />
     </div>
   );
 };

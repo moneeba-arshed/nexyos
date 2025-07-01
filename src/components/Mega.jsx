@@ -1,26 +1,25 @@
 import React, { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import "./Mega.css";
 
 const Mega = () => {
   const [loading, setLoading] = useState(true);
   const [categories, setCategories] = useState([]);
   const [subCategoriesMap, setSubCategoriesMap] = useState({});
-  const [activeCategory, setActiveCategory] = useState(null); // Track the hovered category
-  const [activeSubCategory, setActiveSubCategory] = useState(null); // Track the active subcategory
+  const [activeCategory, setActiveCategory] = useState(null);
+  const [activeSubCategory, setActiveSubCategory] = useState(null);
   const [thirdLevelMap, setThirdLevelMap] = useState({});
+
+  const navigate = useNavigate();
 
   useEffect(() => {
     const fetchAllData = async () => {
       try {
-        const res = await fetch(
-          "https://portal.nexyos.com/api/product/categories"
-        );
+        const res = await fetch("https://portal.nexyos.com/api/product/categories");
         const categoriesData = await res.json();
         setCategories(categoriesData);
 
         const subCategoriesObj = {};
-        // Parallel fetching of all subcategories
         await Promise.all(
           categoriesData.map(async (category) => {
             const resSub = await fetch(
@@ -41,11 +40,9 @@ const Mega = () => {
     fetchAllData();
   }, []);
 
-  // Handle hover on subcategory items to set the active subcategory
   const handleSubCategoryHover = async (subCategoryId) => {
     setActiveSubCategory(subCategoryId);
 
-    // Avoid refetching if already fetched
     if (thirdLevelMap[activeCategory]?.[subCategoryId]) return;
 
     try {
@@ -53,7 +50,6 @@ const Mega = () => {
         `https://portal.nexyos.com/api/product/third_level_cat/${activeCategory}/${subCategoryId}`
       );
       const data = await res.json();
-      console.log("sub-sub-data", data);
       setThirdLevelMap((prev) => ({
         ...prev,
         [activeCategory]: {
@@ -66,109 +62,95 @@ const Mega = () => {
     }
   };
 
-  // Set active category and default subcategory on hover
   const handleCategoryHover = (categoryId) => {
     setActiveCategory(categoryId);
     setActiveSubCategory(
-      subCategoriesMap[categoryId] ? subCategoriesMap[categoryId][0].id : null
-    ); // Set first subcategory as active
+      subCategoriesMap[categoryId] ? subCategoriesMap[categoryId][0]?.id : null
+    );
   };
 
-  // Handle mouse leave to reset the active subcategory to the first one
   const handleMouseLeave = () => {
     if (activeCategory) {
       setActiveSubCategory(
         subCategoriesMap[activeCategory]
-          ? subCategoriesMap[activeCategory][0].id
+          ? subCategoriesMap[activeCategory][0]?.id
           : null
-      ); // Reset to first subcategory
+      );
     }
   };
 
   return (
-    <>
-      <div id="menu-wrapper">
-        <ul className="nav">
-          <li>
-            <Link className="title-Product" to="/products">
-              Product
-            </Link>
-            <div>
-              <div className="nav-column categories">
-                <ul>
-                  {loading ? (
-                    <div className="loader">Loading...</div>
-                  ) : categories && categories.length > 0 ? (
-                    categories.map((item) => (
-                      <li
-                        key={item.id}
-                        onMouseEnter={() => handleCategoryHover(item.id)} // Set the active category on hover
-                      >
-                        <Link to="#"> {item.category} </Link>
-                      </li>
-                    ))
-                  ) : null}
-                </ul>
-              </div>
+    <div id="menu-wrapper">
+      <ul className="mega-menu">
+        <li className="mega-menu-item">
+          <Link className="title-Product" to="#">Product</Link>
 
-              <div
-                className={`nav-column subcategory ${
-                  activeCategory ? "active" : ""
-                }`}
-                onMouseLeave={handleMouseLeave} // Reset active subcategory on mouse leave
-              >
-                <ul>
-                  {activeCategory && subCategoriesMap[activeCategory] ? (
-                    subCategoriesMap[activeCategory].map((sub) => (
-                      <li
-                        key={sub.id}
-                        className={sub.id === activeSubCategory ? "active" : ""} // Apply active class to the first subcategory item
-                        onMouseEnter={() => handleSubCategoryHover(sub.id)} // Set the active subcategory on hover
-                      >
-                        <img src={sub.image} alt="" />
-                        <Link to="#">{sub.sub_category}</Link>
-                      </li>
-                    ))
-                  ) : (
-                    <li>No subcategories available</li>
-                  )}
-                </ul>
-              </div>
-
-              {/* You can keep your static sections here for Home1 */}
-              <div className="nav-column-sub-sub-category">
-                <ul className="third-level">
-                  {activeCategory &&
-                  activeSubCategory &&
-                  thirdLevelMap[activeCategory]?.[activeSubCategory] &&
-                  thirdLevelMap[activeCategory][activeSubCategory].length >
-                    0 ? (
-                    thirdLevelMap[activeCategory][activeSubCategory].map(
-                      (item) => (
-                        <li key={item.id}>
-                          <img
-                            src={`https://portal.nexyos.com/${item.image}`}
-                            alt={item.third_level}
-                            style={{
-                              height: "100px",
-                              width: "100px",
-                              marginRight: "8px",
-                            }}
-                          />
-                          {item.third_level}
-                        </li>
-                      )
-                    )
-                  ) : (
-                    <li>No sub-sub-categories</li>
-                  )}
-                </ul>
-              </div>
+          <div className="mega-dropdown" onMouseLeave={handleMouseLeave}>
+            <div className="nav-column categories">
+              <ul>
+                {loading ? (
+                  <div className="loader">Loading...</div>
+                ) : categories.length > 0 ? (
+                  categories.map((item) => (
+                    <li
+                      key={item.id}
+                      onMouseEnter={() => handleCategoryHover(item.id)}
+                    >
+                      <Link to="#">{item.category}</Link>
+                    </li>
+                  ))
+                ) : (
+                  <li>No categories found</li>
+                )}
+              </ul>
             </div>
-          </li>
-        </ul>
-      </div>
-    </>
+
+            <div className="nav-column subcategory">
+              <ul>
+                {activeCategory && subCategoriesMap[activeCategory] ? (
+                  subCategoriesMap[activeCategory].map((sub) => (
+                    <li
+                      key={sub.id}
+                      className={sub.id === activeSubCategory ? "active" : ""}
+                      onMouseEnter={() => handleSubCategoryHover(sub.id)}
+                    >
+                      <img src={sub.image} alt="" />
+                      <Link to="#">{sub.sub_category}</Link>
+                    </li>
+                  ))
+                ) : (
+                  <li>No subcategories available</li>
+                )}
+              </ul>
+            </div>
+
+            <div className="nav-column-sub-sub-category">
+              <ul className="third-level">
+                {activeCategory &&
+                activeSubCategory &&
+                thirdLevelMap[activeCategory]?.[activeSubCategory]?.length > 0 ? (
+                  thirdLevelMap[activeCategory][activeSubCategory].map((item) => (
+                    <li
+                      key={item.id}
+                      onClick={() => navigate(`/productdetails/${item.id}`)}
+                      style={{ cursor: "pointer" }}
+                    >
+                      <img
+                        src={`https://portal.nexyos.com/${item.image}`}
+                        alt={item.third_level}
+                      />
+                      <span>{item.third_level}</span>
+                    </li>
+                  ))
+                ) : (
+                  <li><span>No sub-sub-categories</span></li>
+                )}
+              </ul>
+            </div>
+          </div>
+        </li>
+      </ul>
+    </div>
   );
 };
 

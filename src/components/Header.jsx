@@ -4,6 +4,9 @@ import { Link, NavLink } from "react-router-dom";
 import SearchBar from "./Searchbar";
 import "select2";
 import "../index.css";
+import { FaUserAlt } from "react-icons/fa";       // Rounded user (head + body)
+import { FaStreetView } from "react-icons/fa";    // Full body from front view
+
 import { RxCaretDown, RxCaretRight } from "react-icons/rx";
 import Dropdown from "rsuite/Dropdown";
 import "rsuite/dist/rsuite.min.css";
@@ -206,7 +209,7 @@ const handleSubCategoryToggle = (e, subCategoryId) => {
     activeIndex === 1 ? "d-block" : ""
   }`}
 >
-  <Link to="/products" className="nav-menu__link">
+  <Link to="/" className="nav-menu__link">
     Product
     <RxCaretDown />
   </Link>
@@ -532,7 +535,7 @@ const handleSubCategoryToggle = (e, subCategoryId) => {
                         </Link>
                       </li>
                       <li className="on-hover-item nav-menu__item has-megamenu has-submenu">
-                      <Link to="/products" className="nav-menu__link">
+                      <Link to="/" className="nav-menu__link">
                        <Mega/>
                       </Link>
                       </li>
@@ -806,6 +809,20 @@ const handleSubCategoryToggle = (e, subCategoryId) => {
                             {/* Play Icon using Phosphor Icons */}
                           </span>
                           Online Demo
+                        </Link>
+                      </li>
+                       <li className="nav-menu__item">
+                        <Link
+                          to="/login"
+                          className="nav-menu__link d-flex align-items-center gap-2 ms-lg-3"  
+                        >
+                          
+             <FaUserAlt size={28}  />
+
+
+
+
+
                         </Link>
                       </li>
                     </ul>

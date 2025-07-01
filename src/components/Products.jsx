@@ -10,7 +10,9 @@ const Products = () => {
   useEffect(() => {
     const fetchCategories = async () => {
       try {
-        const res = await fetch("https://portal.nexyos.com/api/product/categories");
+        const res = await fetch(
+          "https://portal.nexyos.com/api/product/categories"
+        );
         const data = await res.json();
         setCategories(Array.isArray(data) ? data : data.data || []);
       } catch (error) {
@@ -34,10 +36,20 @@ const Products = () => {
       ) : (
         <div className="custom-grid">
           {categories.map((item) => (
-            <div key={item.id} className="card" onClick={() => navigate(`/category/${item.id}`)}>
-              <img src={miniCAmeraGroup} alt={item.category} className="card-img" />
-              <h2 className="card-title">{item.category}
-                 <ChevronRight className="arrow-icon" /></h2>
+            <div
+              key={item.id}
+              className="card"
+              onClick={() => navigate(`/category/${item.id}`)}
+            >
+              <img
+                src={miniCAmeraGroup}
+                alt={item.category}
+                className="card-img"
+              />
+              <h2 className="card-title">
+                {item.category}
+                <ChevronRight className="arrow-icon" />
+              </h2>
             </div>
           ))}
         </div>
