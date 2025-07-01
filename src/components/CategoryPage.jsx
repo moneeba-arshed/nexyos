@@ -1,18 +1,25 @@
-import { useParams } from "react-router-dom";
+import { useParams , useLocation} from "react-router-dom";
 import { useEffect, useState } from "react";
 import { ChevronRight } from "lucide-react";
 import PTZGROUPCAMERA from "../assets/images/nexyos/PTZGROUPCAMERA.png";
 
 const CategoryPage = () => {
-  const { id } = useParams();
+ const { categoryName } = useParams();
+  const location = useLocation();
+  const categoryId = location.state?.categoryId;
   const [subcategories, setSubcategories] = useState([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
+        if (!categoryId) {
+      setLoading(false);
+      console.error("Category ID not provided.");
+      return;
+    }
     const fetchSubCategories = async () => {
       try {
         const res = await fetch(
-          `https://portal.nexyos.com/api/product/sub_categories/${id}`
+          `https://portal.nexyos.com/api/product/sub_categories/${categoryId}`
         );
         const data = await res.json();
         setSubcategories(Array.isArray(data) ? data : data.data || []);
@@ -25,23 +32,40 @@ const CategoryPage = () => {
     };
 
     fetchSubCategories();
-  }, [id]);
+  }, [categoryId]);
 
   return (
     <>
+     <div className="mx-9 mb-20 mt-64" style={{padding:'0px 50px'}}>
+        <h5 className="text-base">What we offer</h5>
+        <p className="text-left">
+          It has survived not only five centuries, but also the leap into
+          electronic typesetting, remaining essentially unchanged. It was
+          popularised in the 1960s with the release of Letraset sheets
+          containing Lorem Ipsum passages, and more recently with desktop
+          publishing
+        </p>
+        <p className="text-left">
+          It has survived not only five centuries, but also the leap into
+          electronic typesetting, remaining essentially unchanged. It was
+          popularised in the 1960s with the release of Letraset sheets
+          containing Lorem Ipsum passages, and more recently with desktop
+          publishing
+        </p>
+      </div>
       <div className="wrapper">
-        <h1 className="title">Subcategories</h1>
+        <h1 className="title">Product Category</h1>
 
         <div className="layout">
           {/* Left fixed card */}
-          <div className="left-panel">
+          {/* <div className="left-panel">
             <div className="left-card">
               <h2 className="left-title">Main Category</h2>
               <p className="left-desc">
                 You can add more details or image here if needed.
               </p>
             </div>
-          </div>
+          </div> */}
 
           {/* Right side subcategories */}
           <div className="right-panel">

@@ -34,7 +34,7 @@ const Products = () => {
       ) : (
         <div className="custom-grid">
           {categories.map((item) => (
-            <div key={item.id} className="card" onClick={() => navigate(`/category/${item.id}`)}>
+            <div key={item.id} className="card" onClick={() => navigate(`/category/${item.category}`, { state: { categoryId: item.id } })}>
               <img src={miniCAmeraGroup} alt={item.category} className="card-img" />
               <h2 className="card-title">{item.category}</h2>
             </div>
