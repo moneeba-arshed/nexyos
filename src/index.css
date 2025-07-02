@@ -7,7 +7,7 @@
   line-height: 1.5;
   font-weight: 400;
   color-scheme: light dark;
-  color: black;
+  color: #00667C;
   background-color: white;
   font-synthesis: none;
   text-rendering: optimizeLegibility;
@@ -35,7 +35,7 @@ h1 {
   line-height: 1.1;
 }
 h4{
-  color: #121535;
+  color: #00667C;
   font-size: 27px;
   font-weight: 800;
 }
@@ -48,10 +48,12 @@ button:focus,
 button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
 }
-
+ul li{
+  text-decoration: none;
+}
 @media (prefers-color-scheme: light) {
   :root {
-    color: #213547;
+    color: #999999;
     background-color: #ffffff;
   }
 }
@@ -239,3 +241,9 @@ body {
 }
 
 /* normal css  */
+.banner-item-two__title{
+  text-align: left;
+}
+.banner-item-two__content p{
+  text-align: left;
+}

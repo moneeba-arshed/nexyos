@@ -38,7 +38,7 @@ const Products = () => {
           {categories.map((item) => (
             <div
               key={item.id}
-              className="card"
+              className="card "
               onClick={() => navigate(`/category/${item.category}`, { state: { categoryId: item.id } })}
             >
               <img
@@ -110,6 +110,7 @@ const Products = () => {
           border-radius: 12px;
           cursor: pointer;
           box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+          overflow: hidden;
         }
 
         .card:hover {
@@ -124,7 +125,12 @@ const Products = () => {
           object-fit: cover;
           border-radius: 8px;
           margin-bottom: 12px;
+          transition: transform 0.4s ease-in-out;
         }
+
+        .card:hover .card-img {
+  transform: scale(1.5); /* You can tweak this value */
+}
 
         .card-title {
           font-size: 16px;

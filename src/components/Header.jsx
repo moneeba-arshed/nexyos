@@ -530,7 +530,7 @@ const handleSubCategoryToggle = (e, subCategoryId) => {
                   <div className="col-10">
                     <ul className="nav-menu flex-align justify-content-start">
                       <li className="on-hover-item nav-menu__item activePage">
-                        <Link to="/" className="nav-menu__link">
+                        <Link to="/" className="nav-menu__link ">
                           Home
                         </Link>
                       </li>
