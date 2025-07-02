@@ -40,9 +40,7 @@ const Productcards = () => {
               key={item.id}
               className="card col-md-5"
               onClick={() =>
-                navigate(`/category/${item.category}`, {
-                  state: { categoryId: item.id },
-                })
+                navigate(`/products`)
               }
             >
               <div className="card-content d-flex align-items-center">

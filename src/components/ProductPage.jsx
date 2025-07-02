@@ -519,6 +519,7 @@ const [showMobileFilter, setShowMobileFilter] = useState(false);
     text-align: center;
     background-color: #fff;
     transition: box-shadow 0.2s ease;
+    width:100%
   }
 
   .card:hover {
