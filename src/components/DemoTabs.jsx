@@ -81,214 +81,125 @@ const DemoTabs = () => {
                     today!
                   </p>
                 </div>
-                <div className="container py-5">
-                  <div className="row">
-                    {/* Network Camera Card */}
-                    <div className="col-lg-6 col-md-6 mb-4">
-                      <div className="card">
-                        <div className="row g-0">
-                          <div className="col-7">
-                            <img
-                              alt="network camera"
-                              src="https://www.milesight.com/static/pc/en/online-demo-collection/network-camera.png?t=1744191186348"
-                              className="img-fluid rounded-start"
-                              title="network camera"
-                            />
-                          </div>
-                          <div className="col-5">
-                            <div className="card-body">
-                              <h5 className="card-title">Network Camera</h5>
-                              <p className="card-text">
-                                User: nexyos
-                                <br />
-                                Password: nexyos2024
-                              </p>
-                              <a
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                href="http://ipc.nexyos.com:18082/"
-                                className="btn btn-primary"
-                              >
-                                Play Online
-                              </a>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
+            <div className="container py-5">
+  <div className="row">
+    {/* Network Camera Card */}
+    <div className="col-md-6 mb-4">
+      <div className="card h-100">
+        <div className="row g-0">
+          <div className="col-7">
+            <img
+              alt="network camera"
+              src="https://www.milesight.com/static/pc/en/online-demo-collection/network-camera.png"
+              className="img-fluid rounded-start"
+              title="network camera"
+            />
+          </div>
+          <div className="col-5">
+            <div className="card-body">
+              <h5 className="card-title">Network Camera</h5>
+              <p className="card-text">User: nexyos<br />Password: nexyos2024</p>
+              <a href="http://ipc.nexyos.com:18082/" target="_blank" rel="noopener noreferrer" className="btn btn-primary">Play Online</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
 
-                    {/* PTZ Camera Card */}
-                    <div className="col-lg-6 col-md-6 mb-4">
-                      <div className="card">
-                        <div className="row g-0">
-                          <div className="col-7">
-                            <img
-                              alt="ptz camera"
-                              src="https://www.milesight.com/static/pc/en/online-demo-collection/ptz-camera.png?t=1744191186348"
-                              className="img-fluid rounded-start"
-                              title="ptz camera"
-                            />
-                          </div>
-                          <div className="col-5">
-                            <div className="card-body">
-                              <h5 className="card-title">PTZ Camera</h5>
-                              <p className="card-text">
-                                User: nexyos
-                                <br />
-                                Password: nexyos2024
-                              </p>
-                              <a
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                href="http://ptz.nexyos.com:18081/"
-                                className="btn btn-primary"
-                              >
-                                Play Online
-                              </a>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
+    {/* PTZ Camera Card */}
+    <div className="col-md-6 mb-4">
+      <div className="card h-100">
+        <div className="row g-0">
+          <div className="col-7">
+            <img
+              alt="ptz camera"
+              src="https://www.milesight.com/static/pc/en/online-demo-collection/ptz-camera.png"
+              className="img-fluid rounded-start"
+              title="ptz camera"
+            />
+          </div>
+          <div className="col-5">
+            <div className="card-body">
+              <h5 className="card-title">PTZ Camera</h5>
+              <p className="card-text">User: nexyos<br />Password: nexyos2024</p>
+              <a href="http://ptz.nexyos.com:18081/" target="_blank" rel="noopener noreferrer" className="btn btn-primary">Play Online</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
 
-                    {/* Speed Dome Camera Card */}
-                    <div className="col-lg-6 col-md-6 mb-4">
-                      <div className="card">
-                        <div className="row g-0">
-                          <div className="col-7">
-                            <img
-                              alt="speed dome"
-                              src="https://www.milesight.com/static/pc/en/online-demo-collection/speed-dome.png?t=1744191186348"
-                              className="img-fluid rounded-start"
-                              title="speed dome"
-                            />
-                          </div>
-                          <div className="col-5">
-                            <div className="card-body">
-                              <h5 className="card-title">Speed Dome</h5>
-                              <p className="card-text">
-                                User: nexyos
-                                <br />
-                                Password: nexyos2024
-                              </p>
-                              <a
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                href="http://spd.nexyos.com:18080/"
-                                className="btn btn-primary"
-                              >
-                                Play Online
-                              </a>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
+    {/* Speed Dome Card */}
+    <div className="col-md-6 mb-4">
+      <div className="card h-100">
+        <div className="row g-0">
+          <div className="col-7">
+            <img
+              alt="speed dome"
+              src="https://www.milesight.com/static/pc/en/online-demo-collection/speed-dome.png"
+              className="img-fluid rounded-start"
+              title="speed dome"
+            />
+          </div>
+          <div className="col-5">
+            <div className="card-body">
+              <h5 className="card-title">Speed Dome</h5>
+              <p className="card-text">User: nexyos<br />Password: nexyos2024</p>
+              <a href="http://spd.nexyos.com:18080/" target="_blank" rel="noopener noreferrer" className="btn btn-primary">Play Online</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
 
-                    {/* 360° Panoramic Fisheye Camera Card */}
-                    <div className="col-lg-6 col-md-6 mb-4">
-                      <div className="card">
-                        <div className="row g-0">
-                          <div className="col-7">
-                            <img
-                              alt="360° panoramic fisheye camera"
-                              src="https://www.milesight.com/static/pc/en/online-demo-collection/360%C2%B0-panoramic-fisheye-camera.png?t=1744191186348"
-                              className="img-fluid rounded-start"
-                              title="360° panoramic fisheye camera"
-                            />
-                          </div>
-                          <div className="col-5">
-                            <div className="card-body">
-                              <h5 className="card-title">
-                                360° Panoramic Fisheye Camera
-                              </h5>
-                              <p className="card-text">
-                                User: nexyos
-                                <br />
-                                Password: nexyos2024
-                              </p>
-                              <a
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                href="http://fisheye.nexyos.com:18085/"
-                                className="btn btn-primary"
-                              >
-                                Play Online
-                              </a>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
+    {/* Fisheye Camera Card */}
+    <div className="col-md-6 mb-4">
+      <div className="card h-100">
+        <div className="row g-0">
+          <div className="col-7">
+            <img
+              alt="360° fisheye"
+              src="https://www.milesight.com/static/pc/en/online-demo-collection/360%C2%B0-panoramic-fisheye-camera.png"
+              className="img-fluid rounded-start"
+              title="360° panoramic fisheye camera"
+            />
+          </div>
+          <div className="col-5">
+            <div className="card-body">
+              <h5 className="card-title">360° Panoramic Fisheye Camera</h5>
+              <p className="card-text">User: nexyos<br />Password: nexyos2024</p>
+              <a href="http://fisheye.nexyos.com:18085/" target="_blank" rel="noopener noreferrer" className="btn btn-primary">Play Online</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
 
-                    {/* NVR Card */}
-                    <div className="col-lg-6 col-md-6 mb-4">
-                      <div className="card">
-                        <div className="row g-0">
-                          <div className="col-7">
-                            <img
-                              alt="nvr"
-                              src="https://www.milesight.com/static/pc/en/online-demo-collection/nvr.png?t=1744191186348"
-                              className="img-fluid rounded-start"
-                              title="nvr"
-                            />
-                          </div>
-                          <div className="col-5">
-                            <div className="card-body">
-                              <h5 className="card-title">NVR</h5>
-                              <p className="card-text">
-                                User: nexyos
-                                <br />
-                                Password: nexyos2024
-                              </p>
-                              <a
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                href="http://nvr.nexyos.com:18089/"
-                                className="btn btn-primary"
-                              >
-                                Play Online
-                              </a>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    {/* NVR Card */}
-                    <div className="col-lg-6 col-md-6 mb-4">
-                      <div className="card">
-                        <div className="row g-0">
-                          <div className="col-7">
-                            <img
-                              alt="nvr"
-                              src="https://www.milesight.com/static/pc/en/online-demo-collection/nvr.png?t=1744191186348"
-                              className="img-fluid rounded-start"
-                              title="nvr"
-                            />
-                          </div>
-                          <div className="col-5">
-                            <div className="card-body">
-                              <h5 className="card-title">NVR</h5>
-                              <p className="card-text">
-                                User: nexyos
-                                <br />
-                                Password: nexyos2024
-                              </p>
-                              <a
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                href="http://nvr.nexyos.com:18089/"
-                                className="btn btn-primary"
-                              >
-                                Play Online
-                              </a>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
+    {/* NVR Card (One only, avoid duplicate) */}
+    <div className="col-md-6 mb-4">
+      <div className="card h-100">
+        <div className="row g-0">
+          <div className="col-7">
+            <img
+              alt="nvr"
+              src="https://www.milesight.com/static/pc/en/online-demo-collection/nvr.png"
+              className="img-fluid rounded-start"
+              title="nvr"
+            />
+          </div>
+          <div className="col-5">
+            <div className="card-body">
+              <h5 className="card-title">NVR</h5>
+              <p className="card-text">User: nexyos<br />Password: nexyos2024</p>
+              <a href="http://nvr.nexyos.com:18089/" target="_blank" rel="noopener noreferrer" className="btn btn-primary">Play Online</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
               </div>
             </>
           )}
