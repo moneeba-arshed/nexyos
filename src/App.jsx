@@ -31,7 +31,7 @@ import ProductPage from "./components/ProductPage";
 import ProductDetail from "./components/ProductDetail";
 import Login from "./pages/Login";
 import Signup from "./pages/Signup";
-import Categorycall from "./components/categorycall";
+import Categorycall from "./components/Categorycall";
 import Productcall from "./components/Productcall";
 
 

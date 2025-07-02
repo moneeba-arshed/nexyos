@@ -95,6 +95,12 @@ const Mega = () => {
                     <li
                       key={item.id}
                       onMouseEnter={() => handleCategoryHover(item.id)}
+                       onClick={() =>
+    navigate(`/category/${item.category}`, {
+      state: { categoryId: item.id },
+    })
+  }
+  style={{ cursor: "pointer" }}
                     >
                       <Link to="#">{item.category}</Link>
                     </li>
