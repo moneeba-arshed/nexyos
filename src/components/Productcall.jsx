@@ -3,7 +3,7 @@ import { useParams } from "react-router-dom";
 import BannerPSCS from "./BannerSuccess";
 
 import Contact from "./Contact";
-import Productcategory from "./productcategory";
+import Productcategory from "./Productcategory";
 
 const Productcall = () => {
   const { id } = useParams();
