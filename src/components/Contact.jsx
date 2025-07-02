@@ -115,7 +115,7 @@ const handleSubmit = async (e) => {
 
 
   return (
-    <section className="contact py-80">
+    <section className="contact py-80 mx-60">
       <div className="container container-lg">
         <div className="row gy-5">
           <div className="col-lg-8">

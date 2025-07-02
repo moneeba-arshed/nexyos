@@ -1,0 +1,118 @@
+.loading {
+  text-align: center;
+  color: gray;
+}
+.procard-title {
+  font-size: 16px;
+  font-weight: 600;
+  color: #00667C;
+  display: flex;
+  align-items: left;
+  justify-content: left;
+  gap: 8px;
+text-align: left;
+margin: 0px;
+}
+
+.arrow-icon {
+  width: 18px;
+  height: 18px;
+  color: #01667d;
+  flex-shrink: 0;
+}
+
+.custom-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.card {
+  width: 48%;
+  background-color: #ffffff;
+  border: 2px solid #01667d;
+  padding: 16px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  border-radius: 12px;
+  cursor: pointer;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.card-content {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.card:hover {
+  transform: translateY(-8px) scale(1.03);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+.procard-img {
+  margin-bottom: 12px;
+  transition: transform 0.4s ease-in-out;
+  width: 49%;
+  object-fit: cover;
+  border-radius: 8px;
+}
+.card:hover .procard-img {
+  transform: scale(1.1); /* You can tweak this value */
+}
+.card_list li {
+  list-style: disc;
+  justify-content: left;
+  text-align: left;
+  font-size: 12px;
+}
+.card_list li::marker {
+  color: #00667c;
+}
+.card-text p {
+  text-align: left;
+  font-size: 14px;
+}
+.card-icon {
+  justify-items: right;
+}
+/* Entry animation */
+.fade-in {
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeInUp 0.5s ease forwards;
+}
+
+@keyframes fadeInUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (max-width: 768px) {
+  .custom-grid {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .card {
+    width: 90%;
+  }
+}
+@media (max-width: 768px) {
+  .card-content {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .card {
+    width: 90%;
+  }
+}

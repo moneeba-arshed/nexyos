@@ -2,7 +2,6 @@
 
 a {
   text-decoration: none;
-  color: inherit;
 }
 
 ul, li {
@@ -35,7 +34,6 @@ img {
   display: block;
   /* padding: 15px 20px; */
   text-decoration: none;
-  color: #999999;
   transition: all 0.3s ease;
 }
 .mega-menu {
@@ -58,7 +56,6 @@ img {
   padding: 15px 20px;
   font-size: 16px;
   font-weight: 600;
-  color: #000;
   background-color: white;
   transition: all 0.3s ease;
 }
@@ -76,10 +73,6 @@ img {
   transition: all 0.3s ease;
   pointer-events: none;
   z-index: 998;
-}
-
-.mega-menu > li > a:hover {
-  color: #004b5e;
 }
 
 /* MEGA DROPDOWN */
@@ -134,7 +127,6 @@ img {
 .nav-column ul li {
   font-size: 15px;
   font-weight: 500;
-  color: #333;
   padding: 10px 0;
   transition: all 0.2s ease;
   cursor: pointer;
@@ -142,7 +134,6 @@ img {
 
 .nav-column ul li:hover,
 .nav-column ul li.active {
-  color: #00667c;
   transform: scale(1.05);
 }
 
@@ -189,5 +180,26 @@ img {
 .third-level li span {
   font-size: 14px;
   font-weight: 500;
-  color: #00667c;
+}
+.title-Product{
+  color: #999999;
+}
+.title-Product:hover{
+  color: #00667C;
+}
+.title-Product:active{
+  color: #00667C;
+}
+.maga-categories a,.mega-subCategory a{
+color: #999999;
+}
+.maga-categories a:hover,.mega-subCategory a:hover{
+  text-decoration: none;
+  color: #00667C;
+}
+.mega-subCategoryactive .active{
+  color: #00667C;
+}
+.mega-subCategory.active a {
+  color: #00667C;
 }

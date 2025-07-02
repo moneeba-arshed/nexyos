@@ -15,7 +15,9 @@ const Mega = () => {
   useEffect(() => {
     const fetchAllData = async () => {
       try {
-        const res = await fetch("https://portal.nexyos.com/api/product/categories");
+        const res = await fetch(
+          "https://portal.nexyos.com/api/product/categories"
+        );
         const categoriesData = await res.json();
         setCategories(categoriesData);
 
@@ -83,7 +85,9 @@ const Mega = () => {
     <div id="menu-wrapper">
       <ul className="mega-menu">
         <li className="mega-menu-item">
-          <Link className="title-Product" to="#">Product</Link>
+          <Link className="title-Product" to="#">
+            Product
+          </Link>
 
           <div className="mega-dropdown" onMouseLeave={handleMouseLeave}>
             <div className="nav-column categories">
@@ -93,14 +97,15 @@ const Mega = () => {
                 ) : categories.length > 0 ? (
                   categories.map((item) => (
                     <li
+                      className="maga-categories"
                       key={item.id}
                       onMouseEnter={() => handleCategoryHover(item.id)}
-                       onClick={() =>
-    navigate(`/category/${item.category}`, {
-      state: { categoryId: item.id },
-    })
-  }
-  style={{ cursor: "pointer" }}
+                      onClick={() =>
+                        navigate(`/category/${item.category}`, {
+                          state: { categoryId: item.id },
+                        })
+                      }
+                      style={{ cursor: "pointer" }}
                     >
                       <Link to="#">{item.category}</Link>
                     </li>
@@ -117,11 +122,15 @@ const Mega = () => {
                   subCategoriesMap[activeCategory].map((sub) => (
                     <li
                       key={sub.id}
-                      className={sub.id === activeSubCategory ? "active" : ""}
+                      className={`mega-subCategory ${
+                        sub.id === activeSubCategory ? "active" : ""
+                      }`}
                       onMouseEnter={() => handleSubCategoryHover(sub.id)}
                     >
                       <img src={sub.image} alt="" />
-                      <Link to="#">{sub.sub_category}</Link>
+                      <Link to={`/productdetails/${sub.id}`}>
+                        {sub.sub_category}
+                      </Link>
                     </li>
                   ))
                 ) : (
@@ -134,22 +143,29 @@ const Mega = () => {
               <ul className="third-level flex">
                 {activeCategory &&
                 activeSubCategory &&
-                thirdLevelMap[activeCategory]?.[activeSubCategory]?.length > 0 ? (
-                  thirdLevelMap[activeCategory][activeSubCategory].map((item) => (
-                    <li
-                      key={item.id}
-                      onClick={() => navigate(`/productdetails/${item.id}`)}
-                      style={{ cursor: "pointer" }}
-                    >
-                      <img
-                        src={`https://portal.nexyos.com/${item.image}`}
-                        alt={item.third_level}
-                      />
-                      <span>{item.third_level}</span>
-                    </li>
-                  ))
+                thirdLevelMap[activeCategory]?.[activeSubCategory]?.length >
+                  0 ? (
+                  thirdLevelMap[activeCategory][activeSubCategory].map(
+                    (item) => (
+                      <li
+                        key={item.id}
+                        onClick={() => navigate(`/product`)}
+                        style={{ cursor: "pointer" }}
+                      >
+                        <img
+                          src={`https://portal.nexyos.com/${item.image}`}
+                          alt={item.third_level}
+                        />
+                         <Link >
+                      {item.third_level}
+                      </Link>
+                      </li>
+                    )
+                  )
                 ) : (
-                  <li><span>No sub-sub-categories</span></li>
+                  <li>
+                    <span>No sub-sub-categories</span>
+                  </li>
                 )}
               </ul>
             </div>

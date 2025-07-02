@@ -367,12 +367,10 @@
 .common-accordion .accordion-button:not(.collapsed) {
   background-color: transparent !important;
   box-shadow: none;
-  color: #00667c;
 }
 
 .common-accordion .accordion-button:not(.collapsed)::after {
   background-image: none;
-  color: #00667c;
 }
 
 .common-accordion .accordion-button[aria-expanded="true"]::after,
@@ -380,7 +378,6 @@
   font-family: "Phosphor";
   font-weight: 900;
   content: "\e136";
-  color: #00667c;
   display: inline-block;
   position: absolute;
   inset-block-start: 50%;
@@ -1722,7 +1719,7 @@ h5,
 h6 {
   margin: 0 0 16px 0;
   font-family: var(--heading-font);
-  color: hsl(var(--heading-color));
+  color:#00667C;
   line-height: 1.2;
   font-weight: 700;
 }
@@ -1765,7 +1762,7 @@ h5 > a,
 h6 > a {
   font-weight: inherit;
   font-size: inherit;
-  color: inherit;
+  color: #999999;
   transition: 0.2s linear;
   line-height: inherit;
 }
@@ -1783,11 +1780,11 @@ a {
   display: inline-block;
   transition: 0.2s linear;
   text-decoration: none;
-  color: #0661e9;
+  color: #999999;
 }
 
 a:hover {
-  color: #1d72f2;
+  color: #00667C;
 }
 
 img {
@@ -8066,9 +8063,12 @@ input:focus-visible {
 }
 
 .nav-menu__item.activePage > a {
-  color: #00667c;
+  color: #00667C;
+ text-decoration: none;
 }
-
+.nav-menu__item:hover > a{
+  text-decoration: none;
+}
 .nav-menu__item.activePage > a::before {
   color: #00667c;
 }
@@ -9365,7 +9365,7 @@ input:focus-visible {
 /* Shipping Css End */
 /* ======================= Newsletter Css Start =========================== */
 .newsletter-box {
-  background-color: #121535;
+  background-color: #00667C;
   padding: 32px clamp(1.5rem, -8.492rem + 13.333vw, 4rem);
 }
 

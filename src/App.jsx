@@ -1,6 +1,6 @@
 import { Routes, Route, useLocation } from "react-router-dom";
 import "./App.scss";
-import './index.css';
+import "./index.css";
 
 import Home from "./pages/Home";
 import BottomFooter from "./components/BottomFooter";
@@ -33,21 +33,25 @@ import Login from "./pages/Login";
 import Signup from "./pages/Signup";
 import Categorycall from "./components/Categorycall";
 import Productcall from "./components/Productcall";
-
+import ProCamera from "./components/ProCamera";
 
 function App() {
   const location = useLocation();
 
   // Determine whether to show header/footer
-const hideHeaderFooter = location.pathname === "/login" || location.pathname === "/signup";
-
+  const hideHeaderFooter =
+    location.pathname === "/login" || location.pathname === "/signup";
 
   return (
     <>
       <RouteScrollToTop />
       <PhosphorIconInit />
       <ColorInit color={true} />
-      <ScrollToTop smooth color="#FA6400" className="p-0 justify-center items-center flex" />
+      <ScrollToTop
+        smooth
+        color="#FA6400"
+        className="p-0 justify-center items-center flex"
+      />
       <ToastContainer />
       <Preloader />
 
@@ -57,11 +61,12 @@ const hideHeaderFooter = location.pathname === "/login" || location.pathname ===
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/login" element={<Login />} />
-        <Route path="/signup" element={<Signup/>} />
-        <Route path="/products/:id" element={<ProductDetail />} />
-        {/* <Route path="/products" element={<ProductPage />} /> */}
-           <Route path="/productdetails/:id" element={<Productcall/>} />
+        <Route path="/signup" element={<Signup />} />
+        {/* <Route path="/products/:id" element={<ProductDetail />} /> */}
+        <Route path="/products" element={<ProductPage />} />
+        <Route path="/productdetails/:id" element={<Productcall />} />
         <Route path="/category/:categoryName" element={<Categorycall />} />
+        <Route path="/product/" element={<ProCamera/>} />
         <Route path="/slider" element={<Slider />} />
         <Route path="/success" element={<SuccessStories />} />
         <Route path="/contact" element={<ContactPage />} />
