@@ -1,8 +1,9 @@
 import React from "react";
 import { useParams } from "react-router-dom";
 import BannerPSCS from "./BannerSuccess";
-import Productcategory from "./Productcategory";
+
 import Contact from "./Contact";
+import Productcategory from "./productcategory";
 
 const Productcall = () => {
   const { id } = useParams();
@@ -10,7 +11,7 @@ const Productcall = () => {
   return (
     <div>
       <BannerPSCS />
-      <Productcategory productId={id} />
+      <Productcategory/>
       <Contact />
     </div>
   );
