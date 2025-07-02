@@ -1,7 +1,7 @@
 import React from "react";
 import { useParams } from "react-router-dom";
 import BannerPSCS from "./BannerSuccess";
-import Productcategory from "./productcategory";
+import Productcategory from "./Productcategory";
 import Contact from "./Contact";
 
 const Productcall = () => {
