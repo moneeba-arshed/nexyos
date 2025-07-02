@@ -39,7 +39,7 @@ const Products = () => {
             <div
               key={item.id}
               className="card"
-              onClick={() => navigate(`/category/${item.id}`)}
+              onClick={() => navigate(`/category/${item.category}`, { state: { categoryId: item.id } })}
             >
               <img
                 src={miniCAmeraGroup}

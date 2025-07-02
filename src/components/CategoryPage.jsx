@@ -10,29 +10,30 @@ const CategoryPage = () => {
   const [subcategories, setSubcategories] = useState([]);
   const [loading, setLoading] = useState(true);
 
-  useEffect(() => {
-        if (!categoryId) {
-      setLoading(false);
-      console.error("Category ID not provided.");
-      return;
-    }
-    const fetchSubCategories = async () => {
-      try {
-        const res = await fetch(
-          `https://portal.nexyos.com/api/product/sub_categories/${categoryId}`
-        );
-        const data = await res.json();
-        setSubcategories(Array.isArray(data) ? data : data.data || []);
-      } catch (error) {
-        console.error("Error:", error);
-        setSubcategories([]);
-      } finally {
-        setLoading(false);
-      }
-    };
+useEffect(() => {
+  if (!categoryId) {
+    setLoading(false);
+    console.error("Category ID not provided.");
+    return;
+  }
 
-    fetchSubCategories();
-  }, [categoryId]);
+  const fetchSubCategories = async () => {
+    try {
+      const res = await fetch(
+        `https://portal.nexyos.com/api/product/sub_categories/${categoryId}`
+      );
+      const data = await res.json();
+      setSubcategories(Array.isArray(data) ? data : data.data || []);
+    } catch (error) {
+      console.error("Error:", error);
+      setSubcategories([]);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  fetchSubCategories();
+}, [categoryId]);
 
   return (
     <>

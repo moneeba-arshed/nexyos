@@ -8,8 +8,6 @@ import data from './data'
 const Categorycall = () => {
   return (
     <div>
-
-
       <Slider data={data} activeSlide={2}/>
      <Breadcrumb/>
       <CategoryPage />

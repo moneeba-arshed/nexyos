@@ -98,8 +98,6 @@ const SliderContent = ({title, desc, isActive }) => (
       isActive ? "opacity-100 translate-y-0" : "opacity-0 translate-y-5 pointer-events-none"
     }`}
   >
-    <h2>{title}</h2>
-    <p>{desc}</p>
   </div>
 );
 

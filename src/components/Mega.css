@@ -34,10 +34,8 @@ img {
 .mega-menu > li > a {
   display: block;
   /* padding: 15px 20px; */
-  font-size: 16px;
-  font-weight: 600;
-  color: #000000;
-  background-color: white;
+  text-decoration: none;
+  color: #999999;
   transition: all 0.3s ease;
 }
 .mega-menu {
@@ -161,14 +159,14 @@ img {
 /* THIRD-LEVEL: VERTICAL IMAGES + TEXT */
 .third-level {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   gap: 20px;
   padding: 0;
 }
 
 .third-level li {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   align-items: center;
   gap: 15px;
   text-align: left;

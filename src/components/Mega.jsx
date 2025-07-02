@@ -125,7 +125,7 @@ const Mega = () => {
             </div>
 
             <div className="nav-column-sub-sub-category">
-              <ul className="third-level">
+              <ul className="third-level flex">
                 {activeCategory &&
                 activeSubCategory &&
                 thirdLevelMap[activeCategory]?.[activeSubCategory]?.length > 0 ? (
