@@ -156,11 +156,11 @@ const [selectedCam, setSelectedCam] = useState(cameraOptions[0]);
   return (
     <>
     <div
-  className="h-[350px] w-full bg-top bg-cover bg-no-repeat relative flex items-center"
+  className="h-[350px] w-full bg-top bg-cover bg-no-repeat relative flex items-center justify-center"
   style={{ backgroundImage: `url(${banner})` }}
 >
       {/* Title */}
-      <div className="justify-items-start justify-start flex items-center w-[65%] flex-col ps-20">
+      <div className="items-center w-[53%] flex-col">
 <h1 className="text-3xl text-left text-white">
         4 MP Smart Hybrid Light with ColorVu Motorized Varifocal Bullet Camera
       </h1>
@@ -168,8 +168,7 @@ const [selectedCam, setSelectedCam] = useState(cameraOptions[0]);
       </div>
       
       {/* Main Camera Image */}
-      <div className="   absolute 
-    bottom-[-90px]
+      <div className="mainCamera   absolute 
     right-[136px] 
     max-w-[357px] 
     h-[243px] 
