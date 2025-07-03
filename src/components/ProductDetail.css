@@ -1,7 +1,5 @@
 .action-buttons-row {
   display: flex;
-  gap: 10px;
-  margin-top: 40px;
 }
 
 .half-btn {
@@ -152,7 +150,12 @@
   color: #333;
   font-size: 14px;
 }
-
+.features li{
+  list-style: disc;
+}
+.features li::marker{
+  color: #01667D;
+}
 /* Sticky Tabs */
 .tab-row {
   display: flex;

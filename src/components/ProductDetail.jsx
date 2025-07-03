@@ -226,22 +226,28 @@ const [selectedCam, setSelectedCam] = useState(cameraOptions[0]);
 </div> */}
 
 
-<div className="info-section mt-5">
+<div className="info-section mt-36">
   <p className="description">{product.description}</p>
-  <ul className="features">
-    {product.features.map((f, index) => (
+  <div className="flex flex-col lg:flex-row gap-6">
+  <ul className="features flex-1 list-disc pl-5 space-y-1">
+    {product.features.slice(0, 4).map((f, index) => (
       <li key={index}>{f}</li>
     ))}
   </ul>
-
+   {/* Column 2 */}
+  <ul className="features flex-1 list-disc pl-5 space-y-1">
+    {product.features.slice(4, 8).map((f, index) => (
+      <li key={index + 4}>{f}</li>
+    ))}
+  </ul>
   {/* Action Buttons */}
-<div className="action-buttons-row">
+<div className="action-buttons-row flex-1 flex flex-col gap-3">
   <button className="half-btn primary-btn"> <a href="/downloads/datasheet.pdf" download className="primaryy-btn" >
      
       <span>Data Sheet</span>
     </a></button>
   <button className="half-btn secondary-btn">Sales Inquiry</button>
-</div>
+</div></div>
 
 
 </div>
