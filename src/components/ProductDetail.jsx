@@ -5,6 +5,10 @@ import CCTVSurveillanceCameras from "../assets/images/nexyos/CCTVSurveillanceCam
 import miniCAmeraGroup from "../assets/images/nexyos/miniCAmeraGroup.png";
 import PTZGROUPCAMERA from "../assets/images/nexyos/PTZGROUPCAMERA.png";
 import './ProductDetail.css';
+import banner from "../assets/images/bg/banner.jpg";
+import frontcamera from "../assets/images/nexyos/frontcamera.png";
+import sidecamera1 from "../assets/images/nexyos/sidecamera1.png";
+
 
 const ProductDetail = () => {
   const { id } = useParams();
@@ -131,14 +135,75 @@ const handlePrev = () => {
     "General": ["Power supply: PoE/12VDC", "Operating temperature: -30°C to 60°C", "Weatherproof (IP67)"],
     "Approval": ["FCC certified", "CE certified", "RoHS compliant"]
   };
-
+const cameraOptions = [
+  {
+    id: 1,
+    img: miniCAmeraGroup,
+    alt: "miniCAmeraGroup",
+  },
+  {
+    id: 2,
+    img: PTZGROUPCAMERA,
+    alt: "PTZGROUPCAMERA",
+  },
+   {
+    id: 3,
+    img: miniCAmeraGroup,
+    alt: "miniCAmeraGroup",
+  },
+];
+const [selectedCam, setSelectedCam] = useState(cameraOptions[0]);
   return (
+    <>
+    <div
+  className="h-[350px] w-full bg-top bg-cover bg-no-repeat relative flex items-center"
+  style={{ backgroundImage: `url(${banner})` }}
+>
+      {/* Title */}
+      <div className="justify-items-start justify-start flex items-center w-[65%] flex-col ps-20">
+<h1 className="text-3xl text-left text-white">
+        4 MP Smart Hybrid Light with ColorVu Motorized Varifocal Bullet Camera
+      </h1>
+      <p  className="text-left w-full text-white">DS-2CD2647G3T-LIZSY</p>
+      </div>
+      
+      {/* Main Camera Image */}
+      <div className="   absolute 
+    bottom-[-90px]
+    right-[136px] 
+    max-w-[357px] 
+    h-[243px] 
+    overflow-hidden 
+    transform 
+    rotate-[5deg] 
+    rounded-2xl">
+        <img src={selectedCam.img} alt={selectedCam.alt} className="w-[100%] h-full object-contain " 
+          style={{ transform: "rotate(-5deg)" }}/>
+      </div>
+
+      {/* Circle Selectors */}
+      <div className="flex flex-col space-y-8 absolute  right-16">
+        {cameraOptions.map((cam) => (
+          <button
+            key={cam.id}
+            className={`CircleSelector w-90 h-90 flex items-center border-2 justify-center transition-all duration-300 p-0 mb-8 rounded-full  ${
+              selectedCam.id === cam.id
+                ? "active"
+                : ""
+            }`}
+            onClick={() => setSelectedCam(cam)}
+          style={{borderRadius:'46px',background:'rgb(255, 255, 255, 0.5)'}}>
+            <img src={cam.img} alt={cam.alt} className="object-contain" />
+          </button>
+        ))}
+      </div>
+    </div>
     <div className="product-detail-container mt-5">
-      <div className="breadcrumb">Home / Network Cameras / Pro Series / {product.model}</div>
+      {/* <div className="breadcrumb">Home / Network Cameras / Pro Series / {product.model}</div> */}
       <div className="top-section">
     
   {/* Image Section */}
-<div className="image-section">
+{/* <div className="image-section">
   <div className="carousel-wrapper">
     <button className="nav-btn left" onClick={handlePrev}>&lt;</button>
     <img src={mainImage} alt="Main" className="main-image" />
@@ -158,12 +223,10 @@ const handlePrev = () => {
       />
     ))}
   </div>
-</div>
+</div> */}
 
 
 <div className="info-section mt-5">
-  <h1>{product.title}</h1>
-  <h3>Model: {product.model}</h3>
   <p className="description">{product.description}</p>
   <ul className="features">
     {product.features.map((f, index) => (
@@ -341,13 +404,7 @@ const handlePrev = () => {
   </div>
   <hr />
 </div>
-</div>
-   
-
-
-
-
-    </div>
+</div></div></>
   );
 };
 
