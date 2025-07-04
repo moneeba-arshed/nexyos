@@ -156,12 +156,13 @@ const [selectedCam, setSelectedCam] = useState(cameraOptions[0]);
   return (
     <>
     <div
-  className="h-[350px] w-full bg-top bg-cover bg-no-repeat relative flex items-center justify-center"
+  className="h-[350px] w-full bg-top bg-cover bg-no-repeat relative flex items-center "
   style={{ backgroundImage: `url(${banner})` }}
 >
       {/* Title */}
-      <div className="items-center w-[53%] flex-col">
-<h1 className="text-3xl text-left text-white">
+ <div className="items-center w-[35%] flex-col" style={{ marginLeft: '100px' }}>
+
+<h1 className="text-3xl text-left text-white ">
         4 MP Smart Hybrid Light with ColorVu Motorized Varifocal Bullet Camera
       </h1>
       <p  className="text-left w-full text-white">DS-2CD2647G3T-LIZSY</p>
@@ -226,26 +227,26 @@ const [selectedCam, setSelectedCam] = useState(cameraOptions[0]);
 
 
 <div className="info-section mt-36">
-  <p className="description">{product.description}</p>
+  <p className="description ms-20">{product.description}</p>
   <div className="flex flex-col lg:flex-row gap-6">
-  <ul className="features flex-1 list-disc pl-5 space-y-1">
+  <ul className="features flex-1 list-disc pl-5 space-y-1 ms-20">
     {product.features.slice(0, 4).map((f, index) => (
       <li key={index}>{f}</li>
     ))}
   </ul>
    {/* Column 2 */}
-  <ul className="features flex-1 list-disc pl-5 space-y-1">
+  <ul className="features flex-1 list-disc pl-5 space-y-1 ms-20">
     {product.features.slice(4, 8).map((f, index) => (
       <li key={index + 4}>{f}</li>
     ))}
   </ul>
   {/* Action Buttons */}
-<div className="action-buttons-row flex-1 flex flex-col gap-3">
-  <button className="half-btn primary-btn"> <a href="/downloads/datasheet.pdf" download className="primaryy-btn" >
+<div className="action-buttons-row flex-1 flex flex-row gap-3 me-30">
+  <button className="half-btn primary-btn h-50"> <a href="/downloads/datasheet.pdf" download className="primaryy-btn" >
      
       <span>Data Sheet</span>
     </a></button>
-  <button className="half-btn secondary-btn">Sales Inquiry</button>
+  <button className="half-btn half-btn secondary-btn h-50 text-sm">Sales Inquiry</button>
 </div></div>
 
 
@@ -280,40 +281,39 @@ const [selectedCam, setSelectedCam] = useState(cameraOptions[0]);
     </div>
   
      <h3 className="mt-5">Specifications</h3>
-      <div className="columns">
-   
-        {/* Left Menu */}
-        <div className="menu-column">
-          {sections.map((section) => (
-            <button
-              key={section}
-              className={`menu-btn ${activeSection === section ? "active" : ""}`}
-              onClick={() => handleScrollClick(section)}
-            >
-              {section}
-            </button>
+     
+<div className="specifications-area">
+  {/* Section Tabs */}
+  <div className="section-tab-row">
+    {sections.map((section) => (
+      <button
+        key={section}
+        className={`section-tab-btn ${activeSection === section ? "active" : ""}`}
+        onClick={() => handleScrollClick(section)}
+      >
+        {section}
+      </button>
+    ))}
+  </div>
+
+  {/* Detail Section */}
+  <div className="detail-column" id="detail-scroll">
+    {sections.map((section) => (
+      <div key={section} ref={sectionRefs[section]} className="spec-section">
+        <h3>{section}</h3>
+        <ul>
+          {details[section].map((point, index) => (
+            <li key={index}>{point}</li>
           ))}
-        </div>
-
-        {/* Right Detail Section */}
-        <div className="detail-column" id="detail-scroll">
-          {sections.map((section) => (
-            <div key={section} ref={sectionRefs[section]} className="spec-section">
-              <h3>{section}</h3>
-              <ul>
-                {details[section].map((point, index) => (
-                  <li key={index}>{point}</li>
-                ))}
-              </ul>
-              <hr />
-            </div>
-          ))}
-        
-
-
-
-        </div>
+        </ul>
       </div>
+    ))}
+  </div>
+</div>
+
+     
+     
+     
 </div>
       <div ref={resourceRef}>
 {/* Resources Section */}

@@ -12,7 +12,7 @@ const BannerProCamera = () => {
             backgroundRepeat: "no-repeat",
             backgroundSize: "cover",
             width: "100%",
-            height: "100vh",
+            height: "80vh",
             display: "flex",
             alignItems: "center",
           }}

@@ -152,11 +152,12 @@ const Mega = () => {
                         onClick={() => navigate(`/product`)}
                         style={{ cursor: "pointer" }}
                       >
+                         <Link >
                         <img
                           src={`https://portal.nexyos.com/${item.image}`}
                           alt={item.third_level}
                         />
-                         <Link >
+                        
                       {item.third_level}
                       </Link>
                       </li>

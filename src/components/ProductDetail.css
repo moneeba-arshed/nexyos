@@ -1,5 +1,7 @@
 .action-buttons-row {
   display: flex;
+  gap: 10px;
+  margin-top: 40px;
 }
 
 .half-btn {
@@ -150,12 +152,7 @@
   color: #333;
   font-size: 14px;
 }
-.features li{
-  list-style: disc;
-}
-.features li::marker{
-  color: #01667D;
-}
+
 /* Sticky Tabs */
 .tab-row {
   display: flex;
@@ -188,82 +185,106 @@
   color: white;
 }
 
-/* Specifications */
-.columns {
+/* Horizontal Section Tabs */
+.section-tab-row {
   display: flex;
-  gap: 20px;
-  align-items: flex-start;
-  margin-top: 40px;
-  margin-bottom: 40px;
-}
-
-.menu-column {
-  width: 250px;
-  border: 1px solid #ccc;
-  border-radius: 6px;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 12px;
+  margin: 30px 0;
+  padding: 10px 0;
   background-color: #f9f9f9;
-  padding: 10px;
+  border-radius: 10px;
+  box-shadow: 0 2px 6px rgba(1, 102, 125, 0.05);
 }
 
-.menu-btn {
-  display: block;
-  width: 100%;
-  padding: 10px;
-  margin-bottom: 6px;
-  text-align: left;
-  border: 1px solid #ddd;
-  background: #fff;
-  border-radius: 4px;
+/* Individual Tab Button */
+.section-tab-btn {
+  padding: 10px 18px;
+  font-size: 14px;
+  font-weight: 600;
+  background: transparent;
+  color: #01667D;
+  border: none;
   cursor: pointer;
-  transition: background 0.2s;
+  position: relative;
+  transition: all 0.3s ease;
 }
 
-.menu-btn:hover {
-  background-color: #e6f5f9;
-}
-
-.menu-btn.active {
+/* Underline Animation */
+.section-tab-btn::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  height: 3px;
+  width: 0;
   background-color: #01667D;
-  color: white;
+  transition: width 0.3s ease;
 }
 
+/* Hover and Active Styles */
+.section-tab-btn:hover,
+.section-tab-btn.active {
+  color: #014c5a;
+}
+
+.section-tab-btn:hover::after,
+.section-tab-btn.active::after {
+  width: 100%;
+}
+
+/* Modern Detail Section */
 .detail-column {
-  flex: 1;
-  max-width: calc(100% - 270px);
-  height: 695px;
+  width: 100%;
+  background-color: #ffffff;
+  border-radius: 12px;
+  padding: 30px 20px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+  transition: box-shadow 0.3s ease;
   overflow-y: auto;
-  border: 1px solid #ccc;
-  border-radius: 6px;
-  padding: 20px;
-  background-color: #fff;
+  max-height: 700px;
+  scroll-behavior: smooth;
 }
 
+/* Section Content Styling */
 .spec-section {
-  margin-bottom: 30px;
+  margin-bottom: 40px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #eee;
   text-align: left;
 }
 
 .spec-section h3 {
+  font-size: 18px;
+  font-weight: bold;
   color: #01667D;
   margin-bottom: 10px;
-  text-align: left;
 }
 
 .spec-section ul {
   padding-left: 20px;
-  list-style-type: disc;
-  color: #333;
+  font-size: 14px;
+  color: #444;
+  line-height: 1.6;
 }
 
-.spec-section li {
-  margin-bottom: 6px;
-}
+/* Responsive Tabs */
+@media screen and (max-width: 768px) {
+  .section-tab-btn {
+    font-size: 13px;
+    padding: 8px 12px;
+  }
 
-.spec-section hr {
-  margin-top: 15px;
-  border: none;
-  height: 1px;
-  background-color: #ddd;
+  .section-tab-row {
+    gap: 8px;
+    padding: 8px;
+  }
+
+  .detail-column {
+    max-height: none;
+    padding: 20px 15px;
+  }
 }
 
 /* Resources */
@@ -471,17 +492,4 @@
   .features li {
     font-size: 13px;
   }
-}
-.CircleSelector.active{
-  border: 2px solid #00667C;
-  box-shadow: 0px 0px 7px 3px #00667C;
-}
-
-.mainCamera{
-  bottom: -90px;
-}
-@media only screen and (max-width: 600px){
-  .mainCamera{
-  bottom: -157px;
-}
 }
