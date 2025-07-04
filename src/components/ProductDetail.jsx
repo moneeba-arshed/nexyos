@@ -169,14 +169,15 @@ const [selectedCam, setSelectedCam] = useState(cameraOptions[0]);
       </div>
       
       {/* Main Camera Image */}
-      <div className="mainCamera   absolute 
-    right-[136px] 
-    max-w-[357px] 
-    h-[243px] 
-    overflow-hidden 
-    transform 
-    rotate-[5deg] 
-    rounded-2xl">
+     <div className="mainCamera absolute 
+  right-[150px] 
+  max-w-[px] 
+  h-[30px] 
+
+  transform 
+  rotate-[5deg] 
+  rounded-2xl">
+
         <img src={selectedCam.img} alt={selectedCam.alt} className="w-[100%] h-full object-contain " 
           style={{ transform: "rotate(-5deg)" }}/>
       </div>
@@ -242,11 +243,11 @@ const [selectedCam, setSelectedCam] = useState(cameraOptions[0]);
   </ul>
   {/* Action Buttons */}
 <div className="action-buttons-row flex-1 flex flex-row gap-3 me-30">
-  <button className="half-btn primary-btn h-50"> <a href="/downloads/datasheet.pdf" download className="primaryy-btn" >
+  <button className="half-btn primary-btn h-60"> <a href="/downloads/datasheet.pdf" download className="primaryy-btn" >
      
       <span>Data Sheet</span>
     </a></button>
-  <button className="half-btn half-btn secondary-btn h-50 text-sm">Sales Inquiry</button>
+  <button className="half-btn half-btn secondary-btn h-60 text-sm">Sales Inquiry</button>
 </div></div>
 
 
