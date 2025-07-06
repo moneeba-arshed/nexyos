@@ -540,7 +540,7 @@ const handleSubCategoryToggle = (e, subCategoryId) => {
                       </Link>
                       </li>
                       <li className="on-hover-item nav-menu__item has-megamenu has-submenu">
-                        <Link to="#" className="nav-menu__link">
+                        <Link to="/solution" className="nav-menu__link">
                           Solutions
                         </Link>
                         <div className="on-hover-dropdown common-dropdown nav-megamenu">

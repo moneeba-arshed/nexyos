@@ -247,3 +247,13 @@ body {
 .banner-item-two__content p{
   text-align: left;
 }
+
+.tablist li{
+  list-style: disc;
+}
+.tablist li::marker{
+  color: #00667C;
+}
+.tab-button{
+  width: 33.4%;
+}

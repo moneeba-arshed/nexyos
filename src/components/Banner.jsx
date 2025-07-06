@@ -1,0 +1,61 @@
+import React from "react";
+import { Link } from "react-router-dom";
+
+const Banner = (  {
+    title,
+  description,  
+  backgroundImage,
+   backgroundVideo,
+  containerClass= "",
+  customClass = "",
+  contentClass = "",
+  h2Class = "",
+pClass = "",}) => {
+
+  return (
+    <div
+      className={`relative BannerPSCS overflow-hidden ${customClass}`}
+      style={{
+        width: "100%",
+        height: "100vh",
+        display: "flex",
+        alignItems: "center",
+      }}
+    >
+           {/* Background Video or Image */}
+      {backgroundVideo ? (
+        <video
+          className="absolute top-0 left-0 w-full h-full object-cover"
+          src={backgroundVideo}
+          autoPlay
+          loop
+          muted
+          playsInline
+        />
+      ) : (
+        <div
+          className="absolute top-0 left-0 w-full h-full bg-cover bg-center"
+          style={{
+            backgroundImage: `url(${backgroundImage})`,
+          }}
+        ></div>
+      )}
+
+      {/* Overlay (optional dark layer for readability) */}
+      {/* <div className="absolute top-0 left-0 w-full h-full bg-black/50"></div> */}
+         {/* Content */}
+      <div className={`container absolute ${containerClass}`}>
+        <div className={` text-white ${contentClass}`}>
+          <h2 className={` bounce text-white ${h2Class}`}>
+      {title}
+          </h2>
+          <p className={`mt-4 ${pClass}`}>
+         {description}
+          </p>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default Banner;

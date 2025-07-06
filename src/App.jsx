@@ -34,6 +34,7 @@ import Signup from "./pages/Signup";
 import Categorycall from "./components/Categorycall";
 import Productcall from "./components/Productcall";
 import ProCamera from "./components/ProCamera";
+import Solution from "./pages/Solution";
 
 function App() {
   const location = useLocation();
@@ -68,6 +69,7 @@ function App() {
         <Route path="/category/:categoryName" element={<Categorycall />} />
         <Route path="/product/" element={<ProCamera/>} />
         <Route path="/slider" element={<Slider />} />
+        <Route path="/solution" element={<Solution/>} />
         <Route path="/success" element={<SuccessStories />} />
         <Route path="/contact" element={<ContactPage />} />
         <Route path="/channel" element={<ChannelPage />} />
