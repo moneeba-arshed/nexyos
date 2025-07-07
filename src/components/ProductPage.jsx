@@ -2,6 +2,7 @@ import  { useState } from "react";
 import { Link } from "react-router-dom";
 import { useEffect } from "react";
 import miniCAmeraGroup from "../assets/images/nexyos/miniCAmeraGroup.png"
+import SliderTest from "./SliderTest";
 
 
 const ProductPage = () => {
@@ -16,7 +17,7 @@ const [showMobileFilter, setShowMobileFilter] = useState(false);
 const [searchTerm, setSearchTerm] = useState("");
 const [compareItems, setCompareItems] = useState([]);
 const [currentPage, setCurrentPage] = useState(1);
-const itemsPerPage = 8;
+const itemsPerPage = 12;
 
 const handleCompareChange = (id) => {
   setCompareItems((prev) =>
@@ -66,6 +67,7 @@ const displayedProducts = filteredProducts.slice(
 
   return (
     <div className="container-fluid">
+      <SliderTest className=""/>
       <h1 className="title">Product Categories</h1>
  <button
   className="filter-toggle"
@@ -102,8 +104,9 @@ const displayedProducts = filteredProducts.slice(
 />
 
 
-          <div className="filter-group">
-            <h3 onClick={() => toggleSection("subseries")}>
+          <div className={`filter-group ${openSections.subseries ? "open" : ""}`}>
+
+            <h3 className="mb-10" onClick={() => toggleSection("subseries")} >
               {openSections.subseries ? "−" : "+"} Subseries
             </h3>
             {openSections.subseries && (
@@ -136,8 +139,8 @@ const displayedProducts = filteredProducts.slice(
             )}
           </div>
 
-          <div className="filter-group">
-            <h3 onClick={() => toggleSection("caseType")}>
+          <div className={`filter-group ${openSections.caseType ? "open" : ""}`}>
+            <h3 className="mb-10" onClick={() => toggleSection("caseType")}>
               {openSections.caseType ? "−" : "+"} Case Type
             </h3>
             {openSections.caseType && (
@@ -164,8 +167,8 @@ const displayedProducts = filteredProducts.slice(
             )}
           </div>
 
-          <div className="filter-group">
-            <h3 onClick={() => toggleSection("resolution")}>
+          <div className={`filter-group ${openSections.resolution ? "open" : ""}`}>
+            <h3 className="mb-10" onClick={() => toggleSection("resolution")}>
               {openSections.resolution ? "−" : "+"} Resolution
             </h3>
             {openSections.resolution && (
@@ -188,8 +191,8 @@ const displayedProducts = filteredProducts.slice(
               </div>
             )}
           </div>
-          <div className="filter-group">
-            <h3 onClick={() => toggleSection("Lenstype")}>
+          <div className={`filter-group ${openSections.Lenstype ? "open" : ""}`}>
+            <h3 className="mb-10" onClick={() => toggleSection("Lenstype")}>
               {openSections.Lenstype ? "−" : "+"} Lens type
             </h3>
             {openSections.Lenstype && (
@@ -210,8 +213,8 @@ const displayedProducts = filteredProducts.slice(
               </div>
             )}
           </div>
-          <div className="filter-group">
-            <h3 onClick={() => toggleSection("LowlightImaging")}>
+          <div className={`filter-group ${openSections.LowlightImaging ? "open" : ""}`}>
+            <h3 className="mb-10" onClick={() => toggleSection("LowlightImaging")}>
               {openSections.LowlightImaging ? "−" : "+"} Low-light Imaging
             </h3>
             {openSections.LowlightImaging && (
@@ -229,8 +232,8 @@ const displayedProducts = filteredProducts.slice(
               </div>
             )}
           </div>
-          <div className="filter-group">
-            <h3 onClick={() => toggleSection("IlluminationDistance")}>
+          <div className={`filter-group ${openSections.IlluminationDistance ? "open" : ""}`}>
+            <h3 className="mb-10" onClick={() => toggleSection("IlluminationDistance")}>
               {openSections.IlluminationDistance ? "−" : "+"} Illumination
               Distance
             </h3>
@@ -254,8 +257,8 @@ const displayedProducts = filteredProducts.slice(
               </div>
             )}
           </div>
-          <div className="filter-group">
-            <h3 onClick={() => toggleSection("WDR")}>
+          <div className={`filter-group ${openSections.WDR ? "open" : ""}`}>
+            <h3 className="mb-10" onClick={() => toggleSection("WDR")}>
               {openSections.WDR ? "−" : "+"} WDR
             </h3>
             {openSections.WDR && (
@@ -278,8 +281,8 @@ const displayedProducts = filteredProducts.slice(
               </div>
             )}
           </div>
-          <div className="filter-group">
-            <h3 onClick={() => toggleSection("EnvironmentalProtection")}>
+          <div className={`filter-group ${openSections.EnvironmentalProtection ? "open" : ""}`}>
+            <h3 className="mb-10" onClick={() => toggleSection("EnvironmentalProtection")}>
               {openSections.EnvironmentalProtection ? "−" : "+"} Environmental
               Protection
             </h3>
@@ -316,8 +319,8 @@ const displayedProducts = filteredProducts.slice(
               </div>
             )}
           </div>
-          <div className="filter-group">
-            <h3 onClick={() => toggleSection("powersupply")}>
+          <div className={`filter-group ${openSections.powersupply ? "open" : ""}`}>
+            <h3 className="mb-10" onClick={() => toggleSection("powersupply")}>
               {openSections.powersupply ? "−" : "+"} Power Supply
             </h3>
             {openSections.powersupply && (
@@ -341,8 +344,8 @@ const displayedProducts = filteredProducts.slice(
               </div>
             )}
           </div>
-          <div className="filter-group">
-            <h3 onClick={() => toggleSection("StorageType")}>
+          <div className={`filter-group ${openSections.StorageType ? "open" : ""}`}>
+            <h3 className="mb-10" onClick={() => toggleSection("StorageType")}>
               {openSections.StorageType ? "−" : "+"} Storage Type
             </h3>
             {openSections.StorageType && (
@@ -358,8 +361,8 @@ const displayedProducts = filteredProducts.slice(
               </div>
             )}
           </div>
-          <div className="filter-group">
-            <h3 onClick={() => toggleSection("WirelessNetwork")}>
+          <div className={`filter-group ${openSections.WirelessNetwork ? "open" : ""}`}>
+            <h3 className="mb-10" onClick={() => toggleSection("WirelessNetwork")}>
               {openSections.WirelessNetwork ? "−" : "+"} Wireless Network
             </h3>
             {openSections.WirelessNetwork && (
@@ -375,8 +378,8 @@ const displayedProducts = filteredProducts.slice(
               </div>
             )}
           </div>
-          <div className="filter-group">
-            <h3 onClick={() => toggleSection("AI")}>
+          <div className={`filter-group ${openSections.AI ? "open" : ""}`}>
+            <h3 className="mb-10" onClick={() => toggleSection("AI")}>
               {openSections.AI ? "−" : "+"} AI
             </h3>
             {openSections.AI && (
@@ -404,8 +407,8 @@ const displayedProducts = filteredProducts.slice(
               </div>
             )}
           </div>
-          <div className="filter-group">
-            <h3 onClick={() => toggleSection("Localoutput")}>
+          <div className={`filter-group ${openSections.Localoutput ? "open" : ""}`}>
+            <h3 className="mb-10" onClick={() => toggleSection("Localoutput")}>
               {openSections.Localoutput ? "−" : "+"} Local Output
             </h3>
             {openSections.Localoutput && (
@@ -426,11 +429,11 @@ const displayedProducts = filteredProducts.slice(
               </div>
             )}
           </div>
-           <div className="filter-group">
-            <h3 onClick={() => toggleSection("Localoutput")}>
-              {openSections.Localoutput ? "−" : "+"} Supplemental Light
+           <div className={`filter-group ${openSections.SupplementalLight ? "open" : ""}`}>
+            <h3 className="mb-10" onClick={() => toggleSection("SupplementalLight")}>
+              {openSections.SupplementalLight ? "−" : "+"} Supplemental Light
             </h3>
-            {openSections.Localoutput && (
+            {openSections.SupplementalLight && (
               <div className="filter-options">
                 <label>
                   <input type="checkbox" />
@@ -451,8 +454,8 @@ const displayedProducts = filteredProducts.slice(
               </div>
             )}
           </div>
-           <div className="filter-group">
-            <h3 onClick={() => toggleSection("Other")}>
+           <div className={`filter-group ${openSections.Other ? "open" : ""}`}>
+            <h3 className="mb-10" onClick={() => toggleSection("Other")}>
               {openSections.Other ? "−" : "+"} Other
             </h3>
             {openSections.Other && (
@@ -470,6 +473,7 @@ const displayedProducts = filteredProducts.slice(
 <div className="product-grid">
   {displayedProducts.map((product) => (
     <div className="card" key={product.id}>
+      <span className="new-badge">NEW</span>
       <img src={product.image} alt={product.title} />
       <h4>{product.title}</h4>
       <p>{product.resolution} AcuSense Camera</p>
@@ -545,7 +549,7 @@ const displayedProducts = filteredProducts.slice(
   .title {
     font-size: 28px;
     text-align: center;
-    margin-bottom: 30px;
+  
     font-weight: bold;
   }
 
@@ -554,19 +558,35 @@ const displayedProducts = filteredProducts.slice(
     padding: 20px;
   }
 
-  .main {
-    display: flex;
-    justify-content: space-between;
-    gap: 20px;
-  }
+.main {
+  display: flex;
+  gap: 20px;
+  align-items: flex-start;
+}
 
-  .filter {
-    width: 250px;
-    background-color: #f8f9fa;
-    // border: 1px solid #ccc;
-    border-radius: 8px;
-    padding: 15px;
-  }
+  .new-badge {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+
+  color: #d00;
+  font-size: 12px;
+  font-weight: bold;
+  padding: 4px 8px;
+  border-radius: 20px;
+  z-index: 1;
+}
+    .filter {
+  width: 250px;
+  min-width: 250px;
+  max-width: 250px;
+  background-color: #f8f9fa;
+  border-radius: 8px;
+  padding: 15px;
+  overflow-y: auto;
+  flex-shrink: 0;
+}
+
 
   .filter-group {
     margin-bottom: 20px;
@@ -581,11 +601,15 @@ const displayedProducts = filteredProducts.slice(
     user-select: none;
   }
 
-  .filter-options {
-    margin-top: 10px;
-    padding-left: 10px;
-    text-align: left;
-  }
+.filter-options {
+  overflow: hidden;
+  max-height: 0;
+  transition: max-height 0.3s ease;
+}
+
+.filter-group.open .filter-options {
+  max-height: 500px; /* adjust if needed */
+}
 
   .filter-options label {
     display: block;

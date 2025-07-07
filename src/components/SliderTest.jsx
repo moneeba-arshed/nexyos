@@ -48,7 +48,7 @@ const SliderTest = () => {
   return (
     <div className="relative flex items-center min-h-screen flex-col md:flex-row">
       {/* Background/Main Image */}
-      <div className="md:w-1/2 w-full h-[50vh] md:h-screen">
+      <div className="md:w-1/2 w-full h-[100vh] md:h-screen">
         <AnimatePresence mode="wait">
           <motion.img
             key={coffeeItems[index].image}
