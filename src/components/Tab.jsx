@@ -58,9 +58,9 @@ export default function Tab() {
   const current = tabs[activeTab];
 
   return (
-    <div className="w-[82%] mx-auto px-4 py-10 mt-76">
-      <div className="bg-white rounded-xl border p-6 grid grid-cols-1 md:grid-cols-3 gap-6">
-        <div className="text-left ps-20 py-16">
+    <div className="w-[82%] mx-auto px-10 py-10 my-76">
+      <div className="bg-white rounded-xl border p-12 grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div className="text-left p-20 ms-30 py-16gst6556etydGXH">
           <h2 className="text-2xl font-semibold text-gray-800 mb-1">
             {current.title}
           </h2>
@@ -78,7 +78,7 @@ export default function Tab() {
             src={current.image}
             alt={current.label}
             className="w-full object-cover rounded-md shadow-sm"
-            style={{ height: "230px" }}
+            style={{ height: "280px" }}
           />
         </div>
       </div>

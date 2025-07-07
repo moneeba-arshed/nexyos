@@ -13,22 +13,41 @@ const ProductPage = () => {
     image: miniCAmeraGroup,
   }));
 const [showMobileFilter, setShowMobileFilter] = useState(false);
+const [searchTerm, setSearchTerm] = useState("");
+const [compareItems, setCompareItems] = useState([]);
+const [currentPage, setCurrentPage] = useState(1);
+const itemsPerPage = 8;
+
+const handleCompareChange = (id) => {
+  setCompareItems((prev) =>
+    prev.includes(id) ? prev.filter((item) => item !== id) : [...prev, id]
+  );
+};
+const filteredProducts = products.filter((product) =>
+  product.title.toLowerCase().includes(searchTerm.toLowerCase())
+);
+
+const totalPages = Math.ceil(filteredProducts.length / itemsPerPage);
+const displayedProducts = filteredProducts.slice(
+  (currentPage - 1) * itemsPerPage,
+  currentPage * itemsPerPage
+);
 
   const [openSections, setOpenSections] = useState({
-    subseries: true,
-    caseType: true,
-    resolution: true,
-    Lenstype:true,
-    LowlightImaging:true,
-    IlluminationDistance:true,
-    WDR:true,
-    EnvironmentalProtection:true,
-    powersupply:true,
-    StorageType:true,
-    WirelessNetwork:true,
-    AI:true,
-    Localoutput:true,
-    Other:true,
+    subseries: false,
+    caseType: false,
+    resolution: false,
+    Lenstype:false,
+    LowlightImaging:false,
+    IlluminationDistance:false,
+    WDR:false,
+    EnvironmentalProtection:false,
+    powersupply:false,
+    StorageType:false,
+    WirelessNetwork:false,
+    AI:false,
+    Localoutput:false,
+    Other:false,
   });
 
   const toggleSection = (section) => {
@@ -46,7 +65,7 @@ const [showMobileFilter, setShowMobileFilter] = useState(false);
 }, []);
 
   return (
-    <div className="container">
+    <div className="container-fluid">
       <h1 className="title">Product Categories</h1>
  <button
   className="filter-toggle"
@@ -67,6 +86,21 @@ const [showMobileFilter, setShowMobileFilter] = useState(false);
     ✖
   </button>
 )}
+<input
+  type="text"
+  className="search-input"
+  placeholder="Search for Product Models"
+  value={searchTerm}
+  onChange={(e) => setSearchTerm(e.target.value)}
+  style={{
+    width: "100%",
+    padding: "8px",
+    marginBottom: "20px",
+    borderRadius: "4px",
+    border: "1px solid #ccc",
+  }}
+/>
+
 
           <div className="filter-group">
             <h3 onClick={() => toggleSection("subseries")}>
@@ -433,20 +467,75 @@ const [showMobileFilter, setShowMobileFilter] = useState(false);
           </div>
         </div>
 
-    <div className="product-grid">
-  {products.map((product) => (
-    <Link to={`/products/${product.id}`} key={product.id} className="card-link">
-      <div className="card">
-        <img src={product.image} alt={product.title} />
-        <h4>{product.title}</h4>
-        <p>{product.resolution} AcuSense Camera</p>
+<div className="product-grid">
+  {displayedProducts.map((product) => (
+    <div className="card" key={product.id}>
+      <img src={product.image} alt={product.title} />
+      <h4>{product.title}</h4>
+      <p>{product.resolution} AcuSense Camera</p>
+      <label>
+        <input
+          type="checkbox"
+          checked={compareItems.includes(product.id)}
+          onChange={() => handleCompareChange(product.id)}
+        />
+        Compare
+      </label>
+      <Link to={`/products/${product.id}`} className="card-link">
         <button>Explore</button>
-      </div>
-    </Link>
+      </Link>
+    </div>
   ))}
+
+  {/* ⬇ Pagination inside grid, spans all columns */}
+  <div
+    className="pagination"
+    style={{
+      gridColumn: "1 / -1",
+      textAlign: "center",
+      marginTop: "20px",
+      display: "flex",
+      justifyContent: "center",
+      flexWrap: "wrap",
+      gap: "8px",
+    }}
+  >
+    <button onClick={() => setCurrentPage((prev) => Math.max(prev - 1, 1))}>
+      Prev
+    </button>
+   {Array.from({ length: totalPages }, (_, i) => (
+  <button
+    key={i}
+    onClick={() => setCurrentPage(i + 1)}
+    className={currentPage === i + 1 ? "active" : ""}
+  >
+    {i + 1}
+  </button>
+))}
+
+    <button onClick={() => setCurrentPage((prev) => Math.min(prev + 1, totalPages))}>
+      Next
+    </button>
+  </div>
 </div>
 
       </div>
+      {compareItems.length > 0 && (
+  <div
+    style={{
+      position: "fixed",
+      bottom: "20px",
+      right: "20px",
+      backgroundColor: "#d00",
+      color: "white",
+      padding: "10px 15px",
+      borderRadius: "25px",
+      fontWeight: "bold",
+    }}
+  >
+    Compare ({compareItems.length})
+  </div>
+)}
 
  <style>{`
   * {
@@ -474,7 +563,7 @@ const [showMobileFilter, setShowMobileFilter] = useState(false);
   .filter {
     width: 250px;
     background-color: #f8f9fa;
-    border: 1px solid #ccc;
+    // border: 1px solid #ccc;
     border-radius: 8px;
     padding: 15px;
   }
@@ -512,27 +601,33 @@ const [showMobileFilter, setShowMobileFilter] = useState(false);
     gap: 20px;
   }
 
-  .card {
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    padding: 16px;
-    text-align: center;
-    background-color: #fff;
-    transition: box-shadow 0.2s ease;
-    width:100%
-  }
+.card {
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 16px;
+
+  background-color: #fff;
+  transition: box-shadow 0.2s ease;
+  width: 100%;
+  height: 300px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  overflow: hidden; /* prevent overflow */
+}
 
   .card:hover {
     box-shadow: 0 0 10px rgba(0,0,0,0.15);
   }
 
-  .card img {
-    width: 100%;
-    height: 160px;
-    object-fit: cover;
-    border-radius: 6px;
-    margin-bottom: 10px;
-  }
+.card img {
+  width: 100%;
+  height: 120px; /* already fixed height, keep it */
+  object-fit: cover;
+  border-radius: 6px;
+  margin-bottom: 10px;
+}
+
 
   .card h4 {
     margin: 8px 0;
@@ -547,7 +642,7 @@ const [showMobileFilter, setShowMobileFilter] = useState(false);
 
   .card button {
     margin-top: 10px;
-    padding: 6px 10px;
+    padding: 6px 40px;
     background-color: #01667D;
     color: white;
     border: none;
@@ -570,6 +665,27 @@ const [showMobileFilter, setShowMobileFilter] = useState(false);
     font-size: 16px;
     cursor: pointer;
   }
+.pagination button {
+  min-width: 40px;
+  height: 36px;
+  background-color: white;
+  color: #000;
+  border: 1px solid #ccc;
+  padding: 6px 10px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: background-color 0.2s ease;
+}
+
+.pagination button:hover {
+  background-color: #eee;
+}
+
+.pagination button.active {
+  background-color: #01667D !important;
+  color: #fff !important;
+}
 
   @media screen and (max-width: 1024px) {
     .filter-toggle {

@@ -50,7 +50,7 @@ export default function HotProductSlider() {
 
   return (
     <div
-      className="bg-black text-white py-10 px-48 flex items-center gap-11 relative justify-between"
+      className="bg-black text-white py-20 px-60 flex items-center gap-11 relative justify-between"
       style={{ height: "430px" }}
     >
       <div className="w-1/3">
