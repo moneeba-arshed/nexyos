@@ -257,3 +257,20 @@ body {
 .tab-button{
   width: 33.4%;
 }
+
+.DownloadContent {
+  width:90%
+}
+
+@media screen and (max-width: 480px){
+  .DownloadContent{
+    width : 83%
+  }
+}
+
+.AI_Algorithm{
+  width: 92%
+}
+.AI_Card{
+  height:16rem
+}

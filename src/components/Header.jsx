@@ -266,7 +266,7 @@ const handleSubCategoryToggle = (e, subCategoryId) => {
                   activeIndex === 2 ? "d-block" : ""
                 }`}
               >
-                <Link to="#" className="nav-menu__link">
+                <Link to="/solution" className="nav-menu__link">
                   Solutions
                   <RxCaretDown />
                 </Link>

@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-
+import './Banner.css'
 const Banner = (  {
     title,
   description,  
@@ -14,14 +14,7 @@ pClass = "",}) => {
 
   return (
     <div
-      className={`relative BannerPSCS overflow-hidden ${customClass}`}
-      style={{
-        width: "100%",
-        height: "80vh",
-        display: "flex",
-        alignItems: "center",
-      }}
-    >
+      className={`Banner relative BannerPSCS overflow-hidden ${customClass}`} >
            {/* Background Video or Image */}
       {backgroundVideo ? (
         <video

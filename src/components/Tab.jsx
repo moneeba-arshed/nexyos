@@ -58,9 +58,9 @@ export default function Tab() {
   const current = tabs[activeTab];
 
   return (
-    <div className="w-[82%] mx-auto px-10 py-10 my-76">
+    <div className="md:w-[82%] md:mx-auto px-10 py-10 md:my-76 ms-20 w-[86%]">
       <div className="bg-white rounded-xl border p-12 grid grid-cols-1 md:grid-cols-3 gap-6">
-        <div className="text-left p-20 ms-30 py-16gst6556etydGXH">
+        <div className="text-left p-20 md:ms-30 py-16gst6556etydGXH">
           <h2 className="text-2xl font-semibold text-gray-800 mb-1">
             {current.title}
           </h2>
@@ -87,9 +87,9 @@ export default function Tab() {
         {tabs.map((tab, index) => (
           <button
             key={index}
-            onClick={() => window.open(tab.image, "_blank")}
+            onClick={() =>  setActiveTab(index)}
             onMouseEnter={() => setActiveTab(index)}
-            className={`tab-button flex  items-center px-5 py-3 rounded-xl transition-all duration-200 shadow-sm border
+            className={`tab-button  flex md:flex-row flex-col justify-center  items-center px-5 py-3 rounded-xl transition-all duration-200 shadow-sm border
               ${
                 activeTab === index
                   ? "bg-white text-blue-600"
