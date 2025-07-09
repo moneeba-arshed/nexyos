@@ -3,6 +3,8 @@ import { motion } from "framer-motion";
 import "./Features.css";
 import { FaAngleRight, FaAngleDown, FaAngleUp } from "react-icons/fa";
 import AI_Algorithm from "./AI_Algorithm";
+import ModelsAndLenses from "./ModelsAndLenses";
+import PrivacyAndProtection from "./PrivacyAndProtection";
 
 const features = [
   {
@@ -233,6 +235,8 @@ export default function Features() {
         </div>
       </div>
       <AI_Algorithm/>
+      <ModelsAndLenses/>
+      <PrivacyAndProtection/>
     </section>
   );
 }

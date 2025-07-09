@@ -5,6 +5,8 @@ import HotProductSlider from '../components/HotProductSlider'
 import Contact from '../components/Contact'
 import { FiDownload } from 'react-icons/fi';
 import Features from '../components/Features'
+import TrafficFunctionsAndScenarios from '../components/TrafficFunctionsAndScenarios'
+import SolutionVideo from '../components/SolutionVideo'
 
 const Solution = () => {
     const downloads = [
@@ -50,6 +52,10 @@ const Solution = () => {
    <h2 className="text-4xl font-bold mb-4 mt-32">Outstanding Features</h2>
    <Features/>
 </div>
+                                        {/* TRAFFIC FUNCTIONS & SCENARIOS */}
+<TrafficFunctionsAndScenarios/>
+                                         {/* Videos */}
+<SolutionVideo/>
                                         {/* DOWNLOADS */}
  <div className="bg-gray-100 min-h-screen py-100">
       <h2 className="text-4xl font-bold text-center mb-30">Downloads</h2>

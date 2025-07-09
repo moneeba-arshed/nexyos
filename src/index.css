@@ -1,7 +1,6 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&display=swap');
 
-
 :root {
   font-family: Quicksand, sans-serif;
   line-height: 1.5;
@@ -26,7 +25,6 @@ body {
   margin: 0;
   display: flex;
   place-items: center;
-  min-width: 320px;
   min-height: 100vh;
 }
 
@@ -200,8 +198,6 @@ flex-direction: row;
 /* normal css  */
 
 body {
-  width: 100vw;
-  min-height: 100vh;
   overflow: hidden;
   background: #111;
 }
@@ -273,4 +269,82 @@ body {
 }
 .AI_Card{
   height:16rem
+}
+.AI_Algorithm_hr{
+      border-bottom: 2px solid #469BFF;
+    width: 45px;
+}
+.highlightCard{
+  width:100%
+}
+.Tab_container{
+  margin: 0 auto;
+}
+.LensesImage{
+  height: 21rem;
+}
+.ModelsImages{
+  height: 6rem;
+  width: 6rem;
+}
+.ModelCard:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 20px rgba(204, 207, 207, 0.5);
+}
+.ModelButton {
+    border: 1px solid black;
+    border-radius: 15px;
+    padding: 0;
+}
+.PrivacyButton{
+  background-color: #00667C;
+  border-radius: 10px;
+  width: 35%;
+}
+.PrivacyButton:hover{
+  background-color: #0f7a92;
+  color: white;
+}
+.TrafficScenario{
+  margin: 48px 25px;
+padding: 13px;
+background-color: #F1F1F1;
+}
+.Pill.active{
+  border: 1px solid #00667C;
+  color: #00667C;
+}
+.Pill.unactive{
+  border: 1px solid #999999;
+  color: #999999;
+}
+.Trafficthumbnail{
+    width: 60px;
+    height: 59px;
+    margin-left: -9px;
+}
+.TrafficIcon {
+    width: 7%;
+    height: 27px;
+}
+@media screen and (max-width: 480px){
+  .highlightCard{
+  width:200%
+}
+.lensesContent{
+    padding-left: 23px;
+}
+.PrivacyButton{
+  width: 100%;
+}
+
+}
+
+/* Hide scrollbar for all elements with this class */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
 }

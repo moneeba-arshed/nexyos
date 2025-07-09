@@ -1,6 +1,8 @@
 import { Routes, Route, useLocation } from "react-router-dom";
 import "./App.scss";
 import "./index.css";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
 
 import Home from "./pages/Home";
 import BottomFooter from "./components/BottomFooter";

@@ -1,39 +1,71 @@
-import React from 'react';
-import { FaCarSide, FaTruck, FaBus, FaPalette, FaTachometerAlt, FaMapMarkerAlt } from 'react-icons/fa';
-import { MdDirections, MdGpsFixed } from 'react-icons/md';
-import { GiRadarDish } from 'react-icons/gi';
-import { BsPatchCheckFill } from 'react-icons/bs';
-import { SiMercedes, SiBmw, SiAudi } from 'react-icons/si';
+import React from "react";
+import {
+  FaCarSide,
+  FaTruck,
+  FaBus,
+  FaPalette,
+  FaTachometerAlt,
+  FaMapMarkerAlt,
+} from "react-icons/fa";
+import { IoColorPaletteSharp } from "react-icons/io5";
+import { MdDirections, MdGpsFixed } from "react-icons/md";
+import { GiRadarDish } from "react-icons/gi";
+import { BsPatchCheckFill } from "react-icons/bs";
+import { SiMercedes, SiBmw, SiAudi } from "react-icons/si";
 import { BiDotsHorizontal } from "react-icons/bi";
 import { FaCar } from "react-icons/fa";
 
 const Card = ({ title, icon, image, footerColors, children }) => (
-  <div className="AI_Card flex flex-col bg-cover bg-center rounded-xl overflow-hidden shadow-md w-full md:w-1/5 relative" style={{ backgroundImage: `url(${image})` }}>
-    <div className="bg-opacity-60 text-white p-5 flex flex-col justify-center mt-12" style={{height: '177px'}}>
-      <h3 className="text-lg font-semibold mb-3 border-b border-blue-500 pb-1 text-center">{title}</h3>
-      <div className="text-3xl mb-4 mt-60 justify-center ">{icon}</div>
+  <div
+    className="AI_Card flex flex-col bg-cover bg-center rounded-xl overflow-hidden shadow-md  relative"
+    style={{ backgroundImage: `url(${image})` }}
+  >
+    <div
+      className="bg-opacity-60 text-white p-5 flex flex-col justify-center mt-12"
+      style={{ height: "177px" }}
+    >
+      <div className="flex flex-col items-center justify-center">
+        <h3 className="text-lg font-semibold mb-3 pb-1 text-center text-white">
+          {title}
+        </h3>
+        <div className="AI_Algorithm_hr"></div>
+      </div>
+      <div className="mb-4 mt-60 justify-center flex">{icon}</div>
       {children}
-      {footerColors && (
-        <div className="flex space-x-1 mt-4">
-          {footerColors.map((color, i) => (
-            <span key={i} className={`w-5 h-3 rounded-sm`} style={{ backgroundColor: color }}></span>
-          ))}
-        </div>
-      )}
     </div>
   </div>
 );
 
 const HighlightsCard = () => (
-  <div className="bg-cover bg-center rounded-xl overflow-hidden shadow-md w-full md:w-1/5 relative" style={{ backgroundImage: `url('https://www.milesight.com/static/pc/en/page/technology/solution/anpr-solution/index-new/outstanding-features-more-highlights.jpg?t=1751621798627')` }}>
-    <div className="bg-black bg-opacity-70 text-white p-5 h-full">
-      <h3 className="text-lg font-semibold mb-3 border-b border-blue-500 pb-1 w-fit">More Highlights:</h3>
-      <ul className="space-y-3 text-sm">
-        <li className="flex items-center"><BsPatchCheckFill className="mr-2" /> High Confidence Level</li>
-        <li className="flex items-center"><MdDirections className="mr-2" /> Direction Recognition</li>
-        <li className="flex items-center"><GiRadarDish className="mr-2" /> 3D Radar Localization</li>
-        <li className="flex items-center"><FaTachometerAlt className="mr-2" /> Speed Measurement</li>
-        <li className="flex items-center"><MdGpsFixed className="mr-2" /> GPS</li>
+  <div
+    className="highlightCard bg-cover bg-center rounded-xl overflow-hidden shadow-md w-full relative"
+    style={{
+      backgroundImage: `url('https://www.milesight.com/static/pc/en/page/technology/solution/anpr-solution/index-new/outstanding-features-more-highlights.jpg?t=1751621798627')`,
+    }}
+  >
+    <div className="bg-opacity-70 text-white p-5 h-full mt-16">
+       <div className="flex flex-col items-center justify-center mb-8">
+        <h3 className="text-lg font-semibold mb-3 pb-1 text-center text-white">
+             More Highlights:
+        </h3>
+        <div className="AI_Algorithm_hr"></div>
+      </div>
+      <ul className=" text-sm ">
+        <li className="flex items-center border-[1px] border-white p-8 rounded-md mb-4 text-xs">
+          <BsPatchCheckFill className="me-8" /> High Confidence Level
+        </li>
+        <li className="flex items-center border-[1px] border-white p-8 rounded-md mb-4 text-xs">
+          <MdDirections className="me-8" /> Direction Recognition
+        </li>
+        <li className="flex items-center border-[1px] border-white p-8 rounded-md mb-4 text-xs">
+          <GiRadarDish className="me-8" /> 3D Radar Localization
+        </li>
+        <li className="flex items-center border-[1px] border-white p-8 rounded-md mb-4 text-xs">
+          <FaTachometerAlt className="me-8" /> Speed Measurement
+        </li>
+        <li className="flex items-center border-[1px] border-white p-8 rounded-md mb-4  text-xs">
+          <MdGpsFixed className="me-8" /> GPS
+        </li>
       </ul>
     </div>
   </div>
@@ -42,29 +74,62 @@ const HighlightsCard = () => (
 const AI_Algorithm = () => {
   return (
     <div className=" py-12 px-4 md:px-12 mt-52 AI_Algorithm">
-      <h2 className="text-2xl md:text-3xl font-semibold text-center mb-32">AI-powered LPR Algorithm</h2>
-      <div className="flex flex-col md:flex-row gap-4 justify-center">
+      <h2 className="text-2xl md:text-3xl font-semibold text-center mb-32">
+        AI-powered LPR Algorithm
+      </h2>
+      <div className="flex grid md:grid-cols-5 grid-cols-2 gap-4 justify-center">
         <Card
           title="Vehicle Type"
-          icon={<div className="flex space-x-3 text-white text-2xl"><FaCarSide /><FaTruck /><FaBus /><BiDotsHorizontal /></div>}
+          icon={
+            <div className="flex flex-wrap justify-center items-center text-white text-2xl gap-y-3">
+              <div className="w-[34%] flex justify-center">
+                <FaCarSide />
+              </div>
+              <div className="w-[34%] flex justify-center">
+                <FaTruck />
+              </div>
+              <div className="w-[34%] flex justify-center">
+                <FaBus />
+              </div>
+              <div className="w-[34%] flex justify-center">
+                <BiDotsHorizontal />
+              </div>
+            </div>
+          }
           image="https://www.milesight.com/static/pc/en/page/technology/solution/anpr-solution/index-new/outstanding-features-vehicle-type.jpg?t=1751621798627"
         />
         <Card
           title="Vehicle Color"
-          icon={<FaCar />}
+          icon={<FaCar size={50} />}
           image="https://www.milesight.com/static/pc/en/page/technology/solution/anpr-solution/index-new/outstanding-features-vehicle-color.jpg?t=1751621798627"
-          footerColors={['#000000', '#ffffff', '#f00', '#00f', '#ff0', '#008000']}
         />
         <Card
           title="Vehicle Make"
-          icon={<div className="flex space-x-3 text-white text-2xl"><SiBmw /><SiMercedes /><SiAudi /><BiDotsHorizontal /></div>}
+          icon={
+            <div className="flex flex-wrap justify-center items-center text-white text-2xl gap-y-3">
+              <div className="w-[34%] flex justify-center">
+                {" "}
+                <SiBmw />
+              </div>
+              <div className="w-[34%] flex justify-center">
+                {" "}
+                <SiMercedes />
+              </div>
+              <div className="w-[34%] flex justify-center">
+                {" "}
+                <SiAudi />
+              </div>
+              <div className="w-[34%] flex justify-center">
+                <BiDotsHorizontal />
+              </div>
+            </div>
+          }
           image="https://www.milesight.com/static/pc/en/page/technology/solution/anpr-solution/index-new/outstanding-features-vehicle-make.jpg?t=1751621798627"
         />
         <Card
           title="Plate Color"
-          icon={<FaPalette />}
+          icon={<IoColorPaletteSharp size={50}/>}
           image="https://www.milesight.com/static/pc/en/page/technology/solution/anpr-solution/index-new/outstanding-features-plate-color.jpg?t=1751621798627"
-          footerColors={['#000000', '#ffffff', '#f00', '#00f', '#ff0', '#008000']}
         />
         <HighlightsCard />
       </div>
