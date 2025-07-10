@@ -110,7 +110,7 @@ const DemoVideoData = [
     overlay2: "https://www.milesight.com/static/pc/en/page/technology/solution/anpr-solution/index/play-hover.png?t=1752047441787",
   },
 ];
-const SolutionVideo = () => {
+const Trial = () => {
   const [index, setIndex] = useState(0);
  const [index1, setIndex1] = useState(0);
 
@@ -280,4 +280,4 @@ const SolutionVideo = () => {
   );
 };
 
-export default SolutionVideo;
+export default Trial;

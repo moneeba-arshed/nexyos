@@ -7,6 +7,7 @@ import { FiDownload } from 'react-icons/fi';
 import Features from '../components/Features'
 import TrafficFunctionsAndScenarios from '../components/TrafficFunctionsAndScenarios'
 import SolutionVideo from '../components/SolutionVideo'
+import Trial from '../components/trial'
 
 const Solution = () => {
     const downloads = [
@@ -64,23 +65,24 @@ const Solution = () => {
         {downloads.map((item, idx) => (
           <div
             key={idx}
-            className="flex items-center gap-28 bg-white rounded-xl shadow px-12 py-24"
+            className="flex items-center md:gap-28 bg-white rounded-xl shadow md:x-12 md:py-24 py-12 pe-12"
           >
             {/* PDF Icon Placeholder */}
-            <div className="flex-shrink-0">
+            <div className="md:flex-shrink-0 flex justify-center items-center">
               <img
                 src="https://www.milesight.com/static/pc/en/page/technology/solution/anpr-solution/index-new/downloads.png?t=1751621798627"
                 alt="PDF Icon"
-                
+                className='DownloadImage'
               />
             </div>
 
             {/* Title and Download */}
-            <div>
-              <h3 className="text-lg font-medium text-gray-800 text-left">{item.title}</h3>
-              <button className="mt-2 flex items-center gap-1 px-8 py-8 border text-sm font-medium hover:bg-gray-100 transition" style={{borderRadius: '8px'}}>
+            <div className='md:block flex justify-between items-center w-full'>
+              <h3 className="downloadtitle md:text-lg md:font-medium text-gray-800 text-left">{item.title}</h3>
+              <button className=" hidden lg:block mt-2 flex items-center gap-1 px-8 py-8 border text-sm font-medium hover:bg-gray-100 transition" style={{borderRadius: '8px'}}>
                 Download <FiDownload />
               </button>
+               <FiDownload color='#00667C' className='downloacIcon'/>
             </div>
           </div>
         ))}

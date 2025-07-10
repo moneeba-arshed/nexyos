@@ -327,6 +327,12 @@ background-color: #F1F1F1;
     width: 7%;
     height: 27px;
 }
+.VideosArrowBack , .VideosArrowNext{
+  border: 1px solid black;
+  border-radius: 50%;
+      padding: 7px;
+    height: 31px;
+}
 @media screen and (max-width: 480px){
   .highlightCard{
   width:200%
@@ -337,7 +343,18 @@ background-color: #F1F1F1;
 .PrivacyButton{
   width: 100%;
 }
-
+img.DownloadImage {
+    width: 78%;
+}
+.downloadtitle{
+  margin: 0;
+  font-weight: 400;
+  font-size: 16px;
+}
+.downloacIcon{
+      height: 27px;
+    width: 16%;
+}
 }
 
 /* Hide scrollbar for all elements with this class */
