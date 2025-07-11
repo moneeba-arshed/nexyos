@@ -162,6 +162,28 @@ const Products = () => {
             width: 90%;
           }
         }
+          @media (max-width: 768px) {
+  .custom-grid {
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+  }
+
+  .card {
+    width: 50% !important; /* Full width card */
+    padding: 20px;
+  }
+
+  .card-img {
+    height: 160px;
+  }
+
+  .card-title {
+    font-size: 18px;
+    margin-top: 10px;
+  }
+}
+
       `}</style>
     </div>
   );

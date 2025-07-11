@@ -128,7 +128,7 @@ const Mega = () => {
                       onMouseEnter={() => handleSubCategoryHover(sub.id)}
                     >
                       <img src={sub.image} alt="" />
-                      <Link to={`/productdetails/${sub.id}`}>
+                      <Link to={`/sub-category/${sub.id}`}>
                         {sub.sub_category}
                       </Link>
                     </li>

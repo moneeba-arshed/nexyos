@@ -3,6 +3,9 @@ import { Link } from "react-router-dom";
 import { useEffect } from "react";
 import miniCAmeraGroup from "../assets/images/nexyos/miniCAmeraGroup.png"
 import SliderTest from "./SliderTest";
+import Tab from "./Tab";
+import HotProductSlider from "./HotProductSlider";
+import Contact from "./Contact";
 
 
 const ProductPage = () => {
@@ -67,7 +70,20 @@ const displayedProducts = filteredProducts.slice(
 
   return (
     <div className="container-fluid">
-      <SliderTest className=""/>
+     
+
+                                         {/* ROAD TRAFFIC MANAGMENT */}
+  <Tab/>
+                                         {/* SAFETY & eFFICIENCY */}
+  <div className='container my-76 p-0 md:pb-40 md:pt-30 flex justify-center items-center flex-col'>
+  <h5>For Better Road Safety & Efficient Traffic Management</h5>
+  <div className='md:w-[70%] w-[90%] text-center'>
+      <p className='text-sm'>With the growth of urban and rural populations, as well as the increasing number of vehicles on the roads, traffic congestion, accidents, and <br/> parking issues are constantly on the rise, presenting new challenges to traffic management agencies.</p>
+  <p className='text-sm'>Milesight is delighted to introduce our Intelligent Traffic Solution.</p>
+  <p className='text-sm'>We integrate powerful, high-quality cameras with back-end software, elevating intelligent traffic management to a new level with exceptional imagery and <br/> advanced AI-powered ANPR technology, ensuring road traffic safety and efficient traffic management.</p>
+  </div>
+  </div>
+  <HotProductSlider/>
       <h1 className="title">Product Categories</h1>
  <button
   className="filter-toggle"
@@ -540,7 +556,7 @@ const displayedProducts = filteredProducts.slice(
     Compare ({compareItems.length})
   </div>
 )}
-
+<Contact/>
  <style>{`
   * {
     box-sizing: border-box;
@@ -549,7 +565,8 @@ const displayedProducts = filteredProducts.slice(
   .title {
     font-size: 28px;
     text-align: center;
-  
+  margin-top:50px;
+  margin-bottom:50px;
     font-weight: bold;
   }
 

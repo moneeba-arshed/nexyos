@@ -8,6 +8,8 @@ import './ProductDetail.css';
 import banner from "../assets/images/bg/banner.jpg";
 import frontcamera from "../assets/images/nexyos/frontcamera.png";
 import sidecamera1 from "../assets/images/nexyos/sidecamera1.png";
+import HotProductSlider from "./HotProductSlider";
+import Contact from "./Contact";
 
 
 const ProductDetail = () => {
@@ -277,18 +279,20 @@ const ProductDetail = () => {
             </div>
 
             {/* Detail Section */}
-            <div className="detail-column" id="detail-scroll">
-              {sections.map((section) => (
-                <div key={section} ref={sectionRefs[section]} className="spec-section">
-                  <h3>{section}</h3>
-                  <ul>
-                    {details[section].map((point, index) => (
-                      <li key={index}>{point}</li>
-                    ))}
-                  </ul>
-                </div>
-              ))}
-            </div>
+<div className="detail-column">
+  {sections.map((section) => (
+    <div key={section} ref={sectionRefs[section]} className="spec-section">
+      <h3>{section}</h3>
+      <ul>
+        {details[section].map((point, index) => (
+          <li key={index}>{point}</li>
+        ))}
+      </ul>
+    </div>
+  ))}
+</div>
+
+
           </div>
 
 
@@ -389,7 +393,10 @@ const ProductDetail = () => {
             </div>
             <hr />
           </div>
-        </div></div></>
+        </div>
+        </div>
+        <HotProductSlider/>
+        <Contact/></>
   );
 };
 
