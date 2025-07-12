@@ -28,15 +28,15 @@ import Events from "./components/Company/Events";
 import BlogPage from "./components/Blog/BlogPage";
 import BlogDetailPage from "./components/Blog/BlogDetailPage";
 import NewsPage from "./components/Company/News";
-import CategoryPage from "./components/CategoryPage";
 import ProductPage from "./components/ProductPage";
 import ProductDetail from "./components/ProductDetail";
 import Login from "./pages/Login";
 import Signup from "./pages/Signup";
 import Categorycall from "./components/Categorycall";
-import Productcall from "./components/Productcall";
+
 import ProCamera from "./components/ProCamera";
 import Solution from "./pages/Solution";
+import SubCategoryPage from "./components/SubCategoryPage";
 
 function App() {
   const location = useLocation();
@@ -67,8 +67,9 @@ function App() {
         <Route path="/signup" element={<Signup />} />
         <Route path="/products/:id" element={<ProductDetail />} />
         <Route path="/products" element={<ProductPage />} />
-        <Route path="/productdetails/:id" element={<Productcall />} />
+
         <Route path="/category/:categoryName" element={<Categorycall />} />
+         <Route path="/sub-category/:id" element={<SubCategoryPage />} />
         <Route path="/product/" element={<ProCamera/>} />
         <Route path="/slider" element={<Slider />} />
         <Route path="/solution" element={<Solution/>} />

@@ -22,6 +22,18 @@ const Solution = () => {
   {
     title: 'Brochure: Milesight Intelligent Traffic Camera',
   },
+   {
+    title: 'Supported Regions List',
+  },
+  {
+    title: 'White Paper: Intelligent Traffic Camera',
+  },
+  {
+    title: 'Troubleshooting ANPR Solution',
+  },
+  {
+    title: 'Brochure: Milesight Intelligent Traffic Camera',
+  },
 ];
   return (
     <div>
@@ -57,36 +69,42 @@ const Solution = () => {
                                          {/* Videos */}
 <SolutionVideo/>
                                         {/* DOWNLOADS */}
- <div className="bg-gray-100 min-h-screen py-100">
-      <h2 className="text-4xl font-bold text-center mb-30">Downloads</h2>
+{/* DOWNLOADS */}
+<div className="bg-gray-100 py-40">
+  <h2 className="text-4xl font-bold text-center mb-20">Downloads</h2>
 
-      <div className="DownloadContent mx-auto grid grid-cols-1 sm:grid-cols-2 gap-6 px-4">
-        {downloads.map((item, idx) => (
-          <div
-            key={idx}
-            className="flex items-center md:gap-28 bg-white rounded-xl shadow md:x-12 md:py-24 py-12 pe-12"
-          >
-            {/* PDF Icon Placeholder */}
-            <div className="md:flex-shrink-0 flex justify-center items-center">
-              <img
-                src="https://www.milesight.com/static/pc/en/page/technology/solution/anpr-solution/index-new/downloads.png?t=1751621798627"
-                alt="PDF Icon"
-                className='DownloadImage'
-              />
-            </div>
+  <div className="mx-auto max-w-5xl grid grid-cols-1 sm:grid-cols-2 gap-8 px-6">
+    {downloads.map((item, idx) => (
+      <div
+        key={idx}
+        className="flex items-center gap-6 bg-white rounded-xl shadow px-6 py-6"
+      >
+        {/* Bigger Image */}
+        <div className="w-20 h-20 flex-shrink-0 flex items-center justify-center">
+          <img
+            src="https://www.milesight.com/static/pc/en/page/technology/solution/anpr-solution/index-new/downloads.png?t=1751621798627"
+            alt="PDF Icon"
+            className="w-full h-full object-contain"
+          />
+        </div>
 
-            {/* Title and Download */}
-            <div className='md:block flex justify-between items-center w-full'>
-              <h3 className="downloadtitle md:text-lg md:font-medium text-gray-800 text-left">{item.title}</h3>
-              <button className=" hidden lg:block mt-2 flex items-center gap-1 px-8 py-8 border text-sm font-medium hover:bg-gray-100 transition" style={{borderRadius: '8px'}}>
-                Download <FiDownload />
-              </button>
-               <FiDownload color='#00667C' className='downloacIcon'/>
-            </div>
-          </div>
-        ))}
+        {/* Title + Button */}
+        <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center w-full">
+          <p className="text-gray-800 font-semibold text-sm sm:text-base mb-2 sm:mb-0">
+            {item.title}
+          </p>
+
+          <button className="flex items-center gap-2 text-[#00667C] font-medium text-sm hover:underline">
+            <FiDownload size={20} />
+            Download
+          </button>
+        </div>
       </div>
-    </div>
+    ))}
+  </div>
+</div>
+
+
 <Contact/>
     </div>
   )
