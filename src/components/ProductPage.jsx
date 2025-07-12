@@ -4,8 +4,6 @@ import { useEffect } from "react";
 import miniCAmeraGroup from "../assets/images/nexyos/miniCAmeraGroup.png"
 import SliderTest from "./SliderTest";
 import Tab from "./Tab";
-import HotProductSlider from "./HotProductSlider";
-import Contact from "./Contact";
 
 
 const ProductPage = () => {
@@ -83,7 +81,6 @@ const displayedProducts = filteredProducts.slice(
   <p className='text-sm'>We integrate powerful, high-quality cameras with back-end software, elevating intelligent traffic management to a new level with exceptional imagery and <br/> advanced AI-powered ANPR technology, ensuring road traffic safety and efficient traffic management.</p>
   </div>
   </div>
-  <HotProductSlider/>
       <h1 className="title">Product Categories</h1>
  <button
   className="filter-toggle"
@@ -556,7 +553,7 @@ const displayedProducts = filteredProducts.slice(
     Compare ({compareItems.length})
   </div>
 )}
-<Contact/>
+
  <style>{`
   * {
     box-sizing: border-box;

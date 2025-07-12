@@ -208,12 +208,6 @@ const CategoryPage = () => {
 
         {/* Inline Styles */}
         <style>{`
-        @media screen and (max-width: 768px) {
-  .Feature_container {
-    margin: 24px 16px;
-    padding: 16px;
-  }
-}
 
 .carousel-dot {
   width: 10px;
@@ -342,16 +336,7 @@ const CategoryPage = () => {
             width: 90%;
           }
         }
-          .Feature_container {
-            margin: 68px 98px;
-          }
-
-          @media screen and (max-width: 480px) {
-            .Feature_container {
-              margin: 48px 25px;
-              padding: 13px;
-            }
-          }
+       
         `}</style>
       </div>
     </>

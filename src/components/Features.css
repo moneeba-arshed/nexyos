@@ -1,15 +1,10 @@
-.Feature_container{
-margin: 68px 98px;
-}
+
 .Feature_heading{
   padding: 40px 0px;
 }
                                         /* responsive */
 @media screen and (max-width: 480px){
-.Feature_container{
-margin: 48px 25px;
-padding: 13px;
-}
+
   .Features_circles {
     flex-direction: column;
     align-items: center;

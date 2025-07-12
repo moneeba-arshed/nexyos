@@ -14,8 +14,8 @@ const Home = () => {
   return (
     <div className=''>
    {/* <MilesightCarousel/> */}
-   {/* <SliderTest/> */}
-   <TestimonialCarousel/>
+   <SliderTest/>
+   {/* <TestimonialCarousel/> */}
       <Products/>
       <Sensing_Matter/>
       <TimelineSlider/>

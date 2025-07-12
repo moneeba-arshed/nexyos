@@ -1,5 +1,6 @@
 import { useParams, useLocation } from "react-router-dom";
 import { useEffect, useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import { FaAngleRight, FaAngleDown, FaAngleUp } from "react-icons/fa";
 import miniCAmeraGroup from "../assets/images/nexyos/miniCAmeraGroup.png";
@@ -15,6 +16,7 @@ const SubCategoryPage = () => {
   const { id } = useParams(); // sub-category ID
   const location = useLocation();
 const [subCategory, setSubCategory] = useState(null);
+  const navigate = useNavigate();
 
 const features = [
   {
@@ -152,7 +154,7 @@ useEffect(() => {
   return (
     <>
     <SliderTest/>
-<div className="custom-padding mb-20 mt-64">
+<div className="custom-padding mb-20 lg:mt-64">
 
 
         <h5 className="text-base">What we offer</h5>
@@ -310,16 +312,34 @@ useEffect(() => {
         </div>
       </div>
       
-    </section>
-    <div className="wrapper">
+  
+    <div >
       
-<h1 className="title">{subCategory?.sub_category || "Sub-Category"} Product </h1>
+
 
 
       <section className="Feature_container bg-gray-100 rounded-lg pb-28 flex flex-col items-center justify-center">
         <div className="py-6 px-20 mt-16">
-         <h2 className="text-2xl">Products under: {subCategory?.sub_category}</h2>
+    <h1 className="title ">{subCategory?.sub_category || "Sub-Category"} Product </h1>
           <div className="flex flex-col lg:flex-row gap-6 max-w-6xl mx-auto w-full items-center justify-center">
+             {/* Lenses Section */}
+              <div className="w-full lg:w-[350px] rounded-xl flex flex-col justify-center items-center relative">
+
+
+                <img
+                  src="https://www.milesight.com/static/pc/en/page/technology/solution/anpr-solution/index-new/outstanding-features-lenses.jpg?t=1751621798627"
+                  alt="Lenses"
+                  className="rounded-lg mb-4 w-full h-auto object-cover"
+                />
+
+                <div className="lensesContent text-left px-2 absolute bottom-8 text-white">
+                  <h3 className="text-xl font-semibold">Lenses</h3>
+                  <p className="text-sm">
+                    4X/5X/12X/36X Optical AF Lens <br />
+                    Motorized 2.7~13.5mm / 3.6~10mm @F1.4
+                  </p>
+                </div>
+              </div>
             {/* Desktop View */}
             <div className="w-full h-full bg-white py-20 px-60 rounded-xl hidden lg:flex flex-col justify-between">
               <h6 className="text-left">Third-Level Categories</h6>
@@ -334,6 +354,7 @@ useEffect(() => {
                     <div
                       key={index}
                       className="card"
+                         onClick={() => navigate(`/product`)}
                     >
                       <img
                         src={miniCAmeraGroup}
@@ -407,10 +428,7 @@ useEffect(() => {
           margin-bottom: 30px;
           font-weight: bold;
         }
-        .Feature_container {
-          margin: 68px 200px;
-        }
-
+      
         .card {
           width: 140px;
           background-color: #ffffff;
@@ -461,11 +479,7 @@ useEffect(() => {
           flex-shrink: 0;
         }
 
-        @media screen and (max-width: 768px) {
-          .Feature_container {
-            margin: 48px 25px;
-            padding: 13px;
-          }
+    
 
           .card {
             width: 90%;
@@ -473,6 +487,7 @@ useEffect(() => {
         }
       `}</style>
     </div>
+      </section>
         <Tab/>
       <HotProductSlider/>
       <Contact/>
