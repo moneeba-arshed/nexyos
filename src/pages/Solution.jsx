@@ -7,7 +7,6 @@ import { FiDownload } from 'react-icons/fi';
 import Features from '../components/Features'
 import TrafficFunctionsAndScenarios from '../components/TrafficFunctionsAndScenarios'
 import SolutionVideo from '../components/SolutionVideo'
-import Trial from '../components/trial'
 
 const Solution = () => {
     const downloads = [

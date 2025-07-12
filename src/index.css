@@ -49,6 +49,9 @@ button:focus-visible {
 ul li{
   text-decoration: none;
 }
+ul li:hover{
+  text-decoration: none;
+}
 @media (prefers-color-scheme: light) {
   :root {
     color: #999999;
@@ -364,4 +367,9 @@ img.DownloadImage {
 .no-scrollbar {
   -ms-overflow-style: none;
   scrollbar-width: none;
+}
+.toggle-mobileMenu{
+background-color: #00667C;
+margin: 0;
+padding: 12px 12px;
 }

@@ -1,26 +1,32 @@
-import React, { useEffect, useState  } from "react";
+import React, { useEffect, useState } from "react";
 import query from "jquery";
 import { Link, NavLink } from "react-router-dom";
 import SearchBar from "./Searchbar";
 import "select2";
 import "../index.css";
-import { FaUserAlt } from "react-icons/fa";       // Rounded user (head + body)
-import { FaStreetView } from "react-icons/fa";    // Full body from front view
-
-import { RxCaretDown, RxCaretRight } from "react-icons/rx";
-import Dropdown from "rsuite/Dropdown";
+import { FaUserAlt } from "react-icons/fa"; 
+import { FaHandshakeAngle } from "react-icons/fa6";
+import { BsFolder2Open } from "react-icons/bs";
+import { FaRegCirclePlay } from "react-icons/fa6";
+import { CiGlobe } from "react-icons/ci";
+import { BiBuildings } from "react-icons/bi";
+import { RiContactsBook3Line } from "react-icons/ri";
+import { AiOutlineProduct } from "react-icons/ai";
 import "rsuite/dist/rsuite.min.css";
 import Mega from "./Mega";
+import { X, ChevronRight, ChevronLeft } from "lucide-react";
+import { IoHomeOutline } from "react-icons/io5";
+import logo from '../assets/images/logo/logo.png'
+import { FaBars } from "react-icons/fa";
+
 const Header = () => {
-  
   const [scroll, setScroll] = useState(false);
   const [categories, setCategories] = useState([]);
   const [subCategoriesMap, setSubCategoriesMap] = useState({});
   const [hoveredCategory, setHoveredCategory] = useState(null);
   const [isOpen, setIsOpen] = useState(false);
   const [isAlignOpen, setIsAlignOpen] = useState(false);
-const [activeSubIndex, setActiveSubIndex] = useState(null); // for subcategory
-
+  const [activeSubIndex, setActiveSubIndex] = useState(null); // for subcategory
 
   const toggleDropdown = () => {
     setIsOpen(!isOpen);
@@ -71,7 +77,7 @@ const [activeSubIndex, setActiveSubIndex] = useState(null); // for subcategory
   const [menuActive, setMenuActive] = useState(false);
   const [activeIndex, setActiveIndex] = useState(null);
   const handleMenuClick = (index) => {
-   setActiveIndex((prevIndex) => (prevIndex === index ? null : index));
+    setActiveIndex((prevIndex) => (prevIndex === index ? null : index));
   };
   const handleMenuToggle = () => {
     setMenuActive(!menuActive);
@@ -127,10 +133,174 @@ const [activeSubIndex, setActiveSubIndex] = useState(null); // for subcategory
     fetchAllData();
   }, []);
 
-const handleSubCategoryToggle = (e, subCategoryId) => {
-  e.stopPropagation(); // prevent event bubbling
-  setActiveSubIndex(activeSubIndex === subCategoryId ? null : subCategoryId);
-};
+  const handleSubCategoryToggle = (e, subCategoryId) => {
+    e.stopPropagation(); // prevent event bubbling
+    setActiveSubIndex(activeSubIndex === subCategoryId ? null : subCategoryId);
+  };
+  const goBack = () => setNavStack((prev) => prev.slice(0, -1));
+  const closeNav = () => setNavStack([{ title: "Menu", items: menuData }]);
+
+    const [menuData, setMenuData] = useState([
+      { title: "Home", path: "/", icon: IoHomeOutline },
+      { title: "Product", path: "", icon: AiOutlineProduct },
+      {
+        title: "Solutions",
+        path: "/solution",
+        icon: BsFolder2Open,
+        submenu: {
+          title: "Solutions",
+          items: [
+            {
+              title: "Video Surveillance",
+              path: "/solutions/video-surveillance",
+            },
+            { title: "Intelligent Traffic Solution", path: "/TrafficSolution" },
+            { title: "Smart Restroom", path: "/SmartRoom" },
+            { title: "Indoor Air Quality", path: "/AirQuality" },
+            { title: "Smart Space", path: "/SmartSpace" },
+            { title: "People Counting", path: "/PeopleCounting" },
+            { title: "Smart HVAC Management", path: "/SmartHVAC" },
+            { title: "Space Occupancy", path: "/SmartSpaceOccupancy" },
+          ],
+        },
+      },
+      { title: "Success Stories", path: "/success", icon: CiGlobe },
+      {
+        title: "Company",
+        path: "#",
+        icon: BiBuildings,
+        submenu: {
+          title: "Company",
+          items: [
+            { type: "heading", title: "Company Info" },
+            { title: "About Us", path: "/About" },
+            { title: " Our Brand", path: "/Brand" },
+            { title: "Events", path: "/Events" },
+            { type: "heading", title: "Library" },
+            { title: "  Blog", path: "/Blog" },
+            { title: "  News", path: "/News" },
+          ],
+        },
+      },
+      {
+        title: "Partner",
+        path: "#",
+        icon: FaHandshakeAngle,
+        submenu: {
+          title: "Partner",
+          items: [
+            { type: "heading", title: " Nexyos Partner Ecosystem" },
+            { title: " Find a Channel Partner", path: "/channel" },
+            { title: "  Channel Partner Program", path: "/PartnerProgram" },
+            { title: "  Project Registration", path: "/ProjectRegistration" },
+            { title: "IoT Collaboration Start Guide", path: "/Iot" },
+          ],
+        },
+      },
+      { title: "Contact Us", path: "/contact", icon: RiContactsBook3Line },
+      { title: "Online Demo", path: "/demo", icon: FaRegCirclePlay },
+    ]);
+  
+    const [navStack, setNavStack] = useState([
+      { title: "Menu", items: menuData },
+    ]);
+    const currentMenu = navStack[navStack.length - 1];
+  
+    useEffect(() => {
+      const fetchProductMenu = async () => {
+        try {
+          const response = await fetch(
+            "https://portal.nexyos.com/api/product/categories"
+          );
+          const categories = await response.json();
+  
+          const categoryWithSubmenus = await Promise.all(
+            categories.map(async (category) => {
+              const res = await fetch(
+                `https://portal.nexyos.com/api/product/sub_categories/${category.id}`
+              );
+              const subCategories = await res.json();
+  
+              return {
+                title: category.category,
+                path: `/product-category/${category.id}`,
+                submenu: {
+                  title: category.category,
+                  items: subCategories.map((sub) => ({
+                    title: sub.sub_category,
+                    path: `/product-subcategory/${sub.id}`,
+                    subCategoryId: sub.id,
+                    categoryId: category.id, // pass for third-level
+                  })),
+                },
+              };
+            })
+          );
+  
+          const updatedMenu = menuData.map((item) =>
+            item.title === "Product"
+              ? {
+                  ...item,
+                  submenu: {
+                    title: "Product",
+                    items: categoryWithSubmenus,
+                  },
+                }
+              : item
+          );
+  
+          setMenuData(updatedMenu);
+          setNavStack([{ title: "Menu", items: updatedMenu }]);
+        } catch (error) {
+          console.error("Failed to fetch product/subcategory menus", error);
+        }
+      };
+      fetchProductMenu();
+    }, []);
+
+      const openSubmenu = async (item) => {
+    console.log("openSubmenu triggered for:", item);
+    if (item.submenu && item.submenu.items) {
+      setNavStack((prev) => [
+        ...prev,
+        {
+          title: item.submenu.title || item.title,
+          items: item.submenu.items,
+        },
+      ]);
+    }
+    // If it's a second-level item with subCategoryId (we added this above)
+    else if (
+      item.path?.includes("/product-subcategory/") &&
+      item.subCategoryId &&
+      item.categoryId
+    ) {
+      try {
+        const thirdLevelRes = await fetch(
+          `https://portal.nexyos.com/api/product/third_level_cat/${item.categoryId}/${item.subCategoryId}`
+        );
+        const thirdLevelData = await thirdLevelRes.json();
+        console.log("thirdLevelData", thirdLevelData);
+        if (thirdLevelData.length > 0) {
+          const thirdLevelItems = thirdLevelData.map((third) => ({
+            title: third.third_level,
+            path: `/product-thirdlevel/${third.id}`,
+            image: third.image,
+          }));
+
+          setNavStack((prev) => [
+            ...prev,
+            {
+              title: item.title + " Models", // make unique so ChevronLeft appears
+              items: thirdLevelItems,
+            },
+          ]);
+        }
+      } catch (error) {
+        console.error("Failed to fetch third-level menu:", error);
+      }
+    }
+  };
 
   return (
     <>
@@ -170,330 +340,114 @@ const handleSubCategoryToggle = (e, subCategoryId) => {
       </form>
       {/* ==================== Search Box End Here ==================== */}
       {/* ==================== Mobile Menu Start Here  ==================== done */}
-      <div
-        className={`mobile-menu scroll-sm d-lg-none d-block ${
-          menuActive && "active"
-        }`}
-      >
-        <button
+      <div className={`mobile-menu scroll-sm block lg:hidden ${menuActive ? "active" : ""}`}>
+     <div className="fixed inset-0 bg-white z-50 shadow-lg w-full  mx-auto overflow-y-auto">
+      {/* Header */}
+      <div className="flex items-center justify-between p-4 border-b">
+        {navStack.length > 1 ? (
+          <div className="flex items-center gap-2">
+            <button onClick={goBack}>
+              <ChevronLeft size={28} />
+            </button>
+            <h2 className="font-semibold text-xl m-0">{currentMenu.title}</h2>
+          </div>
+        ) : (
+          <div className="flex items-center gap-3">
+              <img src={logo} alt="Logo" />
+          </div>
+        )}
+<button
           onClick={() => {
             handleMenuToggle();
             setActiveIndex(null);
           }}
           type="button"
-          className="close-button"
+          className=""
         >
-          <i className="ph ph-x" />{" "}
+          <X size={28} />
         </button>
-        <div className="mobile-menu__inner">
-          <Link to="/" className="mobile-menu__logo">
-            <img src="assets/images/logo/logo.png" alt="Logo" />
-          </Link>
-          <div className="mobile-menu__menu">
-            {/* Nav Menu Start */}
-            <ul className="nav-menu flex-align nav-menu--mobile">
-              <li
-                onClick={() => handleMenuClick(0)}
-                className={`on-hover-item nav-menu__item ${
-                  activeIndex === 0 ? "d-block" : ""
-                }`}
-              >
-                <Link to="/" className="nav-menu__link">
-                  Home
-                </Link>
-              </li>
+        {/* <button onClick={closeNav}>
+          <X size={28} />
+        </button> */}
+      </div>
 
-            <li
-  onClick={() => handleMenuClick(1)}
-  className={`on-hover-item nav-menu__item has-submenu ${
-    activeIndex === 1 ? "d-block" : ""
-  }`}
->
-  <Link to="/" className="nav-menu__link">
-    Product
-    <RxCaretDown />
-  </Link>
-  <ul
-    className={`on-hover-dropdown common-dropdown nav-submenu scroll-sm ${
-      activeIndex === 1 ? "open" : ""
-    }`}
-  >
-    {loading ? (
-      <div className="loader">Loading...</div>
-    ) : categories && categories.length > 0 ? (
-      categories.map((item) => (
-        <li
-          key={item.id}
-          
-          className="common-dropdown__item nav-submenu__item"
-        >
-          <div className="category_list nav-menu--mobile nav-submenu__link"   onClick={() => setActiveIndex(null)}>  {item.category} {/* Display the main category name */}
-            <RxCaretDown onClick={(e) => handleSubCategoryToggle(e, item.id)} /></div>
-          
+      {/* Menu Items */}
+      <div className="flex flex-col">
+        {currentMenu.items.map((item, idx) => {
+          if (item.type === "heading") {
+            return (
+              <h6 key={idx} className="px-6 py-2 tracking-wide">
+                {item.title}
+              </h6>
+            );
+          }
 
-         <ul className={`on-hover-dropdown common-dropdown nav-submenu scroll-sm ${activeSubIndex === item.id ? "open" : ""}`}>
+          const Icon = item.icon;
+          const hasSubmenu = item.submenu && item.submenu.items;
 
-            {/* Make sure subCategoriesMap[item.id] is valid */}
-            {subCategoriesMap[item.id] && subCategoriesMap[item.id].length > 0 ? (
-              subCategoriesMap[item.id].map((subCategory) => (
-                <li
-                  key={subCategory.id}
-                  className="common-dropdown__item nav-submenu__item"
-                >
+          return (
+            <ul key={idx}>
+              <li>
+                {item.image ? (
+                  // Third-level menu item with image
                   <Link
-                    to="#"
-                    className="common-dropdown__link nav-submenu__link hover-bg-neutral-100"
+                    to={item.path || "#"}
+                    className="flex items-center gap-3 px-6 py-3 hover:bg-gray-100"
                   >
-                    {subCategory.sub_category} {/* Display subcategory name */}
+                    <img
+                      src={`https://portal.nexyos.com/${item.image}`}
+                      alt={item.title}
+                      className="rounded"
+                    />
+                    <span className="text-black">{item.title}</span>
                   </Link>
-                </li>
-              ))
-            ) : (
-              <li className="common-dropdown__item nav-submenu__item">
-                No subcategories available
-              </li>
-            )}
-          </ul>
-        </li>
-      ))
-    ) : null}
-  </ul>
-</li>
-
-              <li
-                onClick={() => handleMenuClick(2)}
-                className={`on-hover-item nav-menu__item has-submenu ${
-                  activeIndex === 2 ? "d-block" : ""
-                }`}
-              >
-                <Link to="/solution" className="nav-menu__link">
-                  Solutions
-                  <RxCaretDown />
-                </Link>
-                <ul
-                  className={`on-hover-dropdown common-dropdown nav-submenu scroll-sm ${
-                    activeIndex === 2 ? "open" : ""
-                  }`}
-                >
-                  <li className="common-dropdown__item nav-submenu__item">
-                    <Link
-                      onClick={() => setActiveIndex(null)}
-                      to="/solutions/video-surveillance"
-                      className="common-dropdown__link nav-submenu__link hover-bg-neutral-100"
-                    >
-                      Video Surveillance
-                    </Link>
-                  </li>
-                  <li className="common-dropdown__item nav-submenu__item">
-                    <Link
-                      onClick={() => setActiveIndex(null)}
-                      to="/TrafficSolution"
-                      className="common-dropdown__link nav-submenu__link hover-bg-neutral-100"
-                    >
-                      Intelligent Traffic Solution
-                    </Link>
-                  </li>
-
-                  <li className="common-dropdown__item nav-submenu__item">
-                    <Link
-                      onClick={() => setActiveIndex(null)}
-                      to="/SmartRoom"
-                      className="common-dropdown__link nav-submenu__link hover-bg-neutral-100"
-                    >
-                      Smart Restroom
-                    </Link>
-                  </li>
-                  <li className="common-dropdown__item nav-submenu__item">
-                    <Link
-                      onClick={() => setActiveIndex(null)}
-                      to="/AirQuality"
-                      className="common-dropdown__link nav-submenu__link hover-bg-neutral-100"
-                    >
-                      Indoor Air Quality
-                    </Link>
-                  </li>
-
-                  <li className="common-dropdown__item nav-submenu__item">
-                    <Link
-                      onClick={() => setActiveIndex(null)}
-                      to="/SmartSpace"
-                      className="common-dropdown__link nav-submenu__link hover-bg-neutral-100"
-                    >
-                      Smart Space
-                    </Link>
-                  </li>
-                  <li className="common-dropdown__item nav-submenu__item">
-                    <Link
-                      onClick={() => setActiveIndex(null)}
-                      to="/PeopleCounting"
-                      className="common-dropdown__link nav-submenu__link hover-bg-neutral-100"
-                    >
-                      People Counting
-                    </Link>
-                  </li>
-
-                  <li className="common-dropdown__item nav-submenu__item">
-                    <Link
-                      onClick={() => setActiveIndex(null)}
-                      to="/SmartHVAC"
-                      className="common-dropdown__link nav-submenu__link hover-bg-neutral-100"
-                    >
-                      Smart HVAC Management
-                    </Link>
-                  </li>
-                  <li className="common-dropdown__item nav-submenu__item">
-                    <Link
-                      onClick={() => setActiveIndex(null)}
-                      to="/SmartSpaceOccupancy"
-                      className="common-dropdown__link nav-submenu__link hover-bg-neutral-100"
-                    >
-                      Space Occupancy
-                    </Link>
-                  </li>
-                </ul>
-              </li>
-              <li className="nav-menu__item">
-                <Link to="/success" className="nav-menu__link">
-                  Success Stories
-                </Link>
-              </li>
-              <li
-                onClick={() => handleMenuClick(3)}
-                className={`on-hover-item nav-menu__item has-submenu ${
-                  activeIndex === 3 ? "d-block" : ""
-                }`}
-              >
-                <Link to="#" className="nav-menu__link">
-                  Company
-                  <RxCaretDown />
-                </Link>
-                <ul
-                  className={`on-hover-dropdown common-dropdown nav-submenu scroll-sm ${
-                    activeIndex === 3 ? "open" : ""
-                  }`}
-                >
-                  <li className="common-dropdown__item nav-submenu__item">
-                    <Link
-                      onClick={() => setActiveIndex(null)}
-                      to="/About"
-                      className="common-dropdown__link nav-submenu__link hover-bg-neutral-100"
-                    >
-                      About Us
-                    </Link>
-                  </li>
-                  <li className="common-dropdown__item nav-submenu__item">
-                    <Link
-                      onClick={() => setActiveIndex(null)}
-                      to="/Brand"
-                      className="common-dropdown__link nav-submenu__link hover-bg-neutral-100"
-                    >
-                      Our Brand
-                    </Link>
-                  </li>
-                  <li className="common-dropdown__item nav-submenu__item">
-                    <Link
-                      onClick={() => setActiveIndex(null)}
-                      to="/Events"
-                      className="common-dropdown__link nav-submenu__link hover-bg-neutral-100"
-                    >
-                      Events
-                    </Link>
-                  </li>
-
-                  <li className="common-dropdown__item nav-submenu__item">
-                    <Link
-                      onClick={() => setActiveIndex(null)}
-                      to="/Blog"
-                      className="common-dropdown__link nav-submenu__link hover-bg-neutral-100"
-                    >
-                      Blog
-                    </Link>
-                  </li>
-                  <li className="common-dropdown__item nav-submenu__item">
-                    <Link
-                      onClick={() => setActiveIndex(null)}
-                      to="/News"
-                      className="common-dropdown__link nav-submenu__link hover-bg-neutral-100"
-                    >
-                      News
-                    </Link>
-                  </li>
-                </ul>
-              </li>
-              <li
-                onClick={() => handleMenuClick(4)}
-                className={`on-hover-item nav-menu__item has-submenu ${
-                  activeIndex === 4 ? "d-block" : ""
-                }`}
-              >
-                <Link to="#" className="nav-menu__link">
-                  Partner
-                  <RxCaretDown />
-                </Link>
-                <ul
-                  className={`on-hover-dropdown common-dropdown nav-submenu scroll-sm ${
-                    activeIndex === 4 ? "open" : ""
-                  }`}
-                >
-                  <li className="common-dropdown__item nav-submenu__item">
-                    <Link
-                      onClick={() => setActiveIndex(null)}
-                      to="/channel"
-                      className="common-dropdown__link nav-submenu__link hover-bg-neutral-100"
-                    >
-                      Find a Channel Partner
-                    </Link>
-                  </li>
-                  <li className="common-dropdown__item nav-submenu__item">
-                    <Link
-                      onClick={() => setActiveIndex(null)}
-                      to="/PartnerProgram"
-                      className="common-dropdown__link nav-submenu__link hover-bg-neutral-100"
-                    >
-                      Channel Partner Program
-                    </Link>
-                  </li>
-                  <li className="common-dropdown__item nav-submenu__item">
-                    <Link
-                      onClick={() => setActiveIndex(null)}
-                      to="/ProjectRegistration"
-                      className="common-dropdown__link nav-submenu__link hover-bg-neutral-100"
-                    >
-                      Project Registration
-                    </Link>
-                  </li>
-                  <li className="common-dropdown__item nav-submenu__item">
-                    <Link
-                      onClick={() => setActiveIndex(null)}
-                      to="/Iot"
-                      className="common-dropdown__link nav-submenu__link hover-bg-neutral-100"
-                    >
-                      IoT Collaboration Start Guide
-                    </Link>
-                  </li>
-                </ul>
-              </li>
-              <li className="nav-menu__item">
-                <Link to="/contact" className="nav-menu__link">
-                  Contact Us
-                </Link>
-              </li>
-              <li className="nav-menu__item">
-                <Link
-                  to="/demo"
-                  className="nav-menu__link_demo  d-flex align-items-center gap-2"
-                >
-                  <span className="icon">
-                    <i className="ph ph-play-circle" />{" "}
-                    {/* Play Icon using Phosphor Icons */}
-                  </span>
-                  Online Demo
-                </Link>
+                ) : item.subCategoryId && item.categoryId ? (
+                  // Second-level item with subCategoryId (open third-level)
+                  <button
+                    onClick={() => openSubmenu(item)}
+                    className="flex justify-between items-center w-full text-left px-4 py-3 hover:bg-gray-100"
+                  >
+                    <div className="flex items-center gap-3 px-12">
+                      <span className="text-black my-8 px-12 text-left">
+                        {item.title}
+                      </span>
+                    </div>
+                    <ChevronRight size={20} />
+                  </button>
+                ) : hasSubmenu ? (
+                  // First or second level with submenu
+                  <button
+                    onClick={() => openSubmenu(item)}
+                    className="flex justify-between items-center w-full text-left px-4 py-3 hover:bg-gray-100"
+                  >
+                    <div className="flex items-center gap-3 px-12">
+                      {Icon && <Icon size={20} className="text-gray-700" />}
+                      <span className="text-black my-8 px-12 text-left">
+                        {item.title}
+                      </span>
+                    </div>
+                    <ChevronRight size={20} />
+                  </button>
+                ) : (
+                  // Leaf node
+                  <Link
+                    to={item.path || "#"}
+                    className="flex justify-between items-center w-full px-4 py-3 hover:bg-gray-100"
+                  >
+                    <div className="flex items-center gap-3 px-12">
+                      {Icon && <Icon size={20} className="text-gray-700" />}
+                      <span className="text-black my-8 px-12 text-left">
+                        {item.title}
+                      </span>
+                    </div>
+                  </Link>
+                )}
               </li>
             </ul>
-            {/* Nav Menu End */}
-          </div>
-        </div>
+          );
+        })}
+      </div>
+    </div>
       </div>
       {/* ==================== Mobile Menu End Here ==================== */}
       {/* ======================= Middle Header Two Start ========================= */}
@@ -501,7 +455,7 @@ const handleSubCategoryToggle = (e, subCategoryId) => {
       {/* ======================= Middle Header Two End ========================= */}
       {/* ==================== Header Two Start Here ==================== */}
       <header
-        className={`header bg-white border-bottom border-gray-100 py-4  ${
+        className={`header  bg-white border-bottom border-gray-100 py-4  ${
           scroll && "fixed-header"
         }`}
       >
@@ -509,13 +463,13 @@ const handleSubCategoryToggle = (e, subCategoryId) => {
           <nav className="header-inner d-flex justify-content-between gap-8">
             <div className="ps-4 logo d-lg-none">
               <Link to="/" className="link">
-                <img src="/assets/images/logo/logo-two.png" alt="Logo" />
+                <img src={logo} alt="Logo" />
               </Link>
             </div>
             <div className="w-100 ">
               {/* Menu Start  */}
 
-              <div className="header-menu d-lg-block d-none">
+             <div className="header-menu hidden lg:block">
                 <div className="row d-flex justify-content-between">
                   <div className="col-2">
                     <div className="logo">
@@ -535,9 +489,9 @@ const handleSubCategoryToggle = (e, subCategoryId) => {
                         </Link>
                       </li>
                       <li className="on-hover-item nav-menu__item has-megamenu has-submenu">
-                      <Link to="/" className="nav-menu__link">
-                       <Mega/>
-                      </Link>
+                        <Link to="/" className="nav-menu__link">
+                          <Mega />
+                        </Link>
                       </li>
                       <li className="on-hover-item nav-menu__item has-megamenu has-submenu">
                         <Link to="/solution" className="nav-menu__link">
@@ -619,59 +573,6 @@ const handleSubCategoryToggle = (e, subCategoryId) => {
                                 </NavLink>
                               </li>
                             </ul>
-
-                            {/* Column 3 */}
-                            {/* <ul className="space-y-2">
-                              <li>
-                                <NavLink
-                                  to="/solutions/smart-building"
-                                  className="common-dropdown__link"
-                                >
-                                  Smart Building
-                                </NavLink>
-                              </li>
-                              <li>
-                                <NavLink
-                                  to="/solutions/energy-efficiency"
-                                  className="common-dropdown__link"
-                                >
-                                  Energy Efficiency
-                                </NavLink>
-                              </li>
-                              <li>
-                                <NavLink
-                                  to="/solutions/smart-city"
-                                  className="common-dropdown__link"
-                                >
-                                  Smart City
-                                </NavLink>
-                              </li>
-                              <li>
-                                <NavLink
-                                  to="/solutions/waste-management"
-                                  className="common-dropdown__link"
-                                >
-                                  Waste Management
-                                </NavLink>
-                              </li>
-                            </ul> */}
-                            {/* Column 4 */}
-                            {/* <ul className="space-y-2">
-                              <li>
-                                <NavLink
-                                  to="#"
-                                  className="common-dropdown__link"
-                                >
-                                  <div className="col-span-3 flex justify-end mt-4">
-                                    <img
-                                      src="https://www.milesight.com/static/pc/en/nav/roadmap.jpg?t=1742785802216"
-                                      alt="2025 H1 IoT Roadmap"
-                                      className="w-100 rounded-md shadow-md"
-                                    />
-                                  </div>
-                                </NavLink>
-                              </li>
-                            </ul> */}
                           </div>
                         </div>
                       </li>
@@ -811,18 +712,12 @@ const handleSubCategoryToggle = (e, subCategoryId) => {
                           Online Demo
                         </Link>
                       </li>
-                       <li className="nav-menu__item">
+                      <li className="nav-menu__item">
                         <Link
                           to="/login"
-                          className="nav-menu__link d-flex align-items-center gap-2 ms-lg-3"  
+                          className="nav-menu__link d-flex align-items-center gap-2 ms-lg-3"
                         >
-                          
-             <FaUserAlt size={28}  />
-
-
-
-
-
+                          <FaUserAlt size={28} />
                         </Link>
                       </li>
                     </ul>
@@ -835,8 +730,7 @@ const handleSubCategoryToggle = (e, subCategoryId) => {
                   type="button"
                   className="toggle-mobileMenu d-lg-none ms-3n text-gray-800 text-4xl d-flex"
                 >
-                  {" "}
-                  <i className="ph ph-list" />{" "}
+                  <FaBars size={32} className="text-white icon"/>
                 </button>
               </div>
             </div>
