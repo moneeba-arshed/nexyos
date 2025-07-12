@@ -25,6 +25,7 @@
     "bootstrap": "^5.3.6",
     "framer-motion": "^12.23.0",
     "gsap": "^3.13.0",
+    "hammerjs": "^2.0.8",
     "jquery": "^3.7.1",
     "lucide-react": "^0.522.0",
     "mixin": "^0.2.0",
