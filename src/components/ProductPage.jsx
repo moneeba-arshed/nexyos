@@ -1,510 +1,210 @@
-import  { useState } from "react";
+import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import { useEffect } from "react";
-import miniCAmeraGroup from "../assets/images/nexyos/miniCAmeraGroup.png"
-import SliderTest from "./SliderTest";
+import miniCAmeraGroup from "../assets/images/nexyos/miniCAmeraGroup.png";
 import Tab from "./Tab";
 
-
 const ProductPage = () => {
+  const [products, setProducts] = useState([]);
+  const [filterAttributes, setFilterAttributes] = useState([]);
+  const [showMobileFilter, setShowMobileFilter] = useState(false);
+  const [searchTerm, setSearchTerm] = useState("");
+  const [compareItems, setCompareItems] = useState([]);
+  const [currentPage, setCurrentPage] = useState(1);
 
-  const products = Array.from({ length: 34 }, (_, i) => ({
-    id: i + 1,
-    title: `Product ${i + 1}`,
-    resolution: `${2 + (i % 4) * 2} MP`,
-    image: miniCAmeraGroup,
-  }));
-const [showMobileFilter, setShowMobileFilter] = useState(false);
-const [searchTerm, setSearchTerm] = useState("");
-const [compareItems, setCompareItems] = useState([]);
-const [currentPage, setCurrentPage] = useState(1);
-const itemsPerPage = 12;
+  const itemsPerPage = 12;
 
-const handleCompareChange = (id) => {
-  setCompareItems((prev) =>
-    prev.includes(id) ? prev.filter((item) => item !== id) : [...prev, id]
+  useEffect(() => {
+fetch("https://portal.nexyos.com/api/all_products/4/5/4")
+    .then(res => res.json())
+    .then(data => {
+      console.log("API response for products:", data);
+      if (!data?.data || !Array.isArray(data.data)) {
+        console.error("API response missing 'data' array");
+        setProducts([]);
+      } else {
+        setProducts(data.data);
+      }
+    })
+    .catch(err => {
+      console.error("Product API fetch error:", err);
+      setProducts([]);
+    });
+    // Fetch filters
+    fetch("https://portal.nexyos.com/api/search_list/4/5/4")
+      .then((res) => res.json())
+      .then((data) => {
+        setFilterAttributes(data);
+      })
+      .catch((error) => console.error("Filter API fetch error:", error));
+
+    // Handle window resize to auto-close filters on wider screens
+    const handleResize = () => {
+      if (window.innerWidth >= 768) setShowMobileFilter(false);
+    };
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
+const filteredProducts = products.filter(
+  (product) =>
+    product.title && product.title.toLowerCase().includes(searchTerm.toLowerCase())
+);
+
+
+
+  const totalPages = Math.ceil(filteredProducts.length / itemsPerPage);
+
+  const displayedProducts = filteredProducts.slice(
+    (currentPage - 1) * itemsPerPage,
+    currentPage * itemsPerPage
   );
-};
-const filteredProducts = products.filter((product) =>
-  product.title.toLowerCase().includes(searchTerm.toLowerCase())
-);
 
-const totalPages = Math.ceil(filteredProducts.length / itemsPerPage);
-const displayedProducts = filteredProducts.slice(
-  (currentPage - 1) * itemsPerPage,
-  currentPage * itemsPerPage
-);
+  const handleCompareChange = (id) => {
+    setCompareItems((prev) =>
+      prev.includes(id) ? prev.filter((item) => item !== id) : [...prev, id]
+    );
+  };
 
+  // Open/close filter sections state
   const [openSections, setOpenSections] = useState({
     subseries: false,
     caseType: false,
     resolution: false,
-    Lenstype:false,
-    LowlightImaging:false,
-    IlluminationDistance:false,
-    WDR:false,
-    EnvironmentalProtection:false,
-    powersupply:false,
-    StorageType:false,
-    WirelessNetwork:false,
-    AI:false,
-    Localoutput:false,
-    Other:false,
+    Lenstype: false,
+    LowlightImaging: false,
+    IlluminationDistance: false,
+    WDR: false,
+    EnvironmentalProtection: false,
+    powersupply: false,
+    StorageType: false,
+    WirelessNetwork: false,
+    AI: false,
+    Localoutput: false,
+    Other: false,
   });
 
   const toggleSection = (section) => {
     setOpenSections((prev) => ({ ...prev, [section]: !prev[section] }));
   };
-  useEffect(() => {
-  const handleResize = () => {
-    if (window.innerWidth >= 768) {
-      setShowMobileFilter(false); // auto-close on medium+
-    }
-  };
-
-  window.addEventListener("resize", handleResize);
-  return () => window.removeEventListener("resize", handleResize);
-}, []);
 
   return (
     <div className="container-fluid">
-     
-
-                                         {/* ROAD TRAFFIC MANAGMENT */}
-  <Tab/>
-                                         {/* SAFETY & eFFICIENCY */}
-  <div className='container my-76 p-0 md:pb-40 md:pt-30 flex justify-center items-center flex-col'>
-  <h5>For Better Road Safety & Efficient Traffic Management</h5>
-  <div className='md:w-[70%] w-[90%] text-center'>
-      <p className='text-sm'>With the growth of urban and rural populations, as well as the increasing number of vehicles on the roads, traffic congestion, accidents, and <br/> parking issues are constantly on the rise, presenting new challenges to traffic management agencies.</p>
-  <p className='text-sm'>Milesight is delighted to introduce our Intelligent Traffic Solution.</p>
-  <p className='text-sm'>We integrate powerful, high-quality cameras with back-end software, elevating intelligent traffic management to a new level with exceptional imagery and <br/> advanced AI-powered ANPR technology, ensuring road traffic safety and efficient traffic management.</p>
-  </div>
-  </div>
+      <Tab />
+      <div className="container my-76 p-0 md:pb-40 md:pt-30 flex justify-center items-center flex-col">
+        <h5>For Better Road Safety & Efficient Traffic Management</h5>
+        <div className="md:w-[70%] w-[90%] text-center">
+          <p className="text-sm">
+            With the growth of urban and rural populations, as well as the
+            increasing number of vehicles on the roads, traffic congestion,
+            accidents, and <br />
+            parking issues are constantly on the rise, presenting new challenges
+            to traffic management agencies.
+          </p>
+          <p className="text-sm">
+            Milesight is delighted to introduce our Intelligent Traffic Solution.
+          </p>
+          <p className="text-sm">
+            We integrate powerful, high-quality cameras with back-end software,
+            elevating intelligent traffic management to a new level with
+            exceptional imagery and <br />
+            advanced AI-powered ANPR technology, ensuring road traffic safety and
+            efficient traffic management.
+          </p>
+        </div>
+      </div>
       <h1 className="title">Product Categories</h1>
- <button
-  className="filter-toggle"
-  onClick={() => setShowMobileFilter((prev) => !prev)}
->
-  {showMobileFilter ? "✖ Close Filters" : "☰ Filter"}
-</button>
+      <button
+        className="filter-toggle"
+        onClick={() => setShowMobileFilter((prev) => !prev)}
+      >
+        {showMobileFilter ? "✖ Close Filters" : "☰ Filter"}
+      </button>
 
       <div className="main">
+        <div className={`filter ${showMobileFilter ? "show" : ""}`}>
+          {showMobileFilter && (
+            <button
+              className="filter-close-btn"
+              onClick={() => setShowMobileFilter(false)}
+            >
+              ✖
+            </button>
+          )}
+          <input
+            type="text"
+            className="search-input"
+            placeholder="Search for Product Models"
+            value={searchTerm}
+            onChange={(e) => setSearchTerm(e.target.value)}
+            style={{
+              width: "100%",
+              padding: "8px",
+              marginBottom: "20px",
+              borderRadius: "4px",
+              border: "1px solid #ccc",
+            }}
+          />
 
+          {filterAttributes.map((attributeBlock) => (
+            <div
+              className={`filter-group ${
+                openSections[attributeBlock.attribute] ? "open" : ""
+              }`}
+              key={attributeBlock.id}
+            >
+              <h3
+                className="mb-10"
+                onClick={() => toggleSection(attributeBlock.attribute)}
+              >
+                {openSections[attributeBlock.attribute] ? "−" : "+"}{" "}
+                {attributeBlock.attribute}
+              </h3>
 
-<div className={`filter ${showMobileFilter ? "show" : ""}`}>
-{showMobileFilter && (
-  <button
-    className="filter-close-btn"
-    onClick={() => setShowMobileFilter(false)}
-  >
-    ✖
-  </button>
-)}
-<input
-  type="text"
-  className="search-input"
-  placeholder="Search for Product Models"
-  value={searchTerm}
-  onChange={(e) => setSearchTerm(e.target.value)}
-  style={{
-    width: "100%",
-    padding: "8px",
-    marginBottom: "20px",
-    borderRadius: "4px",
-    border: "1px solid #ccc",
-  }}
-/>
-
-
-          <div className={`filter-group ${openSections.subseries ? "open" : ""}`}>
-
-            <h3 className="mb-10" onClick={() => toggleSection("subseries")} >
-              {openSections.subseries ? "−" : "+"} Subseries
-            </h3>
-            {openSections.subseries && (
-              <div className="filter-options">
-                <label>
-                  <input type="checkbox" /> EasyIP 4.0 with ColorVu
-                </label>
-                <label>
-                  <input type="checkbox" /> EasyIP 4.0 with AcuSense
-                </label>
-                <label>
-                  <input type="checkbox" /> EasyIP 3.0
-                </label>
-                <label>
-                  <input type="checkbox" /> EasyIP 2.0 Plus with AcuSense
-                </label>
-                <label>
-                  <input type="checkbox" /> EasyIP 2.0 Plus
-                </label>
-                <label>
-                  <input type="checkbox" /> EasyIP 1.0 Plus
-                </label>
-                <label>
-                  <input type="checkbox" /> EasyIP 4.0 Plus with ColorVu
-                </label>
-                <label>
-                  <input type="checkbox" /> EasyIP 4.0 Plus with AcuSense
-                </label>
-              </div>
-            )}
-          </div>
-
-          <div className={`filter-group ${openSections.caseType ? "open" : ""}`}>
-            <h3 className="mb-10" onClick={() => toggleSection("caseType")}>
-              {openSections.caseType ? "−" : "+"} Case Type
-            </h3>
-            {openSections.caseType && (
-              <div className="filter-options">
-                <label>
-                  <input type="checkbox" /> Box
-                </label>
-                <label>
-                  <input type="checkbox" /> Bullet
-                </label>
-                <label>
-                  <input type="checkbox" /> Dome
-                </label>
-                <label>
-                  <input type="checkbox" /> Turret
-                </label>
-                <label>
-                  <input type="checkbox" /> Fisheye
-                </label>
-                <label>
-                  <input type="checkbox" /> Cube
-                </label>
-              </div>
-            )}
-          </div>
-
-          <div className={`filter-group ${openSections.resolution ? "open" : ""}`}>
-            <h3 className="mb-10" onClick={() => toggleSection("resolution")}>
-              {openSections.resolution ? "−" : "+"} Resolution
-            </h3>
-            {openSections.resolution && (
-              <div className="filter-options">
-                <label>
-                  <input type="checkbox" /> 2 MP
-                </label>
-                <label>
-                  <input type="checkbox" /> 4 MP
-                </label>
-                <label>
-                  <input type="checkbox" /> 5 MP
-                </label>
-                <label>
-                  <input type="checkbox" /> 6 MP
-                </label>
-                <label>
-                  <input type="checkbox" /> 8 MP
-                </label>
-              </div>
-            )}
-          </div>
-          <div className={`filter-group ${openSections.Lenstype ? "open" : ""}`}>
-            <h3 className="mb-10" onClick={() => toggleSection("Lenstype")}>
-              {openSections.Lenstype ? "−" : "+"} Lens type
-            </h3>
-            {openSections.Lenstype && (
-              <div className="filter-options">
-                <label>
-                  <input type="checkbox" />
-                  Fixed Lens
-                </label>
-                <label>
-                  <input type="checkbox" /> Motorized Varifocal Lens
-                </label>
-                <label>
-                  <input type="checkbox" /> Manual Varifocal Lens
-                </label>
-                <label>
-                  <input type="checkbox" /> Multi-Lens
-                </label>
-              </div>
-            )}
-          </div>
-          <div className={`filter-group ${openSections.LowlightImaging ? "open" : ""}`}>
-            <h3 className="mb-10" onClick={() => toggleSection("LowlightImaging")}>
-              {openSections.LowlightImaging ? "−" : "+"} Low-light Imaging
-            </h3>
-            {openSections.LowlightImaging && (
-              <div className="filter-options">
-                <label>
-                  <input type="checkbox" />
-                  ColourVu
-                </label>
-                <label>
-                  <input type="checkbox" /> Powerded by Darkfighter
-                </label>
-                <label>
-                  <input type="checkbox" /> Normal
-                </label>
-              </div>
-            )}
-          </div>
-          <div className={`filter-group ${openSections.IlluminationDistance ? "open" : ""}`}>
-            <h3 className="mb-10" onClick={() => toggleSection("IlluminationDistance")}>
-              {openSections.IlluminationDistance ? "−" : "+"} Illumination
-              Distance
-            </h3>
-            {openSections.IlluminationDistance && (
-              <div className="filter-options">
-                <label>
-                  <input type="checkbox" />
-                  0-20m
-                </label>
-                <label>
-                  <input type="checkbox" />
-                  21-50m
-                </label>
-                <label>
-                  <input type="checkbox" /> 51-100m
-                </label>
-                <label>
-                  <input type="checkbox" />
-                  N/A
-                </label>
-              </div>
-            )}
-          </div>
-          <div className={`filter-group ${openSections.WDR ? "open" : ""}`}>
-            <h3 className="mb-10" onClick={() => toggleSection("WDR")}>
-              {openSections.WDR ? "−" : "+"} WDR
-            </h3>
-            {openSections.WDR && (
-              <div className="filter-options">
-                <label>
-                  <input type="checkbox" />
-                  0-20m
-                </label>
-                <label>
-                  <input type="checkbox" />
-                  21-50m
-                </label>
-                <label>
-                  <input type="checkbox" /> 51-100m
-                </label>
-                <label>
-                  <input type="checkbox" />
-                  N/A
-                </label>
-              </div>
-            )}
-          </div>
-          <div className={`filter-group ${openSections.EnvironmentalProtection ? "open" : ""}`}>
-            <h3 className="mb-10" onClick={() => toggleSection("EnvironmentalProtection")}>
-              {openSections.EnvironmentalProtection ? "−" : "+"} Environmental
-              Protection
-            </h3>
-            {openSections.EnvironmentalProtection && (
-              <div className="filter-options">
-                <label>
-                  <input type="checkbox" />
-                  IP66
-                </label>
-                <label>
-                  <input type="checkbox" />
-                  IP67
-                </label>
-                <label>
-                  <input type="checkbox" />
-                  IP68
-                </label>
-                <label>
-                  <input type="checkbox" />
-                  IK08
-                </label>
-                <label>
-                  <input type="checkbox" />
-                  IK10
-                </label>
-                <label>
-                  <input type="checkbox" />
-                  NEMA 4X
-                </label>
-                <label>
-                  <input type="checkbox" />
-                  N/A
-                </label>
-              </div>
-            )}
-          </div>
-          <div className={`filter-group ${openSections.powersupply ? "open" : ""}`}>
-            <h3 className="mb-10" onClick={() => toggleSection("powersupply")}>
-              {openSections.powersupply ? "−" : "+"} Power Supply
-            </h3>
-            {openSections.powersupply && (
-              <div className="filter-options">
-                <label>
-                  <input type="checkbox" />
-                  PoE
-                </label>
-                <label>
-                  <input type="checkbox" />
-                  PoE+
-                </label>
-                <label>
-                  <input type="checkbox" />
-                  12 VDC
-                </label>
-                <label>
-                  <input type="checkbox" />
-                  24 VAC
-                </label>
-              </div>
-            )}
-          </div>
-          <div className={`filter-group ${openSections.StorageType ? "open" : ""}`}>
-            <h3 className="mb-10" onClick={() => toggleSection("StorageType")}>
-              {openSections.StorageType ? "−" : "+"} Storage Type
-            </h3>
-            {openSections.StorageType && (
-              <div className="filter-options">
-                <label>
-                  <input type="checkbox" />
-                  SD Card
-                </label>
-                <label>
-                  <input type="checkbox" />
-                  N/A
-                </label>
-              </div>
-            )}
-          </div>
-          <div className={`filter-group ${openSections.WirelessNetwork ? "open" : ""}`}>
-            <h3 className="mb-10" onClick={() => toggleSection("WirelessNetwork")}>
-              {openSections.WirelessNetwork ? "−" : "+"} Wireless Network
-            </h3>
-            {openSections.WirelessNetwork && (
-              <div className="filter-options">
-                <label>
-                  <input type="checkbox" />
-                  Wi-Fi
-                </label>
-                <label>
-                  <input type="checkbox" />
-                  N/A
-                </label>
-              </div>
-            )}
-          </div>
-          <div className={`filter-group ${openSections.AI ? "open" : ""}`}>
-            <h3 className="mb-10" onClick={() => toggleSection("AI")}>
-              {openSections.AI ? "−" : "+"} AI
-            </h3>
-            {openSections.AI && (
-              <div className="filter-options">
-                <label>
-                  <input type="checkbox" />
-                  Yes
-                </label>
-                <label>
-                  <input type="checkbox" />
-                  Perimeter Protection
-                </label>
-                <label>
-                  <input type="checkbox" />
-                  Perimeter Protection(Strobe Light and Audio)
-                </label>
-                <label>
-                  <input type="checkbox" />
-                  Face Capture
-                </label>
-                <label>
-                  <input type="checkbox" />
-                  N/A
-                </label>
-              </div>
-            )}
-          </div>
-          <div className={`filter-group ${openSections.Localoutput ? "open" : ""}`}>
-            <h3 className="mb-10" onClick={() => toggleSection("Localoutput")}>
-              {openSections.Localoutput ? "−" : "+"} Local Output
-            </h3>
-            {openSections.Localoutput && (
-              <div className="filter-options">
-                <label>
-                  <input type="checkbox" />
-                  HDMI
-                </label>
-                <label>
-                  <input type="checkbox" />
-                  CVBS
-                </label>
-                
-                <label>
-                  <input type="checkbox" />
-                  N/A
-                </label>
-              </div>
-            )}
-          </div>
-           <div className={`filter-group ${openSections.SupplementalLight ? "open" : ""}`}>
-            <h3 className="mb-10" onClick={() => toggleSection("SupplementalLight")}>
-              {openSections.SupplementalLight ? "−" : "+"} Supplemental Light
-            </h3>
-            {openSections.SupplementalLight && (
-              <div className="filter-options">
-                <label>
-                  <input type="checkbox" />
-                  Smart Hybrid Light
-                </label>
-                <label>
-                  <input type="checkbox" />
-                  IR Light
-                </label>
-                <label>
-                  <input type="checkbox" />
-                  White Light
-                </label>
-                <label>
-                  <input type="checkbox" />
-                  N/A
-                </label>
-              </div>
-            )}
-          </div>
-           <div className={`filter-group ${openSections.Other ? "open" : ""}`}>
-            <h3 className="mb-10" onClick={() => toggleSection("Other")}>
-              {openSections.Other ? "−" : "+"} Other
-            </h3>
-            {openSections.Other && (
-              <div className="filter-options">
-                
-                <label>
-                  <input type="checkbox" />
-                  N/A
-                </label>
-              </div>
-            )}
-          </div>
+              {openSections[attributeBlock.attribute] && (
+                <div className="filter-options">
+                  {attributeBlock.items.map((item) => (
+                    <label key={item.id}>
+                      <input type="checkbox" />
+                      {item.item.trim()}
+                    </label>
+                  ))}
+                </div>
+              )}
+            </div>
+          ))}
         </div>
 
-<div className="product-grid">
-  {displayedProducts.map((product) => (
-    <div className="card" key={product.id}>
-      <span className="new-badge">NEW</span>
-      <img src={product.image} alt={product.title} />
-      <h4>{product.title}</h4>
-      <p>{product.resolution} AcuSense Camera</p>
-      <label>
-        <input
-          type="checkbox"
-          checked={compareItems.includes(product.id)}
-          onChange={() => handleCompareChange(product.id)}
+       <div className="product-grid">
+  {products.length === 0 ? (
+    <p>Loading products...</p>
+  ) : filteredProducts.length === 0 ? (
+    <p>No products found.</p>
+  ) : (
+    displayedProducts.map((product) => (
+      <div className="card" key={product.id}>
+        <span className="new-badge">NEW</span>
+        <img
+          src={product.image}
+          alt={product.title || "Product"}
+          onError={(e) => (e.target.src = miniCAmeraGroup)}
         />
-        Compare
-      </label>
-      <Link to={`/products/${product.id}`} className="card-link">
-        <button>Explore</button>
-      </Link>
-    </div>
-  ))}
+        <h4>{product.title}</h4>
+        <p>{product.model}</p>
+        <label>
+          <input
+            type="checkbox"
+            checked={compareItems.includes(product.id)}
+            onChange={() => handleCompareChange(product.id)}
+          />
+          Compare
+        </label>
+        <Link to={`/products/${product.id}`} className="card-link">
+          <button>Explore</button>
+        </Link>
+      </div>
+    ))
+  )}
 
-  {/* ⬇ Pagination inside grid, spans all columns */}
   <div
     className="pagination"
     style={{
@@ -520,41 +220,45 @@ const displayedProducts = filteredProducts.slice(
     <button onClick={() => setCurrentPage((prev) => Math.max(prev - 1, 1))}>
       Prev
     </button>
-   {Array.from({ length: totalPages }, (_, i) => (
-  <button
-    key={i}
-    onClick={() => setCurrentPage(i + 1)}
-    className={currentPage === i + 1 ? "active" : ""}
-  >
-    {i + 1}
-  </button>
-))}
-
-    <button onClick={() => setCurrentPage((prev) => Math.min(prev + 1, totalPages))}>
+    {Array.from({ length: totalPages }, (_, i) => (
+      <button
+        key={i}
+        onClick={() => setCurrentPage(i + 1)}
+        className={currentPage === i + 1 ? "active" : ""}
+      >
+        {i + 1}
+      </button>
+    ))}
+    <button
+      onClick={() =>
+        setCurrentPage((prev) => Math.min(prev + 1, totalPages))
+      }
+    >
       Next
     </button>
   </div>
 </div>
 
       </div>
-      {compareItems.length > 0 && (
-  <div
-    style={{
-      position: "fixed",
-      bottom: "20px",
-      right: "20px",
-      backgroundColor: "#d00",
-      color: "white",
-      padding: "10px 15px",
-      borderRadius: "25px",
-      fontWeight: "bold",
-    }}
-  >
-    Compare ({compareItems.length})
-  </div>
-)}
 
- <style>{`
+      {compareItems.length > 0 && (
+        <div
+          style={{
+            position: "fixed",
+            bottom: "20px",
+            right: "20px",
+            backgroundColor: "#d00",
+            color: "white",
+            padding: "10px 15px",
+            borderRadius: "25px",
+            fontWeight: "bold",
+          }}
+        >
+          Compare ({compareItems.length})
+        </div>
+      )}
+
+      <style>{`
   * {
     box-sizing: border-box;
   }
@@ -640,19 +344,19 @@ const displayedProducts = filteredProducts.slice(
   }
 
 .card {
+  position: relative; /* ✅ Needed for .new-badge */
   border: 1px solid #ddd;
   border-radius: 8px;
   padding: 16px;
-
   background-color: #fff;
   transition: box-shadow 0.2s ease;
   width: 100%;
-  height: 300px;
+  height: auto; /* ✅ Allow card to expand */
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  overflow: hidden; /* prevent overflow */
 }
+
 
   .card:hover {
     box-shadow: 0 0 10px rgba(0,0,0,0.15);
@@ -667,11 +371,12 @@ const displayedProducts = filteredProducts.slice(
 }
 
 
-  .card h4 {
-    margin: 8px 0;
-    font-size: 16px;
-    color: #222;
-  }
+ .card h4 {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
 
   .card p {
     font-size: 14px;
@@ -785,7 +490,6 @@ const displayedProducts = filteredProducts.slice(
     }
   }
 `}</style>
-
     </div>
   );
 };

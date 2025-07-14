@@ -62,7 +62,7 @@ const SliderTest = () => {
             style={{borderRadius:'0px'}}/>
         </AnimatePresence>
       </div>
-
+12
       {/* Vertical Circles in Center */}
       <div className="absolute left-1/2 top-1/2
 flex gap-4 z-10 justify-center items-center vertical-image">
