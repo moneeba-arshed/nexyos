@@ -159,7 +159,7 @@ const Products = () => {
           }
 
           .card {
-            width: 90%;
+            width: 100%;
           }
         }
           @media (max-width: 768px) {
@@ -170,7 +170,6 @@ const Products = () => {
   }
 
   .card {
-    width: 50% !important; /* Full width card */
     padding: 20px;
   }
 

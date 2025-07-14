@@ -15,27 +15,29 @@ const ProductPage = () => {
 
   useEffect(() => {
 fetch("https://portal.nexyos.com/api/all_products/4/5/4")
-    .then(res => res.json())
-    .then(data => {
-      console.log("API response for products:", data);
-      if (!data?.data || !Array.isArray(data.data)) {
-        console.error("API response missing 'data' array");
-        setProducts([]);
-      } else {
-        setProducts(data.data);
-      }
-    })
-    .catch(err => {
-      console.error("Product API fetch error:", err);
+  .then(res => res.json())
+  .then(data => {
+    console.log("API response for products:", data);
+    if (!Array.isArray(data)) {
+      console.error("API did not return an array");
       setProducts([]);
-    });
+    } else {
+      setProducts(data);
+    }
+  })
+  .catch(err => {
+    console.error("Product API fetch error:", err);
+    setProducts([]);
+  });
+
     // Fetch filters
-    fetch("https://portal.nexyos.com/api/search_list/4/5/4")
-      .then((res) => res.json())
-      .then((data) => {
-        setFilterAttributes(data);
-      })
-      .catch((error) => console.error("Filter API fetch error:", error));
+  fetch("https://portal.nexyos.com/api/search_list/4/5/4")
+  .then((res) => res.json())
+  .then((data) => {
+    console.log("Filter attributes API response:", data);
+    setFilterAttributes(data);
+  })
+  .catch((error) => console.error("Filter API fetch error:", error));
 
     // Handle window resize to auto-close filters on wider screens
     const handleResize = () => {
@@ -145,64 +147,56 @@ const filteredProducts = products.filter(
             }}
           />
 
-          {filterAttributes.map((attributeBlock) => (
-            <div
-              className={`filter-group ${
-                openSections[attributeBlock.attribute] ? "open" : ""
-              }`}
-              key={attributeBlock.id}
-            >
-              <h3
-                className="mb-10"
-                onClick={() => toggleSection(attributeBlock.attribute)}
-              >
-                {openSections[attributeBlock.attribute] ? "−" : "+"}{" "}
-                {attributeBlock.attribute}
-              </h3>
+        {filterAttributes.map((attributeBlock) => (
+  <div className={`filter-group ${openSections[attributeBlock.attribute] ? "open" : ""}`} key={attributeBlock.id}>
+    <h3 onClick={() => toggleSection(attributeBlock.attribute)}>
+      {openSections[attributeBlock.attribute] ? "−" : "+"} {attributeBlock.attribute}
+    </h3>
+    {openSections[attributeBlock.attribute] && (
+      <div className="filter-options">
+        {attributeBlock.items.map((item) => (
+          <label key={item.id}>
+            <input type="checkbox" />
+            {item.item.trim()}
+          </label>
+        ))}
+      </div>
+    )}
+  </div>
+))}
 
-              {openSections[attributeBlock.attribute] && (
-                <div className="filter-options">
-                  {attributeBlock.items.map((item) => (
-                    <label key={item.id}>
-                      <input type="checkbox" />
-                      {item.item.trim()}
-                    </label>
-                  ))}
-                </div>
-              )}
-            </div>
-          ))}
         </div>
 
-       <div className="product-grid">
+       <div className="product-grids">
   {products.length === 0 ? (
     <p>Loading products...</p>
   ) : filteredProducts.length === 0 ? (
     <p>No products found.</p>
   ) : (
-    displayedProducts.map((product) => (
-      <div className="card" key={product.id}>
-        <span className="new-badge">NEW</span>
-        <img
-          src={product.image}
-          alt={product.title || "Product"}
-          onError={(e) => (e.target.src = miniCAmeraGroup)}
-        />
-        <h4>{product.title}</h4>
-        <p>{product.model}</p>
-        <label>
-          <input
-            type="checkbox"
-            checked={compareItems.includes(product.id)}
-            onChange={() => handleCompareChange(product.id)}
-          />
-          Compare
-        </label>
-        <Link to={`/products/${product.id}`} className="card-link">
-          <button>Explore</button>
-        </Link>
-      </div>
-    ))
+displayedProducts.map((product) => (
+  <div className="card" key={product.id}>
+    <span className="new-badge">NEW</span>
+    <img
+      src={product.image}
+      alt={product.title || "Product"}
+      onError={(e) => (e.target.src = miniCAmeraGroup)}
+    />
+    <h6>{product.title}</h6>
+    <p>{product.model}</p>
+    <label>
+      <input
+        type="checkbox"
+        checked={compareItems.includes(product.id)}
+        onChange={() => handleCompareChange(product.id)}
+      />
+      Compare
+    </label>
+    <Link to={`/products/${product.id}`} className="card-link">
+      <button>Explore</button>
+    </Link>
+  </div>
+))
+
   )}
 
   <div

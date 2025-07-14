@@ -373,3 +373,20 @@ background-color: #00667C;
 margin: 0;
 padding: 12px 12px;
 }
+.product-grids {
+  flex: 1;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* Show exactly 3 items per row */
+  gap: 20px;
+}
+@media screen and (max-width: 768px) {
+  .product-grids {
+    grid-template-columns: repeat(1, 1fr);
+  }
+}
+
+@media screen and (min-width: 769px) and (max-width: 1024px) {
+  .product-grids {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}

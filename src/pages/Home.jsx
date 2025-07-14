@@ -8,14 +8,13 @@ import Products from '../components/Products'
 import ScrollToTop from "react-scroll-to-top";
 import SliderTest from '../components/SliderTest'
 import TestimonialCarousel from '../components/SwipeSlider'
+import HeroCarousel from '../components/HeroCarousel'
 // import MilesightCarousel from '../components/MilesightCarousel'
 
 const Home = () => {
   return (
     <div className=''>
-   {/* <MilesightCarousel/> */}
-   <SliderTest/>
-   {/* <TestimonialCarousel/> */}
+<HeroCarousel/>
       <Products/>
       <Sensing_Matter/>
       <TimelineSlider/>
