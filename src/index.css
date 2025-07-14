@@ -379,6 +379,13 @@ padding: 12px 12px;
   grid-template-columns: repeat(3, 1fr); /* Show exactly 3 items per row */
   gap: 20px;
 }
+.HeroButton{
+background-color: #0f7a92;
+}
+.HeroButtonImage{
+  width: 50px;
+  height: 50px;
+}
 @media screen and (max-width: 768px) {
   .product-grids {
     grid-template-columns: repeat(1, 1fr);
