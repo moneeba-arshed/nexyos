@@ -498,7 +498,7 @@ const Header = () => {
                           Solutions
                         </Link>
                         <div className="on-hover-dropdown common-dropdown nav-megamenu">
-                          <div className="grid grid-cols-3 gap-6 p-6">
+                          <div className=" p-6">
                             {/* Column 1 */}
 
                             <ul className="space-y-2">
@@ -526,10 +526,6 @@ const Header = () => {
                                   Smart Space
                                 </NavLink>
                               </li>
-                            </ul>
-
-                            {/* Column 2 */}
-                            <ul className="space-y-2">
                               <li>
                                 <NavLink
                                   to="/SmartHVAC"
@@ -554,8 +550,6 @@ const Header = () => {
                                   Indoor Air Quality
                                 </NavLink>
                               </li>
-                            </ul>
-                            <ul className="space-y-2">
                               <li>
                                 <NavLink
                                   to="/PeopleCounting"
