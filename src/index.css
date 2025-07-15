@@ -358,6 +358,34 @@ img.DownloadImage {
       height: 27px;
     width: 16%;
 }
+.SlideContent img{
+  border-radius: 0px;
+  width: 83%
+}
+.SlideContent .HeroButton img{
+display: none;
+}
+.SlideContent .HeroButton{
+  padding-left: 23px;
+}
+.SlideContent .SlideTitle{
+  font-size: 22px;
+}
+img.absolute.top-64.left-52.transform.-translate-y-1\/2.z-20.left{
+  display: none;
+}
+img.absolute.top-64.right-40.transform.-translate-y-1\/2.z-20.right{
+  display: none;
+}
+.absolute.space-y-4.SlideContent.top-28.md\:right-28{
+  width: 90%;
+}
+.relative.w-fit.ms-auto.mb-12{
+  display: none;
+}
+.img.bg-image{
+  object-fit: cover;
+}
 }
 
 /* Hide scrollbar for all elements with this class */
@@ -385,6 +413,28 @@ background-color: #0f7a92;
 .HeroButtonImage{
   width: 50px;
   height: 50px;
+}
+.HeroButtonImage1{
+     width: 77%;
+    margin-right: 23px;
+    height: 88px;
+}
+.HeroButtonImage2{
+    width: 51%;
+    height: 67px;
+}
+.SlideOneImage{
+  border-radius: 0px;
+  width: 43%
+}
+.HeroButton{
+  padding-left: 53px;
+}
+.SlideTitle{
+  font-size: 32px;
+}
+.SlideContent{
+  width: 100%;
 }
 @media screen and (max-width: 768px) {
   .product-grids {
