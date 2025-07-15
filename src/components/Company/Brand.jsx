@@ -60,7 +60,7 @@ const Brand = () => {
                     </p>
                   </Col>
 
-                  <Col xs={12} md={4} className="card__icon text-center">
+                  <Col xs={12} md={4} className="card__icon text-center" >
                     <img
                       alt="make sensing matter connect icon"
                       src="https://www.milesight.com/static/pc/en/company/our-brand-new/make-sensing-matter-connect-icon.png"

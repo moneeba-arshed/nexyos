@@ -84,9 +84,9 @@ const DemoTabs = () => {
             <div className="container py-5">
   <div className="row">
     {/* Network Camera Card */}
-    <div className="col-md-6 mb-4">
-      <div className="card h-100">
-        <div className="row g-0">
+    <div className="col-md-6 " style={{marginBottom:'10px'}}>
+      <div className="h-100 bg-white" style={{borderRadius:'10px'}}   >
+        <div className="row g-1">
           <div className="col-7">
             <img
               alt="network camera"
@@ -96,10 +96,19 @@ const DemoTabs = () => {
             />
           </div>
           <div className="col-5">
-            <div className="card-body">
-              <h5 className="card-title">Network Camera</h5>
+            <div className="card-body"
+          style={{
+            display: 'flex',
+            flexDirection: 'column',
+            justifyContent: 'center',
+            alignItems: 'center',
+            textAlign: 'center',
+            height: '100%',
+          }}>
+              <h5 className="card-title text-black">Network Camera</h5>
               <p className="card-text">User: nexyos<br />Password: nexyos2024</p>
-              <a href="http://ipc.nexyos.com:18082/" target="_blank" rel="noopener noreferrer" className="btn btn-primary">Play Online</a>
+              <a href="http://ipc.nexyos.com:18082/" target="_blank" rel="noopener noreferrer" className="btn btn-primary"
+  style={{ margin: '20px 0' }} >Play Online</a>
             </div>
           </div>
         </div>
@@ -107,9 +116,9 @@ const DemoTabs = () => {
     </div>
 
     {/* PTZ Camera Card */}
-    <div className="col-md-6 mb-4">
-      <div className="card h-100">
-        <div className="row g-0">
+    <div className="col-md-6 " style={{marginBottom:'10px'}}>
+      <div className="h-100 bg-white" style={{borderRadius:'10px'}} >
+        <div className="row g-1">
           <div className="col-7">
             <img
               alt="ptz camera"
@@ -119,10 +128,19 @@ const DemoTabs = () => {
             />
           </div>
           <div className="col-5">
-            <div className="card-body">
-              <h5 className="card-title">PTZ Camera</h5>
+            <div className="card-body"
+          style={{
+            display: 'flex',
+            flexDirection: 'column',
+            justifyContent: 'center',
+            alignItems: 'center',
+            textAlign: 'center',
+            height: '100%',
+          }}>
+              <h5 className="card-title text-black">PTZ Camera</h5>
               <p className="card-text">User: nexyos<br />Password: nexyos2024</p>
-              <a href="http://ptz.nexyos.com:18081/" target="_blank" rel="noopener noreferrer" className="btn btn-primary">Play Online</a>
+              <a href="http://ptz.nexyos.com:18081/" target="_blank" rel="noopener noreferrer" className="btn btn-primary"
+  style={{ margin: '20px 0' }} >Play Online</a>
             </div>
           </div>
         </div>
@@ -130,32 +148,54 @@ const DemoTabs = () => {
     </div>
 
     {/* Speed Dome Card */}
-    <div className="col-md-6 mb-4">
-      <div className="card h-100">
-        <div className="row g-0">
-          <div className="col-7">
-            <img
-              alt="speed dome"
-              src="https://www.milesight.com/static/pc/en/online-demo-collection/speed-dome.png"
-              className="img-fluid rounded-start"
-              title="speed dome"
-            />
-          </div>
-          <div className="col-5">
-            <div className="card-body">
-              <h5 className="card-title">Speed Dome</h5>
-              <p className="card-text">User: nexyos<br />Password: nexyos2024</p>
-              <a href="http://spd.nexyos.com:18080/" target="_blank" rel="noopener noreferrer" className="btn btn-primary">Play Online</a>
-            </div>
-          </div>
+  <div className="col-md-6" style={{marginBottom:'10px'}}>
+  <div className="h-100 bg-white" style={{borderRadius:'10px'}} >
+    <div className="row g-1">
+      <div className="col-7">
+        <img
+          alt="speed dome"
+          src="https://www.milesight.com/static/pc/en/online-demo-collection/speed-dome.png"
+          className="img-fluid rounded-start"
+          title="speed dome"
+        />
+      </div>
+      <div className="col-5">
+        <div
+          className="card-body"
+          style={{
+            display: 'flex',
+            flexDirection: 'column',
+            justifyContent: 'center',
+            alignItems: 'center',
+            textAlign: 'center',
+            height: '100%',
+          }}
+        >
+          <h5 className="card-title text-black">Speed Dome</h5>
+          <p className="card-text">
+            User: nexyos<br />
+            Password: nexyos2024
+          </p>
+          <a
+            href="http://spd.nexyos.com:18080/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="btn btn-primary"
+            style={{ margin: '20px 0' }}
+          >
+            Play Online
+          </a>
         </div>
       </div>
     </div>
+  </div>
+</div>
+
 
     {/* Fisheye Camera Card */}
-    <div className="col-md-6 mb-4">
-      <div className="card h-100">
-        <div className="row g-0">
+    <div className="col-md-6 " style={{marginBottom:'10px'}}>
+      <div className="h-100 bg-white" style={{borderRadius:'10px'}} >
+        <div className="row g-1">
           <div className="col-7">
             <img
               alt="360° fisheye"
@@ -165,10 +205,19 @@ const DemoTabs = () => {
             />
           </div>
           <div className="col-5">
-            <div className="card-body">
-              <h5 className="card-title">360° Panoramic Fisheye Camera</h5>
+            <div className="card-body"
+          style={{
+            display: 'flex',
+            flexDirection: 'column',
+            justifyContent: 'center',
+            alignItems: 'center',
+            textAlign: 'center',
+            height: '100%',
+          }}>
+              <h5 className="card-title text-black">360° Panoramic Fisheye Camera</h5>
               <p className="card-text">User: nexyos<br />Password: nexyos2024</p>
-              <a href="http://fisheye.nexyos.com:18085/" target="_blank" rel="noopener noreferrer" className="btn btn-primary">Play Online</a>
+              <a href="http://fisheye.nexyos.com:18085/" target="_blank" rel="noopener noreferrer" className="btn btn-primary"
+  style={{ margin: '20px 0' }} >Play Online</a>
             </div>
           </div>
         </div>
@@ -176,9 +225,9 @@ const DemoTabs = () => {
     </div>
 
     {/* NVR Card (One only, avoid duplicate) */}
-    <div className="col-md-6 mb-4">
-      <div className="card h-100">
-        <div className="row g-0">
+    <div className="col-md-6 " style={{marginBottom:'10px'}}>
+      <div className="h-100 bg-white" style={{borderRadius:'10px'}} >
+        <div className="row g-1">
           <div className="col-7">
             <img
               alt="nvr"
@@ -188,10 +237,19 @@ const DemoTabs = () => {
             />
           </div>
           <div className="col-5">
-            <div className="card-body">
-              <h5 className="card-title">NVR</h5>
+            <div className="card-body"
+          style={{
+            display: 'flex',
+            flexDirection: 'column',
+            justifyContent: 'center',
+            alignItems: 'center',
+            textAlign: 'center',
+            height: '100%',
+          }}>
+              <h5 className="card-title text-black">NVR</h5>
               <p className="card-text">User: nexyos<br />Password: nexyos2024</p>
-              <a href="http://nvr.nexyos.com:18089/" target="_blank" rel="noopener noreferrer" className="btn btn-primary">Play Online</a>
+              <a href="http://nvr.nexyos.com:18089/" target="_blank" rel="noopener noreferrer" className="btn btn-primary"
+  style={{ margin: '20px 0' }} >Play Online</a>
             </div>
           </div>
         </div>
@@ -241,13 +299,15 @@ const DemoTabs = () => {
                       </div>
                       <div>
                         <div className="card-body">
-                          <h5 className="card-title">Nexyos IoT Cloud</h5>
+                          <h5 className="card-title text-black">Nexyos IoT Cloud</h5>
 
                           <a
                             target="_blank"
                             rel="noopener noreferrer"
                             href="http://ipc.nexyos.com:18082/"
                             className="btn"
+                             style={{ margin: '20px 0' }}
+                           
                           >
                             Learn More
                           </a>
@@ -274,9 +334,9 @@ const DemoTabs = () => {
                 <div className="container py-5">
                   <div className="row">
                     {/* Network Camera Card */}
-                    <div className="col-lg-6 col-md-6 mb-4">
-                      <div className="card">
-                        <div className="row g-0">
+                    <div className="col-md-6 " style={{marginBottom:'10px'}}>
+                      <div className="bg-white" style={{borderRadius:'10px'}} >
+                        <div className="row g-1">
                           <div className="col-7">
                             <img
                               alt="network camera"
@@ -286,8 +346,15 @@ const DemoTabs = () => {
                             />
                           </div>
                           <div className="col-5">
-                            <div className="card-body">
-                              <h5 className="card-title">
+                            <div className="card-body"style={{
+            display: 'flex',
+            flexDirection: 'column',
+            justifyContent: 'center',
+            alignItems: 'center',
+            textAlign: 'center',
+            height: '100%',
+          }}>
+                              <h5 className="card-title text-black">
                                 SG50/UG63 LoRaWAN® Gateway
                               </h5>
                               <p className="card-text">
@@ -300,6 +367,7 @@ const DemoTabs = () => {
                                 rel="noopener noreferrer"
                                 href="http://ipc.nexyos.com:18082/"
                                 className="btn btn-primary"
+                                 style={{ margin: '20px 0' }}
                               >
                                 Learn More
                               </a>
@@ -310,9 +378,9 @@ const DemoTabs = () => {
                     </div>
 
                     {/* PTZ Camera Card */}
-                    <div className="col-lg-6 col-md-6 mb-4">
-                      <div className="card">
-                        <div className="row g-0">
+                    <div className="col-lg-6 col-md-6 mb-4" style={{marginBottom:'10px'}}>
+                      <div className="bg-white" style={{borderRadius:'10px'}}>
+                        <div className="row g-1">
                           <div className="col-7">
                             <img
                               alt="ptz camera"
@@ -322,8 +390,16 @@ const DemoTabs = () => {
                             />
                           </div>
                           <div className="col-5">
-                            <div className="card-body">
-                              <h5 className="card-title">
+                            <div className="card-body"
+                            style={{
+            display: 'flex',
+            flexDirection: 'column',
+            justifyContent: 'center',
+            alignItems: 'center',
+            textAlign: 'center',
+            height: '100%',
+          }}>
+                              <h5 className="card-title text-black">
                                 UG65 Indoor LoRaWAN® Gateway
                               </h5>
                               <p className="card-text">
@@ -336,6 +412,7 @@ const DemoTabs = () => {
                                 rel="noopener noreferrer"
                                 href="http://ptz.nexyos.com:18081/"
                                 className="btn btn-primary"
+                                 style={{ margin: '20px 0' }}
                               >
                                 Learn More
                               </a>
@@ -346,9 +423,9 @@ const DemoTabs = () => {
                     </div>
 
                     {/* Speed Dome Camera Card */}
-                    <div className="col-lg-6 col-md-6 mb-4">
-                      <div className="card">
-                        <div className="row g-0">
+                    <div className="col-lg-6 col-md-6 mb-4" style={{marginBottom:'10px'}}>
+                      <div className="bg-white" style={{borderRadius:'10px'}}>
+                        <div className="row g-1">
                           <div className="col-7">
                             <img
                               alt="speed dome"
@@ -358,8 +435,15 @@ const DemoTabs = () => {
                             />
                           </div>
                           <div className="col-5">
-                            <div className="card-body">
-                              <h5 className="card-title">
+                            <div className="card-body"style={{
+            display: 'flex',
+            flexDirection: 'column',
+            justifyContent: 'center',
+            alignItems: 'center',
+            textAlign: 'center',
+            height: '100%',
+          }}>
+                              <h5 className="card-title text-black">
                                 UG67 Outdoor LoRaWAN® Gateway
                               </h5>
                               <p className="card-text">
@@ -372,6 +456,7 @@ const DemoTabs = () => {
                                 rel="noopener noreferrer"
                                 href="http://spd.nexyos.com:18080/"
                                 className="btn btn-primary"
+                                 style={{ margin: '20px 0' }}
                               >
                                 Learn More
                               </a>
@@ -400,9 +485,9 @@ const DemoTabs = () => {
                 <div className="container py-5">
                   <div className="row">
                     {/* Network Camera Card */}
-                    <div className="col-lg-6 col-md-6 mb-4">
-                      <div className="card">
-                        <div className="row g-0">
+                 <div className=" col-md-6 " style={{marginBottom:'10px'}}>
+                      <div className="bg-white" style={{borderRadius:'10px'}}>
+                        <div className="row g-1">
                           <div className="col-7">
                             <img
                               alt="network camera"
@@ -412,8 +497,15 @@ const DemoTabs = () => {
                             />
                           </div>
                           <div className="col-5">
-                            <div className="card-body">
-                              <h5 className="card-title">
+                            <div className="card-body" style={{
+            display: 'flex',
+            flexDirection: 'column',
+            justifyContent: 'center',
+            alignItems: 'center',
+            textAlign: 'center',
+            height: '100%',
+          }}>
+                              <h5 className="card-title text-black">
                                 UR32L Industrial Cellular Router
                               </h5>
                               <p className="card-text">
@@ -426,6 +518,7 @@ const DemoTabs = () => {
                                 rel="noopener noreferrer"
                                 href="http://ipc.nexyos.com:18082/"
                                 className="btn btn-primary"
+                                 style={{ margin: '20px 0' }}
                               >
                                 Learn More
                               </a>
@@ -436,9 +529,9 @@ const DemoTabs = () => {
                     </div>
 
                     {/* PTZ Camera Card */}
-                    <div className="col-lg-6 col-md-6 mb-4">
-                      <div className="card">
-                        <div className="row g-0">
+                 <div className="col-md-6 " style={{marginBottom:'10px'}}>
+                      <div className="bg-white" style={{borderRadius:'10px'}}>
+                        <div className="row g-1">
                           <div className="col-7">
                             <img
                               alt="ptz camera"
@@ -448,8 +541,15 @@ const DemoTabs = () => {
                             />
                           </div>
                           <div className="col-5">
-                            <div className="card-body">
-                              <h5 className="card-title">
+                            <div className="card-body" style={{
+            display: 'flex',
+            flexDirection: 'column',
+            justifyContent: 'center',
+            alignItems: 'center',
+            textAlign: 'center',
+            height: '100%',
+          }}>
+                              <h5 className="card-title text-black">
                                 UR35 Industrial Cellular Router
                               </h5>
                               <p className="card-text">
@@ -462,6 +562,7 @@ const DemoTabs = () => {
                                 rel="noopener noreferrer"
                                 href="http://ptz.nexyos.com:18081/"
                                 className="btn btn-primary"
+                                 style={{ margin: '20px 0' }}
                               >
                                 Learn More
                               </a>
@@ -472,9 +573,9 @@ const DemoTabs = () => {
                     </div>
 
                     {/* Speed Dome Camera Card */}
-                    <div className="col-lg-6 col-md-6 mb-4">
-                      <div className="card">
-                        <div className="row g-0">
+                    <div className=" col-md-6 " style={{marginBottom:'10px'}}>
+                      <div className="bg-white" style={{borderRadius:'10px'}}>
+                        <div className="row g-1">
                           <div className="col-7">
                             <img
                               alt="speed dome"
@@ -484,8 +585,15 @@ const DemoTabs = () => {
                             />
                           </div>
                           <div className="col-5">
-                            <div className="card-body">
-                              <h5 className="card-title">
+                            <div className="card-body" style={{
+            display: 'flex',
+            flexDirection: 'column',
+            justifyContent: 'center',
+            alignItems: 'center',
+            textAlign: 'center',
+            height: '100%',
+          }}>
+                              <h5 className="card-title text-black">
                                 UR75 Industrial 5G Cellular Router
                               </h5>
                               <p className="card-text">
@@ -498,6 +606,7 @@ const DemoTabs = () => {
                                 rel="noopener noreferrer"
                                 href="http://spd.nexyos.com:18080/"
                                 className="btn btn-primary"
+                                 style={{ margin: '20px 0' }}
                               >
                                 Learn More
                               </a>
@@ -506,9 +615,9 @@ const DemoTabs = () => {
                         </div>
                       </div>
                     </div>
-                    <div className="col-lg-6 col-md-6 mb-4">
-                      <div className="card">
-                        <div className="row g-0">
+                 <div className=" col-md-6 " style={{marginBottom:'10px'}}>
+                      <div className="bg-white" style={{borderRadius:'10px'}}>
+                        <div className="row g-1">
                           <div className="col-7">
                             <img
                               alt="speed dome"
@@ -518,8 +627,15 @@ const DemoTabs = () => {
                             />
                           </div>
                           <div className="col-5">
-                            <div className="card-body">
-                              <h5 className="card-title">UF51 5G CPE</h5>
+                            <div className="card-body" style={{
+            display: 'flex',
+            flexDirection: 'column',
+            justifyContent: 'center',
+            alignItems: 'center',
+            textAlign: 'center',
+            height: '100%',
+          }}>
+                              <h5 className="card-title text-black">UF51 5G CPE</h5>
                               <p className="card-text">
                                 User: nexyos
                                 <br />
@@ -530,6 +646,7 @@ const DemoTabs = () => {
                                 rel="noopener noreferrer"
                                 href="http://spd.nexyos.com:18080/"
                                 className="btn btn-primary"
+                                 style={{ margin: '20px 0' }}
                               >
                                 Learn More
                               </a>

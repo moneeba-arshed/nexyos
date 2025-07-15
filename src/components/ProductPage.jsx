@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import miniCAmeraGroup from "../assets/images/nexyos/miniCAmeraGroup.png";
 import Tab from "./Tab";
+import { Bold } from "lucide-react";
 
 const ProductPage = () => {
   const [products, setProducts] = useState([]);
@@ -181,7 +182,8 @@ displayedProducts.map((product) => (
       alt={product.title || "Product"}
       onError={(e) => (e.target.src = miniCAmeraGroup)}
     />
-    <h6>{product.title}</h6>
+   <p className="text-lg text-black " style={{ fontWeight: 'bold' , lineHeight: '1.2' }}>{product.title}</p>
+
     <p>{product.model}</p>
     <label>
       <input
@@ -364,12 +366,6 @@ displayedProducts.map((product) => (
   margin-bottom: 10px;
 }
 
-
- .card h4 {
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
 
 
   .card p {

@@ -14,7 +14,8 @@ import HeroCarousel from '../components/HeroCarousel'
 const Home = () => {
   return (
     <div className=''>
-<HeroCarousel/>
+{/* <HeroCarousel/> */}
+<SliderTest/>
       <Products/>
       <Sensing_Matter/>
       <TimelineSlider/>

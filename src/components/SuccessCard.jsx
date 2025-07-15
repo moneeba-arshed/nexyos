@@ -11,7 +11,7 @@ import {
   Badge,
 } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
-import "../style/ProductsPage.css";
+
 
 // Import images (in a real project, you would place these in your assets folder)
 const productImages = {
@@ -431,7 +431,7 @@ const SuccessCard = () => {
                 marginBottom: "50px",
               }}
             >
-              <Card className="product-card h-100">
+              <Card className="product-card h-100" style={{ width: "100%", margin: 0 }}>
                 <div className="product-image-container">
                   <Card.Img
                     variant="top"

@@ -68,20 +68,21 @@ const SensingProducts = () => {
           </Col>
         </Row>
 
-        <Row className="g-4">
-          {products.map((product, index) => (
-            <Col key={index} xs={12} sm={6} md={4} lg={3}>
-              <Card className={`${styles.productCard} h-100`}>
-                <Card.Body className="text-center">
-                  <div className={styles.iconWrapper}>{product.icon}</div>
-                  <Card.Text className={styles.productName}>
-                    {product.name}
-                  </Card.Text>
-                </Card.Body>
-              </Card>
-            </Col>
-          ))}
-        </Row>
+  <Row className="g-4">
+  {products.map((product, index) => (
+    <Col key={index} xs={12} sm={6} md={4} lg={3}>
+      <Card className={`${styles.productCard} h-100`} style={{ width: '100%', margin: 0 }}>
+        <Card.Body className="text-center">
+          <div className={styles.iconWrapper}>{product.icon}</div>
+          <Card.Text className={styles.productName}>
+            {product.name}
+          </Card.Text>
+        </Card.Body>
+      </Card>
+    </Col>
+  ))}
+</Row>
+
       </Container>
     </div>
   );

@@ -22,7 +22,7 @@
     "@tailwindcss/vite": "^4.1.8",
     "animate.css": "^4.1.1",
     "axios": "^1.10.0",
-    "bootstrap": "^5.3.6",
+    "bootstrap": "^5.3.7",
     "framer-motion": "^12.23.0",
     "gsap": "^3.13.0",
     "hammerjs": "^2.0.8",

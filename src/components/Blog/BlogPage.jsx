@@ -18,7 +18,7 @@ const BlogPage = () => {
         "Discover how high-accuracy ANPR systems are revolutionizing smart city mobility – reducing urban...",
       date: "April 29, 2025",
       categories: ["Solution"],
-      image: "https://www.milesight.com/static/5-654x327.jpg?t=1746697650604",
+      image:  "https://www.milesight.com/static/pc/en/company/blog/2025/iot-gateway-lns/milesight-lorawan-gateway-lorawan-network-server.jpg?t=1740623000739",
     },
     {
       id: 2,

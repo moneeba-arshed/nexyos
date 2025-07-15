@@ -146,35 +146,38 @@ const Events = () => {
                   lg={3}
                   className={styles.cardcol}
                 >
-                  <Card className={styles.card}>
-                    <Card.Img
-                      variant="top"
-                      src={event.image}
-                      className={styles.cardImage}
-                      alt={event.title}
-                    />
-                    <Card.Body className={styles.cardBody}>
-                      <Card.Title className={styles.cardTitle}>
-                        {event.title}
-                      </Card.Title>
-                      <div className={styles.eventMeta}>
-                        <div className={styles.eventDate}>{event.date}</div>
-                        <div className={styles.eventLocation}>
-                          {event.location}
-                        </div>
-                      </div>
-                      {event.status === "coming soon" ? (
-                        <div className={styles.comingSoon}>Coming Soon</div>
-                      ) : (
-                        <Button
-                          variant="primary"
-                          className={styles.registerBtn}
-                        >
-                          Register Now
-                        </Button>
-                      )}
-                    </Card.Body>
-                  </Card>
+                 <Card 
+  className={styles.card} 
+  style={{ width: '100%', margin: 0, height: '540px', display: 'flex', flexDirection: 'column' }}
+>
+  <Card.Img
+    variant="top"
+    src={event.image}
+    className={styles.cardImage}
+    alt={event.title}
+    style={{ width: '100%', height: '200px', objectFit: 'cover' }} // fixed image height, adjust as needed
+  />
+  <Card.Body style={{ flexGrow: 1, display: 'flex', flexDirection: 'column', justifyContent: 'space-between' }} className={styles.cardBody}>
+    <Card.Title className={styles.cardTitle}>
+      {event.title}
+    </Card.Title>
+    <div className={styles.eventMeta}>
+      <div className={styles.eventDate}>{event.date}</div>
+      <div className={styles.eventLocation}>{event.location}</div>
+    </div>
+    {event.status === "coming soon" ? (
+      <div className={styles.comingSoon}>Coming Soon</div>
+    ) : (
+      <Button
+        variant="primary"
+        className={styles.registerBtn}
+      >
+        Register Now
+      </Button>
+    )}
+  </Card.Body>
+</Card>
+
                 </Col>
               ))
             ) : (

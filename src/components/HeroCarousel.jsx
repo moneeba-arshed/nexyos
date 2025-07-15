@@ -105,7 +105,7 @@ const HeroCarousel = () => {
       direction="horizontal"
       loop
       onSlideChange={(swiper) => setActiveIndex(swiper.realIndex)}
-      className="w-full h-[600px]"
+      className="w-full h-[80vh]"
     >
       {slides.map((slide, index) => (
         <SwiperSlide key={index}>
