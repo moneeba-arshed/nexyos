@@ -160,7 +160,7 @@ const Header = () => {
             { title: "Smart Space", path: "/SmartSpace" },
             { title: "People Counting", path: "/PeopleCounting" },
             { title: "Smart HVAC Management", path: "/SmartHVAC" },
-            { title: "Space Occupancy", path: "/SmartSpaceOccupancy" },
+            { title: "Space Occupancy", path: "/Solution/SpaceOccupancy" },
           ],
         },
       },
@@ -455,12 +455,12 @@ const Header = () => {
       {/* ======================= Middle Header Two End ========================= */}
       {/* ==================== Header Two Start Here ==================== */}
       <header
-        className={`header  bg-white border-bottom border-gray-100 py-4  ${
+        className={`header shadow-2xl bg-white border-bottom border-gray-100 py-4  ${
           scroll && "fixed-header"
         }`}
       >
         <div className="container">
-          <nav className="header-inner d-flex justify-content-between gap-8">
+          <nav className="header-inner d-flex justify-content-between gap-8 ">
             <div className="ps-4 logo d-lg-none">
               <Link to="/" className="link">
                 <img src={logo} alt="Logo" />
@@ -560,7 +560,7 @@ const Header = () => {
                               </li>
                               <li>
                                 <NavLink
-                                  to="/SmartSpaceOccupancy"
+                                  to="/Solution/SpaceOccupancy"
                                   className="common-dropdown__link"
                                 >
                                   Space Occupancy
