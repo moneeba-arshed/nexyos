@@ -201,7 +201,6 @@ flex-direction: row;
 /* normal css  */
 
 body {
-  overflow: hidden;
   background: #111;
 }
 
@@ -386,6 +385,25 @@ img.absolute.top-64.right-40.transform.-translate-y-1\/2.z-20.right{
 .img.bg-image{
   object-fit: cover;
 }
+.featuresbutton{
+  font-size: 12px;
+  border: 1px solid #808080;
+  border-radius: 15px;
+  padding: 6px 12px;
+}
+.featurestab.md\:px-12.text-black{
+  border-right: none;
+}
+.Featuresnavlink{
+  gap: 5px;
+  justify-content: left;
+}
+.ApplicationTab.mt-48{
+  margin-left: 2px;
+}
+.Markers{
+  font-size: 10px;
+}
 }
 
 /* Hide scrollbar for all elements with this class */
@@ -435,6 +453,58 @@ background-color: #0f7a92;
 }
 .SlideContent{
   width: 100%;
+}
+.featurestab.active{
+background-color: #00667C;
+color: #ffffff;
+}
+.featurestab{
+  border-right: 1px solid gray;
+}
+.Featuresnavlink{
+  position: sticky;
+  z-index: 80;
+  top: 75px;
+  justify-content: center;
+  align-items: center;
+}
+.featuresbutton{
+  margin: 0;
+}
+.ApplicationTabArrow {
+  border-radius: 15px;
+  border: 1px solid white;
+}
+.ApplicationTabArrowActive{
+  border: 1px solid #00667C;
+}
+.Markers{
+  background-color: rgba(0, 0, 0, .7);
+border-radius: 10px;
+border: 1px solid white;
+}
+.Markers.active::after{
+  border-top: 1rem solid #0299f4;
+}
+.Markers.active{
+  background-color: #0299f4;
+}
+.Markers::after{
+      content: "";
+    width: 0;
+    height: 0;
+    border-top: 1rem solid rgba(0, 0, 0, .8);
+    border-left: 1rem solid transparent;
+    border-right: 1rem solid transparent;
+    border-bottom: 1rem solid transparent;
+    position: absolute;
+    bottom: -1.875rem;
+    left: 50%;
+    transform: translateX(-50%);
+    filter: drop-shadow(0 .125rem 0 #fff);
+}
+.ApplicationTab{
+  margin-left: 52px;
 }
 @media screen and (max-width: 768px) {
   .product-grids {

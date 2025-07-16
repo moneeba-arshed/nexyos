@@ -161,7 +161,7 @@ const Header = () => {
             { title: "Smart Space", path: "/SmartSpace" },
             { title: "People Counting", path: "/PeopleCounting" },
             { title: "Smart HVAC Management", path: "/SmartHVAC" },
-            { title: "Space Occupancy", path: "/SmartSpaceOccupancy" },
+            { title: "Space Occupancy", path: "/Solution/SpaceOccupancy" },
           ],
         },
       },
@@ -457,12 +457,12 @@ const Header = () => {
       {/* ======================= Middle Header Two End ========================= */}
       {/* ==================== Header Two Start Here ==================== */}
       <header
-        className={`header  bg-white border-bottom border-gray-100 py-4  ${
+        className={`header shadow-2xl bg-white border-bottom border-gray-100 py-4  ${
           scroll && "fixed-header"
         }`}
       >
         <div className="container">
-          <nav className="header-inner d-flex justify-content-between gap-8">
+          <nav className="header-inner d-flex justify-content-between gap-8 ">
             <div className="ps-4 logo d-lg-none">
               <Link to="/" className="link">
                 <img src={logo} alt="Logo" />
@@ -500,49 +500,76 @@ const Header = () => {
                           Solutions
                         </Link>
                         <div className="on-hover-dropdown common-dropdown nav-megamenu">
-                          <div className="p-6" style={{ textAlign: "left" }}>
-      {/* Column 1 */}
-      <ul className="space-y-2" style={{ listStyle: "none", paddingLeft: 0, margin: 0 }}>
-        {[
-          { to: "/solutions/video-surveillance", label: "Video Surveillance" },
-          { to: "/SmartRoom", label: "Smart Restroom" },
-          { to: "/SmartSpace", label: "Smart Space" },
-          { to: "/SmartHVAC", label: "Smart HVAC Management" },
-          { to: "/TrafficSolution", label: "Intelligent Traffic Solution" },
-          { to: "/AirQuality", label: "Indoor Air Quality" },
-          { to: "/PeopleCounting", label: "People Counting" },
-          { to: "/SmartSpaceOccupancy", label: "Space Occupancy" },
-        ].map((item, index) => (
-          <li
-            key={index}
-            onMouseEnter={() => setHoveredIndex(index)}
-            onMouseLeave={() => setHoveredIndex(null)}
-            style={{
-              transition: "transform 0.2s ease",
-              transform: hoveredIndex === index ? "scale(1.05)" : "scale(1)",
-              marginBottom: "8px",
-              cursor: "pointer",
-            }}
-          >
-            <NavLink
-              to={item.to}
-              className="common-dropdown__link"
-              style={{
-                color: hoveredIndex === index ? "#00667C" : "#999999",
-                textDecoration: "none",
-                fontSize: "15px",
-                fontWeight: 500,
-                display: "block",
-                paddingLeft: "5px",
-                transition: "color 0.2s ease",
-              }}
-            >
-              {item.label}
-            </NavLink>
-          </li>
-        ))}
-      </ul>
-    </div>
+                          <div className=" p-6">
+                            {/* Column 1 */}
+
+                            <ul className="space-y-2">
+                              <li>
+                                <NavLink
+                                  to="/solutions/video-surveillance"
+                                  className="common-dropdown__link"
+                                >
+                                  Video Surveillance
+                                </NavLink>
+                              </li>
+                              <li>
+                                <NavLink
+                                  to="/SmartRoom"
+                                  className="common-dropdown__link"
+                                >
+                                  Smart Restroom
+                                </NavLink>
+                              </li>
+                              <li>
+                                <NavLink
+                                  to="/SmartSpace"
+                                  className="common-dropdown__link"
+                                >
+                                  Smart Space
+                                </NavLink>
+                              </li>
+                              <li>
+                                <NavLink
+                                  to="/SmartHVAC"
+                                  className="common-dropdown__link"
+                                >
+                                  Smart HVAC Management
+                                </NavLink>
+                              </li>
+                              <li>
+                                <NavLink
+                                  to="/TrafficSolution"
+                                  className="common-dropdown__link"
+                                >
+                                  Intelligent Traffic Solution
+                                </NavLink>
+                              </li>
+                              <li>
+                                <NavLink
+                                  to="/AirQuality"
+                                  className="common-dropdown__link"
+                                >
+                                  Indoor Air Quality
+                                </NavLink>
+                              </li>
+                              <li>
+                                <NavLink
+                                  to="/PeopleCounting"
+                                  className="common-dropdown__link"
+                                >
+                                  People Counting
+                                </NavLink>
+                              </li>
+                              <li>
+                                <NavLink
+                                  to="/Solution/SpaceOccupancy"
+                                  className="common-dropdown__link"
+                                >
+                                  Space Occupancy
+                                </NavLink>
+                              </li>
+                            </ul>
+                          </div>
                         </div>
                       </li>
                       <li className="nav-menu__item">
