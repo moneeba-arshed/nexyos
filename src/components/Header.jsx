@@ -27,6 +27,7 @@ const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [isAlignOpen, setIsAlignOpen] = useState(false);
   const [activeSubIndex, setActiveSubIndex] = useState(null); // for subcategory
+    const [hoveredIndex, setHoveredIndex] = useState(null);
 
   const toggleDropdown = () => {
     setIsOpen(!isOpen);
@@ -404,6 +405,7 @@ const Header = () => {
                 ) : item.subCategoryId && item.categoryId ? (
                   // Second-level item with subCategoryId (open third-level)
                   <button
+                  
                     onClick={() => openSubmenu(item)}
                     className="flex justify-between items-center w-full text-left px-4 py-3 hover:bg-gray-100"
                   >
