@@ -55,7 +55,7 @@ const Sensing_Matter = () => {
   return (
     <div className="slider-container">
       <div className="container text-slide2">
-        <h2 className="text-center">Make Sensing Matter</h2>
+        <h2 className="text-center "  data-aos="fade-right" >Make Sensing Matter</h2>
         <p className="text-center">
           Leveraging the incredible insights, we help people optimize their
           business and accelerate IoT <br /> strategies to energetically drive

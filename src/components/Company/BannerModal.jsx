@@ -22,7 +22,7 @@ const BannerBrand = () => {
     >
       <div className="container">
         <div className="banner-item-two__content text-white">
-          <h2 className="banner-item-two__title bounce text-white">
+          <h2 className="banner-item-two__title bounce text-white"  data-aos="fade-right">
             We Are Nexyos, We Make Sensing Matter
           </h2>
           <p className="mt-4">

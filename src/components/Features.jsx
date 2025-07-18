@@ -98,7 +98,7 @@ export default function Features() {
   return (
     <section className="Feature_container bg-gray-100 rounded-lg pb-28 flex flex-col items-center justify-center">
       <div className="text-center">
-        <h2 className="Feature_heading text-xl text-black ">
+        <h2 className="Feature_heading text-xl text-black "  data-aos="fade-right">
           {currentFeature.heading}
         </h2>
       </div>

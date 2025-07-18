@@ -46,9 +46,9 @@ const SliderTest = () => {
   };
 
   return (
-    <div className="relative flex items-center min-h-screen flex-col md:flex-row">
+    <div className="relative flex items-center flex-col md:flex-row SliderTest" >
       {/* Background/Main Image */}
-      <div className="md:w-1/2 w-full h-[100vh] md:h-screen">
+      <div className="md:w-1/2 w-full h-[80vh] ">
         <AnimatePresence mode="wait">
           <motion.img
             key={coffeeItems[index].image}
@@ -57,14 +57,13 @@ const SliderTest = () => {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: 50 }}
             transition={{ duration: 0.6 }}
-            className="w-full object-cover rounded-none
+            className="w-full rounded-none
 "
-            style={{borderRadius:'0px'}}/>
+            style={{borderRadius:'0px',height:'80vh'}}/>
         </AnimatePresence>
       </div>
-12
       {/* Vertical Circles in Center */}
-      <div className="absolute left-1/2 top-1/2
+      <div className="absolute
 flex gap-4 z-10 justify-center items-center vertical-image">
         {coffeeItems.map((item, i) => (
           <div
@@ -80,7 +79,7 @@ flex gap-4 z-10 justify-center items-center vertical-image">
       </div>
 
       {/* Text Column */}
-      <div className="md:w-1/2 w-full h-[50vh] md:h-screen flex justify-start px-72 ">
+      <div className="md:w-1/2 w-full h-[80vh]  flex justify-start px-72 ">
         <div className="flex justify-start flex-col">
           {/* Dial */}
           <div className="relative w-90 h-90 ">
@@ -113,7 +112,7 @@ flex gap-4 z-10 justify-center items-center vertical-image">
       </div>
 
       {/* Arrow Controls */}
-      <div className="absolute right-8 top-1/2 flex flex-col gap-4 z-20 slider-arrow">
+      <div className="absolute right-8 flex flex-col gap-4 z-20 slider-arrow">
         <button onClick={handlePrev}><GoArrowUp size={32} color="black" /></button>
         <button onClick={handleNext}><GoArrowDown size={32} color="black" /></button>
       </div>

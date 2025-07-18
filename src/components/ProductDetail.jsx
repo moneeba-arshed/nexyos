@@ -164,7 +164,7 @@ const ProductDetail = () => {
         {/* Title */}
         <div className="items-center w-[35%] flex-col" style={{ marginLeft: '100px' }}>
 
-          <h1 className="text-3xl text-left text-white ">
+          <h1 className="text-3xl text-left text-white "  data-aos="fade-right">
             4 MP Smart Hybrid Light with ColorVu Motorized Varifocal Bullet Camera
           </h1>
           <p className="text-left w-full text-white">DS-2CD2647G3T-LIZSY</p>
@@ -262,7 +262,7 @@ const ProductDetail = () => {
           <div ref={specRef}>
           </div>
 
-          <h3 className="mt-5">Specifications</h3>
+          <h3 className="mt-5"  data-aos="fade-right">Specifications</h3>
 
           <div className="specifications-area">
             {/* Section Tabs */}
@@ -282,7 +282,7 @@ const ProductDetail = () => {
 <div className="detail-column">
   {sections.map((section) => (
     <div key={section} ref={sectionRefs[section]} className="spec-section">
-      <h3>{section}</h3>
+      <h3  data-aos="fade-right">{section}</h3>
       <ul>
         {details[section].map((point, index) => (
           <li key={index}>{point}</li>
@@ -301,7 +301,7 @@ const ProductDetail = () => {
         </div>
         <div ref={resourceRef}>
           {/* Resources Section */}
-          <h3 className="center-heading ">Resources</h3>
+          <h3 className="center-heading "  data-aos="fade-right">Resources</h3>
           <div ref={resourceRef} className="spec-section">
 
             <div className="resource-buttons">
@@ -344,14 +344,14 @@ const ProductDetail = () => {
         </div>
         <div ref={accessoryRef}>
           {/* Accessories Section */}
-          <h3 className="center-heading">Accessories</h3>
+          <h3 className="center-heading"  data-aos="fade-right">Accessories</h3>
           <div ref={accessoriesRef} className="spec-section">
 
             <div className="accessory-grid container">
               <div className="accessory-card">
                 <img src="/images/ds1260zj.jpg" alt="Junction Box" />
                 <div>
-                  <h6>DS-1260ZJ</h6>
+                  <h6  data-aos="fade-right">DS-1260ZJ</h6>
                   <p>Junction Box for Camera Installation</p>
                 </div>
               </div>

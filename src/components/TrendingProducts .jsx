@@ -26,7 +26,7 @@ const ProductCard = ({ product }) => {
           />
         </div>
         <div className="product-content">
-          <h6 className="product-title">{product.category_name}</h6>
+          <h6 className="product-title"  data-aos="fade-right">{product.category_name}</h6>
         </div>
       </div>
     </div>

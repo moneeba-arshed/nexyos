@@ -60,7 +60,7 @@ const SliderPartner = () => {
         <div className="container">
           <div className="row">
             <div className="col-lg-12">
-              <h1 className={styles.mainTitle}>
+              <h1 className={styles.mainTitle}  data-aos="fade-right">
                 Incremental Technology Innovations
               </h1>
               <p className={styles.description}>
@@ -108,7 +108,7 @@ const SliderPartner = () => {
                         alt={innovation.title}
                         className={styles.cardImage}
                       />
-                      <h3 className={styles.innovationTitle}>
+                      <h3 className={styles.innovationTitle}  data-aos="fade-right">
                         {innovation.title}
                       </h3>
                     </div>

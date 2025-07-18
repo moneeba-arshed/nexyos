@@ -92,11 +92,6 @@ const BlogPage = () => {
     <>
       <BannerBlog />
       <Container className={styles.blogPage}>
-        {/* <h1 className={styles.pageTitle}>Nexyos Blog</h1>
-      <p className={styles.pageSubtitle}>
-        Latest news, insights and innovations from Nexyos
-      </p> */}
-
         <Row className="mb-4">
           <Col md={8}>
             <CategoryTabs
@@ -125,7 +120,7 @@ const BlogPage = () => {
             ))
           ) : (
             <Col className="text-center py-5">
-              <h4>No blogs found matching your criteria</h4>
+              <h4  data-aos="fade-right">No blogs found matching your criteria</h4>
             </Col>
           )}
         </Row>

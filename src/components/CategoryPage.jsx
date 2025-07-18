@@ -48,7 +48,7 @@ const CategoryPage = () => {
   return (
     <>
       <div className="custom-padding mb-20 mt-64" >
-        <h5 className="text-base">What we offer</h5>
+        <h5 className="text-base"  data-aos="fade-right">What we offer</h5>
         <p className="text-left">
           It has survived not only five centuries, but also the leap into
           electronic typesetting, remaining essentially unchanged. It was
@@ -66,11 +66,11 @@ const CategoryPage = () => {
       </div>
 
       <div className="wrapper">
-        <h1 className="title">Product Category</h1>
+        <h1 className="title"  data-aos="fade-right">Product Category</h1>
 
         <section className="Feature_container bg-gray-100 rounded-lg pb-28 flex flex-col items-center justify-center">
           <div className="py-6 px-20 mt-16">
-            <h2 className="text-2xl font-semibold text-center my-24">
+            <h2 className="text-2xl font-semibold text-center my-24"  data-aos="fade-right">
               Diverse Range of Sub-Categories and Lenses
             </h2>
 
@@ -88,7 +88,7 @@ const CategoryPage = () => {
                 />
 
                 <div className="lensesContent text-left px-2 absolute bottom-8 text-white">
-                  <h3 className="text-xl font-semibold">Lenses</h3>
+                  <h3 className="text-xl font-semibold"  data-aos="fade-right">Lenses</h3>
                   <p className="text-sm">
                     4X/5X/12X/36X Optical AF Lens <br />
                     Motorized 2.7~13.5mm / 3.6~10mm @F1.4
@@ -99,7 +99,7 @@ const CategoryPage = () => {
               <div className="w-[800px] h-[340px] bg-white py-20 px-60 rounded-xl hidden lg:flex flex-col justify-between">
 
 
-                <h6 className="text-left">Sub-Categories : </h6>
+                <h6 className="text-left"  data-aos="fade-right">Sub-Categories : </h6>
                 {loading ? (
                   <p>Loading sub-categories...</p>
                 ) : subCategories.length === 0 ? (
@@ -123,7 +123,7 @@ const CategoryPage = () => {
                               alt={item.category}
                               className="card-img"
                             />
-                            <h2 className="card-title">
+                            <h2 className="card-title"  data-aos="fade-right">
                               {item.sub_category}
                               <ChevronRight className="arrow-icon" />
                             </h2>

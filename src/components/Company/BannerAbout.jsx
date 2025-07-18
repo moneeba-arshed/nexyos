@@ -22,7 +22,7 @@ const BannerAbout = () => {
     >
       <div className="container">
         <div className="banner-item-two__content text-white">
-          <h2 className="banner-item-two__title bounce text-white">
+          <h2 className="banner-item-two__title bounce text-white"  data-aos="fade-right">
             Collaboration Start Guide
           </h2>
           <p className="mt-4">

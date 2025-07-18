@@ -69,7 +69,7 @@ const BlogDetailPage = () => {
               </span>
             ))}
           </div>
-          <h1 className={styles.blogTitle}>{blog.title}</h1>
+          <h1 className={styles.blogTitle}  data-aos="fade-right">{blog.title}</h1>
           <p className={styles.blogDate}>Published on {blog.date}</p>
         </header>
 

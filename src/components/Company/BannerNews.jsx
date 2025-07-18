@@ -22,7 +22,7 @@ const BannerNews = () => {
     >
       <div className="container">
         <div className="banner-item-two__content text-white">
-          <h2 className="banner-item-two__title bounce text-white">News</h2>
+          <h2 className="banner-item-two__title bounce text-white"  data-aos="fade-right">News</h2>
           <p className="mt-4">
             Find out the latest news from Milesight and stay up to date with new
             product launch, events and more.

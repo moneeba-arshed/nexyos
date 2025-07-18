@@ -294,7 +294,7 @@ const handleSubmit = async (e) => {
 
           <div className="col-lg-4">
             <div className="contact-box border border-gray-100 rounded-16 px-24 py-40">
-              <h6 className="mb-48">Get In Touch</h6>
+              <h6 className="mb-48"  data-aos="fade-right">Get In Touch</h6>
               <div className="flex-align gap-16 mb-16">
                 <span
                   className="w-40 h-40 flex-center rounded-circle border border-gray-100 text-2xl flex-shrink-0"

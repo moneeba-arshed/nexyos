@@ -93,7 +93,7 @@ const PartnerProgram = () => {
           <div className="col-lg-7">
             <div className={`${styles.programCard} p-4 p-md-5`}>
               <div className="card-body">
-                <h3 className={`${styles.programSubtitle} mb-4`}>
+                <h3 className={`${styles.programSubtitle} mb-4`}  data-aos="fade-right">
                   Nexyos Partner Program
                 </h3>
                 <p className={styles.programText}>
@@ -118,13 +118,13 @@ const PartnerProgram = () => {
         <div className="container">
           <div className="row">
             <div className="col-md-5">
-              <h1 className={styles.mainTitle}>Why Nexyos ?</h1>
+              <h1 className={styles.mainTitle}  data-aos="fade-right">Why Nexyos ?</h1>
 
-              <div className={`${styles.headingGroup} mb-4`}>
+              <div className={`${styles.headingGroup} mb-4`}  data-aos="fade-right">
                 <h5
                   className={styles.heading}
                   onClick={() => handleHeadingClick("sensing")}
-                >
+                 data-aos="fade-right">
                   Cutting-Edge Sensing Products Provider Serving Millions of
                   People Worldwide
                 </h5>
@@ -134,7 +134,7 @@ const PartnerProgram = () => {
                 <h5
                   className={styles.heading}
                   onClick={() => handleHeadingClick("exhibitions")}
-                >
+                data-aos="fade-right" >
                   Active Participant in Influential Exhibitions
                 </h5>
               </div>
@@ -143,7 +143,7 @@ const PartnerProgram = () => {
                 <h5
                   className={styles.heading}
                   onClick={() => handleHeadingClick("industries")}
-                >
+                 data-aos="fade-right">
                   Prominent Presence in Industries
                 </h5>
               </div>
@@ -167,7 +167,7 @@ const PartnerProgram = () => {
         <div className="container">
           <div className="row">
             <div className="col-lg-12">
-              <h1 className={styles.mainTitle}>
+              <h1 className={styles.mainTitle}  data-aos="fade-right">
                 Incremental Technology Innovations
               </h1>
               <p className={styles.description}>
@@ -215,7 +215,7 @@ const PartnerProgram = () => {
                         alt={innovation.title}
                         className={styles.cardImage}
                       />
-                      <h3 className={styles.innovationTitle}>
+                      <h3 className={styles.innovationTitle}  data-aos="fade-right">
                         {innovation.title}
                       </h3>
                     </div>

@@ -25,7 +25,7 @@ const Card = ({ title, icon, image, footerColors, children }) => (
       style={{ height: "177px" }}
     >
       <div className="flex flex-col items-center justify-center">
-        <h3 className="text-lg font-semibold mb-3 pb-1 text-center text-white">
+        <h3 className="text-lg font-semibold mb-3 pb-1 text-center text-white"  data-aos="fade-right">
           {title}
         </h3>
         <div className="AI_Algorithm_hr"></div>
@@ -45,7 +45,7 @@ const HighlightsCard = () => (
   >
     <div className="bg-opacity-70 text-white p-5 h-full mt-16">
        <div className="flex flex-col items-center justify-center mb-8">
-        <h3 className="text-lg font-semibold mb-3 pb-1 text-center text-white">
+        <h3 className="text-lg font-semibold mb-3 pb-1 text-center text-white"  data-aos="fade-right">
              More Highlights:
         </h3>
         <div className="AI_Algorithm_hr"></div>
@@ -74,7 +74,7 @@ const HighlightsCard = () => (
 const AI_Algorithm = () => {
   return (
     <div className=" py-12 px-4 md:px-12 mt-52 AI_Algorithm">
-      <h2 className="text-2xl md:text-3xl font-semibold text-center mb-32">
+      <h2 className="text-2xl md:text-3xl font-semibold text-center mb-32"  data-aos="fade-right">
         AI-powered LPR Algorithm
       </h2>
       <div className="flex grid md:grid-cols-5 grid-cols-2 gap-4 justify-center">

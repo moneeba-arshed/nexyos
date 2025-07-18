@@ -27,7 +27,7 @@ const Products = () => {
 
   return (
     <div className="wrapper">
-      <h1 className="title">Product Categories</h1>
+      <h1 className="title "  data-aos="fade-right" >Product Categories</h1>
 
       {loading ? (
         <p className="loading">Loading...</p>
@@ -46,7 +46,7 @@ const Products = () => {
                 alt={item.category}
                 className="card-img"
               />
-              <h2 className="card-title">
+              <h2 className="card-title" >
                 {item.category}
                 <ChevronRight className="arrow-icon" />
               </h2>

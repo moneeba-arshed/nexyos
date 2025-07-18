@@ -94,7 +94,7 @@ const filteredProducts = products.filter(
     <div className="container-fluid">
       <Tab />
       <div className="container my-76 p-0 md:pb-40 md:pt-30 flex justify-center items-center flex-col">
-        <h5>For Better Road Safety & Efficient Traffic Management</h5>
+        <h5  data-aos="fade-right">For Better Road Safety & Efficient Traffic Management</h5>
         <div className="md:w-[70%] w-[90%] text-center">
           <p className="text-sm">
             With the growth of urban and rural populations, as well as the
@@ -115,7 +115,7 @@ const filteredProducts = products.filter(
           </p>
         </div>
       </div>
-      <h1 className="title">Product Categories</h1>
+      <h1 className="title"  data-aos="fade-right">Product Categories</h1>
       <button
         className="filter-toggle"
         onClick={() => setShowMobileFilter((prev) => !prev)}
@@ -150,7 +150,7 @@ const filteredProducts = products.filter(
 
         {filterAttributes.map((attributeBlock) => (
   <div className={`filter-group ${openSections[attributeBlock.attribute] ? "open" : ""}`} key={attributeBlock.id}>
-    <h3 onClick={() => toggleSection(attributeBlock.attribute)}>
+    <h3 onClick={() => toggleSection(attributeBlock.attribute)}  data-aos="fade-right">
       {openSections[attributeBlock.attribute] ? "−" : "+"} {attributeBlock.attribute}
     </h3>
     {openSections[attributeBlock.attribute] && (

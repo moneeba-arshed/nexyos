@@ -157,7 +157,7 @@ useEffect(() => {
 <div className="custom-padding mb-20 lg:mt-64">
 
 
-        <h5 className="text-base">What we offer</h5>
+        <h5 className="text-base"  data-aos="fade-right">What we offer</h5>
         <p className="text-left">
           It has survived not only five centuries, but also the leap into
           electronic typesetting, remaining essentially unchanged. It was
@@ -175,7 +175,7 @@ useEffect(() => {
       </div>
           <section className="Feature_container bg-gray-100 rounded-lg pb-28 flex flex-col items-center justify-center">
       <div className="text-center">
-        <h2 className="Feature_heading text-xl text-black ">
+        <h2 className="Feature_heading text-xl text-black "  data-aos="fade-right">
           {currentFeature.heading}
         </h2>
       </div>
@@ -320,7 +320,7 @@ useEffect(() => {
 
       <section className="Feature_container bg-gray-100 rounded-lg pb-28 flex flex-col items-center justify-center">
         <div className="py-6 px-20 mt-16">
-    <h1 className="title ">{subCategory?.sub_category || "Sub-Category"} Product </h1>
+    <h1 className="title "  data-aos="fade-right">{subCategory?.sub_category || "Sub-Category"} Product </h1>
           <div className="flex flex-col lg:flex-row gap-6 max-w-6xl mx-auto w-full items-center justify-center">
              {/* Lenses Section */}
               <div className="w-full lg:w-[350px] rounded-xl flex flex-col justify-center items-center relative">
@@ -333,7 +333,7 @@ useEffect(() => {
                 />
 
                 <div className="lensesContent text-left px-2 absolute bottom-8 text-white">
-                  <h3 className="text-xl font-semibold">Lenses</h3>
+                  <h3 className="text-xl font-semibold"  data-aos="fade-right">Lenses</h3>
                   <p className="text-sm">
                     4X/5X/12X/36X Optical AF Lens <br />
                     Motorized 2.7~13.5mm / 3.6~10mm @F1.4
@@ -342,7 +342,7 @@ useEffect(() => {
               </div>
             {/* Desktop View */}
             <div className="w-full h-full bg-white py-20 px-60 rounded-xl hidden lg:flex flex-col justify-between">
-              <h6 className="text-left">Third-Level Categories</h6>
+              <h6 className="text-left"  data-aos="fade-right">Third-Level Categories</h6>
 
               {loading ? (
                 <p>Loading...</p>
@@ -361,7 +361,7 @@ useEffect(() => {
                         alt={item.third_level}
                         className="card-img"
                       />
-                      <h2 className="card-title">
+                      <h2 className="card-title"  data-aos="fade-right">
                         {item.third_level}
                         <ChevronRight className="arrow-icon" />
                       </h2>

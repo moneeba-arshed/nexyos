@@ -26,7 +26,7 @@ const BlogCard = ({ blog }) => {
         </span>
       ))}
     </div>
-    <h5 className={`card-title ${styles.blogTitle}`}>{blog.title}</h5>
+    <h5 className={`card-title ${styles.blogTitle}`}  data-aos="fade-right">{blog.title}</h5>
     <p className={`card-text ${styles.blogExcerpt}`}>{blog.excerpt}</p>
     <div className={styles.blogMeta} style={{ marginTop: "auto" }}>
       <span className={styles.blogDate}>{blog.date}</span>

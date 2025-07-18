@@ -46,7 +46,7 @@ const TypicalApplications = forwardRef((props, ref) => {
       <div className="flex flex-col lg:flex-row items-start gap-12 mt-48">
         {/* Left List */}
         <div className="flex-1 max-w-lg justify-center">
-          <h2 className="text-4xl font-semibold mb-6 text-white">Typical Applications</h2>
+          <h2 className="text-4xl font-semibold mb-6 text-white"  data-aos="fade-right">Typical Applications</h2>
 <div className="ApplicationTab mt-48">
           {applications.map((app) => (
             <div key={app.key} className="mb-4">
@@ -56,7 +56,7 @@ const TypicalApplications = forwardRef((props, ref) => {
                   activeKey === app.key ? "text-white" : "text-gray-300"
                 }`}
               >
-                <h3 className="text-xl font-semibold text-white">{app.title}</h3>
+                <h3 className="text-xl font-semibold text-white"  data-aos="fade-right">{app.title}</h3>
                 <button
                   className={`m-0 px-4 py-4 flex items-center justify-center  ApplicationTabArrow ${
                     activeKey === app.key ? "ApplicationTabArrowActive" : ""

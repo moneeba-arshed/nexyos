@@ -20,7 +20,7 @@ const ProjectRegistration = () => {
     <>
       <Banner />
       <Container className={styles.container}>
-        <h1 className={styles.mainTitle}>
+        <h1 className={styles.mainTitle}  data-aos="fade-right">
           Nexyos Project Registration Program
         </h1>
 
@@ -35,12 +35,12 @@ const ProjectRegistration = () => {
             className={styles.tabContent}
           >
             <div className={styles.tabPanel}>
-              <h2 className={styles.tabTitle}>
+              <h2 className={styles.tabTitle}  data-aos="fade-right">
                 Video Surveillance Project Registration
               </h2>
 
               <div className={styles.programOverview}>
-                <h3 className={styles.sectionTitle}>Program Overview</h3>
+                <h3 className={styles.sectionTitle}  data-aos="fade-right">Program Overview</h3>
                 <p>
                   Nexyos Project Registration Program is to be used by our
                   customers with active agreement to register opportunities or
@@ -67,7 +67,7 @@ const ProjectRegistration = () => {
               </div>
 
               <div className={styles.programSteps}>
-                <h3 className={styles.sectionTitle}>
+                <h3 className={styles.sectionTitle}  data-aos="fade-right">
                   Get Project Support in Three Easy Steps
                 </h3>
                 <ol className={styles.stepsList}>
@@ -81,7 +81,7 @@ const ProjectRegistration = () => {
               </div>
 
               <div className={styles.programRequirements}>
-                <h3 className={styles.sectionTitle}>Program Requirements</h3>
+                <h3 className={styles.sectionTitle}  data-aos="fade-right">Program Requirements</h3>
                 <ul className={styles.requirementsList}>
                   <li>
                     Only ONE Dealer can be registered for a project at any one
@@ -118,10 +118,10 @@ const ProjectRegistration = () => {
             className={styles.tabContent}
           >
             <div className={styles.tabPanel}>
-              <h2 className={styles.tabTitle}>IoT Project Registration</h2>
+              <h2 className={styles.tabTitle}  data-aos="fade-right">IoT Project Registration</h2>
 
               <div className={styles.programOverview}>
-                <h3 className={styles.sectionTitle}>Program Overview</h3>
+                <h3 className={styles.sectionTitle}  data-aos="fade-right">Program Overview</h3>
                 <p>
                   Nexyos Project Registration Program is designed for our
                   customers with active agreements to register opportunities or

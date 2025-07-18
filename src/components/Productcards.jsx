@@ -50,7 +50,7 @@ const Productcards = () => {
                   className="procard-img"
                 />
                 <div className="card-text">
-                  <h2 className="procard-title">
+                  <h2 className="procard-title" >
                     AI 4X/12X Pro Bullet Plus Camera
                   </h2>
                   <p>Experience the All-round and Powerful Functions</p>

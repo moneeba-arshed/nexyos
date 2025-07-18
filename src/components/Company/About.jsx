@@ -85,7 +85,7 @@ const About = () => {
       <section className="container superior">
         <div className="center-wrap">
           <div className="content wow animate__fadeInUp">
-            <h2 className="title">Superior Strength</h2>
+            <h2 className="title"  data-aos="fade-right">Superior Strength</h2>
             <div className="swipers">
               <Swiper
                 grabCursor={true}
@@ -113,7 +113,7 @@ const About = () => {
                             className="lazyloaded"
                             title={`milesight ${item.title.toLowerCase()} icon`}
                           />
-                          <h3 className="card-title">{item.title}</h3>
+                          <h3 className="card-title"  data-aos="fade-right">{item.title}</h3>
                           <p className="card-text">{item.description}</p>
                         </div>
                       ))}

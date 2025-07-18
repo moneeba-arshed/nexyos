@@ -84,7 +84,7 @@ const FeatureTiles = () => {
 
       {/* Sections */}
       <section ref={overviewRef} className="text-center px-6 py-16 mt-36">
-        <h1 className="text-3xl md:text-4xl font-bold mb-18">
+        <h1 className="text-3xl md:text-4xl font-bold mb-18"  data-aos="fade-right">
           Monitoring Meeting Room, Desk, and Other Workspace Occupancy
         </h1>
         <p className="max-w-4xl text-xs mx-auto text-gray-700 mb-4">

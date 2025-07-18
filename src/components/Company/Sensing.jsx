@@ -53,10 +53,10 @@ const SensingProducts = () => {
       <Container>
         <Row className="justify-content-center mb-5">
           <Col lg={8} className="text-center">
-            <h2 className={styles.sectionTitle}>
+            <h2 className={styles.sectionTitle}  data-aos="fade-right">
               Multi-potential Sensing Products
             </h2>
-            <h3 className={styles.sectionSubtitle}>We Sense What Matters</h3>
+            <h3 className={styles.sectionSubtitle}  data-aos="fade-right">We Sense What Matters</h3>
             <p className={styles.sectionDescription}>
               Recognizing the value of data in today's digitized world.
               Milesight has evolved beyond our initial roots. Now, we cater to

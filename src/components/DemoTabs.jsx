@@ -75,7 +75,7 @@ const DemoTabs = () => {
             <>
               <div className="content-videoser">
                 <div className="text-video text-center">
-                  <h3>AI Video Surveillance Solution</h3>
+                  <h3  data-aos="fade-right" >AI Video Surveillance Solution</h3>
                   <p>
                     Easily try our Network Cameras and NVRs with the online demo
                     today!
@@ -105,7 +105,7 @@ const DemoTabs = () => {
             textAlign: 'center',
             height: '100%',
           }}>
-              <h5 className="card-title text-black">Network Camera</h5>
+              <h5 className="card-title text-black"  data-aos="fade-right">Network Camera</h5>
               <p className="card-text">User: nexyos<br />Password: nexyos2024</p>
               <a href="http://ipc.nexyos.com:18082/" target="_blank" rel="noopener noreferrer" className="btn btn-primary"
   style={{ margin: '20px 0' }} >Play Online</a>
@@ -137,7 +137,7 @@ const DemoTabs = () => {
             textAlign: 'center',
             height: '100%',
           }}>
-              <h5 className="card-title text-black">PTZ Camera</h5>
+              <h5 className="card-title text-black"  data-aos="fade-right">PTZ Camera</h5>
               <p className="card-text">User: nexyos<br />Password: nexyos2024</p>
               <a href="http://ptz.nexyos.com:18081/" target="_blank" rel="noopener noreferrer" className="btn btn-primary"
   style={{ margin: '20px 0' }} >Play Online</a>
@@ -171,7 +171,7 @@ const DemoTabs = () => {
             height: '100%',
           }}
         >
-          <h5 className="card-title text-black">Speed Dome</h5>
+          <h5 className="card-title text-black"  data-aos="fade-right">Speed Dome</h5>
           <p className="card-text">
             User: nexyos<br />
             Password: nexyos2024
@@ -214,7 +214,7 @@ const DemoTabs = () => {
             textAlign: 'center',
             height: '100%',
           }}>
-              <h5 className="card-title text-black">360° Panoramic Fisheye Camera</h5>
+              <h5 className="card-title text-black"  data-aos="fade-right">360° Panoramic Fisheye Camera</h5>
               <p className="card-text">User: nexyos<br />Password: nexyos2024</p>
               <a href="http://fisheye.nexyos.com:18085/" target="_blank" rel="noopener noreferrer" className="btn btn-primary"
   style={{ margin: '20px 0' }} >Play Online</a>
@@ -246,7 +246,7 @@ const DemoTabs = () => {
             textAlign: 'center',
             height: '100%',
           }}>
-              <h5 className="card-title text-black">NVR</h5>
+              <h5 className="card-title text-black"  data-aos="fade-right">NVR</h5>
               <p className="card-text">User: nexyos<br />Password: nexyos2024</p>
               <a href="http://nvr.nexyos.com:18089/" target="_blank" rel="noopener noreferrer" className="btn btn-primary"
   style={{ margin: '20px 0' }} >Play Online</a>
@@ -267,7 +267,7 @@ const DemoTabs = () => {
               <div className="container content-videoser">
                 <div className="row">
                   <div className="text-video text-center">
-                    <h3>Enhance Your On-Cloud Decision Making</h3>
+                    <h3  data-aos="fade-right">Enhance Your On-Cloud Decision Making</h3>
                     <p>
                       Nexyos IoT Cloud, an application-enabled platform,{" "}
                       integrates unified device management and data-driven
@@ -299,7 +299,7 @@ const DemoTabs = () => {
                       </div>
                       <div>
                         <div className="card-body">
-                          <h5 className="card-title text-black">Nexyos IoT Cloud</h5>
+                          <h5 className="card-title text-black"  data-aos="fade-right">Nexyos IoT Cloud</h5>
 
                           <a
                             target="_blank"
@@ -324,7 +324,7 @@ const DemoTabs = () => {
             <>
               <div className="content-videoser">
                 <div className="text-video text-center">
-                  <h3>Extend Your Network Reach of End Devices</h3>
+                  <h3  data-aos="fade-right">Extend Your Network Reach of End Devices</h3>
                   <p>
                     Nexyos LoRaWAN® Gateway Online Demo offers more
                     visibility into IoT data practices and increases <br />
@@ -354,7 +354,7 @@ const DemoTabs = () => {
             textAlign: 'center',
             height: '100%',
           }}>
-                              <h5 className="card-title text-black">
+                              <h5 className="card-title text-black"  data-aos="fade-right">
                                 SG50/UG63 LoRaWAN® Gateway
                               </h5>
                               <p className="card-text">
@@ -399,7 +399,7 @@ const DemoTabs = () => {
             textAlign: 'center',
             height: '100%',
           }}>
-                              <h5 className="card-title text-black">
+                              <h5 className="card-title text-black"  data-aos="fade-right">
                                 UG65 Indoor LoRaWAN® Gateway
                               </h5>
                               <p className="card-text">
@@ -443,7 +443,7 @@ const DemoTabs = () => {
             textAlign: 'center',
             height: '100%',
           }}>
-                              <h5 className="card-title text-black">
+                              <h5 className="card-title text-black"  data-aos="fade-right">
                                 UG67 Outdoor LoRaWAN® Gateway
                               </h5>
                               <p className="card-text">
@@ -475,7 +475,7 @@ const DemoTabs = () => {
             <>
               <div className="content-videoser">
                 <div className="text-video text-center">
-                  <h3>Scalable and Centralized Management</h3>
+                  <h3  data-aos="fade-right">Scalable and Centralized Management</h3>
                   <p>
                     Nexyos LoRaWAN® Gateway Online Demo offers more visibility
                     into IoT data practices and increases <br />
@@ -505,7 +505,7 @@ const DemoTabs = () => {
             textAlign: 'center',
             height: '100%',
           }}>
-                              <h5 className="card-title text-black">
+                              <h5 className="card-title text-black"  data-aos="fade-right">
                                 UR32L Industrial Cellular Router
                               </h5>
                               <p className="card-text">
@@ -549,7 +549,7 @@ const DemoTabs = () => {
             textAlign: 'center',
             height: '100%',
           }}>
-                              <h5 className="card-title text-black">
+                              <h5 className="card-title text-black"  data-aos="fade-right">
                                 UR35 Industrial Cellular Router
                               </h5>
                               <p className="card-text">
@@ -593,7 +593,7 @@ const DemoTabs = () => {
             textAlign: 'center',
             height: '100%',
           }}>
-                              <h5 className="card-title text-black">
+                              <h5 className="card-title text-black"  data-aos="fade-right">
                                 UR75 Industrial 5G Cellular Router
                               </h5>
                               <p className="card-text">
@@ -635,7 +635,7 @@ const DemoTabs = () => {
             textAlign: 'center',
             height: '100%',
           }}>
-                              <h5 className="card-title text-black">UF51 5G CPE</h5>
+                              <h5 className="card-title text-black"  data-aos="fade-right">UF51 5G CPE</h5>
                               <p className="card-text">
                                 User: nexyos
                                 <br />

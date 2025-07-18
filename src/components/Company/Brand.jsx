@@ -14,7 +14,7 @@ const Brand = () => {
         <Row className="align-items-center">
           {/* Left Content */}
           <Col md={6} className="content-left pe-md-5">
-            <h2 className="title mb-4 animate__animated animate__fadeInUp">
+            <h2 className="title mb-4 animate__animated animate__fadeInUp"  data-aos="fade-right">
               What Does "Matter"
               <br />
               Mean to Us?
@@ -41,7 +41,7 @@ const Brand = () => {
           <Col md={6} className="content-right">
             <Card className="p-4 animate__animated animate__fadeInUp">
               <Card.Body>
-                <h4 className="card__title mb-4">
+                <h4 className="card__title mb-4"  data-aos="fade-right">
                   At Nexyos, everything we do is about{" "}
                   <span className="text-primary">Making Sensing Matter</span> so
                   that:

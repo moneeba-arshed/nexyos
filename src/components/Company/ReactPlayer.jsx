@@ -6,7 +6,7 @@ const RPlayer = () => {
   return (
     <div className="company-profile">
       <div className="container">
-        <h1 className="profile-title">Company Profile</h1>
+        <h1 className="profile-title"  data-aos="fade-right">Company Profile</h1>
 
         <div className="profile-content">
           <p className="profile-description">
@@ -24,7 +24,7 @@ const RPlayer = () => {
           <div className="divider"></div>
 
           <div className="video-section">
-            <h2 className="video-title">Nexyos Corporate Film</h2>
+            <h2 className="video-title"  data-aos="fade-right">Nexyos Corporate Film</h2>
             <p className="video-subtitle">
               Sense the Infinity Do Drive the World
             </p>

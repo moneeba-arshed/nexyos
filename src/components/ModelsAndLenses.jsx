@@ -48,7 +48,7 @@ const ModelsAndLenses = () => {
   };
   return (
     <div className=" p-6 mt-16">
-      <h2 className="text-2xl font-semibold text-center my-24">
+      <h2 className="text-2xl font-semibold text-center my-24"  data-aos="fade-right">
         Diverse Range of Models and Lenses
       </h2>
       <div className="flex flex-col lg:flex-row gap-6 max-w-7xl mx-auto">
@@ -60,7 +60,7 @@ const ModelsAndLenses = () => {
             className="rounded-lg mb-4 LensesImage"
           />
           <div className="lensesContent text-left px-2 absolute bottom-8">
-            <h3 className="text-xl font-semibold text-white">Lenses</h3>
+            <h3 className="text-xl font-semibold text-white"  data-aos="fade-right">Lenses</h3>
             <p className="text-sm text-white">
               4X/5X/12X/36X Optical AF Lens <br />
               Motorized 2.7~13.5mm / 3.6~10mm @F1.4
@@ -70,7 +70,7 @@ const ModelsAndLenses = () => {
 
         {/* Models Grid */}
         <div className="bg-white p-12 rounded-xl hidden lg:block">
-          <h5 className="text-left">Models</h5>
+          <h5 className="text-left"  data-aos="fade-right">Models</h5>
 
           <div className="grid grid-cols-1 md:grid-cols-4  gap-10 ">
             {models.map((model, index) => (

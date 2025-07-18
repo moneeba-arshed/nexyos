@@ -130,9 +130,9 @@ const SolutionVideo = () => {
 
   return (
     <>
-    <h4 className="mt-48">Video</h4>
+    <h4 className="mt-48"  data-aos="fade-right">Video</h4>
     <div className="flex justify-between px-28">
-      <h5>Feature Demonstration</h5>
+      <h5  data-aos="fade-right">Feature Demonstration</h5>
           <div className="flex">
                       <button
           onClick={handlePrev}
@@ -205,7 +205,7 @@ const SolutionVideo = () => {
     </div>   
                         {/* Demo Videos */}
     <div className="flex justify-between px-28">
-      <h5>Demo Video Around the World</h5>
+      <h5  data-aos="fade-right">Demo Video Around the World</h5>
           <div className="flex">
                       <button
           onClick={handleDemoPrev}

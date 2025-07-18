@@ -5,15 +5,12 @@ import Slider from './Slider'
 import TimelineSlider from '../components/TimelineSlider'
 import Sensing_Matter from '../components/Sensing_Matter'
 import Products from '../components/Products'
-import ScrollToTop from "react-scroll-to-top";
-import SliderTest from '../components/SliderTest'
-import TestimonialCarousel from '../components/SwipeSlider'
 import HeroCarousel from '../components/Home/HeroCarousel'
 // import MilesightCarousel from '../components/MilesightCarousel'
 
 const Home = () => {
   return (
-    <div className=''>
+    <div className='w-full'>
 <HeroCarousel/>
 
       <Products/>

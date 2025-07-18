@@ -1,9 +1,11 @@
+import { useEffect } from "react";
 import { Routes, Route, useLocation } from "react-router-dom";
 import "./App.scss";
 import "./index.css";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-
+import AOS from 'aos';
+import 'aos/dist/aos.css';
 import Home from "./pages/Home";
 import BottomFooter from "./components/BottomFooter";
 import RouteScrollToTop from "./helper/RouteScrollToTop";
@@ -33,7 +35,6 @@ import ProductDetail from "./components/ProductDetail";
 import Login from "./pages/Login";
 import Signup from "./pages/Signup";
 import Categorycall from "./components/Categorycall";
-
 import ProCamera from "./components/ProCamera";
 import Solution from "./pages/Solution";
 import SubCategoryPage from "./components/SubCategoryPage";
@@ -45,6 +46,16 @@ function App() {
   // Determine whether to show header/footer
   const hideHeaderFooter =
     location.pathname === "/login" || location.pathname === "/signup";
+
+
+useEffect(() => {
+  AOS.init({
+    once: false,      // animation triggers only once
+    duration: 500,   // animation duration in ms
+    easing: 'ease-in-out',
+  });
+}, []);
+
 
   return (
     <>

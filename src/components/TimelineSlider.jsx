@@ -32,7 +32,7 @@ const TimelineSlider = () => {
   return (
     <div className="bdt-timeline-container">
       <div className="contenttimeline">
-        <h2 className="text-center">Success Stories</h2>
+        <h2 className="text-center "  data-aos="fade-right">Success Stories</h2>
         <p className="text-center">
           Mexyos has earned a lot of fame and built a strong reputation with a
           ton of success stories in various industries.

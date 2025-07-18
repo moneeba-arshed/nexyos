@@ -106,7 +106,7 @@ const Events = () => {
         <Container>
           {/* Header Section */}
           <div className={styles.header}>
-            <h1 className={styles.mainTitle}>AIX SUMMIT</h1>
+            <h1 className={styles.mainTitle}  data-aos="fade-right">AIX SUMMIT</h1>
             <p className={styles.subtitle}>
               Discover upcoming events and conferences in the tech industry.
               Join us to learn about the latest innovations and network with
@@ -182,7 +182,7 @@ const Events = () => {
               ))
             ) : (
               <Col xs={12} className="text-center py-5">
-                <h4>No events found in this category</h4>
+                <h4  data-aos="fade-right">No events found in this category</h4>
               </Col>
             )}
           </Row>

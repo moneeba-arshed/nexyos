@@ -129,7 +129,7 @@ const HeroCarousel = () => {
                     initial={{ y: -50, opacity: 0 }}
                     animate={{ y: 0, opacity: 1 }}
                     transition={{ duration: 0.8, delay: 0.2 }}
-                  >
+                 >
                     {slide.title}
                     <br />
                     {slide.title1}
@@ -247,7 +247,7 @@ const HeroCarousel = () => {
             <img
               src={slide.image}
               alt=""
-              className="bg-image"
+              className="bg-image w-full"
               style={{ borderRadius: "0px",objectFit:'cover' }}
             />
 

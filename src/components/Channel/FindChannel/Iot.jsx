@@ -113,7 +113,7 @@ const Iot = () => {
           <div className="col-lg-7">
             <div className={`${styles.programCard} p-4 p-md-5`}>
               <div className="card-body">
-                <h3 className={`${styles.programSubtitle} mb-4`}>
+                <h3 className={`${styles.programSubtitle} mb-4`}  data-aos="fade-right">
                   Nexyos Partner Program
                 </h3>
                 <p className={styles.programText}>
@@ -138,7 +138,7 @@ const Iot = () => {
           <div className="row">
             {/* Left Tabs */}
             <div className="col-md-3">
-              <h1 className={styles.mainTitle}>Why Nexyos ?</h1>
+              <h1 className={styles.mainTitle}  data-aos="fade-right">Why Nexyos ?</h1>
 
               {Object.entries(tabContent).map(([key, item]) => (
                 <div key={key} className={`${styles.headingGroup} mb-4`}>
@@ -147,7 +147,7 @@ const Iot = () => {
                       currentImage === key ? styles.active : ""
                     }`}
                     onClick={() => handleHeadingClick(key)}
-                  >
+                  data-aos="fade-right" >
                     {item?.title || "Untitled"}
                   </h5>
                 </div>
@@ -158,7 +158,7 @@ const Iot = () => {
             <div className="col-md-9">
               {content && (
                 <div className={styles.imageContainer2}>
-                  <h2 className="mb-3">{content.title}</h2>
+                  <h2 className="mb-3"  data-aos="fade-right">{content.title}</h2>
 
                   <div className="row">
                     {/* Left Image with text */}
@@ -202,7 +202,7 @@ const Iot = () => {
         <div className="container">
           <div className="row">
             <div className="col-lg-12">
-              <h1 className={styles.mainTitle}>
+              <h1 className={styles.mainTitle}  data-aos="fade-right">
                 Incremental Technology Innovations
               </h1>
               <p className={styles.description}>
@@ -250,7 +250,7 @@ const Iot = () => {
                         alt={innovation.title}
                         className={styles.cardImage}
                       />
-                      <h3 className={styles.innovationTitle}>
+                      <h3 className={styles.innovationTitle}  data-aos="fade-right">
                         {innovation.title}
                       </h3>
                     </div>

@@ -123,7 +123,7 @@ const Slider = () => {
             </button>
           </div>
           <div className="text-center pb-40">
-            <h2 className='title'>Solutions</h2>
+            <h2 className='title '  data-aos="fade-right">Solutions</h2>
             <p className='subtitle'>
               Nexyos provides a range of solutions to empower a more
               productive and effective society.

@@ -23,7 +23,7 @@ const PrivacyAndProtection = () => {
   };
   return (
     <div className="bg-gray-100 py-10 mt-28 px-4 ">
-      <h2 className="text-2xl md:text-3xl font-semibold text-center mb-28">
+      <h2 className="text-2xl md:text-3xl font-semibold text-center mb-28"  data-aos="fade-right">
         Enhanced Privacy & Data Protection
       </h2>
 

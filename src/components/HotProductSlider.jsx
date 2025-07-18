@@ -62,7 +62,7 @@ export default function HotProductSlider() {
           style={{ height: "430px" }}
         >
           <div className="w-1/3">
-            <h2 className="text-4xl font-bold mb-6 text-white text-left">
+            <h2 className="text-4xl font-bold mb-6 text-white text-left"  data-aos="fade-right">
               Hot Products
             </h2>
             <ul className="space-y-4">
@@ -131,7 +131,7 @@ export default function HotProductSlider() {
         </div>
       </div>
       <div className="block lg:hidden bg-gray-100 py-48">
-         <h2 className="text-4xl font-bold mb-24 ">
+         <h2 className="text-4xl font-bold mb-24 "  data-aos="fade-right">
               Hot Products
             </h2>
            {products.map((item) => (

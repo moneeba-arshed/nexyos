@@ -61,7 +61,7 @@ export default function Tab() {
     <div className="Tab_container md:w-[82%] px-10 py-60 md:my-76 w-[86%]">
       <div className="bg-white rounded-xl border p-12 grid grid-cols-1 md:grid-cols-3 gap-6">
         <div className="text-left p-20 md:ms-30 py-16gst6556etydGXH">
-          <h2 className="text-2xl font-semibold text-gray-800 mb-1">
+          <h2 className="text-2xl font-semibold text-gray-800 mb-1"  data-aos="fade-right">
             {current.title}
           </h2>
           <h6 className="text-sm mb-4">{current.subtitle}</h6>
