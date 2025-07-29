@@ -38,7 +38,6 @@ import Categorycall from "./components/Categorycall";
 import ProCamera from "./components/ProCamera";
 import Solution from "./pages/Solution";
 import SubCategoryPage from "./components/SubCategoryPage";
-import SpaceOccupancy from "./pages/SpaceOccupancy";
 
 function App() {
   const location = useLocation();
@@ -85,7 +84,6 @@ useEffect(() => {
         <Route path="/product/" element={<ProCamera/>} />
         <Route path="/slider" element={<Slider />} />
         <Route path="/solution" element={<Solution/>} />
-         <Route path="/Solution/SpaceOccupancy" element={<SpaceOccupancy/>} />
         <Route path="/success" element={<SuccessStories />} />
         <Route path="/contact" element={<ContactPage />} />
         <Route path="/channel" element={<ChannelPage />} />

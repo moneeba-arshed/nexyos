@@ -527,3 +527,7 @@ border: 1px solid white;
     grid-template-columns: repeat(2, 1fr);
   }
 }
+
+.leading-snug{
+  font-weight: 500;
+}

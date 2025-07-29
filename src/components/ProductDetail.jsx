@@ -4,13 +4,20 @@ import { FaDownload } from "react-icons/fa";
 import CCTVSurveillanceCameras from "../assets/images/nexyos/CCTVSurveillanceCameras.jpg";
 import miniCAmeraGroup from "../assets/images/nexyos/miniCAmeraGroup.png";
 import PTZGROUPCAMERA from "../assets/images/nexyos/PTZGROUPCAMERA.png";
-import './ProductDetail.css';
+import "./ProductDetail.css";
 import banner from "../assets/images/bg/banner.jpg";
 import frontcamera from "../assets/images/nexyos/frontcamera.png";
 import sidecamera1 from "../assets/images/nexyos/sidecamera1.png";
 import HotProductSlider from "./HotProductSlider";
 import Contact from "./Contact";
-
+const tabs = [
+  "Camera",
+  "Lens",
+  "Illuminator",
+  "PTZ",
+  "Video",
+  "Audio",
+];
 
 const ProductDetail = () => {
   const { id } = useParams();
@@ -21,14 +28,17 @@ const ProductDetail = () => {
   const accessoryRef = useRef(null);
   const [activeTab, setActiveTab] = useState("Specifications");
 
-
   const scrollTo = (ref) => {
     if (ref && ref.current) {
       ref.current.scrollIntoView({ behavior: "smooth", block: "start" });
       setActiveTab(
-        ref === specRef ? "Specifications" :
-          ref === resourceRef ? "Resources" :
-            ref === accessoryRef ? "Accessories" : ""
+        ref === specRef
+          ? "Specifications"
+          : ref === resourceRef
+            ? "Resources"
+            : ref === accessoryRef
+              ? "Accessories"
+              : ""
       );
     }
   };
@@ -44,7 +54,7 @@ const ProductDetail = () => {
         const sectionOffsets = [
           { ref: specRef, name: "Specifications" },
           { ref: resourceRef, name: "Resources" },
-          { ref: accessoryRef, name: "Accessories" }
+          { ref: accessoryRef, name: "Accessories" },
         ];
 
         for (const sec of sectionOffsets) {
@@ -65,11 +75,11 @@ const ProductDetail = () => {
   }, []);
 
   const product = {
-    title: "4 MP Smart Hybrid Light with ColorVu Motorized Varifocal Bullet Camera",
+    title:
+      "4 MP Smart Hybrid Light with ColorVu Motorized Varifocal Bullet Camera",
     model: "DS-2CD2647G3T-LIZSY",
     resolution: "2688 × 1520",
     images: [
-
       miniCAmeraGroup,
       PTZGROUPCAMERA,
       miniCAmeraGroup,
@@ -105,9 +115,19 @@ const ProductDetail = () => {
     setCurrentIndex(prevIndex);
   };
   const sections = [
-    "Camera", "Lens", "DORI", "Illuminator", "Video", "Audio",
-    "Network", "Image", "Interface", "Event",
-    "Deep Learning Function", "General", "Approval"
+    "Camera",
+    "Lens",
+    "DORI",
+    "Illuminator",
+    "Video",
+    "Audio",
+    "Network",
+    "Image",
+    "Interface",
+    "Event",
+    "Deep Learning Function",
+    "General",
+    "Approval",
   ];
 
   const [activeSection, setActiveSection] = useState(null);
@@ -117,25 +137,64 @@ const ProductDetail = () => {
     return acc;
   }, {});
 
-  const handleScrollClick = (section) => {
-    sectionRefs[section].current.scrollIntoView({ behavior: "smooth", block: "start" });
-    setActiveSection(section);
-  };
+  // const handleScrollClick = (section) => {
+  //   sectionRefs[section].current.scrollIntoView({
+  //     behavior: "smooth",
+  //     block: "start",
+  //   });
+  //   setActiveSection(section);
+  // };
 
   const details = {
-    "Camera": ["High resolution image sensor", "Advanced noise reduction", "Infrared night vision support"],
-    "Lens": ["Motorized varifocal lens", "Focal length: 2.8 to 12mm", "Auto focus capabilities"],
-    "DORI": ["Detect: 100m", "Observe: 50m", "Recognize: 25m", "Identify: 12m"],
-    "Illuminator": ["Smart Hybrid Light", "Infrared range: 30m", "White light options"],
-    "Video": ["H.265+ compression", "Max resolution: 4K", "Multiple stream support"],
-    "Audio": ["Built-in microphone", "Audio input/output ports", "Noise filtering"],
-    "Network": ["RJ45 Ethernet", "Support for ONVIF", "Secure remote access"],
-    "Image": ["Wide Dynamic Range (WDR)", "3D DNR", "Backlight compensation"],
-    "Interface": ["MicroSD card slot", "Alarm input/output", "RS485"],
-    "Event": ["Motion detection", "Tamper alarm", "Line crossing detection"],
-    "Deep Learning Function": ["Person/vehicle classification", "Facial recognition", "Intrusion detection"],
-    "General": ["Power supply: PoE/12VDC", "Operating temperature: -30°C to 60°C", "Weatherproof (IP67)"],
-    "Approval": ["FCC certified", "CE certified", "RoHS compliant"]
+    Camera: [
+       { label: "Image Sensor", value: '1/2.8" progressive scan CMOS' },
+    { label: "Max. Resolution", value: "2560 × 1440" },
+    {
+      label: "Min. Illumination",
+      value:
+        "Color: 0.005 Lux @ (F1.6, AGC ON); B/W: 0.001 Lux @ (F1.6, AGC ON), 0 Lux with IR",
+    },
+    { label: "Shutter Speed", value: "1/1 s to 1/30000 s" },
+    { label: "Day & Night", value: "IR cut filter" },
+    { label: "Zoom", value: "15x optical, 16x digital" },
+    { label: "Slow Shutter", value: "Yes" },
+    ],
+    Lens: [
+      "Motorized varifocal lens",
+      "Focal length: 2.8 to 12mm",
+      "Auto focus capabilities",
+    ],
+    DORI: ["Detect: 100m", "Observe: 50m", "Recognize: 25m", "Identify: 12m"],
+    Illuminator: [
+      "Smart Hybrid Light",
+      "Infrared range: 30m",
+      "White light options",
+    ],
+    Video: [
+      "H.265+ compression",
+      "Max resolution: 4K",
+      "Multiple stream support",
+    ],
+    Audio: [
+      "Built-in microphone",
+      "Audio input/output ports",
+      "Noise filtering",
+    ],
+    Network: ["RJ45 Ethernet", "Support for ONVIF", "Secure remote access"],
+    Image: ["Wide Dynamic Range (WDR)", "3D DNR", "Backlight compensation"],
+    Interface: ["MicroSD card slot", "Alarm input/output", "RS485"],
+    Event: ["Motion detection", "Tamper alarm", "Line crossing detection"],
+    "Deep Learning Function": [
+      "Person/vehicle classification",
+      "Facial recognition",
+      "Intrusion detection",
+    ],
+    General: [
+      "Power supply: PoE/12VDC",
+      "Operating temperature: -30°C to 60°C",
+      "Weatherproof (IP67)",
+    ],
+    Approval: ["FCC certified", "CE certified", "RoHS compliant"],
   };
   const cameraOptions = [
     {
@@ -155,6 +214,21 @@ const ProductDetail = () => {
     },
   ];
   const [selectedCam, setSelectedCam] = useState(cameraOptions[0]);
+  const [activeSpecTab, setActiveSpecTab] = useState("Camera");
+  const specs = [
+    { label: "Image Sensor", value: '1/2.8" progressive scan CMOS' },
+    { label: "Max. Resolution", value: "2560 × 1440" },
+    {
+      label: "Min. Illumination",
+      value:
+        "Color: 0.005 Lux @ (F1.6, AGC ON); B/W: 0.001 Lux @ (F1.6, AGC ON), 0 Lux with IR",
+    },
+    { label: "Shutter Speed", value: "1/1 s to 1/30000 s" },
+    { label: "Day & Night", value: "IR cut filter" },
+    { label: "Zoom", value: "15x optical, 16x digital" },
+    { label: "Slow Shutter", value: "Yes" },
+  ];
+
   return (
     <>
       <div
@@ -162,26 +236,34 @@ const ProductDetail = () => {
         style={{ backgroundImage: `url(${banner})` }}
       >
         {/* Title */}
-        <div className="items-center w-[35%] flex-col" style={{ marginLeft: '100px' }}>
-
-          <h1 className="text-3xl text-left text-white "  data-aos="fade-right">
-            4 MP Smart Hybrid Light with ColorVu Motorized Varifocal Bullet Camera
+        <div
+          className="items-center w-[35%] flex-col"
+          style={{ marginLeft: "100px" }}
+        >
+          <h1 className="text-3xl text-left text-white " data-aos="fade-right">
+            4 MP Smart Hybrid Light with ColorVu Motorized Varifocal Bullet
+            Camera
           </h1>
           <p className="text-left w-full text-white">DS-2CD2647G3T-LIZSY</p>
         </div>
 
         {/* Main Camera Image */}
-        <div className="mainCamera absolute 
+        <div
+          className="mainCamera absolute 
   right-[150px] 
   max-w-[px] 
   h-[30px] 
 
   transform 
   rotate-[5deg] 
-  rounded-2xl">
-
-          <img src={selectedCam.img} alt={selectedCam.alt} className="w-[100%] h-full object-contain "
-            style={{ transform: "rotate(-5deg)" }} />
+  rounded-2xl"
+        >
+          <img
+            src={selectedCam.img}
+            alt={selectedCam.alt}
+            className="w-[100%] h-full object-contain "
+            style={{ transform: "rotate(-5deg)" }}
+          />
         </div>
 
         {/* Circle Selectors */}
@@ -189,12 +271,14 @@ const ProductDetail = () => {
           {cameraOptions.map((cam) => (
             <button
               key={cam.id}
-              className={`CircleSelector w-90 h-90 flex items-center border-2 justify-center transition-all duration-300 p-0 mb-8 rounded-full  ${selectedCam.id === cam.id
-                  ? "active"
-                  : ""
+              className={`CircleSelector w-90 h-90 flex items-center border-2 justify-center transition-all duration-300 p-0 mb-8 rounded-full  ${selectedCam.id === cam.id ? "active" : ""
                 }`}
               onClick={() => setSelectedCam(cam)}
-              style={{ borderRadius: '46px', background: 'rgb(255, 255, 255, 0.5)' }}>
+              style={{
+                borderRadius: "46px",
+                background: "rgb(255, 255, 255, 0.5)",
+              }}
+            >
               <img src={cam.img} alt={cam.alt} className="object-contain" />
             </button>
           ))}
@@ -203,10 +287,7 @@ const ProductDetail = () => {
       <div className="product-detail-container mt-5">
         {/* <div className="breadcrumb">Home / Network Cameras / Pro Series / {product.model}</div> */}
         <div className="top-section">
-
           {/* Image Section */}
-
-
 
           <div className="info-section mt-36">
             <p className="description ms-20">{product.description}</p>
@@ -224,22 +305,29 @@ const ProductDetail = () => {
               </ul>
               {/* Action Buttons */}
               <div className="action-buttons-row flex-1 flex flex-row gap-3 me-30">
-                <button className="half-btn primary-btn h-60"> <a href="/downloads/datasheet.pdf" download className="primaryy-btn" >
-
-                  <span>Data Sheet</span>
-                </a></button>
-                <button className="half-btn half-btn secondary-btn h-60 text-sm">Sales Inquiry</button>
-              </div></div>
-
-
+                <button className="half-btn primary-btn h-60">
+                  {" "}
+                  <a
+                    href="/downloads/datasheet.pdf"
+                    download
+                    className="primaryy-btn"
+                  >
+                    <span>Data Sheet</span>
+                  </a>
+                </button>
+                <button className="half-btn half-btn secondary-btn h-60 text-sm">
+                  Sales Inquiry
+                </button>
+              </div>
+            </div>
           </div>
         </div>
         <div>
           {/* Sticky Tabs */}
           <div ref={tabRef} className="tab-row">
-
             <button
-              className={`tab-btn ${activeTab === "Specifications" ? "active" : ""}`}
+              className={`tab-btn ${activeTab === "Specifications" ? "active" : ""
+                }`}
               onClick={() => scrollTo(specRef)}
             >
               Specifications
@@ -251,61 +339,76 @@ const ProductDetail = () => {
               Resources
             </button>
             <button
-              className={`tab-btn ${activeTab === "Accessories" ? "active" : ""}`}
+              className={`tab-btn ${activeTab === "Accessories" ? "active" : ""
+                }`}
               onClick={() => scrollTo(accessoryRef)}
             >
               Accessories
             </button>
           </div>
 
-          {/* Content Sections */}
-          <div ref={specRef}>
-          </div>
+          {/* Specification */}
+          <div ref={specRef}></div>
+          <div className="bg-[#f5f5f5] min-h-screen py-10 px-4 md:px-20">
+            <h1 className="text-5xl font-bold text-center mb-12">Specification</h1>
 
-          <h3 className="mt-5"  data-aos="fade-right">Specifications</h3>
+            <div className="bg-white rounded-lg shadow-md flex flex-col md:flex-row">
+              {/* Tabs Section */}
+              <div className="w-full md:w-1/4 bg-[#f5f5f5]">
+                {tabs.map((tab) => (
+                  <div
+                    key={tab}
+                    onClick={() => setActiveSpecTab(tab)}
+                    className={`relative cursor-pointer px-6 py-4 font-medium  hover:bg-white transition ${activeSpecTab === tab ? "bg-white text-black font-semibold" : ""
+                      }`}
+                  >
+                    {activeSpecTab === tab && (
+                      <span className="absolute left-11 top-1/2 w-6 h-6 bg-red-600 rounded-full -translate-y-1/2" />
+                    )}
+                    {tab}
+                  </div>
+                ))}
+              </div>
 
-          <div className="specifications-area">
-            {/* Section Tabs */}
-            <div className="section-tab-row">
-              {sections.map((section) => (
-                <button
-                  key={section}
-                  className={`section-tab-btn ${activeSection === section ? "active" : ""}`}
-                  onClick={() => handleScrollClick(section)}
-                >
-                  {section}
-                </button>
-              ))}
+              {/* Content Section */}
+              <div className="w-full md:w-3/4 py-6 px-32">
+                <h2 className="text-md font-semibold mb-6 text-left flex justify-start">
+                  {activeSpecTab}
+                </h2>
+
+                {activeSpecTab === "Camera" ? (
+                  <ul className="space-y-2">
+                    {details.map((item, index) => (
+                      <li
+                        key={index}
+                        className={`flex ${typeof item.value === "string" ? "" : "flex-col"
+                          } py-9 px-9 ${index % 2 === 0 ? "bg-white" : "bg-gray-100"}`}
+                      >
+                        <span className=" text-black w-[30%] text-left px-8 text-sm">{item.label}</span>
+                        <span className="text-sm">{item.value}</span>
+                      </li>
+                    ))}
+                  </ul>
+                ) : (
+                  <div className="text-gray-500">Content for {activeSpecTab} will go here.</div>
+                )}
+              </div>
+
             </div>
-
-            {/* Detail Section */}
-<div className="detail-column">
-  {sections.map((section) => (
-    <div key={section} ref={sectionRefs[section]} className="spec-section">
-      <h3  data-aos="fade-right">{section}</h3>
-      <ul>
-        {details[section].map((point, index) => (
-          <li key={index}>{point}</li>
-        ))}
-      </ul>
-    </div>
-  ))}
-</div>
-
-
           </div>
-
-
-
-
         </div>
         <div ref={resourceRef}>
           {/* Resources Section */}
-          <h3 className="center-heading "  data-aos="fade-right">Resources</h3>
+          <h3 className="center-heading " data-aos="fade-right">
+            Resources
+          </h3>
           <div ref={resourceRef} className="spec-section">
-
             <div className="resource-buttons">
-              <a href="/downloads/datasheet.pdf" download className="download-btn">
+              <a
+                href="/downloads/datasheet.pdf"
+                download
+                className="download-btn"
+              >
                 <FaDownload className="icon" />
                 <span>Data Sheet</span>
               </a>
@@ -313,15 +416,27 @@ const ProductDetail = () => {
                 <FaDownload className="icon" />
                 <span>User Manual</span>
               </a>
-              <a href="/downloads/firmware.pdf" download className="download-btn">
+              <a
+                href="/downloads/firmware.pdf"
+                download
+                className="download-btn"
+              >
                 <FaDownload className="icon" />
                 <span>Firmware Guide</span>
               </a>
-              <a href="/downloads/quickstart.pdf" download className="download-btn">
+              <a
+                href="/downloads/quickstart.pdf"
+                download
+                className="download-btn"
+              >
                 <FaDownload className="icon" />
                 <span>Quick Start</span>
               </a>
-              <a href="/downloads/datasheet.pdf" download className="download-btn">
+              <a
+                href="/downloads/datasheet.pdf"
+                download
+                className="download-btn"
+              >
                 <FaDownload className="icon" />
                 <span>Data Sheet</span>
               </a>
@@ -329,29 +444,37 @@ const ProductDetail = () => {
                 <FaDownload className="icon" />
                 <span>User Manual</span>
               </a>
-              <a href="/downloads/firmware.pdf" download className="download-btn">
+              <a
+                href="/downloads/firmware.pdf"
+                download
+                className="download-btn"
+              >
                 <FaDownload className="icon" />
                 <span>Firmware Guide</span>
               </a>
-              <a href="/downloads/quickstart.pdf" download className="download-btn">
+              <a
+                href="/downloads/quickstart.pdf"
+                download
+                className="download-btn"
+              >
                 <FaDownload className="icon" />
                 <span>Quick Start</span>
               </a>
             </div>
             <hr />
           </div>
-
         </div>
         <div ref={accessoryRef}>
           {/* Accessories Section */}
-          <h3 className="center-heading"  data-aos="fade-right">Accessories</h3>
+          <h3 className="center-heading" data-aos="fade-right">
+            Accessories
+          </h3>
           <div ref={accessoriesRef} className="spec-section">
-
             <div className="accessory-grid container">
               <div className="accessory-card">
                 <img src="/images/ds1260zj.jpg" alt="Junction Box" />
                 <div>
-                  <h6  data-aos="fade-right">DS-1260ZJ</h6>
+                  <h6 data-aos="fade-right">DS-1260ZJ</h6>
                   <p>Junction Box for Camera Installation</p>
                 </div>
               </div>
@@ -394,9 +517,10 @@ const ProductDetail = () => {
             <hr />
           </div>
         </div>
-        </div>
-        <HotProductSlider/>
-        <Contact/></>
+      </div>
+      <HotProductSlider />
+      <Contact />
+    </>
   );
 };
 
