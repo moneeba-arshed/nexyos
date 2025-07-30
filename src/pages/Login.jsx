@@ -3,8 +3,7 @@ import { useNavigate, Link } from "react-router-dom";
 import Loginn from "../assets/images/nexyos/Loginn.jpg";
 
 // ✅ MUI Components
-import Alert from '@mui/material/Alert';
-import Snackbar from '@mui/material/Snackbar';
+import { toast, Toaster } from 'react-hot-toast';
 
 const Login = () => {
   const [email, setEmail] = useState("");
@@ -18,14 +17,14 @@ const Login = () => {
     const storedUser = JSON.parse(localStorage.getItem("user"));
 
     if (storedUser && storedUser.email === email && storedUser.password === password) {
-      setSnack({ open: true, message: "Login successful! Redirecting...", severity: "success" });
+      toast.success("Login successful! Redirecting...");
 
       setTimeout(() => {
         localStorage.setItem("loggedIn", "true");
         navigate("/");
       }, 1500); // ✅ wait for message before redirecting
     } else {
-      setSnack({ open: true, message: "Incorrect email or password", severity: "error" });
+      toast.error("Incorrect email or password");
     }
   };
 
@@ -35,6 +34,8 @@ const Login = () => {
 
   return (
     <div className="full-page">
+      <Toaster position="top-right" reverseOrder={false} />
+
       <div className="left-panel">
         <h2 className="title">Welcome</h2>
 
@@ -68,37 +69,48 @@ const Login = () => {
       </div>
 
       {/* ✅ Snackbar Alert */}
-      <Snackbar
-        open={snack.open}
-        autoHideDuration={3000}
-        onClose={handleClose}
-        anchorOrigin={{ vertical: "top", horizontal: "right" }}
-      >
-        <Alert onClose={handleClose} severity={snack.severity} variant="filled" sx={{ width: '100%' }}>
-          {snack.message}
-        </Alert>
-      </Snackbar>
+      {/* Removed Snackbar component */}
 
       <style>{`
         .full-page {
           display: flex;
+          flex-direction: column;
           height: 100vh;
           width: 100vw;
+          overflow: hidden;
+        }
+
+        @media (min-width: 768px) {
+          .full-page {
+            flex-direction: row;
+          }
         }
 
         .left-panel {
           flex: 1;
-          padding: 110px;
+          padding: 30px;
           background-color: #f9f9f9;
           overflow-y: auto;
+          scrollbar-width: none;
+          -ms-overflow-style: none;
+        }
+
+        .left-panel::-webkit-scrollbar {
+          display: none;
         }
 
         .right-panel {
           flex: 1.8;
           background: #000;
-          display: flex;
+          display: none;
           align-items: center;
           justify-content: center;
+        }
+
+        @media (min-width: 768px) {
+          .right-panel {
+            display: flex;
+          }
         }
 
         .right-panel img {
@@ -108,16 +120,26 @@ const Login = () => {
         }
 
         .title {
-          font-size: 40px;
+          font-size: 32px;
           font-weight: bold;
           color: #01667D;
           margin-bottom: 20px;
+          text-align: center;
+        }
+
+        @media (min-width: 768px) {
+          .title {
+            font-size: 40px;
+          }
         }
 
         .login-form {
           display: flex;
           flex-direction: column;
-          gap: 12px;
+          gap: 14px;
+          padding: 20px;
+          border-radius: 8px;
+      
         }
 
         input {
@@ -150,6 +172,7 @@ const Login = () => {
         .bottom-text {
           margin-top: 20px;
           font-size: 14px;
+          text-align: center;
         }
 
         .bottom-text a {

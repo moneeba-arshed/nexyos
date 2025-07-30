@@ -11,6 +11,8 @@ import sidecamera1 from "../assets/images/nexyos/sidecamera1.png";
 import HotProductSlider from "./HotProductSlider";
 import Contact from "./Contact";
 
+import { useEffect } from "react";
+import axios from "axios";
 
 const ProductDetail = () => {
   const { id } = useParams();
@@ -163,11 +165,11 @@ const ProductDetail = () => {
       >
         {/* Title */}
         <div className="items-center w-[35%] flex-col" style={{ marginLeft: '100px' }}>
-
+        <p className="text-left w-full text-orange-800">DS-2CD2647G3T-LIZSY</p>
           <h1 className="text-3xl text-left text-white "  data-aos="fade-right">
             4 MP Smart Hybrid Light with ColorVu Motorized Varifocal Bullet Camera
           </h1>
-          <p className="text-left w-full text-white">DS-2CD2647G3T-LIZSY</p>
+          
         </div>
 
         {/* Main Camera Image */}

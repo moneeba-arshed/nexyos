@@ -499,8 +499,8 @@ const Header = () => {
                         <Link to="/solution" className="nav-menu__link">
                           Solutions
                         </Link>
-                        <div className="on-hover-dropdown common-dropdown nav-megamenu">
-                          <div className=" p-6">
+                        <div className="on-hover-dropdown common-dropdown nav-megamenu" style={{ textAlign: 'left' }}>
+                          <div className="p-6">
                             {/* Column 1 */}
 
                             <ul className="space-y-2">

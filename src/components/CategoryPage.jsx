@@ -49,14 +49,13 @@ const CategoryPage = () => {
     <>
       <div className="custom-padding mb-20 mt-64" >
         <h5 className="text-base"  data-aos="fade-right">What we offer</h5>
-        <p className="text-left">
+        <p className=" text-justify">
           It has survived not only five centuries, but also the leap into
           electronic typesetting, remaining essentially unchanged. It was
           popularised in the 1960s with the release of Letraset sheets
           containing Lorem Ipsum passages, and more recently with desktop
-          publishing
-        </p>
-        <p className="text-left">
+          publishing .
+        
           It has survived not only five centuries, but also the leap into
           electronic typesetting, remaining essentially unchanged. It was
           popularised in the 1960s with the release of Letraset sheets
