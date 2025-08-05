@@ -6,8 +6,11 @@ import "swiper/css/effect-creative";
 import BannerAbout from "./BannerAbout";
 import "./About.css";
 import RPlayer from "./ReactPlayer";
+import { useEffect,useState } from "react";
+import axios from "axios";
 
 const About = () => {
+    const [data, setData] = useState(null);
   const strengthsData = [
     {
       title: "Professionalism",
@@ -58,6 +61,18 @@ const About = () => {
       icon: "https://www.milesight.com/static/pc/en/company/about-us/icons/milesight-customer-oriented-icon.png",
     },
   ];
+  
+
+useEffect(() => {
+axios.get('https://portal.nexyos.com/api/about/sec/three')
+.then((response)=>{
+      if (Array.isArray(response.data)) {
+          setData(response.data);
+        }
+})   .catch((error) => {
+        console.error("Error fetching banner data:", error);
+      });
+}, [])
 
   // Group strengths into arrays of 3 for each slide
   const groupedStrengths = [];
@@ -77,7 +92,7 @@ const About = () => {
       rotate: [0, 0, 30],
     },
   };
-
+ if (data.length === 0) return null;
   return (
     <>
       <BannerAbout />
@@ -105,18 +120,24 @@ const About = () => {
                 {groupedStrengths.map((group, groupIndex) => (
                   <SwiperSlide key={groupIndex}>
                     <div className="cards-group">
-                      {group.map((item, index) => (
-                        <div className="card" key={index}>
-                          <img
-                            alt={`milesight ${item.title.toLowerCase()} icon`}
-                            src={item.icon}
-                            className="lazyloaded"
-                            title={`milesight ${item.title.toLowerCase()} icon`}
-                          />
-                          <h3 className="card-title"  data-aos="fade-right">{item.title}</h3>
-                          <p className="card-text">{item.description}</p>
-                        </div>
-                      ))}
+                      {group.map((item, index) => {
+  const apiItem = data[groupIndex * 3 + index]; // match correct data item
+  if (!apiItem) return null;
+
+  return (
+    <div className="card" key={index}>
+      <img
+        alt={`icon for ${item.title}`}
+        src={apiItem.image}
+        className="lazyloaded"
+        title={`icon for ${item.title}`}
+      />
+      <h3 className="card-title" data-aos="fade-right">{apiItem.head}</h3>
+      <p className="card-text">{apiItem.desc}</p>
+    </div>
+  );
+})}
+
                     </div>
                   </SwiperSlide>
                 ))}
