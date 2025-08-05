@@ -10,8 +10,8 @@ import frontcamera from "../assets/images/nexyos/frontcamera.png";
 import sidecamera1 from "../assets/images/nexyos/sidecamera1.png";
 import HotProductSlider from "./HotProductSlider";
 import Contact from "./Contact";
+import axios from "axios";
 
-<<<<<<< HEAD
 const tabs = [
   'Camera',
   'Lens',
@@ -24,11 +24,6 @@ const tabs = [
   'Interface',
   'Event',
 ];
-=======
-import { useEffect } from "react";
-import axios from "axios";
->>>>>>> b5ace1c2f4a50966ab597865f866868fab7bbe06
-
 const specsData = {
   Camera: [
     { label: 'Image Sensor', value: '1/2.8" progressive scan CMOS' },

@@ -20,11 +20,11 @@ const BlogCard = ({ blog }) => {
     style={{ flexGrow: 1, display: "flex", flexDirection: "column", justifyContent: "space-between" }}
   >
     <div className={styles.categoryBadges}>
-      {blog.categories.map((category, index) => (
-        <span key={index} className={`badge ${styles.categoryBadge}`}>
-          {category}
-        </span>
-      ))}
+   {blog.categories && blog.categories.length > 0 && (
+  <span className={`badge ${styles.categoryBadge}`}>
+    {blog.categories[0]}
+  </span>
+)}
     </div>
     <h5 className={`card-title ${styles.blogTitle}`}  data-aos="fade-right">{blog.title}</h5>
     <p className={`card-text ${styles.blogExcerpt}`}>{blog.excerpt}</p>
