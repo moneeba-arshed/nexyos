@@ -1,33 +1,30 @@
-import React, { useRef } from "react";
+import React, { useRef,useState,useEffect } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Parallax, Navigation, Pagination, Autoplay } from "swiper/modules";
-
+import axios from "axios";
 import "swiper/css";
 import "swiper/css/parallax";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
-
-
-const sliderData = [
-  {
-    img: "https://www.milesight.com/static/pc/en/index-new/success-stories/story3-bg.jpg?t=1744161961765",
-    title: "Nexyos Surveillance Solution in Thailand",
-    desc: "The excellent performance of Nexyos products and the ease of implementation of Nexyos system greatly meet the high standard requirements.",
-  },
-  {
-    img: "https://www.milesight.com/static/pc/en/index-new/success-stories/story1-bg.jpg?t=1744161961765",
-    title: "Nexyos Security System in Vietnam",
-    desc: "At the luxury Sunwah Pearl Binh Thanh Apartment, Vietnam, Nexyos products are deployed to protect safety of residents and employees.",
-  },
-  {
-    img: "https://www.milesight.com/static/pc/en/index-new/success-stories/story2-bg.jpg?t=1744161961765",
-    title: "SCHOOL IAO MONITORING",
-    desc: "Nexyos 47,000 IAQ sensors create a healthier learning environment in Canadian schools.",
-  },
-];
+import './TimelineSlider.css'
 
 const TimelineSlider = () => {
   const swiperRef = useRef(null);
+  const [sliderData, setSliderData] = useState([]);
+
+  useEffect(() => {
+    const fetchSliderData = async () => {
+      try {
+        const response = await axios.get("https://portal.nexyos.com/api/home/sec/four");
+        setSliderData(response.data); 
+        console.log(response.data)
+      } catch (error) {
+        console.error("Error fetching slider data:", error);
+      }
+    };
+
+    fetchSliderData();
+  }, []);
 
   return (
     <div className="bdt-timeline-container">
@@ -65,9 +62,9 @@ const TimelineSlider = () => {
             <SwiperSlide key={index} className="upk-salf-item">
               <div className="upk-salf-image-wrap">
                 <img
-                  className="upk-xanc-img"
-                  style={{ height: "100%" }}
-                  src={item.img}
+                  className="upk-xanc-img "
+                 
+                  src={item.image}
                   alt="slide"
                 />
               </div>
@@ -77,7 +74,7 @@ const TimelineSlider = () => {
                   data-swiper-parallax-y="-150"
                   data-swiper-parallax-duration="1200"
                 >
-                  {item.title}
+                  {item.head}
                 </h3>
                 <div
                   className="upk-salf-desc"

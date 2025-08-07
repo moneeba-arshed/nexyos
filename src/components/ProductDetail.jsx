@@ -12,6 +12,21 @@ import HotProductSlider from "./HotProductSlider";
 import Contact from "./Contact";
 import axios from "axios";
 
+<<<<<<< HEAD
+=======
+const tabs = [
+  'Camera',
+  'Lens',
+  'Illuminator',
+  'PTZ',
+  'Video',
+  'Audio',
+  'Network',
+  'Image',
+  'Interface',
+  'Event',
+];
+>>>>>>> aa5fe99273a831cb6b6c03233384bc3e8f319bf1
 const specsData = {
   Camera: [
     { label: 'Image Sensor', value: '1/2.8" progressive scan CMOS' },

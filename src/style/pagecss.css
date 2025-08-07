@@ -608,6 +608,9 @@
   fill: #2b2d42;
   stroke: #ff215a;
 }
+  .upk-salf-slider-wrapper .upk-salf-item .upk-salf-content-wrap{
+     padding: 40px;
+  }
 @media (min-width: 768px) {
   .upk-salf-slider-wrapper {
     height: 450px;
@@ -622,7 +625,6 @@
   .upk-salf-slider-wrapper .upk-salf-item .upk-salf-content-wrap {
     max-width: 400px;
     padding: 40px;
-    padding-left: 0;
     top: 50%;
     transform: translateY(-50%);
     bottom: unset;
@@ -655,8 +657,7 @@
   }
   .upk-salf-slider-wrapper .upk-salf-item .upk-salf-content-wrap {
     max-width: 460px;
-    padding: 50px;
-    padding-left: 0;
+    padding: 40px;
   }
   .upk-salf-slider-wrapper .upk-salf-item .upk-salf-desc {
     font-size: 16px;

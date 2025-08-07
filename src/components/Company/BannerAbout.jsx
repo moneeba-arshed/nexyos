@@ -1,36 +1,57 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import axios from "axios";
 import { Link } from "react-router-dom";
 import "../../style/pagecss.css";
 
 const BannerAbout = () => {
-  const bannerImage =
-    "https://www.milesight.com/static/pc/en/partner/find-channel-partner/cp-list-channel-partners-pc-first-pic.png";
+  const [bannerData, setBannerData] = useState([]);
+
+  useEffect(() => {
+    axios
+      .get("https://portal.nexyos.com/api/about/sec/one")
+      .then((res) => {
+        if (Array.isArray(res.data)) {
+          setBannerData(res.data);
+        }
+      })
+      .catch((err) => {
+        console.error("Error fetching banner data:", err);
+      });
+  }, []);
+
+  if (!bannerData || bannerData.length === 0) return null;
 
   return (
-    <div
-      className="BannerPSCS"
-      style={{
-        backgroundImage: ` url(${bannerImage})`,
-        backgroundPosition: "center",
-        backgroundRepeat: "no-repeat",
-        backgroundSize: "cover",
-        width: "100%",
-        height: "70vh",
-        display: "flex",
-        alignItems: "center",
-      }}
-    >
-      <div className="container">
-        <div className="banner-item-two__content text-white">
-          <h2 className="banner-item-two__title bounce text-white"  data-aos="fade-right">
-            Collaboration Start Guide
-          </h2>
-          <p className="mt-4">
-            Why and How to Start a Collaboration with Nexyos
-          </p>
+    <>
+      {bannerData.map((item, index) => (
+        <div
+          key={index}
+          className="BannerPSCS"
+          style={{
+            backgroundImage: `url(${item.image})`,
+            backgroundPosition: "center",
+            backgroundRepeat: "no-repeat",
+            backgroundSize: "cover",
+            width: "100%",
+            height: "70vh",
+            display: "flex",
+            alignItems: "center",
+          }}
+        >
+          <div className="container">
+            <div className="banner-item-two__content text-white">
+              <h2
+                className="banner-item-two__title bounce text-black"
+                data-aos="fade-right"
+              >
+                {item.head}
+              </h2>
+              <p className="mt-4 text-black text-lg">{item.desc}</p>
+            </div>
+          </div>
         </div>
-      </div>
-    </div>
+      ))}
+    </>
   );
 };
 
