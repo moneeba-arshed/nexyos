@@ -10,24 +10,7 @@ import frontcamera from "../assets/images/nexyos/frontcamera.png";
 import sidecamera1 from "../assets/images/nexyos/sidecamera1.png";
 import HotProductSlider from "./HotProductSlider";
 import Contact from "./Contact";
-
-<<<<<<< HEAD
-const tabs = [
-  'Camera',
-  'Lens',
-  'Illuminator',
-  'PTZ',
-  'Video',
-  'Audio',
-  'Network',
-  'Image',
-  'Interface',
-  'Event',
-];
-=======
-import { useEffect } from "react";
 import axios from "axios";
->>>>>>> b5ace1c2f4a50966ab597865f866868fab7bbe06
 
 const specsData = {
   Camera: [
@@ -118,8 +101,11 @@ Diagonal field of view: 61.5° to 4.6° (wide-tele)` },
     { label: 'Reset', value: 'Yes' },
   ],
 };
+
+const tabs = ["Camera", "Lens", "Illuminator", "PTZ", "Video", "Audio", "Network", "Image", "Interface"];
+
 const ProductDetail = () => {
-    const product = {
+  const product = {
     title:
       "4 MP Smart Hybrid Light with ColorVu Motorized Varifocal Bullet Camera",
     model: "DS-2CD2647G3T-LIZSY",
@@ -156,7 +142,10 @@ const ProductDetail = () => {
   const [activeSpecTab, setActiveSpecTab] = useState("Camera");
   const sectionsRef = useRef({});
   const containerRef = useRef();
-  const [currentTab, setCurrentTab] = useState(tabs[0]);
+  const [currentTab, setCurrentTab] = useState("Camera");
+  const [isFixed, setIsFixed] = useState(false);
+
+  const tabs = ["Camera", "Lens", "Illuminator", "PTZ", "Video", "Audio", "Network", "Image", "Interface"];
 
   const scrollTo = (ref) => {
     if (ref && ref.current) {
@@ -173,7 +162,7 @@ const ProductDetail = () => {
     }
   };
 
-  React.useEffect(() => {
+  useEffect(() => {
     const handleScroll = () => {
       if (tabRef.current) {
         const offsetTop = tabRef.current.offsetTop;
@@ -330,37 +319,6 @@ const ProductDetail = () => {
     { label: "Zoom", value: "15x optical, 16x digital" },
     { label: "Slow Shutter", value: "Yes" },
   ];
-
-  React.useEffect(() => {
-    const handleScroll = () => {
-      if (tabRef.current) {
-        const offsetTop = tabRef.current.offsetTop;
-        const scrollPosition = window.scrollY + 10;
-
-        setIsFixed(scrollPosition >= offsetTop);
-
-        const sectionOffsets = [
-          { ref: specRef, name: "Specifications" },
-          { ref: resourceRef, name: "Resources" },
-          { ref: accessoryRef, name: "Accessories" },
-        ];
-
-        for (const sec of sectionOffsets) {
-          if (sec.ref.current) {
-            const top = sec.ref.current.offsetTop;
-            const height = sec.ref.current.offsetHeight;
-            if (scrollPosition >= top && scrollPosition < top + height) {
-              setActiveTab(sec.name);
-              break;
-            }
-          }
-        }
-      }
-    };
-
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
 
   const scrollToSection = (tab) => {
     sectionsRef.current[tab]?.scrollIntoView({ behavior: 'smooth', block: 'start' });
