@@ -12,21 +12,6 @@ import HotProductSlider from "./HotProductSlider";
 import Contact from "./Contact";
 import axios from "axios";
 
-<<<<<<< HEAD
-=======
-const tabs = [
-  'Camera',
-  'Lens',
-  'Illuminator',
-  'PTZ',
-  'Video',
-  'Audio',
-  'Network',
-  'Image',
-  'Interface',
-  'Event',
-];
->>>>>>> aa5fe99273a831cb6b6c03233384bc3e8f319bf1
 const specsData = {
   Camera: [
     { label: 'Image Sensor', value: '1/2.8" progressive scan CMOS' },
@@ -120,6 +105,8 @@ Diagonal field of view: 61.5° to 4.6° (wide-tele)` },
 const tabs = ["Camera", "Lens", "Illuminator", "PTZ", "Video", "Audio", "Network", "Image", "Interface"];
 
 const ProductDetail = () => {
+  const tabs = ["Camera", "Lens", "Illuminator", "PTZ", "Video", "Audio", "Network", "Image", "Interface", "Event"];
+  
   const product = {
     title:
       "4 MP Smart Hybrid Light with ColorVu Motorized Varifocal Bullet Camera",
@@ -159,8 +146,6 @@ const ProductDetail = () => {
   const containerRef = useRef();
   const [currentTab, setCurrentTab] = useState("Camera");
   const [isFixed, setIsFixed] = useState(false);
-
-  const tabs = ["Camera", "Lens", "Illuminator", "PTZ", "Video", "Audio", "Network", "Image", "Interface"];
 
   const scrollTo = (ref) => {
     if (ref && ref.current) {
