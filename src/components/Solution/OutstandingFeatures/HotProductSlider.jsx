@@ -58,8 +58,8 @@ export default function HotProductSlider() {
     <>
       <div className="hidden lg:block">
         <div
-          className="bg-black text-white py-20 px-60 flex items-center gap-11 relative justify-between"
-          style={{ height: "430px" }}
+          className="bg-black text-white py-24 px-60 flex items-center gap-11 relative justify-between"
+          style={{ height: "470px" }}
         >
           <div className="w-1/3">
             <h2 className="text-4xl font-bold mb-6 text-white text-left"  data-aos="fade-right">
@@ -71,7 +71,7 @@ export default function HotProductSlider() {
                   key={index}
                   onMouseEnter={() => handleHover(index)}
                   className={`cursor-pointer px-12 py-12 
- rounded transition-all duration-200 text-left ${
+ rounded transition-all duration-200 text-left mb-16${
    currentIndex === index
      ? "bg-[#2C2C2C] font-semibold border-[1px] border-[#888888]"
      : ""
@@ -130,12 +130,12 @@ export default function HotProductSlider() {
           </motion.div>
         </div>
       </div>
-      <div className="block lg:hidden bg-gray-100 py-48">
-         <h2 className="text-4xl font-bold mb-24 "  data-aos="fade-right">
+      <div className="block lg:hidden bg-gray-100 py-28">
+         <h2 className="text-4xl font-bold mb-28 "  data-aos="fade-right">
               Hot Products
             </h2>
            {products.map((item) => (
- <div className="flex items-center justify-between bg-white rounded-xl p-20 transition mb-8 mx-20 " >
+ <div className="flex items-center justify-between bg-white rounded-xl p-12 transition mb-8 mx-20 " >
   <div className="flex items-center justify-start"> <img src={item.soloImage} alt={item.title} className="object-contain me-10" style={{width:'78px',height:'78px'}}/><p className="text-gray-800 font-medium text-left">{item.title}</p></div>
   <div>  <GoArrowRight  className="text-gray-400" /></div> 
     </div> ))}

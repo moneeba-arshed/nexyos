@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { ChevronLeft, ChevronRight, RefreshCw, Upload } from "lucide-react";
-
+import '../../../style/Solution.css';
 const models = [
   {
     title: "Dome",
@@ -47,13 +47,13 @@ const ModelsAndLenses = () => {
     setCurrent((prev) => (prev - 1 + models.length) % models.length);
   };
   return (
-    <div className=" p-6 mt-16">
-      <h2 className="text-2xl font-semibold text-center my-24"  data-aos="fade-right">
+    <div className=" py-18 ">
+      <h2 className="text-2xl font-semibold text-center  "  data-aos="fade-right">
         Diverse Range of Models and Lenses
       </h2>
-      <div className="flex flex-col lg:flex-row gap-6 max-w-7xl mx-auto">
+      <div className="flex flex-row gap-6 lg:max-w-7xl mx-auto">
         {/* Lenses Section */}
-        <div className="rounded-xl flex flex-col justify-center items-center relative ">
+        <div className="rounded-xl flex-col justify-center items-center relative lg:flex hidden ">
           <img
             src="https://www.milesight.com/static/pc/en/page/technology/solution/anpr-solution/index-new/outstanding-features-lenses.jpg?t=1751621798627"
             alt="Lenses"
@@ -69,7 +69,7 @@ const ModelsAndLenses = () => {
         </div>
 
         {/* Models Grid */}
-        <div className="bg-white p-12 rounded-xl hidden lg:block">
+        <div className="bg-white p-12 rounded-xl hidden lg:block ">
           <h5 className="text-left"  data-aos="fade-right">Models</h5>
 
           <div className="grid grid-cols-1 md:grid-cols-4  gap-10 ">
@@ -90,8 +90,8 @@ const ModelsAndLenses = () => {
             ))}
           </div>
         </div>
-        <div className="block lg:hidden">
-          <div className="relative w-full max-w-sm mx-auto p-6 bg-white rounded-xl shadow-md">
+        <div className="block lg:hidden MAL_Mobile mt-56 mb-28 w-full">
+          <div className="M0delsLensesCards relative w-full max-w-sm mx-auto p-20 bg-white rounded-xl shadow-md">
             <div className="flex justify-between items-center mb-6">
               <div className="text-sm font-medium mb-4 text-black">Models</div>
 

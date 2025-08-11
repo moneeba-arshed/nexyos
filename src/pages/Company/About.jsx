@@ -3,9 +3,9 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { EffectCreative, Autoplay } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/effect-creative";
-import BannerAbout from "./BannerAbout";
-import "./About.css";
-import RPlayer from "./ReactPlayer";
+import BannerAbout from "../../components/Company/BannerAbout";
+import "../../style/About.css";
+import RPlayer from "../../components/Company/ReactPlayer";
 import { useEffect, useState } from "react";
 import axios from "axios";
 

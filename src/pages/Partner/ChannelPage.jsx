@@ -1,7 +1,7 @@
 import React from "react";
-import Banner from "./Banner";
-import ChannelPartners from "../../Channel";
-import Contact from "../../Contact";
+import Banner from "../../components/Banner";
+import ChannelPartners from "../../components/Channel";
+import Contact from "../../components/Contact";
 
 const ChannelPage = () => {
   return (

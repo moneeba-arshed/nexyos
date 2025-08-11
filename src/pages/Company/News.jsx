@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import styles from "./NewsPage.module.css";
-import BannerNews from "./BannerNews";
+import styles from "../../style/NewsPage.module.css";
+import BannerNews from "../../components/Company/BannerNews";
 
 const newsData = [
   {

@@ -7,8 +7,8 @@ import Slider from "./Slider";
 import data from './data'
 import SliderTest from "./SliderTest";
 import Contact from "./Contact";
-import Tab from "./Tab";
-import HotProductSlider from "./HotProductSlider";
+import Tab from "./Solution/TrafficTab/Tab";
+import HotProductSlider from "./Solution/OutstandingFeatures/HotProductSlider";
 const Categorycall = () => {
   return (
     <div>

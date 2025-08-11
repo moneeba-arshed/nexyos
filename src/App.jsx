@@ -18,26 +18,27 @@ import Slider from "./pages/Slider";
 import Footer from "./components/Footer";
 import SuccessStories from "./components/SuccessStories";
 import ContactPage from "./pages/ContactPage";
-import DemoPage from "./components/DemoPage";
+import DemoPage from "./pages/DemoPage";
 import Header from "./components/Header";
-import ChannelPage from "./components/Channel/FindChannel/ChannelPage";
-import PartnerProgram from "./components/Channel/FindChannel/ChannelPartner";
-import ProjectRegistration from "./components/Channel/FindChannel/ProjectRegistration";
-import Iot from "./components/Channel/FindChannel/Iot";
-import About from "./components/Company/About";
-import Brand from "./components/Company/Brand";
-import Events from "./components/Company/Events";
-import BlogPage from "./components/Blog/BlogPage";
+import ChannelPage from "./pages/Partner/ChannelPage";
+import PartnerProgram from "./pages/Partner/ChannelPartner";
+import ProjectRegistration from "./pages/Partner/ProjectRegistration";
+import Iot from "./pages/Partner/Iot";
+import About from "./pages/Company/About";
+import Brand from "./pages/Company/Brand";
+import Events from "./pages/Company/Events";
+import BlogPage from "./pages/Company/BlogPage";
 import BlogDetailPage from "./components/Blog/BlogDetailPage";
-import NewsPage from "./components/Company/News";
+import NewsPage from "./pages/Company/News";
 import ProductPage from "./components/ProductPage";
 import ProductDetail from "./components/ProductDetail";
 import Login from "./pages/Login";
 import Signup from "./pages/Signup";
 import Categorycall from "./components/Categorycall";
 import ProCamera from "./components/ProCamera";
-import Solution from "./pages/Solution";
+import Solution from "./pages/Solution/index";
 import SubCategoryPage from "./components/SubCategoryPage";
+import SpaceOccupancy from "./pages/Solution/SpaceOccupancy";
 
 function App() {
   const location = useLocation();
@@ -78,7 +79,6 @@ useEffect(() => {
         <Route path="/signup" element={<Signup />} />
         <Route path="/products/:id" element={<ProductDetail />} />
         <Route path="/products" element={<ProductPage />} />
-
         <Route path="/category/:categoryName" element={<Categorycall />} />
          <Route path="/sub-category/:id" element={<SubCategoryPage />} />
         <Route path="/product/" element={<ProCamera/>} />
@@ -87,6 +87,7 @@ useEffect(() => {
         <Route path="/success" element={<SuccessStories />} />
         <Route path="/contact" element={<ContactPage />} />
         <Route path="/channel" element={<ChannelPage />} />
+        <Route path="/Solution/SpaceOccupancy" element={<SpaceOccupancy/>} />
         <Route path="/PartnerProgram" element={<PartnerProgram />} />
         <Route path="/ProjectRegistration" element={<ProjectRegistration />} />
         <Route path="/Iot" element={<Iot />} />

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import "./Mega.css";
+import "../style/Mega.css";
 
 const Mega = () => {
   const [loading, setLoading] = useState(true);

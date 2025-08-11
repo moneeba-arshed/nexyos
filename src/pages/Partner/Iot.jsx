@@ -1,33 +1,15 @@
 // PartnerProgram.js
 import React, { useState } from "react";
-import styles from "../../../style/PartnerProgram.module.css";
-import Banner from "./Banner";
+import styles from "../../style/PartnerProgram.module.css";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Autoplay } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
-import Contact from "../../Contact";
+import Contact from "../../components/Contact";
+import BannerIOT from "../../components/BannerIOT";
 
-const PartnerProgram = () => {
-  const [currentImage, setCurrentImage] = useState("default");
-
-  // Images data
-  const images = {
-    default:
-      "https://www.milesight.com/static/pc/en/company/partner-program/milesight-events.jpg?t=1746582988309",
-    sensing:
-      "https://www.milesight.com/static/pc/en/company/partner-program/milesight-events.jpg?t=1746582988309",
-    exhibitions:
-      "https://www.milesight.com/static/pc/en/company/partner-program/milesight-events.jpg?t=1746582988309",
-    industries:
-      "https://www.milesight.com/static/pc/en/company/partner-program/milesight-at-glance.png?t=1746582988309",
-    sensors:
-      "https://www.milesight.com/static/pc/en/company/partner-program/milesight-product-portfolio.png?t=1746582988309",
-    experience:
-      "https://www.milesight.com/static/pc/en/company/about-us/milesight-innovation.jpg?t=1746582955703",
-  };
-
+const Iot = () => {
   // Innovations data for Swiper
   const innovations = [
     {
@@ -72,13 +54,51 @@ const PartnerProgram = () => {
     },
   ];
 
-  const handleHeadingClick = (imageKey) => {
-    setCurrentImage(imageKey);
+  //   const handleHeadingClick = (imageKey) => {
+  //     setCurrentImage(imageKey);
+  //   };
+  const tabContent = {
+    sensing: {
+      title: "Cutting-Edge Sensing",
+      image1: {
+        src: "https://www.milesight.com/static/pc/en/partner/iot-collaboration-start-guide/milesight-building.jpg",
+        text: "Nexyos—Leading Provider of Innovative IoT Products",
+      },
+      image2: {
+        bg: "https://www.milesight.com/static/pc/en/partner/iot-collaboration-start-guide/data.jpg",
+      },
+    },
+    exhibitions: {
+      title: "Influential Exhibitions",
+      image1: {
+        src: "https://www.milesight.com/static/pc/en/partner/iot-collaboration-start-guide/milesight-building.jpg",
+        text: "Nexyos regularly exhibits at global events",
+      },
+      image2: {
+        bg: "https://www.milesight.com/static/pc/en/partner/iot-collaboration-start-guide/data.jpg",
+      },
+    },
+    industries: {
+      title: "Industries",
+      image1: {
+        src: "https://www.milesight.com/static/pc/en/partner/iot-collaboration-start-guide/milesight-building.jpg",
+        text: "Nexyos regularly exhibits at global events",
+      },
+      image2: {
+        bg: "https://www.milesight.com/static/pc/en/partner/iot-collaboration-start-guide/data.jpg",
+      },
+    },
   };
 
+  const [currentImage, setCurrentImage] = useState("sensing");
+  const content = tabContent[currentImage];
+
+  const handleHeadingClick = (key) => {
+    setCurrentImage(key);
+  };
   return (
     <>
-      <Banner />
+      <BannerIOT />
 
       {/* Partner Program Section */}
       <div className={`${styles.programSection} container`}>
@@ -113,50 +133,65 @@ const PartnerProgram = () => {
         </div>
       </div>
 
-      {/* Why Nexyos Section */}
       <div className={`${styles.section} container-fluid py-5`}>
         <div className="container">
           <div className="row">
-            <div className="col-md-5">
+            {/* Left Tabs */}
+            <div className="col-md-3">
               <h1 className={styles.mainTitle}  data-aos="fade-right">Why Nexyos ?</h1>
 
-              <div className={`${styles.headingGroup} mb-4`}  data-aos="fade-right">
-                <h5
-                  className={styles.heading}
-                  onClick={() => handleHeadingClick("sensing")}
-                 data-aos="fade-right">
-                  Cutting-Edge Sensing Products Provider Serving Millions of
-                  People Worldwide
-                </h5>
-              </div>
-
-              <div className={`${styles.headingGroup} mb-4`}>
-                <h5
-                  className={styles.heading}
-                  onClick={() => handleHeadingClick("exhibitions")}
-                data-aos="fade-right" >
-                  Active Participant in Influential Exhibitions
-                </h5>
-              </div>
-
-              <div className={`${styles.headingGroup} mb-4`}>
-                <h5
-                  className={styles.heading}
-                  onClick={() => handleHeadingClick("industries")}
-                 data-aos="fade-right">
-                  Prominent Presence in Industries
-                </h5>
-              </div>
+              {Object.entries(tabContent).map(([key, item]) => (
+                <div key={key} className={`${styles.headingGroup} mb-4`}>
+                  <h5
+                    className={`${styles.heading} ${
+                      currentImage === key ? styles.active : ""
+                    }`}
+                    onClick={() => handleHeadingClick(key)}
+                  data-aos="fade-right" >
+                    {item?.title || "Untitled"}
+                  </h5>
+                </div>
+              ))}
             </div>
 
-            <div className="col-md-7">
-              <div className={styles.imageContainer}>
-                <img
-                  src={images[currentImage]}
-                  alt="Nexyos content"
-                  className={`${styles.mainImage} img-fluid rounded`}
-                />
-              </div>
+            {/* Right Content */}
+            <div className="col-md-9">
+              {content && (
+                <div className={styles.imageContainer2}>
+                  <h2 className="mb-3"  data-aos="fade-right">{content.title}</h2>
+
+                  <div className="row">
+                    {/* Left Image with text */}
+                    <div className="col-md-6 mb-3">
+                      <img
+                        src={content.image1.src}
+                        alt="content"
+                        className="img-fluid rounded"
+                        style={{
+                          height: "20.188rem",
+                          objectFit: "contain",
+                          width: "100%",
+                        }}
+                      />
+                      <p className="mt-2">{content.image1.text}</p>
+                    </div>
+
+                    {/* Right Background Image */}
+                    <div className="col-md-6 mb-3">
+                      <div
+                        className="w-100 h-100 rounded"
+                        style={{
+                          backgroundImage: `url('${content.image2.bg}')`,
+                          backgroundPosition: "center",
+                          objectFit: "contain",
+                          height: "20.188rem",
+                          backgroundSize: "contain",
+                        }}
+                      ></div>
+                    </div>
+                  </div>
+                </div>
+              )}
             </div>
           </div>
         </div>
@@ -241,4 +276,4 @@ const PartnerProgram = () => {
   );
 };
 
-export default PartnerProgram;
+export default Iot;

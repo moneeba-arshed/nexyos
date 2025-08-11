@@ -5,11 +5,11 @@ import { ChevronLeft, ChevronRight } from "lucide-react";
 import { FaAngleRight, FaAngleDown, FaAngleUp } from "react-icons/fa";
 import miniCAmeraGroup from "../assets/images/nexyos/miniCAmeraGroup.png";
 import Contact from "./Contact";
-import Tab from "./Tab";
-import HotProductSlider from "./HotProductSlider";
+import Tab from "./Solution/TrafficTab/Tab";
+import HotProductSlider from "./Solution/OutstandingFeatures/HotProductSlider";
 import SliderTest from "./SliderTest";
 import { motion } from "framer-motion";
-import '../components/SubCategoryPage.css'
+import '../style/SubCategoryPage.css';
 
 
 const SubCategoryPage = () => {

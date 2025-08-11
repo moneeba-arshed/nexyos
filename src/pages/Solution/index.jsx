@@ -1,43 +1,43 @@
 import React, { useState, useEffect } from 'react';
-import '../components/Solution/Solution.css';
-import Banner from '../components/Banner';
-import Tab from '../components/Tab';
-import HotProductSlider from '../components/HotProductSlider';
-import Contact from '../components/Contact';
+import '../../style/Solution.css';
+import Banner from '../../components/Banner';
+import Tab from '../../components/Solution/TrafficTab/Tab';
+import HotProductSlider from '../../components/Solution/OutstandingFeatures/HotProductSlider';
+import Contact from '../../components/Contact';
 import { FiDownload } from 'react-icons/fi';
-import Features from '../components/Features';
-import TrafficFunctionsAndScenarios from '../components/TrafficFunctionsAndScenarios';
-import SolutionVideo from '../components/SolutionVideo';
-import SBI_education from '../assets/images/Solution/SBI-education.jpg';
-import healthcare_banner from '../assets/images/Solution/healthcare-banner.jpg';
-import SBI_energy from '../assets/images/Solution/SBI-energy.jpg';
-import pub_transport_banner from '../assets/images/Solution/pub-transport-banner.jpg';
-import manfacturing_banner from '../assets/images/Solution/manfacturing_banner.jpg';
-import logistics from '../assets/images/Solution/logistics.jpg';
-import for_stores from '../assets/images/Solution/solution-for-stores.jpg';
-import urban_roadways from '../assets/images/Solution/solution-for-urban-roadways.jpg';
-import for_offices from '../assets/images/Solution/solution-for-offices.jpg';
-import for_factories from '../assets/images/Solution/solution-for-factories.jpg';
-import classroom_hub from '../assets/images/Solution/solution-for-classroom-hub.jpg';
-import car_dealerships from '../assets/images/Solution/solution-for-car-dealerships.jpg';
-import bus_stop from '../assets/images/Solution/solution-for-bus-stop.jpg';
-import SBS_Apartment from '../assets/images/Solution/SBS-Apartment.jpg';
-import Speed_Measurement from '../assets/images/Solution/Function-_Speed-Measurement.svg';
-import Violation_Detection from '../assets/images/Solution/Function-_Violation-Detection.svg';
-import Vehicle_Information_Collection from '../assets/images/Solution/Function-_Vehicle-Information-Collection.svg';
-import Incident_Detection from '../assets/images/Solution/Function-_Incident-Detection.svg';
-import Portable_Enforcement from '../assets/images/Solution/Function-_Portable-Enforcement.svg';
-import Perimeter_Protection from '../assets/images/Solution/Function-_Perimeter-Protection.svg';
-import Function_Attendance from '../assets/images/Solution/Function-_Attendance.svg';
-import Access_Control from '../assets/images/Solution/Function-_Access-Control.svg';
-import People_Counting from '../assets/images/Solution/Function-_People-Counting.svg';
-import E_E_Management from '../assets/images/Solution/Function-_E&E-Management.svg';
-import Visitor_Management from '../assets/images/Solution/Function-_Visitor-Management.svg';
-import line_haul from '../assets/images/Solution/SBF-line-haul.svg';
-import Radar_Sensor_based_Care from '../assets/images/Solution/Radar-Sensor-based-Care.png';
-import GNSS_Vehicle_Trajectory from '../assets/images/Solution/GNSS-Vehicle-Trajectory-Mgmt.-icon.png';
-import onboard_passenger_counting from '../assets/images/Solution/onboard-passenger-counting-icon.png';
-import Advanced_Driving_Assistance from '../assets/images/Solution/Advanced-Driving-Assistance.png';
+import Features from '../../components/Solution/Features/Features';
+import TrafficFunctionsAndScenarios from '../../components/TrafficFunctionsAndScenarios';
+import SolutionVideo from '../../components/SolutionVideo';
+import SBI_education from '../../assets/images/Solution/SBI-education.jpg';
+import healthcare_banner from '../../assets/images/Solution/healthcare-banner.jpg';
+import SBI_energy from '../../assets/images/Solution/SBI-energy.jpg';
+import pub_transport_banner from '../../assets/images/Solution/pub-transport-banner.jpg';
+import manfacturing_banner from '../../assets/images/Solution/manfacturing_banner.jpg';
+import logistics from '../../assets/images/Solution/logistics.jpg';
+import for_stores from '../../assets/images/Solution/solution-for-stores.jpg';
+import urban_roadways from '../../assets/images/Solution/solution-for-urban-roadways.jpg';
+import for_offices from '../../assets/images/Solution/solution-for-offices.jpg';
+import for_factories from '../../assets/images/Solution/solution-for-factories.jpg';
+import classroom_hub from '../../assets/images/Solution/solution-for-classroom-hub.jpg';
+import car_dealerships from '../../assets/images/Solution/solution-for-car-dealerships.jpg';
+import bus_stop from '../../assets/images/Solution/solution-for-bus-stop.jpg';
+import SBS_Apartment from '../../assets/images/Solution/SBS-Apartment.jpg';
+import Speed_Measurement from '../../assets/images/Solution/Function-_Speed-Measurement.svg';
+import Violation_Detection from '../../assets/images/Solution/Function-_Violation-Detection.svg';
+import Vehicle_Information_Collection from '../../assets/images/Solution/Function-_Vehicle-Information-Collection.svg';
+import Incident_Detection from '../../assets/images/Solution/Function-_Incident-Detection.svg';
+import Portable_Enforcement from '../../assets/images/Solution/Function-_Portable-Enforcement.svg';
+import Perimeter_Protection from '../../assets/images/Solution/Function-_Perimeter-Protection.svg';
+import Function_Attendance from '../../assets/images/Solution/Function-_Attendance.svg';
+import Access_Control from '../../assets/images/Solution/Function-_Access-Control.svg';
+import People_Counting from '../../assets/images/Solution/Function-_People-Counting.svg';
+import E_E_Management from '../../assets/images/Solution/Function-_E&E-Management.svg';
+import Visitor_Management from '../../assets/images/Solution/Function-_Visitor-Management.svg';
+import line_haul from '../../assets/images/Solution/SBF-line-haul.svg';
+import Radar_Sensor_based_Care from '../../assets/images/Solution/Radar-Sensor-based-Care.png';
+import GNSS_Vehicle_Trajectory from '../../assets/images/Solution/GNSS-Vehicle-Trajectory-Mgmt.-icon.png';
+import onboard_passenger_counting from '../../assets/images/Solution/onboard-passenger-counting-icon.png';
+import Advanced_Driving_Assistance from '../../assets/images/Solution/Advanced-Driving-Assistance.png';
 import { Subtitles } from 'lucide-react';
 
 const Solution = () => {
@@ -169,61 +169,61 @@ const Solution = () => {
     {
       id: 2,
       title: "Violation Detection",
-       category: ["All", "Traffic"],
+      category: ["All", "Traffic"],
       icon: Violation_Detection
     },
     {
       id: 3,
       title: "Vehicle Information Detection",
-       category: ["All", "Traffic"],
+      category: ["All", "Traffic"],
       icon: Vehicle_Information_Collection
     },
     {
       id: 4,
       title: "Incident Detection",
-       category: ["All", "Traffic"],
+      category: ["All", "Traffic"],
       icon: Incident_Detection
     },
     {
       id: 5,
       title: "Portable Enforcement",
-       category: ["All", "General","Traffic"],
+      category: ["All", "General", "Traffic"],
       icon: Portable_Enforcement
     },
     {
       id: 6,
       title: "Perimeter Protection",
-      category: ["All", "General","Education","Logistics","Energy"],
+      category: ["All", "General", "Education", "Logistics", "Energy"],
       icon: Perimeter_Protection
     },
-      {
+    {
       id: 7,
       title: "Time Attendance",
-     category: ["All", "General","Logistics","Energy"],
+      category: ["All", "General", "Logistics", "Energy"],
       icon: Function_Attendance
     },
     {
       id: 8,
       title: "Access Control",
-     category: ["All", "General", "Education","Logistics","Energy","Retail"],
+      category: ["All", "General", "Education", "Logistics", "Energy", "Retail"],
       icon: Access_Control
     },
     {
       id: 9,
       title: "People Counting",
-      category: ["All", "General","Retail"],
+      category: ["All", "General", "Retail"],
       icon: People_Counting
     },
     {
       id: 10,
       title: "Entrance & Exit Management",
-      category: ["All", "General","Education","Logistics","Energy","Retail"],
+      category: ["All", "General", "Education", "Logistics", "Energy", "Retail"],
       icon: E_E_Management
     },
     {
       id: 11,
       title: "Visitor Management",
-      category: ["All", "General","Education","Logistics","Energy"],
+      category: ["All", "General", "Education", "Logistics", "Energy"],
       icon: Visitor_Management
     },
     {
@@ -232,10 +232,10 @@ const Solution = () => {
       category: ["All", "Logistics"],
       icon: line_haul
     },
-     {
+    {
       id: 13,
       title: "Radar Sensor-based Care",
-      category: ["All","Healthcare"],
+      category: ["All", "Healthcare"],
       icon: Radar_Sensor_based_Care
     },
     {
@@ -292,9 +292,9 @@ const Solution = () => {
       <Tab />
 
       {/* SAFETY & EFFICIENCY */}
-      <div className='container mb-60 p-0 md:pb-40 md:pt-10 flex justify-center items-center flex-col'>
+      <div className='container mb-60 p-0 md:pt-10 flex justify-center items-center flex-col'>
         <h5>For Better Road Safety & Efficient Traffic Management</h5>
-        <div className="md:w-[70%] w-[90%] text-justify">
+        <div className=" text-justify">
           <p className="text-sm">
             With the growth of urban and rural populations, as well as the increasing number of vehicles on the roads, traffic congestion, accidents, and parking issues are constantly on the rise, presenting new challenges to traffic management agencies. Milesight is delighted to introduce our Intelligent Traffic Solution. We integrate powerful, high-quality cameras with back-end software, elevating intelligent traffic management to a new level with exceptional imagery and advanced AI-powered ANPR technology, ensuring road traffic safety and efficient traffic management.
           </p>
@@ -302,7 +302,7 @@ const Solution = () => {
       </div>
 
       {/* Industry Tab Content */}
-      <section className="max-w-7xl mx-auto px-4 py-12" id="industry">
+      <section className="max-w-7xl mx-auto px-20 py-12" id="industry">
         <h2 className="text-4xl font-bold text-center mb-4" id="industry">Solutions by Industry</h2>
         <div className='ps-16 py-24'>
           <p className="text-left text-lg text-black mb-10">
@@ -387,7 +387,7 @@ const Solution = () => {
         </div>
       </section>
       {/* Scenario Tab Content */}
-      <section className="px-6 md:px-16 py-12 bg-white" id="scenario">
+      <section className="px-20 py-12 bg-white" id="scenario">
         <h2 className="text-3xl md:text-4xl font-bold text-center mb-6">
           Solutions by Scenario
         </h2>
@@ -420,7 +420,7 @@ const Solution = () => {
         </div>
       </section>
       {/* Function Tab Content */}
-      <section className="w-full max-w-screen-xl mx-auto px-4 py-12" id="function">
+      <section className="w-full max-w-screen-xl mx-auto px-20 py-12" id="function">
         <h2 className="text-4xl font-bold text-center mb-4">
           Solutions by Function
         </h2>
@@ -436,14 +436,21 @@ const Solution = () => {
             flexibility to combine functional applications on demand.
           </p>
           {/* --- Tabs UI --- */}
-          <div className="border-b border-gray-200 dark:border-neutral-700 overflow-x-auto">
-            <nav className="Functionnav flex justify-center gap-x-1 transform translate-x-0" role="tablist" aria-label="Function Tabs">
+          <div className="border-b border-gray-200 dark:border-neutral-700">
+            <nav
+              className={`Functionnav flex gap-x-1 transform translate-x-0 ${categories.length > 6
+                  ? "overflow-x-auto whitespace-nowrap px-4"
+                  : "justify-center"
+                }`}
+              role="tablist"
+              aria-label="Function Tabs"
+            >
               {categories.map((cat, index) => (
                 <button
                   key={index}
                   type="button"
-                  className={`FuctionButton px-28 py-12
-          ${activeCategory === cat ? "active" : "text-black"}`}
+                  className={`FuctionButton px-28 py-12 whitespace-nowrap ${activeCategory === cat ? "active" : "text-black"
+                    }`}
                   aria-selected={activeCategory === cat}
                   onClick={() => setActiveCategory(cat)}
                   role="tab"
@@ -454,23 +461,22 @@ const Solution = () => {
               ))}
             </nav>
           </div>
-
           {/* --- Tab Content Panels --- */}
-          <div className="grid gap-64 mt-28 grid-cols-1 sm:grid-cols-2 lg:grid-cols-6">
+          <div className="grid gap-64 mt-28 grid-cols-3 sm:grid-cols-2 lg:grid-cols-6">
             {functionCards
-             .filter(card =>activeCategory === "All" || card.category.includes(activeCategory))
+              .filter(card => activeCategory === "All" || card.category.includes(activeCategory))
               .map(card => (
                 <div className=''>
-                <div
-                  key={card.id}
-                  className="flex flex-col items-center bg-white rounded-xl py-28 shadow-[2px_6px_10px_0px_rgba(0,_0,_0,_0.1)] hover:shadow-[11px_13px_10px_0px_rgba(0,_0,_0,_0.1)]"
-                >
-                  <img
-                    src={card.icon}
-                    alt={card.title}
-                    className="w-52 object-contain mb-4"
-                  />
-                </div>
+                  <div
+                    key={card.id}
+                    className="flex flex-col items-center bg-white rounded-xl py-28 shadow-[2px_6px_10px_0px_rgba(0,_0,_0,_0.1)] hover:shadow-[11px_13px_10px_0px_rgba(0,_0,_0,_0.1)]"
+                  >
+                    <img
+                      src={card.icon}
+                      alt={card.title}
+                      className="w-52 object-contain mb-4"
+                    />
+                  </div>
                   <h3 className="text-sm mt-10 text-gray-800 text-center">
                     {card.title}
                   </h3></div>
@@ -484,7 +490,7 @@ const Solution = () => {
 
       {/* OUTSTANDING FEATURES */}
       <div className='OutStanding_features'>
-        <h2 className="text-4xl font-bold mb-4 mt-32">Outstanding Features</h2>
+        <h2 className="text-4xl font-bold lg:my-28 my-16">Outstanding Features</h2>
         <Features />
       </div>
 

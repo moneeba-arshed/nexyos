@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from "react";
 import { Container, Row, Col } from "react-bootstrap";
-import BlogCard from "./BlogCard";
-import CategoryTabs from "./CategoryTabs";
-import SearchBar from "./SearchBar";
+import BlogCard from "../../components/Blog/BlogCard";
+import CategoryTabs from "../../components/Blog/CategoryTabs";
+import SearchBar from "../../components/Searchbar";
 import styles from "../../style/BlogPage.module.css";
-import BannerBlog from "../Company/BannerBlog";
+import BannerBlog from "../../components/Company/BannerBlog";
 import axios from "axios";
 
 const BlogPage = () => {

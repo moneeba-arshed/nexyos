@@ -16,3 +16,26 @@
   border-bottom-color: rgb(255, 255, 255);
   color: #d7150e;
 }
+
+.TrafficTab{
+  height: 300px;
+}
+.M0delsLensesCards{
+  height: 52vh;
+}
+@media only screen and (max-width: 768px) {
+.TrafficTab{
+  height: 342px;
+}
+.AI_Card{
+  height:10rem
+}
+}
+.Functionnav::-webkit-scrollbar {
+  height: 6px;
+}
+.Functionnav::-webkit-scrollbar-thumb {
+  background-color: #ccc;
+  border-radius: 3px;
+}
+

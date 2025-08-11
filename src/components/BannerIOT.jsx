@@ -1,8 +1,8 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import "../../../style/pagecss.css";
+import "../style/pagecss.css";
 
-const Banner = () => {
+const BannerIOT = () => {
   const bannerImage =
     "https://www.milesight.com/static/pc/en/partner/find-channel-partner/cp-list-channel-partners-pc-first-pic.png";
 
@@ -23,12 +23,10 @@ const Banner = () => {
       <div className="container">
         <div className="banner-item-two__content text-white">
           <h2 className="banner-item-two__title bounce text-white"  data-aos="fade-right">
-            Project Registration
+            Collaboration Start Guide
           </h2>
           <p className="mt-4">
-            The Milesight Project Registration program gives our customers a
-            competitive advantage to strengthen their position on projects with
-            active additional support.
+            Why and How to Start a Collaboration with Nexyos
           </p>
         </div>
       </div>
@@ -36,4 +34,4 @@ const Banner = () => {
   );
 };
 
-export default Banner;
+export default BannerIOT;

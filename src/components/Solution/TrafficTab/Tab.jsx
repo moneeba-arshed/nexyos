@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import { MdOutlineTraffic, MdOutlineLocalParking } from "react-icons/md";
 import { TbBarrierBlock } from "react-icons/tb";
-import { FaRoad } from "react-icons/fa"; 
+import '../../../style/Solution.css';
+import { FaRoad } from "react-icons/fa";
 import { GiDoorHandle } from "react-icons/gi";
 const tabs = [
   {
@@ -58,49 +59,49 @@ export default function Tab() {
   const current = tabs[activeTab];
 
   return (
-    <div className="Tab_container md:w-[82%] px-10 py-60 md:my-76 w-[86%]">
-      <div className="bg-white rounded-xl border p-12 grid grid-cols-1 md:grid-cols-3 gap-6">
-        <div className="text-left p-20 md:ms-30 py-16gst6556etydGXH">
-          <h2 className="text-2xl font-semibold text-gray-800 mb-1"  data-aos="fade-right">
-            {current.title}
-          </h2>
-          <h6 className="text-sm mb-4">{current.subtitle}</h6>
-          <ul className="tablist text-gray-600 space-y-1">
-            {current.bullets.map((item, idx) => (
-              <li className="text-sm" key={idx}>
-                {item}
-              </li>
-            ))}
-          </ul>
-        </div>
-        <div className="col-span-2">
-          <img
-            src={current.image}
-            alt={current.label}
-            className="w-full object-cover rounded-md shadow-sm"
-            style={{ height: "280px" }}
-          />
+    <div className="Tab_container px-20 py-60 md:my-76 ">
+      <div className="flex justify-center">
+        <div className="bg-white rounded-xl border p-12 grid grid-cols-1 md:grid-cols-3 gap-6 w-[95%] lg:w-[80%] mb-20">
+          <div className="text-left p-20 md:ms-30 py-16 ">
+            <h2 className="text-2xl font-semibold text-gray-800 mb-1" data-aos="fade-right">
+              {current.title}
+            </h2>
+            <h6 className="text-sm mb-4">{current.subtitle}</h6>
+            <ul className="tablist text-gray-600 space-y-1">
+              {current.bullets.map((item, idx) => (
+                <li className="text-sm" key={idx}>
+                  {item}
+                </li>
+              ))}
+            </ul>
+          </div>
+          <div className="col-span-2">
+            <img
+              src={current.image}
+              alt={current.label}
+              className="TrafficTab w-full object-cover rounded-md shadow-sm"
+            />
+          </div>
         </div>
       </div>
+
 
       <div className="flex justify-center mt-8 bg-gray-100 p-3">
         {tabs.map((tab, index) => (
           <button
             key={index}
-            onClick={() =>  setActiveTab(index)}
+            onClick={() => setActiveTab(index)}
             onMouseEnter={() => setActiveTab(index)}
             className={`tab-button  flex md:flex-row flex-col justify-center  items-center px-5 py-3 rounded-xl transition-all duration-200 shadow-sm border
-              ${
-                activeTab === index
-                  ? "bg-white text-blue-600"
-                  : ""
+              ${activeTab === index
+                ? "bg-white text-blue-600"
+                : ""
               }`}
           >
             <div className="bg-[#00667C] text-white rounded-4xl px-9 py-9 me-8">{tab.icon}</div>
-            <span className={`text-sm font-medium mt-1 text-center  ${
-                activeTab === index
-                  ? "text-[#00667C]"
-                  : ""
+            <span className={`text-sm font-medium mt-1 text-center  ${activeTab === index
+                ? "text-[#00667C]"
+                : ""
               }`}>
               {tab.label}
             </span>

@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import { Container, Row, Col, Card, Button, Nav } from "react-bootstrap";
-import styles from "./EventCard.module.css";
-import BannerEvent from "./EventBanner";
-import Contact from "../Contact";
+import styles from "../../style/EventCard.module.css";
+import BannerEvent from "../../components/Company/EventBanner";
+import Contact from "../../components/Contact";
 
 const Events = () => {
   const [activeTab, setActiveTab] = useState("all");

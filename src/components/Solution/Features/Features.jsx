@@ -98,11 +98,11 @@ export default function Features() {
   return (
     <section className="Feature_container bg-gray-100 rounded-lg pb-28 flex flex-col items-center justify-center">
       <div className="text-center">
-        <h2 className="Feature_heading text-xl text-black "  data-aos="fade-right">
+        <h2 className="Feature_heading text-lg text-black m-0"  data-aos="fade-right">
           {currentFeature.heading}
         </h2>
       </div>
-      <div className="hidden lg:block">
+      <div className="hidden lg:block pb-8">
         <div className="max-w-4xl bg-white mx-auto grid md:grid-cols-2 gap-10 items-center px-18 py-18 rounded-lg">
           <motion.div
             key={currentFeature.description}
@@ -137,7 +137,7 @@ export default function Features() {
           </motion.div>
         </div>
 
-        <div className="Features_circles mt-12 flex justify-between gap-6 flex-wrap">
+        <div className="Features_circles mt-2 flex justify-between gap-6 flex-wrap">
           {features.map((item, index) => (
             <div
               className={`group cursor-pointer flex flex-col items-center w-[11rem] transition-all duration-300 ${
@@ -149,7 +149,7 @@ export default function Features() {
                 key={item.id}
                 onMouseEnter={() => setHoverIndex(index)}
                 onClick={() => setActiveIndex(index)}
-                className={`w-[5rem] h-[5rem] rounded-full flex items-center justify-center overflow-hidden shadow-md transition ${
+                className={`w-[4rem] h-[4rem] rounded-full flex items-center justify-center overflow-hidden shadow-md transition ${
                   activeIndex === index ? "" : ""
                 }`}
               >
@@ -169,14 +169,14 @@ export default function Features() {
           ))}
         </div>
       </div>
-      <div className="block lg:hidden">
-        <div className="w-2xs">
+      <div className="block lg:hidden w-[90%] pb-40">
+        <div className="featureTab">
           {features.map((feat) => {
             const isOpen = openKey === feat.id;
             return (
               <div
                 key={feat.id}
-                className="mb-3 bg-white rounded-lg shadow overflow-hidden p-38"
+                className="mb-11 bg-white rounded-lg shadow overflow-hidden p-32"
               >
                 <button
                   onClick={() => toggle(feat.id)}

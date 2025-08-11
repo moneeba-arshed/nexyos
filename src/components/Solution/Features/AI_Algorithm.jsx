@@ -14,6 +14,7 @@ import { BsPatchCheckFill } from "react-icons/bs";
 import { SiMercedes, SiBmw, SiAudi } from "react-icons/si";
 import { BiDotsHorizontal } from "react-icons/bi";
 import { FaCar } from "react-icons/fa";
+import '../../../style/Solution.css';
 
 const Card = ({ title, icon, image, footerColors, children }) => (
   <div
@@ -73,11 +74,11 @@ const HighlightsCard = () => (
 
 const AI_Algorithm = () => {
   return (
-    <div className=" py-12 px-4 md:px-12 mt-52 AI_Algorithm">
-      <h2 className="text-2xl md:text-3xl font-semibold text-center mb-32"  data-aos="fade-right">
+    <div className=" px-4 md:px-12  AI_Algorithm border-b-2 border-gray-200 py-20 lg:py-56 ">
+      <h2 className="text-2xl md:text-3xl font-semibold text-center"  data-aos="fade-right">
         AI-powered LPR Algorithm
       </h2>
-      <div className="flex grid md:grid-cols-5 grid-cols-2 gap-4 justify-center">
+      <div className=" grid lg:grid-cols-5 grid-cols-2 gap-4 justify-center lg:mt-56 mt-24">
         <Card
           title="Vehicle Type"
           icon={

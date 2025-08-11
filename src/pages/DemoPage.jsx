@@ -1,6 +1,6 @@
 import React from "react";
-import DemoPageSlider from "./DemoSlider";
-import DemoTabs from "./DemoTabs";
+import DemoPageSlider from "../components/DemoSlider";
+import DemoTabs from "../components/DemoTabs";
 
 const Product = () => {
   return (

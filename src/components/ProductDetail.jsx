@@ -4,11 +4,11 @@ import { FaDownload } from "react-icons/fa";
 import CCTVSurveillanceCameras from "../assets/images/nexyos/CCTVSurveillanceCameras.jpg";
 import miniCAmeraGroup from "../assets/images/nexyos/miniCAmeraGroup.png";
 import PTZGROUPCAMERA from "../assets/images/nexyos/PTZGROUPCAMERA.png";
-import "./ProductDetail.css";
+import "../style/ProductDetail.css";
 import banner from "../assets/images/bg/banner.jpg";
 import frontcamera from "../assets/images/nexyos/frontcamera.png";
 import sidecamera1 from "../assets/images/nexyos/sidecamera1.png";
-import HotProductSlider from "./HotProductSlider";
+import HotProductSlider from "./Solution/OutstandingFeatures/HotProductSlider";
 import Contact from "./Contact";
 import axios from "axios";
 

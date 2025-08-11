@@ -1,10 +1,10 @@
 import React from "react";
 import { Container, Row, Col, Card } from "react-bootstrap";
-import "./WhatMatters.css"; // You'll need to create this CSS file for custom styles
-import BannerBrand from "./BannerModal";
-import SensingProducts from "./Sensing";
-import SliderPartner from "./SliderPartner";
-import Contact from "../Contact";
+import "../../style/WhatMatters.css";
+import BannerBrand from "../../components/Company/BannerModal";
+import SensingProducts from "../../components/Company/Sensing";
+import SliderPartner from "../../components/Company/SliderPartner";
+import Contact from "../../components/Contact";
 
 const Brand = () => {
   return (

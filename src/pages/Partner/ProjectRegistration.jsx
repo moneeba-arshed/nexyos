@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import { Container, Tab, Tabs, Button } from "react-bootstrap";
-import styles from "../../../style/ProjectRegistration.module.css";
-import Banner from "./BannerRegister";
-import Contact from "../../Contact";
+import styles from "../../style/ProjectRegistration.module.css";
+import Banner from "../../components/BannerRegister";
+import Contact from "../../components/Contact";
 
 const ProjectRegistration = () => {
   const [activeTab, setActiveTab] = useState("video");
