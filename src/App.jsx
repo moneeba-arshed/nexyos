@@ -39,6 +39,7 @@ import ProCamera from "./components/ProCamera";
 import Solution from "./pages/Solution/index";
 import SubCategoryPage from "./components/SubCategoryPage";
 import SpaceOccupancy from "./pages/Solution/SpaceOccupancy";
+import People_Counting from "./pages/Solution/People_Counting";
 
 function App() {
   const location = useLocation();
@@ -82,6 +83,7 @@ useEffect(() => {
         <Route path="/category/:categoryName" element={<Categorycall />} />
          <Route path="/sub-category/:id" element={<SubCategoryPage />} />
         <Route path="/product/" element={<ProCamera/>} />
+         <Route path="/PeopleCounting" element={<People_Counting/>} />
         <Route path="/slider" element={<Slider />} />
         <Route path="/solution" element={<Solution/>} />
         <Route path="/success" element={<SuccessStories />} />

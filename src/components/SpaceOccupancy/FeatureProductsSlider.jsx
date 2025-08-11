@@ -1,4 +1,4 @@
-import React, { useRef , useState, useEffect} from "react";
+import React, { useRef , useState, useEffect, forwardRef} from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import './Feature.css'
 const products = [
@@ -93,7 +93,7 @@ const products = [
   },
 ];
 
-const FeatureProductsSlider = () => {
+const FeatureProductsSlider = forwardRef((props, ref) => {
   const sliderRef = useRef(null);
 
   const scroll = (direction) => {
@@ -124,7 +124,7 @@ const FeatureProductsSlider = () => {
 
 
   return (
-    <>
+    <div  ref={ref}>
   <div
       className="relative bg-cover bg-center py-20 px-4 text-white md:block hidden"
       style={{ backgroundImage: "url('https://www.milesight.com/static/pc/en/solution/smart-space-occupancy/product-background.jpg?t=1752826692624')" }} 
@@ -227,9 +227,9 @@ const FeatureProductsSlider = () => {
 </div>
 
     </div>
-    </>
+    </div>
   
   );
-};
+});
 
 export default FeatureProductsSlider;

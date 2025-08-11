@@ -12,7 +12,6 @@ const FeatureTiles = () => {
   const benefitRef = useRef(null);
   const productsRef = useRef(null);
   const successRef = useRef(null);
-  const sensingRef = useRef(null);
 
   const [activeTab, setActiveTab] = useState("");
 
@@ -23,7 +22,6 @@ const FeatureTiles = () => {
     { name: "Benefit", key: "benefit", ref: benefitRef },
     { name: "Products", key: "products", ref: productsRef },
     { name: "Success Story", key: "success", ref: successRef },
-    { name: "People Sensing", key: "sensing", ref: sensingRef },
   ];
 
   const scrollToSection = (ref, tabName) => {
@@ -111,7 +109,6 @@ const FeatureTiles = () => {
       <IntegratedPlatforms ref={benefitRef} />
       <SmartWorkspace ref={productsRef}/>
       <FeatureProducts  ref={successRef} />
-      <section ref={sensingRef} className="py-24 text-center text-xl font-semibold text-gray-600">People Sensing Section</section>
     </div>
   );
 };

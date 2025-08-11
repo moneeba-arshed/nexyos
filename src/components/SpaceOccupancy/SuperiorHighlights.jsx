@@ -1,4 +1,4 @@
-import { useState } from "react";
+import {  useState, forwardRef } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Pagination } from "swiper/modules";
 import { motion, AnimatePresence } from "framer-motion";
@@ -75,7 +75,8 @@ const cards = [
 ];
 
 
-export default function SuperiorHighlights() {
+const SuperiorHighlights = forwardRef((props, ref) => {
+
 const [activeIndex, setActiveIndex] = useState(0);
   const [swiperInstance, setSwiperInstance] = useState(null);
   const [isBeginning, setIsBeginning] = useState(true);
@@ -87,7 +88,7 @@ const [activeIndex, setActiveIndex] = useState(0);
     setIsEnd(swiper.isEnd);
   };
   return (
-  <div className="slide-container relative">
+  <div className="slide-container relative" ref={ref}>
     <h3 data-aos="fade-right">Superior Highlights</h3>
       <Swiper
         modules={[Pagination, Navigation]}
@@ -162,5 +163,6 @@ const [activeIndex, setActiveIndex] = useState(0);
       ></button>
     </div>
   );
-}
+});
 
+export default SuperiorHighlights;
