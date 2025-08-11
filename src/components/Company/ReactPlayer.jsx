@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import ReactPlayer from "react-player";
-import "./About.css";
+import "../../style/About.css";
 import axios from "axios";
 
 const RPlayer = () => {

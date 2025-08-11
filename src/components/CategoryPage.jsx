@@ -2,7 +2,7 @@ import { useLocation, useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import miniCAmeraGroup from "../assets/images/nexyos/miniCAmeraGroup.png";
-import '../components/SubCategoryPage.css'
+import '../style/SubCategoryPage.css'
 const CategoryPage = () => {
   const location = useLocation();
   const navigate = useNavigate();

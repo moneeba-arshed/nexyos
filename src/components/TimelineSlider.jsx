@@ -6,7 +6,7 @@ import "swiper/css";
 import "swiper/css/parallax";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
-import './TimelineSlider.css'
+import '../style/TimelineSlider.css'
 
 const TimelineSlider = () => {
   const swiperRef = useRef(null);

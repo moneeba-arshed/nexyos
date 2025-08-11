@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import miniCAmeraGroup from "../assets/images/nexyos/miniCAmeraGroup.png";
-import Tab from "./Tab";
+import Tab from "./Solution/TrafficTab/Tab";
 import { Bold } from "lucide-react";
 
 const ProductPage = () => {

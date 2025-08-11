@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import './Banner.css'
+import '../style/Banner.css'
 const Banner = (  {
     title,
   description,  

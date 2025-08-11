@@ -10,7 +10,7 @@ import {
   FaTemperatureLow,
   FaEllipsisH,
 } from "react-icons/fa";
-import styles from "./SensingProducts.module.css";
+import styles from "../../style/SensingProducts.module.css";
 
 const SensingProducts = () => {
   const products = [

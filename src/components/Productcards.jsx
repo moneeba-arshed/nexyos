@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import miniCAmeraGroup from "../assets/images/nexyos/miniCAmeraGroup.png";
 import { GoArrowRight } from "react-icons/go"; 
-import './Productcards.css'
+import '../style/Productcards.css'
 
 const Productcards = () => {
   const [categories, setCategories] = useState([]);
