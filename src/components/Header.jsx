@@ -500,75 +500,147 @@ const Header = () => {
                           Solutions
                         </Link>
                         <div className="on-hover-dropdown common-dropdown nav-megamenu" style={{ textAlign: 'left' }}>
-                          <div className="p-6">
-                            {/* Column 1 */}
+                          <div className="grid grid-cols-3 gap-6 p-6">
+                            {/* Column 1 - Security & Surveillance */}
+                            <div>
+                              <h6 className="fs-6 pt-3 text-gray-800 font-semibold">Security & Surveillance</h6>
+                              <ul>
+                                <li>
+                                  <NavLink
+                                    to="/solutions/video-surveillance"
+                                    className="common-dropdown__link"
+                                  >
+                                    Video Surveillance
+                                  </NavLink>
+                                </li>
+                                <li>
+                                  <NavLink
+                                    to="/city-surveillance"
+                                    className="common-dropdown__link"
+                                  >
+                                    City Surveillance
+                                  </NavLink>
+                                </li>
+                                <li>
+                                  <NavLink
+                                    to="/healthcare"
+                                    className="common-dropdown__link"
+                                  >
+                                    Healthcare
+                                  </NavLink>
+                                </li>
+                                <li>
+                                  <NavLink
+                                    to="/hotel"
+                                    className="common-dropdown__link"
+                                  >
+                                    Hotel
+                                  </NavLink>
+                                </li>
+                                <li>
+                                  <NavLink
+                                    to="/retail-security"
+                                    className="common-dropdown__link"
+                                  >
+                                    Retail Security
+                                  </NavLink>
+                                </li>
+                              </ul>
+                            </div>
 
-                            <ul className="space-y-2">
-                              <li>
-                                <NavLink
-                                  to="/solutions/video-surveillance"
-                                  className="common-dropdown__link"
-                                >
-                                  Video Surveillance
-                                </NavLink>
-                              </li>
-                              <li>
-                                <NavLink
-                                  to="/SmartRoom"
-                                  className="common-dropdown__link"
-                                >
-                                  Smart Restroom
-                                </NavLink>
-                              </li>
-                              <li>
-                                <NavLink
-                                  to="/SmartSpace"
-                                  className="common-dropdown__link"
-                                >
-                                  Smart Space
-                                </NavLink>
-                              </li>
-                              <li>
-                                <NavLink
-                                  to="/SmartHVAC"
-                                  className="common-dropdown__link"
-                                >
-                                  Smart HVAC Management
-                                </NavLink>
-                              </li>
-                              <li>
-                                <NavLink
-                                  to="/TrafficSolution"
-                                  className="common-dropdown__link"
-                                >
-                                  Intelligent Traffic Solution
-                                </NavLink>
-                              </li>
-                              <li>
-                                <NavLink
-                                  to="/AirQuality"
-                                  className="common-dropdown__link"
-                                >
-                                  Indoor Air Quality
-                                </NavLink>
-                              </li>
-                              <li>
-                                <NavLink
-                                  to="/PeopleCounting"
-                                  className="common-dropdown__link"
-                                >
-                                  People Counting
-                                </NavLink>
-                              </li>
-                              <li>
-                                <NavLink
-                                  to="/Solution/SpaceOccupancy"
-                                  className="common-dropdown__link"
-                                >
-                                  Space Occupancy
-                                </NavLink>
-                              </li>
-                            </ul>
+                            {/* Column 2 - Smart Infrastructure */}
+                            <div>
+                              <h6 className="fs-6 pt-3 text-gray-800 font-semibold">Smart Infrastructure</h6>
+                              <ul>
+                                <li>
+                                  <NavLink
+                                    to="/SmartRoom"
+                                    className="common-dropdown__link"
+                                  >
+                                    Smart Restroom
+                                  </NavLink>
+                                </li>
+                                <li>
+                                  <NavLink
+                                    to="/SmartSpace"
+                                    className="common-dropdown__link"
+                                  >
+                                    Smart Space
+                                  </NavLink>
+                                </li>
+                                <li>
+                                  <NavLink
+                                    to="/smart-apartment"
+                                    className="common-dropdown__link"
+                                  >
+                                    Smart Apartment
+                                  </NavLink>
+                                </li>
+                                <li>
+                                  <NavLink
+                                    to="/display-control"
+                                    className="common-dropdown__link"
+                                  >
+                                    Display & Control
+                                  </NavLink>
+                                </li>
+                                <li>
+                                  <NavLink
+                                    to="/smart-parking"
+                                    className="common-dropdown__link"
+                                  >
+                                    Smart Parking
+                                  </NavLink>
+                                </li>
+                              </ul>
+                            </div>
+
+                            {/* Column 3 - Industrial & Transportation */}
+                            <div>
+                              <h6 className="fs-6 pt-3 text-gray-800 font-semibold">Industrial & Transportation</h6>
+                              <ul>
+                                <li>
+                                  <NavLink
+                                    to="/TrafficSolution"
+                                    className="common-dropdown__link"
+                                  >
+                                    Intelligent Traffic Solution
+                                  </NavLink>
+                                </li>
+                                <li>
+                                  <NavLink
+                                    to="/manufacturing"
+                                    className="common-dropdown__link"
+                                  >
+                                    Manufacturing
+                                  </NavLink>
+                                </li>
+                                <li>
+                                  <NavLink
+                                    to="/education"
+                                    className="common-dropdown__link"
+                                  >
+                                    Education
+                                  </NavLink>
+                                </li>
+                                <li>
+                                  <NavLink
+                                    to="/AirQuality"
+                                    className="common-dropdown__link"
+                                  >
+                                    Indoor Air Quality
+                                  </NavLink>
+                                </li>
+                                <li>
+                                  <NavLink
+                                    to="/energy-efficiency"
+                                    className="common-dropdown__link"
+                                  >
+                                    Energy Efficiency
+                                  </NavLink>
+                                </li>
+                              </ul>
+                            </div>
                           </div>
                         </div>
                       </li>
@@ -577,117 +649,158 @@ const Header = () => {
                           Success Stories
                         </NavLink>
                       </li>
-                      <li className="on-hover-item nav-menu__item has-megamenu has-submenu">
-                        <Link to="#" className="nav-menu__link">
-                          Company
-                        </Link>
-                        <div className="on-hover-dropdown common-dropdown nav-megamenu">
-                          <div className="grid grid-cols-2 gap-6 p-6">
-                            {/* Column 1 - Milesight Partner Ecosystem & Corporate Info */}
+                                             <li className="on-hover-item nav-menu__item has-megamenu has-submenu">
+                         <Link to="#" className="nav-menu__link">
+                           Company
+                         </Link>
+                         <div className="on-hover-dropdown common-dropdown nav-megamenu">
+                           <div className="grid grid-cols-2 gap-6 p-6">
+                             {/* Column 1 - Corporate Info */}
+                             <div>
+                               <h6 className="fs-6 pt-3">Corporate Info</h6>
+                               <ul>
+                                 <li>
+                                   <NavLink
+                                     to="/About"
+                                     className="common-dropdown__link"
+                                   >
+                                     About Us
+                                   </NavLink>
+                                 </li>
+                                 <li>
+                                   <NavLink
+                                     to="/Brand"
+                                     className="common-dropdown__link"
+                                   >
+                                     Our Brand
+                                   </NavLink>
+                                 </li>
+                                 <li>
+                                   <NavLink
+                                     to="/Events"
+                                     className="common-dropdown__link"
+                                   >
+                                     Events
+                                   </NavLink>
+                                 </li>
+                               </ul>
+                             </div>
 
-                            {/* Column 2 - Developer Zone & Library */}
-                            <div>
-                              <h6 className="fs-6 pt-3">Corporate Info</h6>
-                              <ul>
-                                <li>
-                                  <NavLink
-                                    to="/About"
-                                    className="common-dropdown__link"
-                                  >
-                                    About Us
-                                  </NavLink>
-                                </li>
-                                <li>
-                                  <NavLink
-                                    to="/Brand"
-                                    className="common-dropdown__link"
-                                  >
-                                    Our Brand
-                                  </NavLink>
-                                </li>
-                                <li>
-                                  <NavLink
-                                    to="/Events"
-                                    className="common-dropdown__link"
-                                  >
-                                    Events
-                                  </NavLink>
-                                </li>
-                              </ul>
+                             {/* Column 2 - Library */}
+                             <div>
+                               <h6 className="fs-6 pt-3">Library</h6>
+                               <ul>
+                                 <li>
+                                   <NavLink
+                                     to="/Blog"
+                                     className="common-dropdown__link"
+                                   >
+                                     Blog
+                                   </NavLink>
+                                 </li>
+                                 <li>
+                                   <NavLink
+                                     to="/News"
+                                     className="common-dropdown__link"
+                                   >
+                                     News
+                                   </NavLink>
+                                 </li>
+                               </ul>
+                             </div>
+                           </div>
+                         </div>
+                       </li>
+                                                                                           <li className="on-hover-item nav-menu__item has-megamenu has-submenu">
+                         <Link to="#" className="nav-menu__link">
+                           Partner
+                         </Link>
+                         <div className="on-hover-dropdown common-dropdown nav-megamenu">
+                           <div className="grid grid-cols-2 gap-6 p-6">
+                             {/* Column 1 - Nexyos Partner Ecosystem */}
+                             <div>
+                               <h6 className="fs-6 pt-3">
+                                 Nexyos Partner Ecosystem
+                               </h6>
+                               <ul className="">
+                                 <li>
+                                   <NavLink
+                                     to="/channel"
+                                     className="common-dropdown__link"
+                                   >
+                                     Find a Channel Partner
+                                   </NavLink>
+                                 </li>
+                                 <li>
+                                   <NavLink
+                                     to="/PartnerProgram"
+                                     className="common-dropdown__link"
+                                   >
+                                     Channel Partner Program
+                                   </NavLink>
+                                 </li>
+                                 <li>
+                                   <NavLink
+                                     to="/ProjectRegistration"
+                                     className="common-dropdown__link"
+                                   >
+                                     Project Registration
+                                   </NavLink>
+                                 </li>
+                                 <li>
+                                   <NavLink
+                                     to="/Iot"
+                                     className="common-dropdown__link"
+                                   >
+                                     IoT Collaboration Start Guide
+                                   </NavLink>
+                                 </li>
+                               </ul>
+                             </div>
 
-                              {/* Library Section */}
-                              <h6 className="fs-6 pt-6">Library</h6>
-                              <ul>
-                                <li>
-                                  <NavLink
-                                    to="/Blog"
-                                    className="common-dropdown__link"
-                                  >
-                                    Blog
-                                  </NavLink>
-                                </li>
-                                <li>
-                                  <NavLink
-                                    to="/News"
-                                    className="common-dropdown__link"
-                                  >
-                                    News
-                                  </NavLink>
-                                </li>
-                              </ul>
-                            </div>
-                          </div>
-                        </div>
-                      </li>
-                      <li className="on-hover-item nav-menu__item has-megamenu has-submenu">
-                        <Link to="#" className="nav-menu__link">
-                          Partner
-                        </Link>
-                        <div className="on-hover-dropdown common-dropdown nav-megamenu">
-                          <div className="grid grid-cols-2 gap-6 p-6">
-                            {/* Column 1 - Milesight Partner Ecosystem */}
-                            <div>
-                              <h6 className="fs-6 pt-3">
-                                Nexyos Partner Ecosystem
-                              </h6>
-                              <ul className="">
-                                <li>
-                                  <NavLink
-                                    to="/channel"
-                                    className="common-dropdown__link"
-                                  >
-                                    Find a Channel Partner
-                                  </NavLink>
-                                </li>
-                                <li>
-                                  <NavLink
-                                    to="/PartnerProgram"
-                                    className="common-dropdown__link"
-                                  >
-                                    Channel Partner Program
-                                  </NavLink>
-                                </li>
-                                <li>
-                                  <NavLink
-                                    to="/ProjectRegistration"
-                                    className="common-dropdown__link"
-                                  >
-                                    Project Registration
-                                  </NavLink>
-                                </li>
-                                <li>
-                                  <NavLink
-                                    to="/Iot"
-                                    className="common-dropdown__link"
-                                  >
-                                    IoT Collaboration Start Guide
-                                  </NavLink>
-                                </li>
-                              </ul>
-                            </div>
-                          </div>
-                        </div>
-                      </li>
+                             {/* Column 2 - Partner Programs */}
+                             <div>
+                               <h6 className="fs-6 pt-3">
+                                 Partner Programs
+                               </h6>
+                               <ul className="">
+                                 <li>
+                                   <NavLink
+                                     to="/developer-partner"
+                                     className="common-dropdown__link"
+                                   >
+                                     Nexyos Developer Partner
+                                   </NavLink>
+                                 </li>
+                                 <li>
+                                   <NavLink
+                                     to="/technology-partner"
+                                     className="common-dropdown__link"
+                                   >
+                                     Technology Partner Program
+                                   </NavLink>
+                                 </li>
+                                 <li>
+                                   <NavLink
+                                     to="/cctv-partner"
+                                     className="common-dropdown__link"
+                                   >
+                                     CCTV Channel Partner
+                                   </NavLink>
+                                 </li>
+                                 <li>
+                                   <NavLink
+                                     to="/become-partner"
+                                     className="common-dropdown__link"
+                                   >
+                                     Become a Partner
+                                   </NavLink>
+                                 </li>
+                               </ul>
+                             </div>
+                           </div>
+                         </div>
+                       </li>
                       <li className="nav-menu__item">
                         <SearchBar />
                       </li>

@@ -2,6 +2,7 @@
   text-align: center;
   color: gray;
 }
+
 .procard-title {
   font-size: 16px;
   font-weight: 600;
@@ -10,8 +11,8 @@
   align-items: left;
   justify-content: left;
   gap: 8px;
-text-align: left;
-margin: 0px;
+  text-align: left;
+  margin: 0px;
 }
 
 .arrow-icon {
@@ -31,7 +32,7 @@ margin: 0px;
 }
 
 .card {
-  width: 50%;
+  width: 100%;
   background-color: #ffffff;
   border: 2px solid #01667d;
   padding: 16px;
@@ -44,10 +45,11 @@ margin: 0px;
   align-items: center;
   justify-content: center;
 }
+
 .card-content {
   display: flex;
   align-items: center;
-  gap: 16px;
+  gap: 0px;
 }
 
 .card:hover {
@@ -62,37 +64,29 @@ margin: 0px;
   object-fit: cover;
   border-radius: 8px;
 }
+
 .card:hover .procard-img {
-  transform: scale(1.1); /* You can tweak this value */
+  transform: scale(1.1);
 }
+
 .card_list li {
   list-style: disc;
   justify-content: left;
   text-align: left;
   font-size: 12px;
 }
+
 .card_list li::marker {
   color: #00667c;
 }
+
 .card-text p {
   text-align: left;
   font-size: 14px;
 }
+
 .card-icon {
   justify-items: right;
-}
-/* Entry animation */
-.fade-in {
-  opacity: 0;
-  transform: translateY(20px);
-  animation: fadeInUp 0.5s ease forwards;
-}
-
-@keyframes fadeInUp {
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
 }
 
 @media (max-width: 768px) {
@@ -104,15 +98,10 @@ margin: 0px;
   .card {
     width: 90%;
   }
-}
-@media (max-width: 768px) {
+
   .card-content {
     flex-direction: column;
     align-items: center;
     text-align: center;
-  }
-
-  .card {
-    width: 90%;
   }
 }
