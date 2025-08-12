@@ -1,8 +1,8 @@
-import React from 'react';
+import { forwardRef } from "react";
 
-const IntegratedPlatforms = () => {
+const IntegratedPlatforms = forwardRef((props, ref) => {
   return (
-    <>
+    <div ref={ref}>
       <section
       className="bg-cover bg-center bg-no-repeat text-white py-16 px-6 md:px-16 md:block hidden"
       style={{ backgroundImage: `url('https://www.milesight.com/static/pc/en/solution/smart-space-occupancy/great-compatibility.jpg?t=1752826692624')` }}
@@ -48,9 +48,9 @@ const IntegratedPlatforms = () => {
       style={{height:'19rem'}}/>
     </div>
     </div>
-    </>
+    </div>
   
   );
-};
+});
 
 export default IntegratedPlatforms;

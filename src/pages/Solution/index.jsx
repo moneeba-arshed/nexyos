@@ -147,6 +147,7 @@ const Solution = () => {
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
+  
   const categories = [
     "All",
     "General",

@@ -39,7 +39,7 @@ pClass = "",}) => {
          {/* Content */}
       <div className={`container absolute ${containerClass}`}>
         <div className={` text-white ${contentClass}`}>
-          <h2 className={` bounce text-white ${h2Class}`}  data-aos="fade-right">
+          <h2 className={` bounce ${h2Class}`}  data-aos="fade-right">
       {title}
           </h2>
           <p className={`mt-4 ${pClass}`}>

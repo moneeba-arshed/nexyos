@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState,forwardRef } from "react";
 import  './SmartWorkspace.css'
 const slides = [
   {
@@ -39,11 +39,11 @@ const slides = [
   },
 ];
 
-const SmartWorkspace = () => {
+const SmartWorkspace = forwardRef((props, ref)  => {
   const [activeIndex, setActiveIndex] = useState(0);
 
   return (
-    <>
+    <section ref={ref}>
      <div className="md:flex flex-col lg:flex-row items-center justify-center min-h-screen lg:px-20 py-64bg-white px-72  hidden">
       <div className="w-full lg:w-1/2">
         <img
@@ -125,9 +125,9 @@ const SmartWorkspace = () => {
 
 
     </div>
-    </>
+    </section>
    
   );
-};
+});
 
 export default SmartWorkspace;
