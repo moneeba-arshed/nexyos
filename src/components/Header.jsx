@@ -153,13 +153,13 @@ const Header = () => {
           items: [
             {
               title: "Video Surveillance",
-              path: "/solutions/video-surveillance",
+              path: "/Solution/Video_Surveillance",
             },
             { title: "Intelligent Traffic Solution", path: "/TrafficSolution" },
             { title: "Smart Restroom", path: "/SmartRoom" },
             { title: "Indoor Air Quality", path: "/AirQuality" },
-            { title: "Smart Space", path: "/SmartSpace" },
-            { title: "People Counting", path: "/PeopleCounting" },
+            { title: "Smart Space", path: "/Solution/SmartSpaces" },
+            { title: "People Counting", path: "/Solution/PeopleCounting" },
             { title: "Smart HVAC Management", path: "/SmartHVAC" },
             { title: "Space Occupancy", path: "/Solution/SpaceOccupancy" },
           ],
@@ -507,7 +507,7 @@ const Header = () => {
                               <ul>
                                 <li>
                                   <NavLink
-                                    to="/solutions/video-surveillance"
+                                    to="/Solution/Video_Surveillance"
                                     className="common-dropdown__link"
                                   >
                                     Video Surveillance
@@ -531,7 +531,7 @@ const Header = () => {
                                 </li>
                                 <li>
                                   <NavLink
-                                    to="/hotel"
+                                    to="/Solution/Hotel"
                                     className="common-dropdown__link"
                                   >
                                     Hotel
@@ -562,7 +562,7 @@ const Header = () => {
                                 </li>
                                 <li>
                                   <NavLink
-                                    to="/SmartSpace"
+                                    to="/Solution/SmartSpaces"
                                     className="common-dropdown__link"
                                   >
                                     Smart Space
