@@ -7,7 +7,7 @@ import '../style/Productcards.css'
 const Productcards = () => {
   const [categories, setCategories] = useState([]);
   const [loading, setLoading] = useState(true);
-  const navigate = useNavigate();
+  const navigate = useNavigate();                 
 
   useEffect(() => {
     const fetchCategories = async () => {
@@ -28,29 +28,29 @@ const Productcards = () => {
   }, []);
 
   return (
-    <div className="container mt-60">
+    <div className="container-fluid mt-60">
       {loading ? (
         <p className="loading">Loading...</p>
       ) : categories.length === 0 ? (
         <p className="loading">No categories found.</p>
       ) : (
-        <div className="custom-grid row align-items-start">
+        <div className="custom-grid">
           {categories.map((item) => (
             <div
               key={item.id}
-              className="card col-md-5"
+              className="card"
               onClick={() =>
                 navigate(`/products`)
               }
             >
-              <div className="card-content d-flex align-items-center">
+              <div className="card-content">
                 <img
                   src={miniCAmeraGroup}
                   alt={item.category}
                   className="procard-img"
                 />
                 <div className="card-text">
-                  <h2 className="procard-title" >
+                  <h2 className="procard-title">
                     AI 4X/12X Pro Bullet Plus Camera
                   </h2>
                   <p>Experience the All-round and Powerful Functions</p>
@@ -59,13 +59,10 @@ const Productcards = () => {
                     <li>4X/12X Optical Zoom</li>
                     <li>90fps</li>
                     <li>140dB Super WDR</li>
-                     <li>4X/12X Optical Zoom</li>
-                    <li>90fps</li>
-                    <li>140dB Super WDR</li>
                   </ul>
-                    <div className="card-icon">
-                  <GoArrowRight className="arrow-icon"/>
-                </div>
+                  <div className="card-icon">
+                    <GoArrowRight className="arrow-icon"/>
+                  </div>
                 </div>
               </div>
             </div>

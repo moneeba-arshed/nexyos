@@ -466,9 +466,8 @@ const Solution = () => {
             {functionCards
               .filter(card => activeCategory === "All" || card.category.includes(activeCategory))
               .map(card => (
-                <div className=''>
+                <div key={card.id} className=''>
                   <div
-                    key={card.id}
                     className="flex flex-col items-center bg-white rounded-xl py-28 shadow-[2px_6px_10px_0px_rgba(0,_0,_0,_0.1)] hover:shadow-[11px_13px_10px_0px_rgba(0,_0,_0,_0.1)]"
                   >
                     <img

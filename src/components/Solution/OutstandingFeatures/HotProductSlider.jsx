@@ -134,8 +134,8 @@ export default function HotProductSlider() {
          <h2 className="text-4xl font-bold mb-28 "  data-aos="fade-right">
               Hot Products
             </h2>
-           {products.map((item) => (
- <div className="flex items-center justify-between bg-white rounded-xl p-12 transition mb-8 mx-20 " >
+           {products.map((item, index) => (
+ <div key={index} className="flex items-center justify-between bg-white rounded-xl p-12 transition mb-8 mx-20 " >
   <div className="flex items-center justify-start"> <img src={item.soloImage} alt={item.title} className="object-contain me-10" style={{width:'78px',height:'78px'}}/><p className="text-gray-800 font-medium text-left">{item.title}</p></div>
   <div>  <GoArrowRight  className="text-gray-400" /></div> 
     </div> ))}

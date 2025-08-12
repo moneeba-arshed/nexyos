@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import { FaDownload } from "react-icons/fa";
 import CCTVSurveillanceCameras from "../assets/images/nexyos/CCTVSurveillanceCameras.jpg";
 import miniCAmeraGroup from "../assets/images/nexyos/miniCAmeraGroup.png";
@@ -11,6 +11,8 @@ import sidecamera1 from "../assets/images/nexyos/sidecamera1.png";
 import HotProductSlider from "./Solution/OutstandingFeatures/HotProductSlider";
 import Contact from "./Contact";
 import axios from "axios";
+import AOS from "aos";
+import "aos/dist/aos.css";
 
 const specsData = {
   Camera: [
@@ -105,6 +107,7 @@ Diagonal field of view: 61.5° to 4.6° (wide-tele)` },
 const tabs = ["Camera", "Lens", "Illuminator", "PTZ", "Video", "Audio", "Network", "Image", "Interface"];
 
 const ProductDetail = () => {
+  const navigate = useNavigate();
   const tabs = ["Camera", "Lens", "Illuminator", "PTZ", "Video", "Audio", "Network", "Image", "Interface", "Event"];
   
   const product = {
@@ -146,6 +149,49 @@ const ProductDetail = () => {
   const containerRef = useRef();
   const [currentTab, setCurrentTab] = useState("Camera");
   const [isFixed, setIsFixed] = useState(false);
+  const [currentPage, setCurrentPage] = useState(1);
+  const [searchTerm, setSearchTerm] = useState("");
+  const [selectedDocumentType, setSelectedDocumentType] = useState("All");
+  const [selectedLanguage, setSelectedLanguage] = useState("All");
+
+  // Sample document data
+  const documents = [
+    { id: 1, title: "Sarix Value 2 Series Firmware Release Notes v2.0.0.26", date: "8/4/2025", type: "Firmware", language: "English" },
+    { id: 2, title: "Silent Sentinel Aeron Arm Plate Installation Manual - English", date: "8/1/2025", type: "Manual", language: "English" },
+    { id: 3, title: "Silent Sentinel Aeron, Oculus, and Osiris OSD User Manual - English", date: "8/1/2025", type: "Manual", language: "English" },
+    { id: 4, title: "Silent Sentinel Aeron Wiper Accessory Installation Manual - English", date: "8/1/2025", type: "Manual", language: "English" },
+    { id: 5, title: "Silent Sentinel Aeron Camera Maintenance Manual - English", date: "8/1/2025", type: "Manual", language: "English" },
+    { id: 6, title: "Silent Sentinel Aeron Camera Installation Manual - English", date: "8/1/2025", type: "Manual", language: "English" },
+    { id: 7, title: "Product Specification Sheet v1.2", date: "7/28/2025", type: "Specification", language: "English" },
+    { id: 8, title: "Quick Start Guide - French", date: "7/25/2025", type: "Guide", language: "French" },
+    { id: 9, title: "Technical Documentation - German", date: "7/20/2025", type: "Technical", language: "German" },
+    { id: 10, title: "User Manual - Spanish", date: "7/15/2025", type: "Manual", language: "Spanish" },
+    { id: 11, title: "Installation Guide - Chinese", date: "7/10/2025", type: "Guide", language: "Chinese" },
+    { id: 12, title: "Maintenance Schedule - Japanese", date: "7/5/2025", type: "Schedule", language: "Japanese" }
+  ];
+
+  const images = [
+    "/src/assets/images/nexyos/panaromic.png",
+    "/src/assets/images/nexyos/ProGROUPCAMERA.png",
+    "/src/assets/images/nexyos/PTZGROUPCAMERA.png",
+    "/src/assets/images/nexyos/miniCAmeraGroup.png",
+  ];
+
+  const accessoryImages = [
+    "/src/assets/images/nexyos/AudioVideo Door Phone System.jpg",
+    "/src/assets/images/nexyos/CCTVSurveillanceCameras.jpg",
+    "/src/assets/images/nexyos/Entrance Management Solutions (1).jpg",
+  ];
+
+  const specsRef = useRef(null);
+  const resourcesRef = useRef(null);
+
+  useEffect(() => {
+    AOS.init({
+      duration: 1000,
+      once: true,
+    });
+  }, []);
 
   const scrollTo = (ref) => {
     if (ref && ref.current) {
@@ -337,7 +383,7 @@ const ProductDetail = () => {
         root: containerRef.current,
         threshold: 0.6,
       }
-    );
+    )
 
     tabs.forEach((tab) => {
       if (sectionsRef.current[tab]) {
@@ -353,6 +399,84 @@ const ProductDetail = () => {
       });
     };
   }, []);
+
+  // Filter and search documents
+  const filteredDocuments = documents.filter(doc => {
+    const matchesSearch = doc.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
+                         doc.date.includes(searchTerm);
+    const matchesType = selectedDocumentType === "All" || doc.type === selectedDocumentType;
+    const matchesLanguage = selectedLanguage === "All" || doc.language === selectedLanguage;
+    
+    return matchesSearch && matchesType && matchesLanguage;
+  });
+
+  // Pagination logic
+  const documentsPerPage = 6;
+  const totalPages = Math.ceil(filteredDocuments.length / documentsPerPage);
+  const startIndex = (currentPage - 1) * documentsPerPage;
+  const endIndex = startIndex + documentsPerPage;
+  const currentDocuments = filteredDocuments.slice(startIndex, endIndex);
+
+  const goToPage = (page) => {
+    setCurrentPage(page);
+  };
+
+  const goToPrevious = () => {
+    if (currentPage > 1) {
+      setCurrentPage(currentPage - 1);
+    }
+  };
+
+  const goToNext = () => {
+    if (currentPage < totalPages) {
+      setCurrentPage(currentPage + 1);
+    }
+  };
+
+  // Get unique document types and languages for filters
+  const documentTypes = ["All", ...new Set(documents.map(doc => doc.type))];
+  const languages = ["All", ...new Set(documents.map(doc => doc.language))];
+
+  // Reset to first page when filters change
+  useEffect(() => {
+    setCurrentPage(1);
+  }, [searchTerm, selectedDocumentType, selectedLanguage]);
+
+  // Generate pagination numbers
+  const getPaginationNumbers = () => {
+    const numbers = [];
+    const maxVisible = 5;
+    
+    if (totalPages <= maxVisible) {
+      for (let i = 1; i <= totalPages; i++) {
+        numbers.push(i);
+      }
+    } else {
+      if (currentPage <= 3) {
+        for (let i = 1; i <= 4; i++) {
+          numbers.push(i);
+        }
+        numbers.push("...");
+        numbers.push(totalPages);
+      } else if (currentPage >= totalPages - 2) {
+        numbers.push(1);
+        numbers.push("...");
+        for (let i = totalPages - 3; i <= totalPages; i++) {
+          numbers.push(i);
+        }
+      } else {
+        numbers.push(1);
+        numbers.push("...");
+        for (let i = currentPage - 1; i <= currentPage + 1; i++) {
+          numbers.push(i);
+        }
+        numbers.push("...");
+        numbers.push(totalPages);
+      }
+    }
+    
+    return numbers;
+  };
 
   return (
     <>
@@ -427,17 +551,17 @@ const ProductDetail = () => {
               </ul>
               {/* Action Buttons */}
               <div className="action-buttons-row flex-1 flex flex-row gap-3 me-30">
-                <button className="half-btn primary-btn h-60">
-                  {" "}
-                  <a
-                    href="/downloads/datasheet.pdf"
-                    download
-                    className="primaryy-btn"
-                  >
-                    <span>Data Sheet</span>
-                  </a>
-                </button>
-                <button className="half-btn half-btn secondary-btn h-60 text-sm">
+                <a
+                  href="/downloads/datasheet.pdf"
+                  download
+                  className="half-btn primary-btn h-60 primaryy-btn"
+                >
+                  <span>Data Sheet</span>
+                </a>
+                <button 
+                  className="half-btn half-btn secondary-btn h-60 text-sm"
+                  onClick={() => navigate('/sales-inquiry')}
+                >
                   Sales Inquiry
                 </button>
               </div>
@@ -527,70 +651,126 @@ const ProductDetail = () => {
           <div></div>
         </div>
         <div ref={resourceRef}>
-          {/* Resources Section */}
-          <h3 className="center-heading " data-aos="fade-right">
+          {/* Document Library Section */}
+          <h3 className="center-heading" data-aos="fade-right">
             Resources
           </h3>
-          <div ref={resourceRef} className="spec-section">
-            <div className="resource-buttons">
-              <a
-                href="/downloads/datasheet.pdf"
-                download
-                className="download-btn"
-              >
-                <FaDownload className="icon" />
-                <span>Data Sheet</span>
-              </a>
-              <a href="/downloads/manual.pdf" download className="download-btn">
-                <FaDownload className="icon" />
-                <span>User Manual</span>
-              </a>
-              <a
-                href="/downloads/firmware.pdf"
-                download
-                className="download-btn"
-              >
-                <FaDownload className="icon" />
-                <span>Firmware Guide</span>
-              </a>
-              <a
-                href="/downloads/quickstart.pdf"
-                download
-                className="download-btn"
-              >
-                <FaDownload className="icon" />
-                <span>Quick Start</span>
-              </a>
-              <a
-                href="/downloads/datasheet.pdf"
-                download
-                className="download-btn"
-              >
-                <FaDownload className="icon" />
-                <span>Data Sheet</span>
-              </a>
-              <a href="/downloads/manual.pdf" download className="download-btn">
-                <FaDownload className="icon" />
-                <span>User Manual</span>
-              </a>
-              <a
-                href="/downloads/firmware.pdf"
-                download
-                className="download-btn"
-              >
-                <FaDownload className="icon" />
-                <span>Firmware Guide</span>
-              </a>
-              <a
-                href="/downloads/quickstart.pdf"
-                download
-                className="download-btn"
-              >
-                <FaDownload className="icon" />
-                <span>Quick Start</span>
-              </a>
+          <div ref={resourceRef} className="document-library-section">
+            {/* Search and Filters */}
+            <div className="search-filters-container">
+              <div className="search-container">
+                <div className="search-input-wrapper">
+                 
+                  <input 
+                    type="text" 
+                    placeholder="Search" 
+                    className="search-input"
+                    value={searchTerm}
+                    onChange={(e) => setSearchTerm(e.target.value)}
+                  />
+                </div>
+              </div>
+              
+              <div className="filters-container">
+                <div className="filter-group">
+                  <label className="filter-label">Document Type</label>
+                  <select className="filter-dropdown" value={selectedDocumentType} onChange={(e) => setSelectedDocumentType(e.target.value)}>
+                    {documentTypes.map((type) => (
+                      <option key={type} value={type}>
+                        {type}
+                      </option>
+                    ))}
+                  </select>
+                </div>
+                
+                <div className="filter-group">
+                  <label className="filter-label">Language</label>
+                  <select className="filter-dropdown" value={selectedLanguage} onChange={(e) => setSelectedLanguage(e.target.value)}>
+                    {languages.map((lang) => (
+                      <option key={lang} value={lang}>
+                        {lang}
+                      </option>
+                    ))}
+                  </select>
+                </div>
+              </div>
             </div>
-            <hr />
+
+            {/* Document List */}
+            <div className="document-list">
+              <div className="document-column">
+                {currentDocuments.slice(0, Math.ceil(currentDocuments.length / 2)).map((doc) => (
+                  <div key={doc.id} className="document-item">
+                    <div className="document-info">
+                      <span className="document-date">{doc.date}</span>
+                      <span className="document-title">{doc.title}</span>
+                    </div>
+                    <div className="download-button">
+                      <svg className="download-icon" fill="currentColor" viewBox="0 0 20 20">
+                        <path fillRule="evenodd" d="M3 17a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm3.293-7.707a1 1 0 011.414 0L9 10.586V3a1 1 0 112 0v7.586l1.293-1.293a1 1 0 111.414 1.414l-3 3a1 1 0 01-1.414 0l-3-3a1 1 0 010-1.414z" clipRule="evenodd" />
+                      </svg>
+                    </div>
+                  </div>
+                ))}
+              </div>
+              
+              <div className="document-column">
+                {currentDocuments.slice(Math.ceil(currentDocuments.length / 2)).map((doc) => (
+                  <div key={doc.id} className="document-item">
+                    <div className="document-info">
+                      <span className="document-date">{doc.date}</span>
+                      <span className="document-title">{doc.title}</span>
+                    </div>
+                    <div className="download-button">
+                      <svg className="download-icon" fill="currentColor" viewBox="0 0 20 20">
+                        <path fillRule="evenodd" d="M3 17a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm3.293-7.707a1 1 0 011.414 0L9 10.586V3a1 1 0 112 0v7.586l1.293-1.293a1 1 0 111.414 1.414l-3 3a1 1 0 01-1.414 0l-3-3a1 1 0 010-1.414z" clipRule="evenodd" />
+                      </svg>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* Pagination */}
+            <div className="pagination-container">
+              <button 
+                className="pagination-btn prev-btn" 
+                onClick={goToPrevious} 
+                disabled={currentPage === 1}
+              >
+                Prev
+              </button>
+              <div className="pagination-numbers">
+                {getPaginationNumbers().map((num, index) => (
+                  num === "..." ? (
+                    <span key={index} className="pagination-ellipsis">...</span>
+                  ) : (
+                    <button
+                      key={index}
+                      className={`pagination-number ${num === currentPage ? 'active' : ''}`}
+                      onClick={() => typeof num === 'number' && goToPage(num)}
+                      disabled={typeof num !== 'number'}
+                    >
+                      {num}
+                    </button>
+                  )
+                ))}
+              </div>
+              <button 
+                className="pagination-btn next-btn" 
+                onClick={goToNext} 
+                disabled={currentPage === totalPages}
+              >
+                Next
+              </button>
+            </div>
+            
+            {/* Scroll to Top Button */}
+            <button className="scroll-to-top-btn" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>
+              <svg className="scroll-to-top-icon" fill="currentColor" viewBox="0 0 20 20">
+                <path fillRule="evenodd" d="M3.293 9.707a1 1 0 010-1.414l6-6a1 1 0 011.414 0l6 6a1 1 0 01-1.414 1.414L11 5.414V17a1 1 0 11-2 0V5.414L4.707 9.707a1 1 0 01-1.414 0z" clipRule="evenodd" />
+              </svg>
+            </button>
           </div>
         </div>
         <div ref={accessoryRef}>

@@ -32,11 +32,13 @@ import BlogDetailPage from "./components/Blog/BlogDetailPage";
 import NewsPage from "./pages/Company/News";
 import ProductPage from "./components/ProductPage";
 import ProductDetail from "./components/ProductDetail";
+import SalesInquiry from "./components/SalesInquiry";
 import Login from "./pages/Login";
 import Signup from "./pages/Signup";
 import Categorycall from "./components/Categorycall";
 import ProCamera from "./components/ProCamera";
 import Solution from "./pages/Solution/index";
+
 import SubCategoryPage from "./components/SubCategoryPage";
 import SpaceOccupancy from "./pages/Solution/SpaceOccupancy";
 
@@ -79,12 +81,14 @@ useEffect(() => {
         <Route path="/signup" element={<Signup />} />
         <Route path="/products/:id" element={<ProductDetail />} />
         <Route path="/products" element={<ProductPage />} />
+        <Route path="/sales-inquiry" element={<SalesInquiry />} />
         <Route path="/category/:categoryName" element={<Categorycall />} />
          <Route path="/sub-category/:id" element={<SubCategoryPage />} />
         <Route path="/product/" element={<ProCamera/>} />
-        <Route path="/slider" element={<Slider />} />
-        <Route path="/solution" element={<Solution/>} />
-        <Route path="/success" element={<SuccessStories />} />
+                 <Route path="/slider" element={<Slider />} />
+         <Route path="/solution" element={<Solution/>} />
+      
+         <Route path="/success" element={<SuccessStories />} />
         <Route path="/contact" element={<ContactPage />} />
         <Route path="/channel" element={<ChannelPage />} />
         <Route path="/Solution/SpaceOccupancy" element={<SpaceOccupancy/>} />
