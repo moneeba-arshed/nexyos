@@ -38,11 +38,22 @@ import Signup from "./pages/Signup";
 import Categorycall from "./components/Categorycall";
 import ProCamera from "./components/ProCamera";
 import Solution from "./pages/Solution/index";
-
 import SubCategoryPage from "./components/SubCategoryPage";
 import SmartSpaces from "./pages/Solution/SmartSpaces";
 import Hotel from "./pages/Solution/Hotel";
 import Video_Surveillance from "./pages/Solution/Video_Surveillance";
+import CitySurveillance from "./pages/Solution/CitySurveillance";
+import Healthcare from "./pages/Solution/Healthcare";
+import RetailSecurity from "./pages/Solution/RetailSecurity";
+import Smart_Restroom from "./pages/Solution/Smart_Restroom";
+import SmartApartment from "./pages/Solution/SmartApartment";
+import DisplayControl from "./pages/Solution/DisplayControl";
+import SmartParking from "./pages/Solution/SmartParking";
+import Intelligent_Traffic_Solution from "./pages/Solution/Intelligent_Traffic_Solution";
+import Manufacturing from "./pages/Solution/Manufacturing";
+import Education from "./pages/Solution/Education";
+import Indoor_Air_Quality from "./pages/Solution/Indoor_Air_Quality";
+import EnergyEfficiency from "./pages/Solution/EnergyEfficiency";
 
 function App() {
   const location = useLocation();
@@ -92,6 +103,18 @@ useEffect(() => {
         <Route path="/solution" element={<Solution/>} />
         <Route path="/Solution/SmartSpaces" element={<SmartSpaces/>} />
         <Route path="/Solution/Video_Surveillance" element={<Video_Surveillance/>} />
+        <Route path="/Solution/CitySurveillance" element={<CitySurveillance/>} />
+        <Route path="/Solution/healthcare" element={<Healthcare/>} />
+        <Route path="/Solution/retail-security" element={<RetailSecurity/>} />
+        <Route path="/Solution/SmartRoom" element={<Smart_Restroom/>} />
+        <Route path="/Solution/smart-apartment" element={<SmartApartment/>} />
+        <Route path="/Solution/display-control" element={<DisplayControl/>} />
+        <Route path="/Solution/smart-parking" element={<SmartParking/>} />
+        <Route path="/Solution/TrafficSolution" element={<Intelligent_Traffic_Solution/>} />
+        <Route path="/Solution/manufacturing" element={<Manufacturing/>} />
+        <Route path="/Solution/education" element={<Education/>} />
+        <Route path="/Solution/AirQuality" element={<Indoor_Air_Quality/>} />
+        <Route path="/Solution/energy-efficiency" element={<EnergyEfficiency/>} />
         <Route path="/success" element={<SuccessStories />} />
         <Route path="/contact" element={<ContactPage />} />
         <Route path="/channel" element={<ChannelPage />} />

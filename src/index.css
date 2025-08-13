@@ -3,6 +3,7 @@
 /* tailwind css v4.x */
 @import "tailwindcss";
 @import "tailwindcss-animated";
+
 :root {
   font-family: Quicksand, sans-serif;
   line-height: 1.5;
