@@ -38,6 +38,7 @@ import Signup from "./pages/Signup";
 import Categorycall from "./components/Categorycall";
 import ProCamera from "./components/ProCamera";
 import Solution from "./pages/Solution/index";
+import SollPage from "./components/SollPage";
 
 import SubCategoryPage from "./components/SubCategoryPage";
 import SmartSpaces from "./pages/Solution/SmartSpaces";
@@ -105,6 +106,7 @@ useEffect(() => {
         <Route path="/blog/:id" element={<BlogDetailPage />} />
         <Route path="/News" element={<NewsPage />} />
         <Route path="/demo" element={<DemoPage />} />
+        <Route path="/soll" element={<SollPage />} />
       </Routes>
 
       {/* Conditionally show Footer */}

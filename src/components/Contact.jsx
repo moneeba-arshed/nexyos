@@ -5,6 +5,7 @@ import { FiPhoneCall } from "react-icons/fi";
 import { PiEnvelopeFill } from "react-icons/pi";
 import { FaLocationDot } from "react-icons/fa6";
 import { HiClock } from "react-icons/hi2";
+import ContactPage from "./ContactPage";
 
 const Contact = () => {
   const captchaStyle = {
@@ -115,7 +116,9 @@ const handleSubmit = async (e) => {
 
 
   return (
-    <section className="contact py-80 mx-40">
+    <>
+    <ContactPage/>
+        <section className="contact py-80 mx-40">
       <div className="container container-lg">
         <div className="row gy-5">
           <div className="col-lg-8">
@@ -380,7 +383,8 @@ const handleSubmit = async (e) => {
           </div>
         </div>
       </div>
-    </section>
+    </section></>
+
   );
 };
 
