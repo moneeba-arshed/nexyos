@@ -6,7 +6,7 @@ import Contact from "../../components/Contact";
 const ChannelPage = () => {
   return (
     <>
-      <Banner />
+   <Banner/>
       <ChannelPartners />
       <Contact />
     </>

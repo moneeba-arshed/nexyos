@@ -143,7 +143,7 @@ const Header = () => {
 
     const [menuData, setMenuData] = useState([
       { title: "Home", path: "/", icon: IoHomeOutline },
-      { title: "Product", path: "", icon: AiOutlineProduct },
+      { title: "Product", path: "/all-products", icon: AiOutlineProduct },
       {
         title: "Solutions",
         path: "/solution",
@@ -490,7 +490,7 @@ const Header = () => {
                           Home
                         </Link>
                       </li>
-                      <li className="on-hover-item nav-menu__item has-megamenu has-submenu">
+                      <li className="on-hover-item nav-menu__item has-megamenu has-submenu"  style={{ textAlign: 'left' }}>
                         <Link to="/" className="nav-menu__link">
                           <Mega />
                         </Link>
@@ -499,7 +499,7 @@ const Header = () => {
                         <Link to="/solution" className="nav-menu__link">
                           Solutions
                         </Link>
-                        <div className="on-hover-dropdown common-dropdown nav-megamenu" style={{ textAlign: 'left' }}>
+                        <div className="on-hover-dropdown common-dropdown nav-megamenu" style={{ textAlign: 'left', zIndex: 1000 }}>
                           <div className="grid grid-cols-3 gap-6 p-6">
                             {/* Column 1 - Security & Surveillance */}
                             <div>
@@ -653,7 +653,7 @@ const Header = () => {
                          <Link to="#" className="nav-menu__link">
                            Company
                          </Link>
-                         <div className="on-hover-dropdown common-dropdown nav-megamenu">
+                         <div className="on-hover-dropdown common-dropdown nav-megamenu" style={{ textAlign: 'left', zIndex: 1000 }}>
                            <div className="grid grid-cols-2 gap-6 p-6">
                              {/* Column 1 - Corporate Info */}
                              <div>
@@ -715,7 +715,7 @@ const Header = () => {
                          <Link to="#" className="nav-menu__link">
                            Partner
                          </Link>
-                         <div className="on-hover-dropdown common-dropdown nav-megamenu">
+                         <div className="on-hover-dropdown common-dropdown nav-megamenu" style={{ textAlign: 'left', zIndex: 1000 }}>
                            <div className="grid grid-cols-2 gap-6 p-6">
                              {/* Column 1 - Nexyos Partner Ecosystem */}
                              <div>

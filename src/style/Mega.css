@@ -99,9 +99,45 @@ img {
 
 /* COLUMNS */
 .nav-column {
+  flex: 1;
   padding: 20px;
-  text-align: left;
-  min-height: 300px;
+  border-right: 1px solid #eee;
+}
+
+.nav-column:last-child {
+  border-right: none;
+}
+
+/* View All Products Link */
+.mega-view-all {
+  margin-bottom: 15px;
+  padding-bottom: 15px;
+  border-bottom: 2px solid #00667c;
+}
+
+.view-all-link {
+  display: block;
+  padding: 12px 16px;
+  background: linear-gradient(135deg, #00667c, #0088a9);
+  color: white !important;
+  text-align: center;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 14px;
+  transition: all 0.3s ease;
+  text-decoration: none;
+}
+
+.view-all-link:hover {
+  background: linear-gradient(135deg, #005a6b, #007a94);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 102, 124, 0.3);
+}
+
+/* Categories List */
+.maga-categories {
+  padding: 8px 0;
+  transition: all 0.3s ease;
 }
 
 .categories {

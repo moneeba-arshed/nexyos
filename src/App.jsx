@@ -24,6 +24,10 @@ import ChannelPage from "./pages/Partner/ChannelPage";
 import PartnerProgram from "./pages/Partner/ChannelPartner";
 import ProjectRegistration from "./pages/Partner/ProjectRegistration";
 import Iot from "./pages/Partner/Iot";
+import DeveloperPartner from "./pages/Partner/DeveloperPartner";
+import TechnologyPartner from "./pages/Partner/TechnologyPartner";
+import CCTVPartner from "./pages/Partner/CCTVPartner";
+import BecomePartner from "./pages/Partner/BecomePartner";
 import About from "./pages/Company/About";
 import Brand from "./pages/Company/Brand";
 import Events from "./pages/Company/Events";
@@ -39,6 +43,7 @@ import Categorycall from "./components/Categorycall";
 import ProCamera from "./components/ProCamera";
 import Solution from "./pages/Solution/index";
 import SollPage from "./components/SollPage";
+import ProductsPage from "./pages/ProductsEnhanced";
 
 import SubCategoryPage from "./components/SubCategoryPage";
 import SmartSpaces from "./pages/Solution/SmartSpaces";
@@ -84,6 +89,7 @@ useEffect(() => {
         <Route path="/signup" element={<Signup />} />
         <Route path="/products/:id" element={<ProductDetail />} />
         <Route path="/products" element={<ProductPage />} />
+        <Route path="/all-products" element={<ProductsPage />} />
         <Route path="/sales-inquiry" element={<SalesInquiry />} />
         <Route path="/category/:categoryName" element={<Categorycall />} />
          <Route path="/sub-category/:id" element={<SubCategoryPage />} />
@@ -107,6 +113,10 @@ useEffect(() => {
         <Route path="/News" element={<NewsPage />} />
         <Route path="/demo" element={<DemoPage />} />
         <Route path="/soll" element={<SollPage />} />
+        <Route path="/developer-partner" element={<DeveloperPartner />} />
+        <Route path="/technology-partner" element={<TechnologyPartner />} />
+        <Route path="/cctv-partner" element={<CCTVPartner />} />
+        <Route path="/become-partner" element={<BecomePartner />} />
       </Routes>
 
       {/* Conditionally show Footer */}

@@ -53,46 +53,44 @@ const Category = () => {
         <div className=" on-hover-dropdown common-dropdown nav-megamenu">
           <div className="grid grid-cols-2 gap-6 p-6">
             <div>
-          {/* <button
-            type="button"
-            className="close-responsive-dropdown rounded-circle text-xl position-absolute inset-inline-end-0 inset-block-start-0 mt-4 me-8 d-lg-none d-flex"
-          >
-            <i className="ph ph-x" />
-          </button> */}
-
-          {/* <div className="logo px-16 d-lg-none d-block">
-            <Link to="/" className="link">
-              <img src="assets/images/logo/logo.png" alt="Logo" />
-            </Link>
-          </div> */}
-            {loading ? (
-              <div className="loader">Loading...</div>
-            ) : (
-              categories.map((item) => (
-                <li
-                  key={item.id}
-                  className="has-submenus-submenu position-relative"
-                  onMouseEnter={() => handleMouseEnter(item.id)}
-                  onMouseLeave={() => setHoveredCategory(null)}
+              {/* View All Products Link */}
+              <div className="mb-6 pb-4 border-b-2 border-blue-600">
+                <Link
+                  to="/all-products"
+                  className="block w-full bg-gradient-to-r from-blue-600 to-blue-700 text-white text-center py-3 px-4 rounded-lg font-semibold hover:from-blue-700 hover:to-blue-800 transition-all duration-300 transform hover:-translate-y-1 hover:shadow-lg"
                 >
-                  <Link
-                    to={`/parent-product-details/${item.id}/${item.category}`}
-                    className="text-gray-500 text-15 py-12 px-16 flex-align gap-8 rounded-0"
+                  View All Products
+                </Link>
+              </div>
+              
+              {loading ? (
+                <div className="loader">Loading...</div>
+              ) : (
+                categories.map((item) => (
+                  <li
+                    key={item.id}
+                    className="has-submenus-submenu position-relative"
+                    onMouseEnter={() => handleMouseEnter(item.id)}
+                    onMouseLeave={() => setHoveredCategory(null)}
                   >
-                    <span>{item.category}</span>
-                    {item.id === 10 && (
-                      <span className="icon text-md d-flex ms-auto">
-                        <RxCaretRight />
-                      </span>
-                    )}
-                  </Link>
+                    <Link
+                      to={`/parent-product-details/${item.id}/${item.category}`}
+                      className="text-gray-500 text-15 py-12 px-16 flex-align gap-8 rounded-0"
+                    >
+                      <span>{item.category}</span>
+                      {item.id === 10 && (
+                        <span className="icon text-md d-flex ms-auto">
+                          <RxCaretRight />
+                        </span>
+                      )}
+                    </Link>
 
-                  {/* Submenu for subcategories - positioned outside the parent dropdown */}
-                 
-                </li>
-              ))
-            )}
-          </div>
+                    {/* Submenu for subcategories - positioned outside the parent dropdown */}
+                   
+                  </li>
+                ))
+              )}
+            </div>
           </div>
         </div>
       </>

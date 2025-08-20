@@ -1,7 +1,9 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import '../style/Banner.css'
-const Banner = (  {
+import { useEffect } from "react";
+
+const  Banner = (  {
     title,
   description,  
   backgroundImage,

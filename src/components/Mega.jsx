@@ -85,13 +85,18 @@ const Mega = () => {
     <div id="menu-wrapper">
       <ul className="mega-menu">
         <li className="mega-menu-item">
-          <Link className="title-Product" to="#">
+          <Link className="title-Product" to="/all-products">
             Product
           </Link>
 
           <div className="mega-dropdown" onMouseLeave={handleMouseLeave}>
             <div className="nav-column categories">
               <ul>
+                <li className="mega-view-all">
+                  <Link to="/all-products" className="view-all-link">
+                    View All Products
+                  </Link>
+                </li>
                 {loading ? (
                   <div className="loader">Loading...</div>
                 ) : categories.length > 0 ? (
