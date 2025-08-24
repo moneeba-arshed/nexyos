@@ -34,6 +34,9 @@ import Events from "./pages/Company/Events";
 import BlogPage from "./pages/Company/BlogPage";
 import BlogDetailPage from "./components/Blog/BlogDetailPage";
 import NewsPage from "./pages/Company/News";
+
+import Company from "./pages/Company/Company";
+import Partner from "./pages/Partner/Partner";
 import ProductPage from "./components/ProductPage";
 import ProductDetail from "./components/ProductDetail";
 import SalesInquiry from "./components/SalesInquiry";
@@ -43,8 +46,7 @@ import Categorycall from "./components/Categorycall";
 import ProCamera from "./components/ProCamera";
 import Solution from "./pages/Solution/index";
 import SollPage from "./components/SollPage";
-import ProductsPage from "./pages/ProductsEnhanced";
-
+import ProductsPage from "./pages/ProductsEnhanced"; 
 import SubCategoryPage from "./components/SubCategoryPage";
 import SmartSpaces from "./pages/Solution/SmartSpaces";
 import Hotel from "./pages/Solution/Hotel";
@@ -117,6 +119,9 @@ function App() {
         <Route path="/technology-partner" element={<TechnologyPartner />} />
         <Route path="/cctv-partner" element={<CCTVPartner />} />
         <Route path="/become-partner" element={<BecomePartner />} />
+   
+        <Route path="/company" element={<Company />} />
+        <Route path="/partner" element={<Partner />} />
       </Routes>
 
       {/* Conditionally show Footer */}

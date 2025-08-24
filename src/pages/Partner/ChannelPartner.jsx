@@ -1,7 +1,7 @@
 // PartnerProgram.js
 import React, { useState } from "react";
 import styles from "../../style/PartnerProgram.module.css";
-import Banner from "../../components/Banner";
+import BannerModal from "../../components/Company/BannerModal";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Autoplay } from "swiper/modules";
 import "swiper/css";
@@ -78,7 +78,10 @@ const PartnerProgram = () => {
 
   return (
     <>
-      <Banner />
+      <BannerModal 
+        title="Nexyos Partner Program"
+        description="Join our comprehensive partner program designed to support profitable growth with sales, marketing, and technical expertise."
+      />
 
       {/* Partner Program Section */}
       <div className={`${styles.programSection} container`}>

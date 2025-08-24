@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import "../../style/pagecss.css";
 
-const BannerBrand = () => {
+const BannerBrand = ({ title, description }) => {
   const bannerImage =
     "https://www.milesight.com/static/pc/en/partner/find-channel-partner/cp-list-channel-partners-pc-first-pic.png";
 
@@ -23,11 +23,10 @@ const BannerBrand = () => {
       <div className="container">
         <div className="banner-item-two__content text-white">
           <h2 className="banner-item-two__title bounce text-white"  data-aos="fade-right">
-            We Are Nexyos, We Make Sensing Matter
+            {title || "We Are Nexyos, We Make Sensing Matter"}
           </h2>
           <p className="mt-4">
-            From sensing to connecting, to processing, to acting, and to the
-            power that transforms the world.
+            {description || "From sensing to connecting, to processing, to acting, and to the power that transforms the world."}
           </p>
         </div>
       </div>
