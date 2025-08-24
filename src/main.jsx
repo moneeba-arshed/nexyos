@@ -87,7 +87,7 @@ import '../src/style/detailpage.css';
 import '../src/style/Hot.css';
 import '../src/style/page.css';
 import '../src/style/pagecss.css';
-import '../src/style/ProductsPage.css';
+// import '../src/style/ProductsPage.css';
 import '../src/style/ProjectRegistration.module.css';
 import '../src/style/SearchBar.module.css';
 import '../src/style/Slider.module.css';

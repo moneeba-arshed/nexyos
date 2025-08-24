@@ -1,8 +1,10 @@
+
 import { useLocation, useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import miniCAmeraGroup from "../assets/images/nexyos/miniCAmeraGroup.png";
-import '../style/SubCategoryPage.css'
+// import '../style/SubCategoryPage.css'
+
 const CategoryPage = () => {
   const location = useLocation();
   const navigate = useNavigate();
@@ -12,7 +14,6 @@ const CategoryPage = () => {
   const [current, setCurrent] = useState(0);
   const [loading, setLoading] = useState(true);
   const [currentPage, setCurrentPage] = useState(0);
-
 
   const nextSubCategory = () => {
     setCurrent((prev) => (prev + 1) % subCategories.length);
@@ -40,81 +41,73 @@ const CategoryPage = () => {
     }
   }, [categoryId]);
 
-
   const handleNavigate = (item) => {
     navigate(`/sub-category/${item.id}`, { state: { subCategory: item } });
   };
 
   return (
     <>
-      <div className="custom-padding mb-20 mt-64" >
-        <h5 className="text-base"  data-aos="fade-right">What we offer</h5>
-        <p className=" text-justify">
-          It has survived not only five centuries, but also the leap into
-          electronic typesetting, remaining essentially unchanged. It was
-          popularised in the 1960s with the release of Letraset sheets
-          containing Lorem Ipsum passages, and more recently with desktop
-          publishing .
-        
-          It has survived not only five centuries, but also the leap into
-          electronic typesetting, remaining essentially unchanged. It was
-          popularised in the 1960s with the release of Letraset sheets
-          containing Lorem Ipsum passages, and more recently with desktop
-          publishing
-        </p>
-      </div>
+<div className="custom-padding text-center" style={{ marginTop: '5rem', marginBottom: '3rem' }}>
+
+
+<h5 className="text-base text-center"  data-aos="fade-right">What we offer</h5>
+<p className="text-center max-w-4xl mx-auto">
+  It has survived not only five centuries, but also the leap into
+  electronic typesetting, remaining essentially unchanged. It was
+  popularised in the 1960s with the release of Letraset sheets
+  containing Lorem Ipsum passages, and more recently with desktop
+  publishing.
+
+  It has survived not only five centuries, but also the leap into
+  electronic typesetting, remaining essentially unchanged. It was
+  popularised in the 1960s with the release of Letraset sheets
+  containing Lorem Ipsum passages, and more recently with desktop
+  publishing
+</p>
+</div>
 
       <div className="wrapper">
-        <h1 className="title"  data-aos="fade-right">Product Category</h1>
+        <h1 className="title" data-aos="fade-right">Product Category</h1>
 
         <section className="Feature_container bg-gray-100 rounded-lg pb-28 flex flex-col items-center justify-center">
           <div className="py-6 px-20 mt-16">
-            <h2 className="text-2xl font-semibold text-center my-24"  data-aos="fade-right">
+            <h2 className="text-2xl font-semibold text-center my-12" data-aos="fade-right">
               Diverse Range of Sub-Categories and Lenses
             </h2>
 
             <div className="flex flex-col lg:flex-row gap-12 items-center justify-center max-w-5xl mx-auto w-full">
-
-
               {/* Lenses Section */}
               <div className="w-full lg:w-[350px] rounded-xl flex flex-col justify-center items-center relative">
-
-
                 <img
                   src="https://www.milesight.com/static/pc/en/page/technology/solution/anpr-solution/index-new/outstanding-features-lenses.jpg?t=1751621798627"
                   alt="Lenses"
                   className="rounded-lg mb-4 w-full h-auto object-cover"
                 />
-
                 <div className="lensesContent text-left px-2 absolute bottom-8 text-white">
-                  <h3 className="text-xl font-semibold"  data-aos="fade-right">Lenses</h3>
+                  <h3 className="text-xl font-semibold" data-aos="fade-right">Lenses</h3>
                   <p className="text-sm">
                     4X/5X/12X/36X Optical AF Lens <br />
                     Motorized 2.7~13.5mm / 3.6~10mm @F1.4
                   </p>
                 </div>
               </div>
-              {/* Sub-Categories Section with Fixed Height */}
-              <div className="w-[800px] h-[340px] bg-white py-20 px-60 rounded-xl hidden lg:flex flex-col justify-between">
 
-
-                <h6 className="text-left"  data-aos="fade-right">Sub-Categories : </h6>
+              {/* Sub-Categories Section (auto height) */}
+              <div className="w-[800px] bg-white py-10 px-12 rounded-xl hidden lg:flex flex-col">
+                <h6 className="text-left mb-4" data-aos="fade-right">Sub-Categories :</h6>
                 {loading ? (
                   <p>Loading sub-categories...</p>
                 ) : subCategories.length === 0 ? (
                   <p>No sub-categories found.</p>
                 ) : (
                   <>
-                    <div className="grid grid-cols-1 md:grid-cols-4  flex-grow">
-
+                    <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
                       {Array.from({ length: 8 }).map((_, index) => {
-
                         const item = subCategories[currentPage * 8 + index];
                         return item ? (
-
                           <div
                             key={item.id}
-                            className="card "
+                            className="card"
                             onClick={() => handleNavigate(item)}
                           >
                             <img
@@ -122,23 +115,18 @@ const CategoryPage = () => {
                               alt={item.category}
                               className="card-img"
                             />
-                            <h2 className="card-title"  data-aos="fade-right">
+                            <h2 className="card-title" data-aos="fade-right">
                               {item.sub_category}
                               <ChevronRight className="arrow-icon" />
                             </h2>
-
                           </div>
-
-
                         ) : (
                           <div
                             key={`empty-${index}`}
                             className="card opacity-0 pointer-events-none"
                           ></div>
-
                         );
                       })}
-
                     </div>
 
                     {/* Carousel Dots */}
@@ -151,12 +139,9 @@ const CategoryPage = () => {
                         ></span>
                       ))}
                     </div>
-
                   </>
                 )}
               </div>
-
-
 
               {/* Mobile Carousel */}
               <div className="block lg:hidden">
@@ -207,135 +192,85 @@ const CategoryPage = () => {
 
         {/* Inline Styles */}
         <style>{`
-
 .carousel-dot {
   width: 10px;
   height: 10px;
   border-radius: 9999px;
-  background-color: #d1d5db; /* gray-300 */
+  background-color: #d1d5db;
   margin: 0 3px;
   transition: all 0.3s ease;
   cursor: pointer;
   display: inline-block;
 }
-
 .carousel-dot.active {
-  background-color: #01667D; /* your primary color */
+  background-color: #01667D;
   transform: scale(1.3);
 }
-
-
-
-          .wrapper {
-            background-color: white;
-            min-height: 100vh;
-            padding: 20px;
-          }
-
-          .title {
-            font-size: 28px;
-            text-align: center;
-            margin-bottom: 30px;
-            font-weight: bold;
-          }
-.card-title {
-  font-size: 14px;
-  font-weight: 600;
-  color: #111827;
-  display: flex;
-  align-items: center;
-  justify-content: end;
-  
+.wrapper {
+  background-color: white;
+  min-height: 100vh;
+  padding: 20px;
 }
-
-.arrow-icon {
-  width: 18px;
-  height: 18px;
-  color: #01667D;
-  flex-shrink: 0;
+.title {
+  font-size: 28px;
+  text-align: center;
+  margin-bottom: 30px;
+  font-weight: bold;
 }
-
-        .custom-grid {
-          display: flex;
-          flex-wrap: wrap;
-          justify-content: center;
-          gap: 20px;
-          max-width: 1200px;
-          margin: 0 auto;
-        }
-
-        .card {
-  width: 140px;
+  .card {
+  // width: 130px;
+  height: 130px;   /* ✅ Fixed height */
   background-color: #ffffff;
   border: 2px solid #01667D;
   text-align: center;
-  height: 120px;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
-  border-radius: 12px;
+  border-radius: 10px;
   cursor: pointer;
   box-shadow: 0 2px 6px rgba(0,0,0,0.1);
-  overflow: hidden;
-  padding: 5; /* ✅ this removes inner padding */
+ padding: 0px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 
-        .card:hover {
-          transform: translateY(-8px) scale(1.03);
-          box-shadow: 0 10px 20px rgba(0,0,0,0.2);
-          background-color: #f0f9ff;
-        }
-
-       
-        
-
-        .card:hover .card-img {
-  transform: scale(1.5); /* You can tweak this value */
+.card-img {
+  // height: 60px;       /* ✅ Increased image size */
+  width: auto;        /* Keep aspect ratio */
+  object-fit: contain;
+  // margin-bottom: 6px;
+  transition: transform 0.3s ease;
 }
 
-     .card-img {
-  width: 100%;
-  object-fit: cover;
-  border-radius: 8px;
-  transition: transform 0.4s ease-in-out;
-  margin: 0;    /* ✅ remove margin */
-  padding: 0;   /* ✅ remove padding */
+.card:hover .card-img {
+  transform: scale(1.15);  /* ✅ Smooth zoom on hover */
 }
 
 .card-title {
-  font-size: 11px;
+  font-size: 12px;
   font-weight: 600;
   color: #111827;
-  margin: 0;    /* ✅ remove margin */
-  padding: 0;   /* ✅ remove padding */
+  text-align: center;
   display: flex;
   align-items: center;
-  justify-content: end;
+  justify-content: center;
+  gap: 4px;
 }
 
-        /* Entry animation */
-        .fade-in {
-          opacity: 0;
-          transform: translateY(20px);
-          animation: fadeInUp 0.5s ease forwards;
-        }
-
-        @keyframes fadeInUp {
-          to {
-            opacity: 1;
-            transform: translateY(0);
-          }
-        }
-
-        @media (max-width: 768px) {
-          .custom-grid {
-            flex-direction: column;
-            align-items: center;
-          }
-
-          .card {
-            width: 90%;
-          }
-        }
-       
+.arrow-icon {
+  width: 12px;
+  height: 12px;
+  color: #01667D;
+}
+@media (max-width: 768px) {
+  .custom-grid {
+    flex-direction: column;
+    align-items: center;
+  }
+  .card {
+    width: 90%;
+  }
+}
         `}</style>
       </div>
     </>

@@ -5,7 +5,7 @@ import Products from "../components/Products";
 import Tab from "../components/Solution/TrafficTab/Tab";
 import miniCAmeraGroup from "../assets/images/nexyos/miniCAmeraGroup.png";
 import { ChevronRight, ChevronLeft, Star, Shield, Zap, Users, Globe, Award, CheckCircle } from "lucide-react";
-import "../style/ProductsPage.css";
+
 
 const ProductsEnhanced = () => {
   const [products, setProducts] = useState([]);

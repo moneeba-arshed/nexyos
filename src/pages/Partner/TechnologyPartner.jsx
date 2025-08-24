@@ -1,5 +1,5 @@
 // TechnologyPartner.jsx
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import styles from "../../style/PartnerProgram.module.css";
 import Banner from "../../components/Banner";
 import { Swiper, SwiperSlide } from "swiper/react";
@@ -11,6 +11,7 @@ import Contact from "../../components/Contact";
 
 const TechnologyPartner = () => {
   const [currentImage, setCurrentImage] = useState("default");
+  const [isVisible, setIsVisible] = useState(false);
 
   // Images data
   const images = {
@@ -100,44 +101,483 @@ const TechnologyPartner = () => {
     setCurrentImage(imageKey);
   };
 
+  // Animation effects
+  useEffect(() => {
+    setIsVisible(true);
+  }, []);
+
+  // In-page CSS styles with animations
+  const pageStyles = {
+    heroSection: {
+      background: 'linear-gradient(135deg, #0c0c0c 0%, #1a1a2e 25%, #16213e 50%, #0f3460 75%, #533483 100%)',
+      color: 'white',
+      padding: '80px 0',
+      position: 'relative',
+      overflow: 'hidden',
+      animation: 'fadeInUp 1.2s ease-out'
+    },
+    heroTitle: {
+      color: '#00d4ff',
+      fontSize: '3.5rem',
+      fontWeight: '700',
+      marginBottom: '1.5rem',
+      textShadow: '0 0 20px rgba(0, 212, 255, 0.5)',
+      background: 'linear-gradient(45deg, #00d4ff, #ff6b6b)',
+      WebkitBackgroundClip: 'text',
+      WebkitTextFillColor: 'transparent',
+      animation: 'slideInLeft 1.5s ease-out 0.3s both'
+    },
+    heroSubtitle: {
+      fontSize: '1.25rem',
+      lineHeight: '1.8',
+      marginBottom: '2.5rem',
+      color: '#e0e0e0',
+      animation: 'slideInLeft 1.5s ease-out 0.6s both'
+    },
+    terminal: {
+      backgroundColor: 'rgba(0, 0, 0, 0.9)',
+      border: '2px solid #00d4ff',
+      borderRadius: '12px',
+      padding: '1.5rem',
+      boxShadow: '0 0 30px rgba(0, 212, 255, 0.3)',
+      backdropFilter: 'blur(10px)',
+      animation: 'slideInRight 1.5s ease-out 0.3s both',
+      transition: 'all 0.3s ease'
+    },
+    terminalHeader: {
+      display: 'flex',
+      alignItems: 'center',
+      marginBottom: '1rem'
+    },
+    terminalDot: {
+      width: '12px',
+      height: '12px',
+      borderRadius: '50%',
+      marginRight: '0.5rem'
+    },
+    terminalText: {
+      color: '#00d4ff',
+      fontSize: '0.9rem',
+      margin: '0',
+      fontFamily: 'monospace'
+    },
+    liveBadge: {
+      backgroundColor: '#00d4ff',
+      color: '#000',
+      padding: '0.5rem 1rem',
+      borderRadius: '20px',
+      fontSize: '0.875rem',
+      fontWeight: '600',
+      animation: 'pulse 2s infinite'
+    },
+    primaryButton: {
+      backgroundColor: '#00d4ff',
+      borderColor: '#00d4ff',
+      color: '#000',
+      padding: '0.875rem 2rem',
+      fontSize: '1.1rem',
+      fontWeight: '600',
+      borderRadius: '8px',
+      transition: 'all 0.3s ease',
+      border: 'none',
+      animation: 'slideInUp 1s ease-out 0.9s both'
+    },
+    outlineButton: {
+      backgroundColor: 'transparent',
+      borderColor: '#00d4ff',
+      color: '#00d4ff',
+      padding: '0.875rem 2rem',
+      fontSize: '1.1rem',
+      fontWeight: '600',
+      borderRadius: '8px',
+      transition: 'all 0.3s ease',
+      border: '2px solid #00d4ff',
+      animation: 'slideInUp 1s ease-out 1.2s both'
+    },
+    section: {
+      padding: '80px 0',
+      backgroundColor: '#ffffff',
+      animation: 'fadeIn 1s ease-out'
+    },
+    sectionDark: {
+      padding: '80px 0',
+      backgroundColor: '#f8f9fa',
+      animation: 'fadeIn 1s ease-out'
+    },
+    sectionTitle: {
+      fontSize: '2.5rem',
+      fontWeight: '700',
+      color: '#0f3460',
+      marginBottom: '1rem',
+      textAlign: 'center',
+      animation: 'slideInDown 1s ease-out'
+    },
+    sectionSubtitle: {
+      fontSize: '1.1rem',
+      color: '#666',
+      textAlign: 'center',
+      maxWidth: '800px',
+      margin: '0 auto 3rem auto',
+      lineHeight: '1.7',
+      animation: 'slideInDown 1s ease-out 0.3s both'
+    },
+    card: {
+      backgroundColor: '#ffffff',
+      border: '3px solid transparent',
+      borderRadius: '20px',
+      padding: '2rem',
+      boxShadow: '0 10px 30px rgba(0, 0, 0, 0.1)',
+      height: '100%',
+      backgroundImage: 'linear-gradient(white, white), linear-gradient(45deg, #00d4ff, #ff6b6b, #4ecdc4)',
+      backgroundOrigin: 'border-box',
+      backgroundClip: 'content-box, border-box',
+      animation: 'slideInUp 1s ease-out 0.3s both'
+    },
+    cardTitle: {
+      fontSize: '1.75rem',
+      fontWeight: '600',
+      color: '#0f3460',
+      marginBottom: '1rem',
+      background: 'linear-gradient(45deg, #00d4ff, #ff6b6b)',
+      WebkitBackgroundClip: 'text',
+      WebkitTextFillColor: 'transparent'
+    },
+    cardText: {
+      fontSize: '1rem',
+      color: '#555',
+      lineHeight: '1.8',
+      marginBottom: '2rem'
+    },
+    statsContainer: {
+      display: 'flex',
+      justifyContent: 'space-around',
+      alignItems: 'center',
+      marginTop: '2rem'
+    },
+    statItem: {
+      textAlign: 'center',
+      animation: 'fadeInUp 1s ease-out 0.6s both'
+    },
+    statIcon: {
+      width: '50px',
+      height: '50px',
+      backgroundColor: '#00d4ff',
+      borderRadius: '50%',
+      display: 'flex',
+      alignItems: 'center',
+      justifyContent: 'center',
+      margin: '0 auto 0.5rem auto',
+      fontSize: '1.5rem',
+      color: '#ffffff',
+      transition: 'all 0.3s ease'
+    },
+    statNumber: {
+      fontSize: '1.5rem',
+      fontWeight: '700',
+      color: '#00d4ff',
+      marginBottom: '0.25rem'
+    },
+    statLabel: {
+      fontSize: '0.875rem',
+      color: '#666'
+    },
+    interactiveHeading: {
+      cursor: 'pointer',
+      padding: '1.5rem',
+      borderRadius: '15px',
+      border: '2px solid #e9ecef',
+      transition: 'all 0.3s ease',
+      backgroundColor: '#ffffff',
+      marginBottom: '1rem',
+      position: 'relative',
+      overflow: 'hidden',
+      animation: 'slideInLeft 1s ease-out'
+    },
+    headingHover: {
+      borderColor: '#00d4ff',
+      backgroundColor: '#f0f8ff',
+      transform: 'translateX(10px)',
+      boxShadow: '0 5px 20px rgba(0, 212, 255, 0.2)'
+    },
+    headingIcon: {
+      color: '#00d4ff',
+      marginRight: '0.75rem'
+    },
+    imageContainer: {
+      position: 'relative',
+      borderRadius: '16px',
+      overflow: 'hidden',
+      boxShadow: '0 8px 30px rgba(0, 0, 0, 0.15)',
+      animation: 'slideInRight 1s ease-out 0.3s both'
+    },
+    imageBadge: {
+      position: 'absolute',
+      top: '1rem',
+      left: '1rem',
+      backgroundColor: '#ff6b6b',
+      color: '#ffffff',
+      padding: '0.5rem 1rem',
+      borderRadius: '20px',
+      fontSize: '0.875rem',
+      fontWeight: '600'
+    },
+    playButton: {
+      position: 'absolute',
+      bottom: '1rem',
+      right: '1rem',
+      width: '50px',
+      height: '50px',
+      backgroundColor: '#000000',
+      borderRadius: '50%',
+      display: 'flex',
+      alignItems: 'center',
+      justifyContent: 'center',
+      color: '#ffffff',
+      fontSize: '1.25rem',
+      transition: 'all 0.3s ease'
+    },
+    darkSection: {
+      background: 'linear-gradient(135deg, #0f3460 0%, #16213e 50%, #533483 100%)',
+      color: 'white',
+      padding: '80px 0',
+      position: 'relative',
+      overflow: 'hidden',
+      animation: 'fadeIn 1s ease-out'
+    },
+    darkSectionTitle: {
+      color: '#00d4ff',
+      fontSize: '2.5rem',
+      fontWeight: '700',
+      marginBottom: '1rem',
+      textAlign: 'center',
+      animation: 'slideInDown 1s ease-out'
+    },
+    darkSectionSubtitle: {
+      color: '#e0e0e0',
+      textAlign: 'center',
+      maxWidth: '800px',
+      margin: '0 auto 3rem auto',
+      fontSize: '1.1rem',
+      lineHeight: '1.7',
+      animation: 'slideInDown 1s ease-out 0.3s both'
+    },
+    swiperContainer: {
+      padding: '2rem 0',
+      animation: 'fadeIn 1s ease-out 0.3s both'
+    },
+    swiperCard: {
+      backgroundColor: 'rgba(255, 255, 255, 0.1)',
+      backdropFilter: 'blur(15px)',
+      borderRadius: '20px',
+      padding: '2rem',
+      textAlign: 'center',
+      transition: 'all 0.4s ease',
+      position: 'relative',
+      overflow: 'hidden',
+      height: '100%'
+    },
+    swiperCardHover: {
+      transform: 'translateY(-15px) scale(1.02)',
+      boxShadow: '0 20px 40px rgba(0, 0, 0, 0.3)',
+      borderColor: '#fff'
+    },
+    swiperIcon: {
+      width: '80px',
+      height: '80px',
+      borderRadius: '50%',
+      display: 'flex',
+      alignItems: 'center',
+      justifyContent: 'center',
+      margin: '0 auto 1.5rem auto',
+      fontSize: '2rem',
+      color: '#ffffff',
+      boxShadow: '0 0 20px rgba(255, 255, 255, 0.3)',
+      transition: 'all 0.3s ease'
+    },
+    swiperTitle: {
+      fontSize: '1.25rem',
+      fontWeight: '600',
+      color: '#ffffff',
+      marginBottom: '0.75rem'
+    },
+    swiperDescription: {
+      fontSize: '0.9rem',
+      color: '#e0e0e0',
+      lineHeight: '1.5'
+    },
+    benefitsGrid: {
+      display: 'grid',
+      gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))',
+      gap: '2rem',
+      marginTop: '3rem'
+    },
+    benefitCard: {
+      backgroundColor: '#ffffff',
+      border: '2px solid #e9ecef',
+      borderRadius: '16px',
+      padding: '2rem',
+      textAlign: 'center',
+      transition: 'all 0.3s ease',
+      position: 'relative',
+      overflow: 'hidden',
+      height: '100%',
+      animation: 'fadeInUp 1s ease-out'
+    },
+    benefitCardHover: {
+      transform: 'translateY(-10px)',
+      boxShadow: '0 10px 30px rgba(0, 0, 0, 0.15)',
+      borderColor: '#00d4ff'
+    },
+    benefitIcon: {
+      fontSize: '3rem',
+      color: '#00d4ff',
+      marginBottom: '1rem',
+      transition: 'all 0.3s ease'
+    },
+    benefitTitle: {
+      fontSize: '1.25rem',
+      fontWeight: '600',
+      color: '#0f3460',
+      marginBottom: '0.75rem'
+    },
+    benefitText: {
+      fontSize: '0.95rem',
+      color: '#666',
+      lineHeight: '1.6'
+    },
+    navigationButton: {
+      backgroundColor: 'rgba(0, 212, 255, 0.2)',
+      border: '2px solid #00d4ff',
+      color: '#00d4ff',
+      width: '50px',
+      height: '50px',
+      borderRadius: '50%',
+      transition: 'all 0.3s ease',
+      display: 'flex',
+      alignItems: 'center',
+      justifyContent: 'center',
+      fontSize: '1.25rem'
+    },
+    navigationButtonHover: {
+      backgroundColor: 'rgba(0, 212, 255, 0.4)',
+      transform: 'scale(1.1)'
+    }
+  };
+
+  // CSS animations
+  const animations = `
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+    
+    @keyframes fadeInUp {
+      from { 
+        opacity: 0; 
+        transform: translateY(30px); 
+      }
+      to { 
+        opacity: 1; 
+        transform: translateY(0); 
+      }
+    }
+    
+    @keyframes slideInLeft {
+      from { 
+        opacity: 0; 
+        transform: translateX(-50px); 
+      }
+      to { 
+        opacity: 1; 
+        transform: translateX(0); 
+      }
+    }
+    
+    @keyframes slideInRight {
+      from { 
+        opacity: 0; 
+        transform: translateX(50px); 
+      }
+      to { 
+        opacity: 1; 
+        transform: translateX(0); 
+      }
+    }
+    
+    @keyframes slideInDown {
+      from { 
+        opacity: 0; 
+        transform: translateY(-30px); 
+      }
+      to { 
+        opacity: 1; 
+        transform: translateY(0); 
+      }
+    }
+    
+    @keyframes slideInUp {
+      from { 
+        opacity: 0; 
+        transform: translateY(30px); 
+      }
+      to { 
+        opacity: 1; 
+        transform: translateY(0); 
+      }
+    }
+    
+    @keyframes pulse {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.05); }
+      100% { transform: scale(1); }
+    }
+    
+    @keyframes bounce {
+      0%, 20%, 53%, 80%, 100% { transform: translate3d(0,0,0); }
+      40%, 43% { transform: translate3d(0,-30px,0); }
+      70% { transform: translate3d(0,-15px,0); }
+      90% { transform: translate3d(0,-4px,0); }
+    }
+    
+    .animate-on-scroll {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: all 0.8s ease-out;
+    }
+    
+    .animate-on-scroll.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    
+    .hover-lift {
+      transition: all 0.3s ease;
+    }
+    
+    .hover-lift:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+    }
+  `;
+
   return (
     <>
-      <Banner />
+      <style>{animations}</style>
+      {/* <Banner /> */}
 
-      {/* Hero Section with Futuristic Design */}
-      <div className="container-fluid py-5 position-relative" style={{ 
-        background: 'linear-gradient(135deg, #0c0c0c 0%, #1a1a2e 25%, #16213e 50%, #0f3460 75%, #533483 100%)',
-        color: 'white',
-        overflow: 'hidden'
-      }}>
-        {/* Animated Background Elements */}
-        <div className="position-absolute top-0 start-0 w-100 h-100" style={{ opacity: 0.1 }}>
-          <div className="position-absolute" style={{ top: '10%', left: '5%', width: '100px', height: '100px', border: '2px solid #00d4ff', transform: 'rotate(45deg)' }}></div>
-          <div className="position-absolute" style={{ top: '20%', right: '10%', width: '150px', height: '150px', border: '2px solid #ff6b6b', borderRadius: '50%' }}></div>
-          <div className="position-absolute" style={{ bottom: '15%', left: '15%', width: '80px', height: '80px', border: '2px solid #4ecdc4', transform: 'rotate(30deg)' }}></div>
-          <div className="position-absolute" style={{ bottom: '25%', right: '20%', width: '120px', height: '120px', border: '2px solid #feca57', transform: 'rotate(60deg)' }}></div>
-        </div>
-
-        <div className="container position-relative">
+      {/* Hero Section */}
+      <div style={pageStyles.heroSection}>
+        <div className="container">
           <div className="row align-items-center">
             <div className="col-lg-6">
-              <div className="position-relative">
-                <div className="bg-dark p-4 rounded" style={{ 
-                  border: '2px solid #00d4ff',
-                  boxShadow: '0 0 20px rgba(0, 212, 255, 0.3)',
-                  background: 'rgba(0, 0, 0, 0.8)',
-                  backdropFilter: 'blur(10px)'
-                }}>
-                  <div className="d-flex align-items-center mb-3">
-                    <div className="bg-success rounded-circle d-inline-flex align-items-center justify-content-center me-3" 
-                         style={{ width: '12px', height: '12px' }}></div>
-                    <div className="bg-warning rounded-circle d-inline-flex align-items-center justify-content-center me-3" 
-                         style={{ width: '12px', height: '12px' }}></div>
-                    <div className="bg-danger rounded-circle d-inline-flex align-items-center justify-content-center me-3" 
-                         style={{ width: '12px', height: '12px' }}></div>
-                    <span className="text-muted small">Technology Partner Terminal</span>
-                  </div>
-                  <pre className="text-success mb-0" style={{ fontSize: '0.9rem' }}>
+              <div style={pageStyles.terminal}>
+                <div style={pageStyles.terminalHeader}>
+                  <div style={{ ...pageStyles.terminalDot, backgroundColor: '#00ff00' }}></div>
+                  <div style={{ ...pageStyles.terminalDot, backgroundColor: '#ffff00' }}></div>
+                  <div style={{ ...pageStyles.terminalDot, backgroundColor: '#ff0000' }}></div>
+                  <span style={{ color: '#888', fontSize: '0.875rem', marginLeft: '0.5rem' }}>Technology Partner Terminal</span>
+                </div>
+                <pre style={pageStyles.terminalText}>
 {`> Nexyos Technology Partner Program
 > Initializing partnership protocols...
 > Status: READY
@@ -145,60 +585,26 @@ const TechnologyPartner = () => {
 > Connection: ESTABLISHED
 
 Welcome to the future of collaboration!`}
-                  </pre>
-                </div>
-                <div className="position-absolute top-0 end-0 mt-2 me-2">
-                  <span className="badge" style={{ backgroundColor: '#00d4ff', color: '#000' }}>Live</span>
+                </pre>
+                <div style={{ position: 'absolute', top: '1rem', right: '1rem' }}>
+                  <span style={pageStyles.liveBadge}>Live</span>
                 </div>
               </div>
             </div>
             <div className="col-lg-6">
-              <h1 className="display-4 fw-bold mb-4" style={{ 
-                color: '#00d4ff',
-                textShadow: '0 0 20px rgba(0, 212, 255, 0.5)',
-                background: 'linear-gradient(45deg, #00d4ff, #ff6b6b)',
-                WebkitBackgroundClip: 'text',
-                WebkitTextFillColor: 'transparent'
-              }}>
+              <h1 style={pageStyles.heroTitle}>
                 Technology Partner Program
               </h1>
-              <p className="lead mb-4" style={{ color: '#e0e0e0' }}>
+              <p style={pageStyles.heroSubtitle}>
                 Join forces with Nexyos to create the next generation of IoT and video surveillance 
                 technologies. Collaborate, innovate, and shape the future together.
               </p>
-              <div className="d-flex gap-3 flex-wrap">
-                <button className="btn btn-outline-light btn-lg" style={{ 
-                  borderColor: '#00d4ff',
-                  color: '#00d4ff',
-                  transition: 'all 0.3s ease'
-                }}
-                onMouseEnter={(e) => {
-                  e.target.style.backgroundColor = '#00d4ff';
-                  e.target.style.color = '#000';
-                  e.target.style.boxShadow = '0 0 20px rgba(0, 212, 255, 0.5)';
-                }}
-                onMouseLeave={(e) => {
-                  e.target.style.backgroundColor = 'transparent';
-                  e.target.style.color = '#00d4ff';
-                  e.target.style.boxShadow = 'none';
-                }}>
+              <div style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap' }}>
+                <button style={pageStyles.outlineButton}>
                   <i className="ph ph-rocket me-2"></i>
                   Explore Opportunities
                 </button>
-                <button className="btn btn-lg" style={{ 
-                  backgroundColor: '#ff6b6b',
-                  borderColor: '#ff6b6b',
-                  color: 'white',
-                  transition: 'all 0.3s ease'
-                }}
-                onMouseEnter={(e) => {
-                  e.target.style.transform = 'translateY(-2px)';
-                  e.target.style.boxShadow = '0 5px 20px rgba(255, 107, 107, 0.4)';
-                }}
-                onMouseLeave={(e) => {
-                  e.target.style.transform = 'translateY(0)';
-                  e.target.style.boxShadow = 'none';
-                }}>
+                <button style={pageStyles.primaryButton}>
                   <i className="ph ph-handshake me-2"></i>
                   Partner With Us
                 </button>
@@ -209,91 +615,57 @@ Welcome to the future of collaboration!`}
       </div>
 
       {/* Technology Partner Program Section */}
-      <div className={`${styles.programSection} container py-5`}>
-        <div className="row justify-content-center">
+      <div style={pageStyles.section}>
+        <div className="container">
+          <div className="row align-items-center">
           <div className="col-lg-5">
-            <div className="position-relative">
-              <img
-                src="https://www.milesight.com/static/pc/en/company/about-us/milesight-innovation.jpg?t=1746582955703"
-                alt="Nexyos Technology Partner"
-                className="img-fluid rounded shadow-lg"
-                style={{ filter: 'brightness(1.1) contrast(1.1)' }}
-              />
-              <div className="position-absolute top-0 start-0 m-3">
-                <span className="badge fs-6" style={{ 
-                  backgroundColor: '#ff6b6b',
-                  color: 'white',
-                  padding: '8px 16px',
-                  borderRadius: '20px'
-                }}>Tech Innovation Hub</span>
-              </div>
-              <div className="position-absolute bottom-0 end-0 m-3">
-                <div className="bg-dark rounded-circle d-inline-flex align-items-center justify-content-center" 
-                     style={{ width: '50px', height: '50px' }}>
-                  <i className="ph ph-play text-white"></i>
+              <div style={pageStyles.imageContainer}>
+            <img
+              src="https://www.milesight.com/static/pc/en/company/about-us/milesight-innovation.jpg?t=1746582955703"
+              alt="Nexyos Technology Partner"
+                  className="img-fluid"
+                  style={{ width: '100%', height: 'auto' }}
+            />
+                <div style={pageStyles.imageBadge}>Tech Innovation Hub</div>
+                <div style={pageStyles.playButton}>
+                  <i className="ph ph-play"></i>
                 </div>
               </div>
-            </div>
           </div>
           <div className="col-lg-7">
-            <div className={`${styles.programCard} p-4 p-md-5`} style={{ 
-              background: 'linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%)',
-              border: '3px solid transparent',
-              borderRadius: '20px',
-              backgroundImage: 'linear-gradient(white, white), linear-gradient(45deg, #00d4ff, #ff6b6b, #4ecdc4)',
-              backgroundOrigin: 'border-box',
-              backgroundClip: 'content-box, border-box',
-              boxShadow: '0 10px 30px rgba(0, 0, 0, 0.1)'
-            }}>
-              <div className="card-body">
-                <h3 className={`${styles.programSubtitle} mb-4`} data-aos="fade-right" style={{ 
-                  color: '#0f3460',
-                  background: 'linear-gradient(45deg, #00d4ff, #ff6b6b)',
-                  WebkitBackgroundClip: 'text',
-                  WebkitTextFillColor: 'transparent'
-                }}>
+              <div style={pageStyles.card}>
+                <h3 style={pageStyles.cardTitle}>
                   <i className="ph ph-lightbulb me-2"></i>
                   Technology Partner Program
                 </h3>
-                <p className={styles.programText} style={{ color: '#555', lineHeight: '1.8' }}>
+                <p style={pageStyles.cardText}>
                   The Nexyos Technology Partner Program brings together innovative technology 
                   companies to collaborate on cutting-edge solutions in IoT, AI, and video 
                   surveillance. Our technology partners benefit from joint development opportunities, 
                   shared intellectual property, and access to our global customer base while 
                   contributing their expertise to create next-generation solutions.
                 </p>
-                <div className="mt-4">
-                  <div className="row text-center">
-                    <div className="col-4">
-                      <div className="text-center">
-                        <div className="bg-primary rounded-circle d-inline-flex align-items-center justify-content-center mb-2" 
-                             style={{ width: '50px', height: '50px' }}>
-                          <i className="ph ph-lightbulb text-white" style={{ fontSize: '1.5rem' }}></i>
-                        </div>
-                        <div className="fw-bold" style={{ color: '#00d4ff' }}>50+</div>
-                        <small className="text-muted">Innovations</small>
-                      </div>
+                <div style={pageStyles.statsContainer}>
+                  <div style={pageStyles.statItem}>
+                    <div style={pageStyles.statIcon}>
+                      <i className="ph ph-lightbulb"></i>
                     </div>
-                    <div className="col-4">
-                      <div className="text-center">
-                        <div className="bg-primary rounded-circle d-inline-flex align-items-center justify-content-center mb-2" 
-                             style={{ width: '50px', height: '50px' }}>
-                          <i className="ph ph-globe text-white" style={{ fontSize: '1.5rem' }}></i>
-                        </div>
-                        <div className="fw-bold" style={{ color: '#ff6b6b' }}>25+</div>
-                        <small className="text-muted">Countries</small>
-                      </div>
+                    <div style={pageStyles.statNumber}>50+</div>
+                    <div style={pageStyles.statLabel}>Innovations</div>
+                  </div>
+                  <div style={pageStyles.statItem}>
+                    <div style={pageStyles.statIcon}>
+                      <i className="ph ph-globe"></i>
                     </div>
-                    <div className="col-4">
-                      <div className="text-center">
-                        <div className="bg-primary rounded-circle d-inline-flex align-items-center justify-content-center mb-2" 
-                             style={{ width: '50px', height: '50px' }}>
-                          <i className="ph ph-users text-white" style={{ fontSize: '1.5rem' }}></i>
-                        </div>
-                        <div className="fw-bold" style={{ color: '#4ecdc4' }}>100+</div>
-                        <small className="text-muted">Partners</small>
-                      </div>
+                    <div style={pageStyles.statNumber}>25+</div>
+                    <div style={pageStyles.statLabel}>Countries</div>
+                  </div>
+                  <div style={pageStyles.statItem}>
+                    <div style={pageStyles.statIcon}>
+                      <i className="ph ph-users"></i>
                     </div>
+                    <div style={pageStyles.statNumber}>100+</div>
+                    <div style={pageStyles.statLabel}>Partners</div>
                   </div>
                 </div>
               </div>
@@ -303,154 +675,85 @@ Welcome to the future of collaboration!`}
       </div>
 
       {/* Why Partner with Nexyos Section */}
-      <div className={`${styles.section} container-fluid py-5`} style={{ 
-        backgroundColor: '#f8f9fa',
-        backgroundImage: 'radial-gradient(circle at 20% 80%, rgba(0, 212, 255, 0.1) 0%, transparent 50%), radial-gradient(circle at 80% 20%, rgba(255, 107, 107, 0.1) 0%, transparent 50%)'
-      }}>
+      <div style={pageStyles.sectionDark}>
         <div className="container">
           <div className="row">
             <div className="col-md-5">
-              <h1 className={styles.mainTitle} data-aos="fade-right" style={{ 
-                color: '#0f3460',
-                background: 'linear-gradient(45deg, #00d4ff, #ff6b6b)',
-                WebkitBackgroundClip: 'text',
-                WebkitTextFillColor: 'transparent'
-              }}>
-                <i className="ph ph-target me-2"></i>
+              <h1 style={pageStyles.sectionTitle}>
+                <i className="ph ph-target me-2" style={pageStyles.headingIcon}></i>
                 Why Partner with Nexyos?
               </h1>
 
-              <div className={`${styles.headingGroup} mb-4`} data-aos="fade-right">
-                <h5
-                  className={styles.heading}
+              <div 
+                style={pageStyles.interactiveHeading}
+                onMouseEnter={(e) => {
+                  e.target.style.borderColor = '#00d4ff';
+                  e.target.style.backgroundColor = '#f0f8ff';
+                  e.target.style.transform = 'translateX(10px)';
+                  e.target.style.boxShadow = '0 5px 20px rgba(0, 212, 255, 0.2)';
+                }}
+                onMouseLeave={(e) => {
+                  e.target.style.borderColor = '#e9ecef';
+                  e.target.style.backgroundColor = '#ffffff';
+                  e.target.style.transform = 'translateX(0)';
+                  e.target.style.boxShadow = 'none';
+                }}
                   onClick={() => handleHeadingClick("innovation")}
-                  data-aos="fade-right"
-                  style={{ 
-                    cursor: 'pointer',
-                    padding: '20px',
-                    borderRadius: '15px',
-                    border: '2px solid #e9ecef',
-                    transition: 'all 0.3s ease',
-                    backgroundColor: 'white',
-                    position: 'relative',
-                    overflow: 'hidden'
-                  }}
-                  onMouseEnter={(e) => {
-                    e.target.style.borderColor = '#00d4ff';
-                    e.target.style.backgroundColor = '#f0f8ff';
-                    e.target.style.transform = 'translateX(10px)';
-                    e.target.style.boxShadow = '0 5px 20px rgba(0, 212, 255, 0.2)';
-                  }}
-                  onMouseLeave={(e) => {
-                    e.target.style.borderColor = '#e9ecef';
-                    e.target.style.backgroundColor = 'white';
-                    e.target.style.transform = 'translateX(0)';
-                    e.target.style.boxShadow = 'none';
-                  }}>
-                  <div className="position-absolute top-0 start-0 w-100 h-100" style={{ 
-                    background: 'linear-gradient(45deg, transparent, rgba(0, 212, 255, 0.1), transparent)',
-                    transform: 'translateX(-100%)',
-                    transition: 'transform 0.6s ease'
-                  }}></div>
-                  <i className="ph ph-lightbulb me-2" style={{ color: '#00d4ff' }}></i>
+              >
+                <i className="ph ph-lightbulb me-2" style={pageStyles.headingIcon}></i>
                   Joint Innovation and Co-Development Opportunities
-                </h5>
               </div>
 
-              <div className={`${styles.headingGroup} mb-4`}>
-                <h5
-                  className={styles.heading}
+              <div 
+                style={pageStyles.interactiveHeading}
+                onMouseEnter={(e) => {
+                  e.target.style.borderColor = '#ff6b6b';
+                  e.target.style.backgroundColor = '#fff5f5';
+                  e.target.style.transform = 'translateX(10px)';
+                  e.target.style.boxShadow = '0 5px 20px rgba(255, 107, 107, 0.2)';
+                }}
+                onMouseLeave={(e) => {
+                  e.target.style.borderColor = '#e9ecef';
+                  e.target.style.backgroundColor = '#ffffff';
+                  e.target.style.transform = 'translateX(0)';
+                  e.target.style.boxShadow = 'none';
+                }}
                   onClick={() => handleHeadingClick("collaboration")}
-                  data-aos="fade-right"
-                  style={{ 
-                    cursor: 'pointer',
-                    padding: '20px',
-                    borderRadius: '15px',
-                    border: '2px solid #e9ecef',
-                    transition: 'all 0.3s ease',
-                    backgroundColor: 'white',
-                    position: 'relative',
-                    overflow: 'hidden'
-                  }}
-                  onMouseEnter={(e) => {
-                    e.target.style.borderColor = '#ff6b6b';
-                    e.target.style.backgroundColor = '#fff5f5';
-                    e.target.style.transform = 'translateX(10px)';
-                    e.target.style.boxShadow = '0 5px 20px rgba(255, 107, 107, 0.2)';
-                  }}
-                  onMouseLeave={(e) => {
-                    e.target.style.borderColor = '#e9ecef';
-                    e.target.style.backgroundColor = 'white';
-                    e.target.style.transform = 'translateX(0)';
-                    e.target.style.boxShadow = 'none';
-                  }}>
-                  <div className="position-absolute top-0 start-0 w-100 h-100" style={{ 
-                    background: 'linear-gradient(45deg, transparent, rgba(255, 107, 107, 0.1), transparent)',
-                    transform: 'translateX(-100%)',
-                    transition: 'transform 0.6s ease'
-                  }}></div>
-                  <i className="ph ph-globe-hemisphere-east me-2" style={{ color: '#ff6b6b' }}></i>
+              >
+                <i className="ph ph-globe-hemisphere-east me-2" style={pageStyles.headingIcon}></i>
                   Access to Global Markets and Customer Base
-                </h5>
               </div>
 
-              <div className={`${styles.headingGroup} mb-4`}>
-                <h5
-                  className={styles.heading}
+              <div 
+                style={pageStyles.interactiveHeading}
+                onMouseEnter={(e) => {
+                  e.target.style.borderColor = '#4ecdc4';
+                  e.target.style.backgroundColor = '#f0fffd';
+                  e.target.style.transform = 'translateX(10px)';
+                  e.target.style.boxShadow = '0 5px 20px rgba(78, 205, 196, 0.2)';
+                }}
+                onMouseLeave={(e) => {
+                  e.target.style.borderColor = '#e9ecef';
+                  e.target.style.backgroundColor = '#ffffff';
+                  e.target.style.transform = 'translateX(0)';
+                  e.target.style.boxShadow = 'none';
+                }}
                   onClick={() => handleHeadingClick("research")}
-                  data-aos="fade-right"
-                  style={{ 
-                    cursor: 'pointer',
-                    padding: '20px',
-                    borderRadius: '15px',
-                    border: '2px solid #e9ecef',
-                    transition: 'all 0.3s ease',
-                    backgroundColor: 'white',
-                    position: 'relative',
-                    overflow: 'hidden'
-                  }}
-                  onMouseEnter={(e) => {
-                    e.target.style.borderColor = '#4ecdc4';
-                    e.target.style.backgroundColor = '#f0fffd';
-                    e.target.style.transform = 'translateX(10px)';
-                    e.target.style.boxShadow = '0 5px 20px rgba(78, 205, 196, 0.2)';
-                  }}
-                  onMouseLeave={(e) => {
-                    e.target.style.borderColor = '#e9ecef';
-                    e.target.style.backgroundColor = 'white';
-                    e.target.style.transform = 'translateX(0)';
-                    e.target.style.boxShadow = 'none';
-                  }}>
-                  <div className="position-absolute top-0 start-0 w-100 h-100" style={{ 
-                    background: 'linear-gradient(45deg, transparent, rgba(78, 205, 196, 0.1), transparent)',
-                    transform: 'translateX(-100%)',
-                    transition: 'transform 0.6s ease'
-                  }}></div>
-                  <i className="ph ph-microscope me-2" style={{ color: '#4ecdc4' }}></i>
+              >
+                <i className="ph ph-microscope me-2" style={pageStyles.headingIcon}></i>
                   Shared R&D Resources and Technical Expertise
-                </h5>
               </div>
             </div>
 
             <div className="col-md-7">
-              <div className={styles.imageContainer}>
+              <div style={pageStyles.imageContainer}>
                 <img
                   src={images[currentImage]}
                   alt="Technology Partner content"
-                  className={`${styles.mainImage} img-fluid rounded shadow-lg`}
-                  style={{ 
-                    transition: 'all 0.3s ease',
-                    filter: 'brightness(1.05) contrast(1.05)'
-                  }}
+                  className="img-fluid"
+                  style={{ width: '100%', height: 'auto' }}
                 />
-                <div className="position-absolute top-0 start-0 m-3">
-                  <span className="badge fs-6" style={{ 
-                    backgroundColor: '#4ecdc4',
-                    color: 'white',
-                    padding: '8px 16px',
-                    borderRadius: '20px'
-                  }}>Interactive Preview</span>
-                </div>
+                <div style={pageStyles.imageBadge}>Interactive Preview</div>
               </div>
             </div>
           </div>
@@ -458,139 +761,73 @@ Welcome to the future of collaboration!`}
       </div>
 
       {/* Technology Solutions Section with Swiper */}
-      <div className={`${styles.innovationSection} container-fluid py-5`} style={{ 
-        background: 'linear-gradient(135deg, #0f3460 0%, #16213e 50%, #533483 100%)',
-        color: 'white',
-        position: 'relative',
-        overflow: 'hidden'
-      }}>
-        {/* Background Pattern */}
-        <div className="position-absolute top-0 start-0 w-100 h-100" style={{ opacity: 0.05 }}>
-          <div className="position-absolute" style={{ top: '5%', left: '10%', width: '200px', height: '200px', border: '1px solid #00d4ff', transform: 'rotate(45deg)' }}></div>
-          <div className="position-absolute" style={{ top: '15%', right: '15%', width: '150px', height: '150px', border: '1px solid #ff6b6b', borderRadius: '50%' }}></div>
-          <div className="position-absolute" style={{ bottom: '10%', left: '20%', width: '180px', height: '180px', border: '1px solid #4ecdc4', transform: 'rotate(30deg)' }}></div>
-        </div>
-
-        <div className="container position-relative">
-          <div className="row">
-            <div className="col-lg-12">
-              <h1 className={styles.mainTitle} data-aos="fade-right" style={{ 
-                color: '#00d4ff',
-                textAlign: 'center',
-                marginBottom: '2rem'
-              }}>
-                <i className="ph ph-cube me-2"></i>
+      <div style={pageStyles.darkSection}>
+        <div className="container">
+          <h1 style={pageStyles.darkSectionTitle}>
+            <i className="ph ph-cube me-2"></i>
                 Technology Solutions & Capabilities
               </h1>
-              <p className={styles.description} style={{ 
-                textAlign: 'center',
-                fontSize: '1.1rem',
-                maxWidth: '800px',
-                margin: '0 auto 3rem auto',
-                color: '#e0e0e0'
-              }}>
+          <p style={pageStyles.darkSectionSubtitle}>
                 Our technology partners bring diverse expertise across emerging technologies, 
                 enabling us to deliver comprehensive solutions that address complex business 
                 challenges. From AI and IoT to cloud computing and edge processing, we 
                 collaborate to create innovative, scalable solutions.
               </p>
-            </div>
-          </div>
 
-          <div className="row mt-5">
-            <div className="col-12 position-relative">
+          <div style={pageStyles.swiperContainer}>
               <Swiper
                 modules={[Navigation, Autoplay]}
                 spaceBetween={30}
                 slidesPerView={1}
                 navigation={{
-                  nextEl: `.${styles.swiperButtonNext}`,
-                  prevEl: `.${styles.swiperButtonPrev}`,
+                nextEl: '.swiper-button-next',
+                prevEl: '.swiper-button-prev',
                 }}
                 autoplay={{
                   delay: 2500,
                   disableOnInteraction: false,
                 }}
                 breakpoints={{
-                  576: {
-                    slidesPerView: 2,
-                  },
-                  768: {
-                    slidesPerView: 3,
-                  },
-                  1024: {
-                    slidesPerView: 4,
-                  },
-                }}
-                className={styles.swiper}
+                576: { slidesPerView: 2 },
+                768: { slidesPerView: 3 },
+                1024: { slidesPerView: 4 },
+              }}
               >
                 {technologySolutions.map((solution, index) => (
                   <SwiperSlide key={index}>
-                    <div className={styles.innovationCard} style={{
-                      backgroundColor: 'rgba(255, 255, 255, 0.1)',
-                      backdropFilter: 'blur(15px)',
-                      border: `2px solid ${solution.color}`,
-                      borderRadius: '20px',
-                      padding: '25px',
-                      textAlign: 'center',
-                      transition: 'all 0.4s ease',
-                      position: 'relative',
-                      overflow: 'hidden'
+                  <div 
+                    style={{
+                      ...pageStyles.swiperCard,
+                      border: `2px solid ${solution.color}`
                     }}
                     onMouseEnter={(e) => {
                       e.currentTarget.style.transform = 'translateY(-15px) scale(1.02)';
-                      e.currentTarget.style.boxShadow = `0 20px 40px rgba(0, 0, 0, 0.3)`;
+                      e.currentTarget.style.boxShadow = '0 20px 40px rgba(0, 0, 0, 0.3)';
                       e.currentTarget.style.borderColor = '#fff';
                     }}
                     onMouseLeave={(e) => {
                       e.currentTarget.style.transform = 'translateY(0) scale(1)';
                       e.currentTarget.style.boxShadow = 'none';
                       e.currentTarget.style.borderColor = solution.color;
+                    }}
+                  >
+                    <div style={{
+                      ...pageStyles.swiperIcon,
+                      backgroundColor: solution.color,
+                      boxShadow: `0 0 20px ${solution.color}40`
                     }}>
-                      {/* Hover Effect Background */}
-                      <div className="position-absolute top-0 start-0 w-100 h-100" style={{ 
-                        background: `linear-gradient(45deg, transparent, ${solution.color}20, transparent)`,
-                        transform: 'translateX(-100%)',
-                        transition: 'transform 0.6s ease'
-                      }}></div>
-                      
-                      <div className="mb-4 position-relative">
-                        <div className="rounded-circle d-inline-flex align-items-center justify-content-center" 
-                             style={{ 
-                               width: '80px', 
-                               height: '80px',
-                               backgroundColor: solution.color,
-                               boxShadow: `0 0 20px ${solution.color}40`
-                             }}>
-                          <i className={`${solution.icon} text-white`} style={{ fontSize: '2rem' }}></i>
-                        </div>
+                      <i className={solution.icon}></i>
                       </div>
-                      <div className={styles.innovationContent} className="position-relative">
-                        <h5 className={styles.innovationTitle} style={{ 
-                          color: solution.color,
-                          fontSize: '1.2rem',
-                          marginBottom: '0.5rem'
-                        }}>{solution.title}</h5>
-                        <p className="text-light small" style={{ 
-                          color: '#e0e0e0',
-                          lineHeight: '1.5'
-                        }}>{solution.description}</p>
-                      </div>
+                    <h5 style={pageStyles.swiperTitle}>{solution.title}</h5>
+                    <p style={pageStyles.swiperDescription}>{solution.description}</p>
                     </div>
                   </SwiperSlide>
                 ))}
               </Swiper>
 
-              {/* Custom Navigation Buttons */}
-              <button className={`${styles.swiperButtonPrev} ${styles.swiperButton}`} style={{
-                backgroundColor: 'rgba(0, 212, 255, 0.2)',
-                border: '2px solid #00d4ff',
-                color: '#00d4ff',
-                width: '50px',
-                height: '50px',
-                borderRadius: '50%',
-                transition: 'all 0.3s ease'
-              }}
+            <button 
+              className="swiper-button-prev"
+              style={pageStyles.navigationButton}
               onMouseEnter={(e) => {
                 e.target.style.backgroundColor = 'rgba(0, 212, 255, 0.4)';
                 e.target.style.transform = 'scale(1.1)';
@@ -598,18 +835,13 @@ Welcome to the future of collaboration!`}
               onMouseLeave={(e) => {
                 e.target.style.backgroundColor = 'rgba(0, 212, 255, 0.2)';
                 e.target.style.transform = 'scale(1)';
-              }}>
+              }}
+            >
                 <i className="ph ph-caret-left"></i>
               </button>
-              <button className={`${styles.swiperButtonNext} ${styles.swiperButton}`} style={{
-                backgroundColor: 'rgba(0, 212, 255, 0.2)',
-                border: '2px solid #00d4ff',
-                color: '#00d4ff',
-                width: '50px',
-                height: '50px',
-                borderRadius: '50%',
-                transition: 'all 0.3s ease'
-              }}
+            <button 
+              className="swiper-button-next"
+              style={pageStyles.navigationButton}
               onMouseEnter={(e) => {
                 e.target.style.backgroundColor = 'rgba(0, 212, 255, 0.4)';
                 e.target.style.transform = 'scale(1.1)';
@@ -617,128 +849,104 @@ Welcome to the future of collaboration!`}
               onMouseLeave={(e) => {
                 e.target.style.backgroundColor = 'rgba(0, 212, 255, 0.2)';
                 e.target.style.transform = 'scale(1)';
-              }}>
+              }}
+            >
                 <i className="ph ph-caret-right"></i>
               </button>
-            </div>
           </div>
         </div>
       </div>
 
       {/* Partnership Benefits Section */}
-      <div className="container py-5">
-        <div className="row">
-          <div className="col-lg-12 text-center mb-5">
-            <h2 className={styles.programTitle} data-aos="fade-up" style={{ 
-              color: '#0f3460',
-              background: 'linear-gradient(45deg, #00d4ff, #ff6b6b)',
-              WebkitBackgroundClip: 'text',
-              WebkitTextFillColor: 'transparent'
-            }}>
-              <i className="ph ph-star me-2"></i>
+      <div style={pageStyles.section}>
+        <div className="container">
+          <h2 style={pageStyles.sectionTitle}>
+            <i className="ph ph-star me-2"></i>
               Partnership Benefits
             </h2>
+          <p style={pageStyles.sectionSubtitle}>
+            Discover the advantages of partnering with Nexyos and how we can help grow your business
+          </p>
+
+          <div style={pageStyles.benefitsGrid}>
+            <div 
+              style={pageStyles.benefitCard}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.transform = 'translateY(-10px)';
+                e.currentTarget.style.boxShadow = '0 10px 30px rgba(0, 0, 0, 0.15)';
+                e.currentTarget.style.borderColor = '#00d4ff';
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.transform = 'translateY(0)';
+                e.currentTarget.style.boxShadow = '0 4px 20px rgba(0, 0, 0, 0.08)';
+                e.currentTarget.style.borderColor = '#e9ecef';
+              }}
+            >
+              <div style={pageStyles.benefitIcon}>
+                <i className="ph ph-lightbulb"></i>
           </div>
+              <h5 style={pageStyles.benefitTitle}>Co-Innovation</h5>
+              <p style={pageStyles.benefitText}>Joint development of new products and solutions</p>
         </div>
-        <div className="row">
-          <div className="col-md-6 col-lg-3 mb-4" data-aos="fade-up" data-aos-delay="100">
-            <div className="text-center p-4 rounded h-100" style={{ 
-              backgroundColor: '#f8f9fa',
-              border: '2px solid #e9ecef',
-              transition: 'all 0.3s ease',
-              position: 'relative',
-              overflow: 'hidden'
-            }}
-            onMouseEnter={(e) => {
-              e.currentTarget.style.borderColor = '#00d4ff';
-              e.currentTarget.style.transform = 'translateY(-10px)';
-              e.currentTarget.style.boxShadow = '0 10px 30px rgba(0, 212, 255, 0.2)';
-            }}
-            onMouseLeave={(e) => {
-              e.currentTarget.style.borderColor = '#e9ecef';
-              e.currentTarget.style.transform = 'translateY(0)';
-              e.currentTarget.style.boxShadow = 'none';
-            }}>
-              <div className="mb-3">
-                <i className="ph ph-lightbulb text-primary" style={{ fontSize: '3rem', color: '#00d4ff' }}></i>
+
+            <div 
+              style={pageStyles.benefitCard}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.transform = 'translateY(-10px)';
+                e.currentTarget.style.boxShadow = '0 10px 30px rgba(0, 0, 0, 0.15)';
+                e.currentTarget.style.borderColor = '#ff6b6b';
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.transform = 'translateY(0)';
+                e.currentTarget.style.boxShadow = '0 4px 20px rgba(0, 0, 0, 0.08)';
+                e.currentTarget.style.borderColor = '#e9ecef';
+              }}
+            >
+              <div style={pageStyles.benefitIcon}>
+                <i className="ph ph-globe-hemisphere-east"></i>
               </div>
-              <h5 style={{ color: '#0f3460' }}>Co-Innovation</h5>
-              <p className="text-muted">Joint development of new products and solutions</p>
+              <h5 style={pageStyles.benefitTitle}>Global Reach</h5>
+              <p style={pageStyles.benefitText}>Access to international markets and customers</p>
             </div>
+
+            <div 
+              style={pageStyles.benefitCard}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.transform = 'translateY(-10px)';
+                e.currentTarget.style.boxShadow = '0 10px 30px rgba(0, 0, 0, 0.15)';
+                e.currentTarget.style.borderColor = '#4ecdc4';
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.transform = 'translateY(0)';
+                e.currentTarget.style.boxShadow = '0 4px 20px rgba(0, 0, 0, 0.08)';
+                e.currentTarget.style.borderColor = '#e9ecef';
+              }}
+            >
+              <div style={pageStyles.benefitIcon}>
+                <i className="ph ph-users"></i>
           </div>
-          <div className="col-md-6 col-lg-3 mb-4" data-aos="fade-up" data-aos-delay="200">
-            <div className="text-center p-4 rounded h-100" style={{ 
-              backgroundColor: '#f8f9fa',
-              border: '2px solid #e9ecef',
-              transition: 'all 0.3s ease',
-              position: 'relative',
-              overflow: 'hidden'
-            }}
-            onMouseEnter={(e) => {
-              e.currentTarget.style.borderColor = '#ff6b6b';
-              e.currentTarget.style.transform = 'translateY(-10px)';
-              e.currentTarget.style.boxShadow = '0 10px 30px rgba(255, 107, 107, 0.2)';
-            }}
-            onMouseLeave={(e) => {
-              e.currentTarget.style.borderColor = '#e9ecef';
-              e.currentTarget.style.transform = 'translateY(0)';
-              e.currentTarget.style.boxShadow = 'none';
-            }}>
-              <div className="mb-3">
-                <i className="ph ph-globe-hemisphere-east text-primary" style={{ fontSize: '3rem', color: '#ff6b6b' }}></i>
+              <h5 style={pageStyles.benefitTitle}>Technical Support</h5>
+              <p style={pageStyles.benefitText}>Shared expertise and collaborative problem-solving</p>
               </div>
-              <h5 style={{ color: '#0f3460' }}>Global Reach</h5>
-              <p className="text-muted">Access to international markets and customers</p>
+
+            <div 
+              style={pageStyles.benefitCard}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.transform = 'translateY(-10px)';
+                e.currentTarget.style.boxShadow = '0 10px 30px rgba(0, 0, 0, 0.15)';
+                e.currentTarget.style.borderColor = '#feca57';
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.transform = 'translateY(0)';
+                e.currentTarget.style.boxShadow = '0 4px 20px rgba(0, 0, 0, 0.08)';
+                e.currentTarget.style.borderColor = '#e9ecef';
+              }}
+            >
+              <div style={pageStyles.benefitIcon}>
+                <i className="ph ph-chart-line-up"></i>
             </div>
-          </div>
-          <div className="col-md-6 col-lg-3 mb-4" data-aos="fade-up" data-aos-delay="300">
-            <div className="text-center p-4 rounded h-100" style={{ 
-              backgroundColor: '#f8f9fa',
-              border: '2px solid #e9ecef',
-              transition: 'all 0.3s ease',
-              position: 'relative',
-              overflow: 'hidden'
-            }}
-            onMouseEnter={(e) => {
-              e.currentTarget.style.borderColor = '#4ecdc4';
-              e.currentTarget.style.transform = 'translateY(-10px)';
-              e.currentTarget.style.boxShadow = '0 10px 30px rgba(78, 205, 196, 0.2)';
-            }}
-            onMouseLeave={(e) => {
-              e.currentTarget.style.borderColor = '#e9ecef';
-              e.currentTarget.style.transform = 'translateY(0)';
-              e.currentTarget.style.boxShadow = 'none';
-            }}>
-              <div className="mb-3">
-                <i className="ph ph-users text-primary" style={{ fontSize: '3rem', color: '#4ecdc4' }}></i>
-              </div>
-              <h5 style={{ color: '#0f3460' }}>Technical Support</h5>
-              <p className="text-muted">Shared expertise and collaborative problem-solving</p>
-            </div>
-          </div>
-          <div className="col-md-6 col-lg-3 mb-4" data-aos="fade-up" data-aos-delay="400">
-            <div className="text-center p-4 rounded h-100" style={{ 
-              backgroundColor: '#f8f9fa',
-              border: '2px solid #e9ecef',
-              transition: 'all 0.3s ease',
-              position: 'relative',
-              overflow: 'hidden'
-            }}
-            onMouseEnter={(e) => {
-              e.currentTarget.style.borderColor = '#feca57';
-              e.currentTarget.style.transform = 'translateY(-10px)';
-              e.currentTarget.style.boxShadow = '0 10px 30px rgba(254, 202, 87, 0.2)';
-            }}
-            onMouseLeave={(e) => {
-              e.currentTarget.style.borderColor = '#e9ecef';
-              e.currentTarget.style.transform = 'translateY(0)';
-              e.currentTarget.style.boxShadow = 'none';
-            }}>
-              <div className="mb-3">
-                <i className="ph ph-chart-line-up text-primary" style={{ fontSize: '3rem', color: '#feca57' }}></i>
-              </div>
-              <h5 style={{ color: '#0f3460' }}>Revenue Growth</h5>
-              <p className="text-muted">Shared success through joint go-to-market strategies</p>
+              <h5 style={pageStyles.benefitTitle}>Revenue Growth</h5>
+              <p style={pageStyles.benefitText}>Shared success through joint go-to-market strategies</p>
             </div>
           </div>
         </div>

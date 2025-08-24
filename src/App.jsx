@@ -58,13 +58,13 @@ function App() {
     location.pathname === "/login" || location.pathname === "/signup";
 
 
-useEffect(() => {
-  AOS.init({
-    once: false,      // animation triggers only once
-    duration: 500,   // animation duration in ms
-    easing: 'ease-in-out',
-  });
-}, []);
+  useEffect(() => {
+    AOS.init({
+      once: false,      // animation triggers only once
+      duration: 500,   // animation duration in ms
+      easing: 'ease-in-out',
+    });
+  }, []);
 
 
   return (
@@ -92,13 +92,13 @@ useEffect(() => {
         <Route path="/all-products" element={<ProductsPage />} />
         <Route path="/sales-inquiry" element={<SalesInquiry />} />
         <Route path="/category/:categoryName" element={<Categorycall />} />
-         <Route path="/sub-category/:id" element={<SubCategoryPage />} />
-        <Route path="/product/" element={<ProCamera/>} />
-         <Route path="/Solution/Hotel" element={<Hotel/>} />
+        <Route path="/sub-category/:id" element={<SubCategoryPage />} />
+        <Route path="/product/" element={<ProCamera />} />
+        <Route path="/solution/hotel" element={<Hotel />} />
         <Route path="/slider" element={<Slider />} />
-        <Route path="/solution" element={<Solution/>} />
-        <Route path="/Solution/SmartSpaces" element={<SmartSpaces/>} />
-        <Route path="/Solution/Video_Surveillance" element={<Video_Surveillance/>} />
+        <Route path="/solution" element={<Solution />} />
+        <Route path="/solution/smart-spaces" element={<SmartSpaces />} />
+        <Route path="/solution/video-surveillance" element={<Video_Surveillance />} />
         <Route path="/success" element={<SuccessStories />} />
         <Route path="/contact" element={<ContactPage />} />
         <Route path="/channel" element={<ChannelPage />} />
