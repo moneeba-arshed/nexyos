@@ -23,7 +23,7 @@ import Brand from "./pages/Company/Brand";
 import Events from "./pages/Company/Events";
 import BlogPage from "./pages/Company/BlogPage";
 import BlogDetailPage from "./components/Blog/BlogDetailPage";
-import NewsPage from "./components/Company/News";
+import NewsPage from "./pages/Company/News";
 import CategoryPage from "./components/CategoryPage";
 import ProductPage from "./components/ProductPage";
 import ProductDetail from "./components/ProductDetail";
