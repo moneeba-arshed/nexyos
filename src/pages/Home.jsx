@@ -7,7 +7,8 @@ import Sensing_Matter from '../components/Sensing_Matter'
 import Products from '../components/Products'
 import HeroCarousel from '../components/Home/HeroCarousel'
 // import MilesightCarousel from '../components/MilesightCarousel'
-
+import TrustedBy from '../components/SpaceOccupancy/TrustedBy'
+import AnimatedCards from '../components/AnimatedCards'
 const Home = () => {
   return (
     <div className='w-full'>
@@ -18,6 +19,8 @@ const Home = () => {
       <TimelineSlider/>
       <Slider/>
       <Channel/>
+      <AnimatedCards />
+      <TrustedBy/>
       <Contact/>
     </div>
   )

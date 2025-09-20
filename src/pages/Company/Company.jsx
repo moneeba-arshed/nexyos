@@ -402,7 +402,7 @@ const Company = () => {
             Discover how our innovative sensing solutions can transform your business 
             and help you stay ahead in the digital age.
           </p>
-          <div className="d-flex justify-content-center gap-4 flex-wrap">
+          <div className="d-flex justify-content-center gap-4 flex-wrap pt-10">
             <button className="btn btn-lg px-10 py-10 fw-bold text-white border-0 shadow-xl hover-lift " 
                     style={{
                       background: 'linear-gradient(135deg, #f093fb 0%, #f5576c 100%)',
