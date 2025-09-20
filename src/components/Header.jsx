@@ -143,7 +143,7 @@ const Header = () => {
 
     const [menuData, setMenuData] = useState([
       { title: "Home", path: "/", icon: IoHomeOutline },
-      { title: "Product", path: "", icon: AiOutlineProduct },
+      { title: "Product", path: "/all-products", icon: AiOutlineProduct },
       {
         title: "Solutions",
         path: "/solution",
@@ -153,12 +153,12 @@ const Header = () => {
           items: [
             {
               title: "Video Surveillance",
-              path: "/Solution/Video_Surveillance",
+              path: "/solution/video-surveillance",
             },
             { title: "Intelligent Traffic Solution", path: "/TrafficSolution" },
             { title: "Smart Restroom", path: "/Solution/SmartRoom" },
             { title: "Indoor Air Quality", path: "/AirQuality" },
-            { title: "Smart Space", path: "/Solution/SmartSpaces" },
+            { title: "Smart Space", path: "/solution/smart-spaces" },
             { title: "People Counting", path: "/Solution/PeopleCounting" },
             { title: "Smart HVAC Management", path: "/SmartHVAC" },
             { title: "Space Occupancy", path: "/Solution/SpaceOccupancy" },
@@ -490,7 +490,7 @@ const Header = () => {
                           Home
                         </Link>
                       </li>
-                      <li className="on-hover-item nav-menu__item has-megamenu has-submenu">
+                      <li className="on-hover-item nav-menu__item has-megamenu has-submenu"  style={{ textAlign: 'left' }}>
                         <Link to="/" className="nav-menu__link">
                           <Mega />
                         </Link>
@@ -499,7 +499,7 @@ const Header = () => {
                         <Link to="/solution" className="nav-menu__link">
                           Solutions
                         </Link>
-                        <div className="on-hover-dropdown common-dropdown nav-megamenu" style={{ textAlign: 'left' }}>
+                        <div className="on-hover-dropdown common-dropdown nav-megamenu" style={{ textAlign: 'left', zIndex: 1000 }}>
                           <div className="grid grid-cols-3 gap-6 p-6">
                             {/* Column 1 - Security & Surveillance */}
                             <div>
@@ -507,7 +507,7 @@ const Header = () => {
                               <ul>
                                 <li>
                                   <NavLink
-                                    to="/Solution/Video_Surveillance"
+                                    to="/solution/video-surveillance"
                                     className="common-dropdown__link"
                                   >
                                     Video Surveillance
@@ -531,7 +531,7 @@ const Header = () => {
                                 </li>
                                 <li>
                                   <NavLink
-                                    to="/Solution/Hotel"
+                                    to="/solution/hotel"
                                     className="common-dropdown__link"
                                   >
                                     Hotel
@@ -562,7 +562,7 @@ const Header = () => {
                                 </li>
                                 <li>
                                   <NavLink
-                                    to="/Solution/SmartSpaces"
+                                    to="/solution/smart-spaces"
                                     className="common-dropdown__link"
                                   >
                                     Smart Space
@@ -650,10 +650,10 @@ const Header = () => {
                         </NavLink>
                       </li>
                                              <li className="on-hover-item nav-menu__item has-megamenu has-submenu">
-                         <Link to="#" className="nav-menu__link">
+                         <Link to="/company" className="nav-menu__link">
                            Company
                          </Link>
-                         <div className="on-hover-dropdown common-dropdown nav-megamenu">
+                         <div className="on-hover-dropdown common-dropdown nav-megamenu" style={{ textAlign: 'left', zIndex: 1000 }}>
                            <div className="grid grid-cols-2 gap-6 p-6">
                              {/* Column 1 - Corporate Info */}
                              <div>
@@ -712,10 +712,10 @@ const Header = () => {
                          </div>
                        </li>
                                                                                            <li className="on-hover-item nav-menu__item has-megamenu has-submenu">
-                         <Link to="#" className="nav-menu__link">
+                         <Link to="/partner" className="nav-menu__link">
                            Partner
                          </Link>
-                         <div className="on-hover-dropdown common-dropdown nav-megamenu">
+                         <div className="on-hover-dropdown common-dropdown nav-megamenu" style={{ textAlign: 'left', zIndex: 1000 }}>
                            <div className="grid grid-cols-2 gap-6 p-6">
                              {/* Column 1 - Nexyos Partner Ecosystem */}
                              <div>

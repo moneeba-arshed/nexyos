@@ -10,7 +10,7 @@ import HotProductSlider from "./Solution/OutstandingFeatures/HotProductSlider";
 import SliderTest from "./SliderTest";
 import { motion } from "framer-motion";
 import '../style/SubCategoryPage.css';
-
+import Breadcrumb from "./Breadcrumb";
 
 const SubCategoryPage = () => {
   const { id } = useParams(); // sub-category ID
@@ -155,7 +155,7 @@ useEffect(() => {
     <>
     <SliderTest/>
     <Breadcrumb/>
-<div className="custom-padding mb-20 lg:mt-64">
+<div className="custom-padding" style={{ marginTop: '5rem', marginBottom: '5rem' }}>
 
 
         <h5 className="text-base"  data-aos="fade-right">What we offer</h5>

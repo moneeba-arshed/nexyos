@@ -1,12 +1,15 @@
 import React from "react";
-import Banner from "../../components/Banner";
+import BannerModal from "../../components/Company/BannerModal";
 import ChannelPartners from "../../components/Channel";
 import Contact from "../../components/Contact";
 
 const ChannelPage = () => {
   return (
     <>
-      <Banner />
+      <BannerModal 
+        title="Find Channel Partners"
+        description="Connect with our trusted network of channel partners and distributors worldwide to grow your business together."
+      />
       <ChannelPartners />
       <Contact />
     </>
