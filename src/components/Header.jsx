@@ -539,7 +539,7 @@ const Header = () => {
                                 </li>
                                 <li>
                                   <NavLink
-                                    to="/Solution/retail-security"
+                                    to="/Solution/RetailSecurity"
                                     className="common-dropdown__link"
                                   >
                                     Retail Security
@@ -570,7 +570,7 @@ const Header = () => {
                                 </li>
                                 <li>
                                   <NavLink
-                                    to="/Solution/smart-apartment"
+                                    to="/Solution/SmartApartment"
                                     className="common-dropdown__link"
                                   >
                                     Smart Apartment
@@ -578,7 +578,7 @@ const Header = () => {
                                 </li>
                                 <li>
                                   <NavLink
-                                    to="/Solution/display-control"
+                                    to="/Solution/DisplayControl"
                                     className="common-dropdown__link"
                                   >
                                     Display & Control

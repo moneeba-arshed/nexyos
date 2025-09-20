@@ -3,8 +3,6 @@ import Banner from '../../components/Banner';
 import TrustedBy from '../../components/SpaceOccupancy/TrustedBy';
 import CarouselCard from '../../components/CarouselCard';
 import south_wales_police from '../../assets/images/Solution/new-south-wales-police-logo.png'
-import FAT_Logo_Water from '../../assets/images/Solution/FAT-Logo-Watercolor-stacked.jpg'
-import Chukchansi_Gold_Resort from '../../assets/images/Solution/Chukchansi_Gold_Resort.png'
 import HighlightsSection from '../../components/Solution/HighlightsSection';
 import InterestedSection from '../../components/Solution/InterestedSection';
 import retail_related_links from "../../assets/images/nexyos/retail_related_links.png";

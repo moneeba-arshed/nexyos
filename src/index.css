@@ -532,3 +532,9 @@ border: 1px solid white;
 .leading-snug{
   font-weight: 500;
 }
+.DownloadButton{
+  border: 2px solid #00667C;
+  color: #00667C;
+  border-radius: 6px;
+  font-weight: 600;
+}

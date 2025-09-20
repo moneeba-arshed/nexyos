@@ -105,11 +105,11 @@ useEffect(() => {
         <Route path="/Solution/Video_Surveillance" element={<Video_Surveillance/>} />
         <Route path="/Solution/CitySurveillance" element={<CitySurveillance/>} />
         <Route path="/Solution/healthcare" element={<Healthcare/>} />
-        <Route path="/Solution/retail-security" element={<RetailSecurity/>} />
+        <Route path="/Solution/RetailSecurity" element={<RetailSecurity/>} />
         <Route path="/Solution/SmartRoom" element={<Smart_Restroom/>} />
-        <Route path="/Solution/smart-apartment" element={<SmartApartment/>} />
-        <Route path="/Solution/display-control" element={<DisplayControl/>} />
-        <Route path="/Solution/smart-parking" element={<SmartParking/>} />
+        <Route path="/Solution/SmartApartment" element={<SmartApartment/>} />
+        <Route path="/Solution/DisplayControl" element={<DisplayControl/>} />
+        <Route path="/Solution/SmartParking" element={<SmartParking/>} />
         <Route path="/Solution/TrafficSolution" element={<Intelligent_Traffic_Solution/>} />
         <Route path="/Solution/manufacturing" element={<Manufacturing/>} />
         <Route path="/Solution/education" element={<Education/>} />
