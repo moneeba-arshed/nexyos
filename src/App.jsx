@@ -12,7 +12,7 @@ import Slider from "./pages/Slider";
 import Footer from "./components/Footer";
 import SuccessStories from "./components/SuccessStories";
 import ContactPage from "./pages/ContactPage";
-import DemoPage from "./components/DemoPage";
+// import DemoPage from "./components/DemoPage";
 import Header from "./components/Header";
 import ChannelPage from "./components/Channel/FindChannel/ChannelPage";
 import PartnerProgram from "./components/Channel/FindChannel/ChannelPartner";
