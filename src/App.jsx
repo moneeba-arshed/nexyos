@@ -57,7 +57,7 @@ import Manufacturing from "./pages/Solution/Manufacturing";
 import RetailSecurity from "./pages/Solution/RetailSecurity";
 import Smart_HVAC_Management from "./pages/Solution/Smart_HVAC_Management";
 import Smart_Restroom from "./pages/Solution/Smart_Restroom";
-import Smart_Space from "./pages/Solution/Smart_Space";
+// import Smart_Space from "./pages/Solution/Smart_Space";
 import SmartApartment from "./pages/Solution/SmartApartment";
 import SmartParking from "./pages/Solution/SmartParking";
 
@@ -109,7 +109,7 @@ function App() {
         <Route path="/solution/retail-security" element={<RetailSecurity />} />
         <Route path="/solution/smart-hvac-management" element={<Smart_HVAC_Management />} />
         <Route path="/solution/smart-restroom" element={<Smart_Restroom />} />
-        <Route path="/solution/smart-space" element={<Smart_Space />} />
+        {/* <Route path="/solution/smart-space" element={<Smart_Space />} /> */}
         <Route path="/solution/smart-apartment" element={<SmartApartment />} />
         <Route path="/solution/smart-parking" element={<SmartParking />} />
         <Route path="/slider" element={<Slider />} />
