@@ -1,5 +1,9 @@
 import "./App.scss";
 import './index.css';
+import { useEffect } from 'react';
+import { Routes, Route } from 'react-router-dom';
+import { useLocation } from 'react-router-dom'; 
+import AOS from 'aos';
 import Home from "./pages/Home";
 import BottomFooter from "./components/BottomFooter";
 import RouteScrollToTop from "./helper/RouteScrollToTop";
@@ -12,7 +16,6 @@ import Slider from "./pages/Slider";
 import Footer from "./components/Footer";
 import SuccessStories from "./components/SuccessStories";
 import ContactPage from "./pages/ContactPage";
-// import DemoPage from "./components/DemoPage";
 import Header from "./components/Header";
 import ChannelPage from "./pages/Partner/ChannelPage";
 import PartnerProgram from "./pages/Partner/ChannelPartner";
@@ -98,7 +101,7 @@ function App() {
         <Route path="/product/" element={<ProCamera />} />
         <Route path="/solution/hotel" element={<Hotel />} />
         <Route path="/solution/city-surveillance" element={<CitySurveillance />} />
-        <Route path="/solution/display-control" element={<DisplayControl />} />
+        <Route path="/solution/displaycontrol" element={<DisplayControl />} />
         <Route path="/solution/education" element={<Education />} />
         <Route path="/solution/energy-efficiency" element={<EnergyEfficiency />} />
         <Route path="/solution/halo-smart-sensor" element={<HALOSmartSensor />} />
@@ -106,11 +109,11 @@ function App() {
         <Route path="/solution/indoor-air-quality" element={<Indoor_Air_Quality />} />
         <Route path="/solution/intelligent-traffic-solution" element={<Intelligent_Traffic_Solution />} />
         <Route path="/solution/manufacturing" element={<Manufacturing />} />
-        <Route path="/solution/retail-security" element={<RetailSecurity />} />
+        <Route path="/solution/retailsecurity" element={<RetailSecurity />} />
         <Route path="/solution/smart-hvac-management" element={<Smart_HVAC_Management />} />
-        <Route path="/solution/smart-restroom" element={<Smart_Restroom />} />
+        <Route path="/solution/smartrestroom" element={<Smart_Restroom />} />
         {/* <Route path="/solution/smart-space" element={<Smart_Space />} /> */}
-        <Route path="/solution/smart-apartment" element={<SmartApartment />} />
+        <Route path="/solution/smartapartment" element={<SmartApartment />} />
         <Route path="/solution/smart-parking" element={<SmartParking />} />
         <Route path="/slider" element={<Slider />} />
         <Route path="/solution" element={<Solution />} />
@@ -128,7 +131,6 @@ function App() {
         <Route path="/Blog" element={<BlogPage />} />
         <Route path="/blog/:id" element={<BlogDetailPage />} />
         <Route path="/News" element={<NewsPage />} />
-        <Route path="/demo" element={<DemoPage />} />
         <Route path="/soll" element={<SollPage />} />
         <Route path="/developer-partner" element={<DeveloperPartner />} />
         <Route path="/technology-partner" element={<TechnologyPartner />} />

@@ -156,7 +156,7 @@ const Header = () => {
               path: "/solution/video-surveillance",
             },
             { title: "Intelligent Traffic Solution", path: "/TrafficSolution" },
-            { title: "Smart Restroom", path: "/Solution/SmartRoom" },
+            { title: "Smart Restroom", path: "/solution/smartrestroom" },
             { title: "Indoor Air Quality", path: "/AirQuality" },
             { title: "Smart Space", path: "/solution/smart-spaces" },
             { title: "People Counting", path: "/Solution/PeopleCounting" },
@@ -539,7 +539,7 @@ const Header = () => {
                                 </li>
                                 <li>
                                   <NavLink
-                                    to="/Solution/RetailSecurity"
+                                    to="/solution/retailsecurity"
                                     className="common-dropdown__link"
                                   >
                                     Retail Security
@@ -554,7 +554,7 @@ const Header = () => {
                               <ul>
                                 <li>
                                   <NavLink
-                                    to="/Solution/SmartRoom"
+                                    to="/solution/smartrestroom"
                                     className="common-dropdown__link"
                                   >
                                     Smart Restroom
@@ -570,7 +570,7 @@ const Header = () => {
                                 </li>
                                 <li>
                                   <NavLink
-                                    to="/Solution/SmartApartment"
+                                    to="/solution/smartapartment"
                                     className="common-dropdown__link"
                                   >
                                     Smart Apartment
@@ -578,7 +578,7 @@ const Header = () => {
                                 </li>
                                 <li>
                                   <NavLink
-                                    to="/Solution/DisplayControl"
+                                    to="/solution/displaycontrol"
                                     className="common-dropdown__link"
                                   >
                                     Display & Control
