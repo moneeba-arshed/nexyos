@@ -51,6 +51,21 @@ import SubCategoryPage from "./components/SubCategoryPage";
 import SmartSpaces from "./pages/Solution/SmartSpaces";
 import Hotel from "./pages/Solution/Hotel";
 import Video_Surveillance from "./pages/Solution/Video_Surveillance";
+import CitySurveillance from "./pages/Solution/CitySurveillance";
+import DisplayControl from "./pages/Solution/DisplayControl";
+import Education from "./pages/Solution/Education";
+import EnergyEfficiency from "./pages/Solution/EnergyEfficiency";
+import HALOSmartSensor from "./pages/Solution/HALOSmartSensor";
+import Healthcare from "./pages/Solution/Healthcare";
+import Indoor_Air_Quality from "./pages/Solution/Indoor_Air_Quality";
+import Intelligent_Traffic_Solution from "./pages/Solution/Intelligent_Traffic_Solution";
+import Manufacturing from "./pages/Solution/Manufacturing";
+import RetailSecurity from "./pages/Solution/RetailSecurity";
+import Smart_HVAC_Management from "./pages/Solution/Smart_HVAC_Management";
+import Smart_Restroom from "./pages/Solution/Smart_Restroom";
+import Smart_Space from "./pages/Solution/Smart_Space";
+import SmartApartment from "./pages/Solution/SmartApartment";
+import SmartParking from "./pages/Solution/SmartParking";
 
 function App() {
   const location = useLocation();
@@ -97,6 +112,21 @@ function App() {
         <Route path="/sub-category/:id" element={<SubCategoryPage />} />
         <Route path="/product/" element={<ProCamera />} />
         <Route path="/solution/hotel" element={<Hotel />} />
+        <Route path="/solution/city-surveillance" element={<CitySurveillance />} />
+        <Route path="/solution/display-control" element={<DisplayControl />} />
+        <Route path="/solution/education" element={<Education />} />
+        <Route path="/solution/energy-efficiency" element={<EnergyEfficiency />} />
+        <Route path="/solution/halo-smart-sensor" element={<HALOSmartSensor />} />
+        <Route path="/solution/healthcare" element={<Healthcare />} />
+        <Route path="/solution/indoor-air-quality" element={<Indoor_Air_Quality />} />
+        <Route path="/solution/intelligent-traffic-solution" element={<Intelligent_Traffic_Solution />} />
+        <Route path="/solution/manufacturing" element={<Manufacturing />} />
+        <Route path="/solution/retail-security" element={<RetailSecurity />} />
+        <Route path="/solution/smart-hvac-management" element={<Smart_HVAC_Management />} />
+        <Route path="/solution/smart-restroom" element={<Smart_Restroom />} />
+        <Route path="/solution/smart-space" element={<Smart_Space />} />
+        <Route path="/solution/smart-apartment" element={<SmartApartment />} />
+        <Route path="/solution/smart-parking" element={<SmartParking />} />
         <Route path="/slider" element={<Slider />} />
         <Route path="/solution" element={<Solution />} />
         <Route path="/solution/smart-spaces" element={<SmartSpaces />} />
