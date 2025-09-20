@@ -70,7 +70,7 @@ function App() {
         <Route path="/Blog" element={<BlogPage />} />
         <Route path="/blog/:id" element={<BlogDetailPage />} />
         <Route path="/News" element={<NewsPage />} />
-        <Route path="/demo" element={<DemoPage />} />
+        {/* <Route path="/demo" element={<DemoPage />} /> */}
       </Routes>
       <Footer />
       <BottomFooter />
