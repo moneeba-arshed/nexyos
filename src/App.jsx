@@ -20,7 +20,7 @@ import ProjectRegistration from "./pages/Partner/ProjectRegistration";
 import Iot from "./pages/Partner/Iot";
 import About from "./pages/Company/About";
 import Brand from "./pages/Company/Brand";
-import Events from "./components/Company/Events";
+import Events from "./pages/Company/Events";
 import BlogPage from "./components/Blog/BlogPage";
 import BlogDetailPage from "./components/Blog/BlogDetailPage";
 import NewsPage from "./components/Company/News";
