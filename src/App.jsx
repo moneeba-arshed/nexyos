@@ -14,7 +14,7 @@ import SuccessStories from "./components/SuccessStories";
 import ContactPage from "./pages/ContactPage";
 // import DemoPage from "./components/DemoPage";
 import Header from "./components/Header";
-import ChannelPage from "./components/Channel/FindChannel/ChannelPage";
+import ChannelPage from "./pages/Partner/ChannelPage";
 import PartnerProgram from "./components/Channel/FindChannel/ChannelPartner";
 import ProjectRegistration from "./components/Channel/FindChannel/ProjectRegistration";
 import Iot from "./components/Channel/FindChannel/Iot";
