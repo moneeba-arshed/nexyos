@@ -15,7 +15,7 @@ import ContactPage from "./pages/ContactPage";
 // import DemoPage from "./components/DemoPage";
 import Header from "./components/Header";
 import ChannelPage from "./pages/Partner/ChannelPage";
-import PartnerProgram from "./components/Channel/FindChannel/ChannelPartner";
+import PartnerProgram from "./pages/Partner/ChannelPartner";
 import ProjectRegistration from "./components/Channel/FindChannel/ProjectRegistration";
 import Iot from "./components/Channel/FindChannel/Iot";
 import About from "./components/Company/About";
